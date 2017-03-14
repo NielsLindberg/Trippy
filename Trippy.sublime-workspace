@@ -1,0 +1,493 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Touchable",
+				"TouchableHighlight"
+			],
+			[
+				"too",
+				"toggleBounce"
+			],
+			[
+				"spee",
+				"speedMultiplicator"
+			],
+			[
+				"y",
+				"y"
+			],
+			[
+				"header",
+				"pageHeaderHeight"
+			],
+			[
+				"bd",
+				"bd+\tborder: ${1:1px} ${2:solid} ${3:#000};"
+			],
+			[
+				"format",
+				"formattedDescription"
+			],
+			[
+				"formate",
+				"formattedDates"
+			],
+			[
+				"formatted",
+				"formattedTitle"
+			],
+			[
+				"formattedEm",
+				"formattedEmployer"
+			],
+			[
+				"formattedEmp",
+				"formattedEmployerTitle"
+			],
+			[
+				"card",
+				"card-container"
+			],
+			[
+				"bo",
+				"text-bottom"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 183.0,
+		"last_filter": "Package Control: Install",
+		"selected_items":
+		[
+			[
+				"Package Control: Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: Remove Package",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Cont",
+				"Package Control: Install Package"
+			],
+			[
+				"Autoprefix CSS",
+				"Autoprefix CSS"
+			],
+			[
+				"Package Control: remove",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 571.0
+	},
+	"console":
+	{
+		"height": 62.0,
+		"history":
+		[
+			"react-native log-android",
+			"install",
+			"Autoprefix CSS",
+			".jshintrc",
+			"view.run_command(\"jshint\")",
+			"$ bower install jquery",
+			"bower install jquery",
+			"npm install -g bower",
+			"bower install jquery",
+			"npm --version",
+			"install --save polymer",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Workspace/Trippy"
+	],
+	"file_history":
+	[
+		"/D/Workspace/mymobileapp/app/components/BoilerComponent/BoilerComponent.js",
+		"/D/Workspace/mobiletodos/android/app/build.gradle",
+		"/D/Workspace/mobiletodos/app/components/MapComponent/MapComponent.js",
+		"/D/Workspace/mobiletodos/android/app/src/main/AndroidManifest.xml",
+		"/D/Workspace/mobiletodos/android/gradle.properties",
+		"/D/Workspace/mobiletodos/app/components/AddForm/AddForm.js",
+		"/D/Workspace/mobiletodos/app/components/AddButton/AddButton.js",
+		"/D/Workspace/mobiletodos/app/components/EditForm/EditForm.js",
+		"/D/Workspace/mobiletodos/app/components/Login/Login.js",
+		"/D/Workspace/mobiletodos/app/components/TodoDetails/TodoDetails.js",
+		"/D/Workspace/mobiletodos/app/components/todos/Todos.js",
+		"/D/Workspace/mobiletodos/app/components/AndroidToolbar/AndroidToolbar.js",
+		"/D/Workspace/mobiletodos/index.android.js",
+		"/D/Workspace/mobiletodos/.gitignore",
+		"/D/Workspace/mobiletodos/app/modules/FireBaseApp/FireBaseApp.js",
+		"/D/Workspace/mobiletodos/app/modules/FireBase/FireBase.js",
+		"/D/Workspace/mobiletodos/app/components/FireBase/FireBase.js",
+		"/D/Workspace/mobiletodos/app/components/Todos/todos.js",
+		"/D/Workspace/mymobileapp/index.ios.js",
+		"/D/Workspace/mymobileapp/app/components/SimpleComponent1/SimpleComponent1.js",
+		"/D/Workspace/mymobileapp/app/components/StatusBarComponent/StatusBarComponent.js",
+		"/D/Workspace/mymobileapp/app/components/ScrollViewComponent/ScrollViewComponent.js",
+		"/D/Workspace/mymobileapp/app/components/PickerComponent/PickerComponent.js",
+		"/D/Workspace/mymobileapp/app/components/SliderComponent/SliderComponent.js",
+		"/D/Workspace/mymobileapp/app/components/TextInputComponent/TextInputComponent.js",
+		"/D/Workspace/mymobileapp/app/components/SimpleComponent1/TextInputComponent.js",
+		"/D/Workspace/mymobileapp/app/components/TouchableComponent/TouchableComponent.js",
+		"/D/Workspace/mymobileapp/app/components/FlexComponent2/FlexComponent2.js",
+		"/D/Workspace/mymobileapp/app/components/FlexComponent/FlexComponent.js",
+		"/D/Workspace/mymobileapp/app/components/StyledComponent/StyledComponent.js",
+		"/D/Workspace/mymobileapp/app/components/SwitchComponent/SwitchComponent.js",
+		"/D/Workspace/mymobileapp/app/components/ButtonComponent/ButtonComponent.js",
+		"/D/Workspace/mymobileapp/app/components/SceneComponents/SceneComponent2.js",
+		"/D/Workspace/mymobileapp/app/components/SceneComponents/SceneComponent1.js",
+		"/D/Workspace/mymobileapp/app/components/FetchComponent/FetchComponent.js",
+		"/D/Workspace/mymobileapp/app/components/ListViewComponent/ListViewComponent.js",
+		"/D/Workspace/mymobileapp/app/components/IconComponent/IconComponent.js",
+		"/D/Workspace/mymobileapp/app/components/ToolbarAndroidComponent/ToolbarAndroidComponent.js",
+		"/D/Workspace/mymobileapp/app/components/ShareComponent/ShareComponent.js",
+		"/D/Workspace/mymobileapp/app/components/ClipboardComponent/ClipboardComponent.js",
+		"/D/Workspace/mymobileapp/app/components/GeoLocationComponent/GeoLocationComponent.js",
+		"/D/Workspace/mymobileapp/app/components/CameraRollComponent/CameraRollComponent.js",
+		"/D/Workspace/mymobileapp/app/components/AsyncStorageComponent/AsyncStorageComponent.js",
+		"/D/Workspace/mymobileapp/index.android.js",
+		"/D/Workspace/mymobileapp/ios/mymobileapp/Info.plist",
+		"/D/Workspace/mymobileapp/android/app/src/main/AndroidManifest.xml",
+		"/D/Workspace/mymobileapp/android/app/components/SimpleComponent1/SimpleComponent1.js",
+		"/D/Workspace/mymobileapp/android/app/components/Component1",
+		"/D/Workspace/hello-world/src/index.js",
+		"/D/Workspace/hello-world/src/App.test.js",
+		"/D/Workspace/hello-world/src/Components/Component1.js",
+		"/D/Workspace/hello-world/src/App.js",
+		"/D/Workspace/hello-world/src/logo.svg",
+		"/D/Workspace/hello-world/hello-world.sublime-project",
+		"/D/Workspace/hello-world/package.json",
+		"/D/Workspace/reactZero/index.ios.js",
+		"/D/Workspace/reactZero/index.android.js",
+		"/D/Workspace/reactZero/__tests__/index.android.js",
+		"/C/Users/eight/AppData/Roaming/Sublime Text 3/Packages/User/Colorsublime.sublime-settings",
+		"/D/Workspace/reactZero/app/components/Component3/Component3.js",
+		"/D/Workspace/reactZero/android/app/build.gradle",
+		"/D/Workspace/reactZero/app/components/Component6/Component6.js",
+		"/D/Workspace/reactZero/app/components/Component5/Component5.js",
+		"/D/Workspace/reactZero/app/components/Component4/Component4.js",
+		"/D/Workspace/reactZero/android/settings.gradle",
+		"/D/Workspace/reactZero/app/components/Component1/Component1.js",
+		"/D/Workspace/reactZero/app/components/Component2/Component2.js",
+		"/D/Workspace/reactZero/android/app/src/main/java/com/reactzero/MainActivity.java",
+		"/D/Workspace/reactZero/android/app/src/main/java/com/reactzero/MainApplication.java",
+		"/D/Workspace/reactZero/android/gradle.properties",
+		"/D/Workspace/reactZero/android/android.jks",
+		"/D/Workspace/reactZero/android/app/src/main/AndroidManifest.xml",
+		"/D/Workspace/reactZero/.babelrc",
+		"/D/Workspace/reactZero/.eslintrc",
+		"/C/Users/Niels/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/D/Workspace/ionicMap/src/pages/home/home.scss",
+		"/D/Workspace/ionicMap/src/index.html",
+		"/D/Workspace/ionicMap/src/pages/home/home.html",
+		"/D/Workspace/Udacity/mapApp/src/index.html",
+		"/D/Workspace/Udacity/mapApp/src/js/main.js",
+		"/D/Workspace/ionicMap/src/pages/home/home.ts",
+		"/D/Workspace/ionicMap/src/providers/connectivity-service.ts",
+		"/D/Workspace/ionicMap/src/pages/contact/contact.html",
+		"/D/Workspace/ionicMap/src/pages/about/about.html",
+		"/D/Workspace/ionicMap/src/pages/about/about.ts",
+		"/D/Workspace/ionicMap/src/app/app.module.ts",
+		"/D/Workspace/ionicMap/src/theme/variables.scss",
+		"/D/Workspace/Udacity/mapApp/src/js/models/mapEntries.js",
+		"/D/Workspace/ionicMap/src/pages/home/mapstuff.ts",
+		"/C/Users/Niels/AppData/Roaming/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/D/Workspace/ionicMap/readme.md",
+		"/D/Workspace/ionicReddit/src/app/app.component.ts",
+		"/D/Workspace/ionicReddit/src/app/services/reddit.service.ts",
+		"/D/Workspace/ionicReddit/src/pages/about/about.html",
+		"/D/Workspace/ionicReddit/src/pages/settings/settings.html",
+		"/D/Workspace/ionicReddit/resources/icon.png",
+		"/D/Workspace/ionicReddit/src/pages/reddit/reddit.html",
+		"/D/Workspace/ionicReddit/src/pages/settings/settings.ts",
+		"/D/Workspace/ionicReddit/src/pages/settings/settings.scss",
+		"/D/Workspace/ionicReddit/src/pages/reddit/reddit.scss",
+		"/D/Workspace/ionicReddit/src/pages/tabs/tabs.html",
+		"/D/Workspace/ionicReddit/src/pages/tabs/tabs.ts",
+		"/D/Workspace/ionicReddit/src/app/app.module.ts",
+		"/D/Workspace/ionicReddit/src/pages/details/details.ts",
+		"/D/Workspace/ionicReddit/src/pages/details/details.html",
+		"/D/Workspace/ionicReddit/src/pages/reddit/reddit.ts",
+		"/D/Workspace/angularZero/src/app/app.component.css",
+		"/D/Workspace/angularZero/src/app/app.component.html",
+		"/D/Workspace/ionicZero/src/pages/tabs/tabs.html",
+		"/D/Workspace/ionicZero/src/app/app.component.ts",
+		"/D/Workspace/ionicZero/src/theme/variables.scss",
+		"/D/Workspace/ionicZero/src/app/app.html",
+		"/D/Workspace/ionicZero/src/app/app.module.ts",
+		"/D/Workspace/ionicZero/src/pages/test/test.html",
+		"/D/Workspace/ionicZero/src/pages/test/test.ts",
+		"/D/Workspace/ionicZero/src/pages/tabs/tabs.ts",
+		"/D/Workspace/ionicZero/src/pages/test/test.scss",
+		"/D/Workspace/ionicZero/src/manifest.json",
+		"/D/Workspace/CBS/BigSocialData/SentimentAnalysis/qliksenseLoadScript/dataLoad.txt",
+		"/D/Workspace/CBS/BigSocialData/SentimentAnalysis/readme.md",
+		"/D/Workspace/CBS/BigSocialData/SentimentAnalysis/qliksenseLoadScript/CalendarMacro.txt",
+		"/D/Workspace/CBS/BigSocialData/SentimentAnalysis/readme.txt",
+		"/D/Workspace/Udacity/P4/css/style.css",
+		"/D/Workspace/Udacity/P4/css/style.less",
+		"/D/Workspace/Udacity/P4/Gruntfile.js",
+		"/D/Workspace/Udacity/P5/frontend-nanodegree-arcade-game/js/engine.js",
+		"/D/Workspace/Udacity/P5/frontend-nanodegree-arcade-game/js/app.js",
+		"/C/Users/Niels/AppData/Roaming/Sublime Text 3/Packages/HTML-CSS-JS Prettify/Default (Windows).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 59.0
+	},
+	"find_in_files":
+	{
+		"height": 120.0,
+		"where_history":
+		[
+			"D:\\Workspace\\ionicReddit\\src\\pages\\details",
+			"D:\\Workspace\\ionicReddit\\src\\pages\\details\\",
+			"D:\\Workspace\\ionicReddit\\src\\pages\\details\\settings.html"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Firebase",
+			"location",
+			"mapEntryList",
+			"connection",
+			"settings",
+			"reddit",
+			"max",
+			"entrySpacing",
+			"dataProviderNew",
+			"ordinal",
+			"console",
+			"addMeasureData",
+			"displayMessage",
+			"setImageUrl",
+			"template",
+			"yelpview",
+			"content-button",
+			".content button",
+			".content-button",
+			"display",
+			"#pano",
+			"result-container",
+			"yelp",
+			"directionsDisplayList",
+			"populateinfowindow",
+			"itemLabelFilter",
+			"console",
+			"categoryColors",
+			"category",
+			"overflow",
+			"mapEntryList",
+			"food",
+			"service",
+			"<SimpleData name=\"NAME_2\"></SimpleData>",
+			"<name>",
+			"<Polygon>",
+			"NAME_2",
+			"embed",
+			"tilesHeight",
+			"tilesWidth",
+			"topOffset",
+			"numberOfEnemies",
+			"speedMultiplicator",
+			"tileswidth",
+			"tilesHeight",
+			"console",
+			"titlesWidth",
+			"titlesHeight",
+			"101",
+			"83",
+			"titlesHeight",
+			"505",
+			"83",
+			"background",
+			"link",
+			"center",
+			"callback",
+			"googlemap",
+			"coin",
+			"style",
+			">: ",
+			"> ",
+			"Theyare",
+			"  ",
+			"really",
+			"Family",
+			"<div class=\"article\">\n<h1>Addams Family</h1>\n<p>They really are a scream the Addams Family.</p>\n<a href=\"#\">Read more +</a>\n</div>\n",
+			"class",
+			"About",
+			"=\"#\">",
+			"Home",
+			"=\"#\">",
+			"Home",
+			"here",
+			"border",
+			"'",
+			"\"",
+			"'",
+			"\""
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"details",
+			"ul",
+			"li"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "Trippy.sublime-project",
+	"replace":
+	{
+		"height": 78.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 275.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
