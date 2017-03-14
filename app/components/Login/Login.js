@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#00BCD4'
 	},
 	wrapper: {
-		paddingHorizontal: 20,
+		paddingHorizontal: 40,
 		justifyContent: 'center',
 		flex: 1
 	},
@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		marginVertical: 5,
 		height: 40,
-		backgroundColor: 'transparent'
+		backgroundColor: '#00BCD4',
+		elevation:2
 	},
 	icon: {
 		padding: 10,
@@ -141,18 +142,20 @@ const styles = StyleSheet.create({
 		paddingVertical: 10,
 		marginVertical: 5,
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		elevation:2
 	},
 	signUp: {
 		backgroundColor: '#FF80AB',
 		paddingVertical: 10,
 		marginVertical: 5,
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		elevation:2
 	},
 	title: {
 		textAlign: 'center',
-		fontSize: 60,
+		fontSize: 80,
 		color: '#000'
 	},
 	subTitle: {

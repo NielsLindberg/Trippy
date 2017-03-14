@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {AppRegistry, Text, View, Navigator, StyleSheet, Dimensions, StatusBar} from 'react-native';
 
 import Login from './app/components/Login/Login';
+import BottomNavigation from './app/components/BottomNavigation/BottomNavigation';
 
 export default class Trippy extends Component{
   constructor(props){
@@ -21,6 +22,7 @@ export default class Trippy extends Component{
               translucent={false}
             />
             <Login navigator={navigator} title='login'/>
+            <BottomNavigation/>
           </View>
         )
     }
@@ -38,22 +40,8 @@ export default class Trippy extends Component{
 
 const styles = StyleSheet.create({
   screen: {
-    height:Dimensions.get('window').height
-  },
-  primaryColor: {
-    backgroundColor: '#8BC34A'
-  },
-  primaryColorDark: {
-    backgroundColor: '#33691E'
-  },
-  primaryColorLight: {
-    backgroundColor: '#DCEDC8'
-  },
-  accentColor: {
-    backgroundColor: '#FF3D00'
-  },
-  accentColorLight: {
-    backgroundColor: '#FF9E80'
+    flexDirection: 'column',
+    flex: 1
   }
 });
 
