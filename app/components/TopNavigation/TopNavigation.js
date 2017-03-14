@@ -9,21 +9,17 @@ export default class TopNavigation extends Component{
 		this.state = {
             title: this.props.title
 		};
-
-		this.onPressNavItem = this.onPressNavItem.bind(this);
 	}
-
-	onPressNavItem(page){
-
-	}
-
+  static defaultProps = {
+    title: 'Trips'
+  }
 	render(){
 		return (
 	    <View style={styles.container}>
             <Text style={styles.pageTitle}>{this.state.title}</Text>
 	    </View>
     );
-	}
+  }
 }
 
 const styles = StyleSheet.create({

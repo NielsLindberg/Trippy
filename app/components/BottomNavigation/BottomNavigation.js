@@ -7,8 +7,17 @@ export default class BottomNavigation extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
+			title: this.props.title,
+			tripsPageActive: this.props.title == 'Trips',
+			mapPageActive: this.props.title == 'Map',
+			directionsPageActive: this.props.title == 'Directions',
+			settingsPageActive: this.props.title == 'Settings'
 		};
 		this.onPressNavItem = this.onPressNavItem.bind(this);
+	}
+
+	static defaultProps = {
+		title: 'Trips'
 	}
 
 	onPressNavItem(page, title){
@@ -25,8 +34,9 @@ export default class BottomNavigation extends Component{
         	onPress={() => {this.onPressNavItem('trips', 'Trips')}}
         	activeOpacity={0.5}
         >
+		
         	<View style={styles.navItem}>
-        		<Icon name="playlist-add" style={styles.navItemIcon}/>
+        		<Icon name="playlist-add" style={[this.state.tripsPageActive && styles.navItemIconActive, !this.state.tripsPageActive && styles.navItemIcon]}/>
         	</View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -34,7 +44,7 @@ export default class BottomNavigation extends Component{
         	activeOpacity={0.5}
         >
         	<View style={styles.navItem}>
-        		<Icon name="map" style={styles.navItemIcon}/>
+        		<Icon name="map" style={[this.state.mapPageActive && styles.navItemIconActive, !this.state.mapPageActive && styles.navItemIcon]}/>
         	</View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -42,7 +52,7 @@ export default class BottomNavigation extends Component{
         	activeOpacity={0.5}
         >
         	<View style={styles.navItem}>
-        		<Icon name="directions" style={styles.navItemIcon}/>
+        		<Icon name="directions" style={[this.state.directionsPageActive && styles.navItemIconActive, !this.state.directionsPageActive && styles.navItemIcon]}/>
         	</View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -50,7 +60,7 @@ export default class BottomNavigation extends Component{
         	activeOpacity={0.5}
         >
         	<View style={styles.navItem}>
-        		<Icon name="settings" style={styles.navItemIcon}/>
+        		<Icon name="settings" style={[this.state.settingsPageActive && styles.navItemIconActive, !this.state.settingsPageActive && styles.navItemIcon]}/>
         	</View>
         </TouchableOpacity>
 	    </View>
@@ -74,12 +84,25 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		width: Dimensions.get('window').width / 4
 	},
-	navItemIcon: {
+	navItemIconActive: {
+		padding: 10,
 		textAlign: 'center',
 		alignSelf: 'center',
 		justifyContent: 'center',
-		color: '#FFF',
-		fontSize: 30
+		fontSize: 30,
+		color: '#fff',
+		borderRadius: 25,
+		backgroundColor: '#FF4081',
+		elevation: 2
+	},
+	navItemIcon: {
+		padding: 10,
+		textAlign: 'center',
+		alignSelf: 'center',
+		justifyContent: 'center',
+		fontSize: 30,
+		color: '#fff',
+		borderRadius: 25,
 	}
 });
 

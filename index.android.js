@@ -41,7 +41,7 @@ export default class Trippy extends Component{
               translucent={false}
             />
             <TripList navigator={navigator} title='trips'/>
-            <BottomNavigation navigator={navigator}/>
+            <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
         )
       case 'map':
@@ -55,7 +55,7 @@ export default class Trippy extends Component{
               translucent={false}
             />
             <MapComponent navigator={navigator} title='map'/>
-            <BottomNavigation navigator={navigator}/>
+            <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
         )
       case 'directions':
@@ -69,7 +69,7 @@ export default class Trippy extends Component{
               translucent={false}
             />
             <Settings navigator={navigator} title='directions'/>
-            <BottomNavigation navigator={navigator}/>
+            <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
         )
       case 'settings':
@@ -83,7 +83,7 @@ export default class Trippy extends Component{
               translucent={false}
             />
             <Settings navigator={navigator} title='settings'/>
-            <BottomNavigation navigator={navigator}/>
+            <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
         )
     }

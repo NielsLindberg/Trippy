@@ -44,7 +44,10 @@ export default class Login extends Component{
         this.setState({
             response: "Logged In!"
         });
-        this.props.navigator.push({id: 'trips'});
+        this.props.navigator.push({
+        	id: 'trips',
+        	title: 'Trips'
+        });
 
     } catch (error) {
         this.setState({
