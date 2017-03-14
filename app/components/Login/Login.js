@@ -75,6 +75,7 @@ export default class Login extends Component{
 	            		style={styles.input}
 	                placeholder="Password"
 	                onChangeText={(password) => this.setState({password})}
+	                secureTextEntry={true}
 	                password={true}
 	                autoCapitalize="none"
 	                underlineColorAndroid="transparent"
@@ -169,6 +170,8 @@ const styles = StyleSheet.create({
 		fontSize: 18
 	},
 	responseText: {
+		height: 40,
+		marginTop:20,
 		textAlign: 'center'
 	}
 });

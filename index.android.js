@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, Navigator, StyleSheet, Dimensions} from 'react-native';
+import {AppRegistry, Text, View, Navigator, StyleSheet, Dimensions, StatusBar} from 'react-native';
 
 import Login from './app/components/Login/Login';
 
@@ -14,6 +14,12 @@ export default class Trippy extends Component{
       case 'login':
         return (
           <View style={styles.screen}>
+            <StatusBar
+              backgroundColor='#00838F'
+              barStyle="light-content"
+              hidden={false}
+              translucent={false}
+            />
             <Login navigator={navigator} title='login'/>
           </View>
         )
