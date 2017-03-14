@@ -23,6 +23,10 @@ export default class Login extends Component{
         this.setState({
             response: "account created"
         });
+        this.props.navigator.push({
+        	id: 'trips',
+        	title: 'Trips'
+        });
 
     } catch (error) {
         this.setState({
@@ -40,6 +44,7 @@ export default class Login extends Component{
         this.setState({
             response: "Logged In!"
         });
+        this.props.navigator.push({id: 'trips'});
 
     } catch (error) {
         this.setState({
@@ -52,14 +57,14 @@ export default class Login extends Component{
 		return (
 	    <View style={styles.container}>
 	        <View style={styles.wrapper}>
-	        	<Text style={styles.title}>
-	        		Trippy
-	        	</Text>
+	        	<Icon name='flight-takeoff' style={styles.title}/>
 	        	<Text style={styles.subTitle}>
 	        		A travellers best friend!
 	        	</Text>
 	        	<View style={styles.inputWrap}>
-	        		<Icon name="email" style={styles.icon}/>
+	        		<View style={styles.iconWrap}>
+	        			<Icon name="email" style={styles.icon}/>
+        			</View>		
 	            <TextInput
 	            		style={styles.input}
 	                placeholder="Email Address"
@@ -70,7 +75,9 @@ export default class Login extends Component{
 	            />
 	          </View>
 	          <View style={styles.inputWrap}>
-	          <Icon name="lock" style={styles.icon}/>
+	          	<View style={styles.iconWrap}>
+	          		<Icon name="lock" style={styles.icon}/>
+	          	</View>
 	            <TextInput
 	            		style={styles.input}
 	                placeholder="Password"
@@ -115,28 +122,40 @@ const styles = StyleSheet.create({
     elevation: -2
 	},
 	wrapper: {
-		paddingHorizontal: 40,
+		paddingHorizontal: 60,
 		justifyContent: 'center',
 		flex: 1
 	},
 	inputWrap: {
 		flexDirection: 'row',
 		marginVertical: 5,
-		height: 40,
 		backgroundColor: '#00BCD4',
-		elevation:2
+		elevation:2,
+		borderRadius: 5
+	},
+	iconWrap: {
+		alignSelf: 'stretch',
+		backgroundColor: '#FF4081',
+		alignItems: 'center',
+		justifyContent: 'center',
+		borderTopLeftRadius: 5,
+		borderBottomLeftRadius: 5
 	},
 	icon: {
-		padding: 10,
-		backgroundColor: '#FF4081',
+		paddingHorizontal: 10,
 		color: '#FFF',
-		fontSize: 20,
+		fontSize: 18,
+		alignSelf: 'center',
+		justifyContent: 'center',
 		textAlign: 'center'
 	},
 	input: {
 		flex: 1,
+		fontSize: 14,
 		paddingHorizontal: 10,
-		backgroundColor: '#FFF'
+		backgroundColor: '#FFF',
+		borderTopRightRadius: 5,
+		borderBottomRightRadius: 5
 	},
 	login: {
 		backgroundColor: '#FF4081',
@@ -144,23 +163,26 @@ const styles = StyleSheet.create({
 		marginVertical: 5,
 		alignItems: 'center',
 		justifyContent: 'center',
-		elevation:2
+		elevation:2,
+		borderRadius: 5
 	},
 	signUp: {
-		backgroundColor: '#FF80AB',
+		backgroundColor: '#FF4081',
 		paddingVertical: 10,
 		marginVertical: 5,
 		alignItems: 'center',
 		justifyContent: 'center',
-		elevation:2
+		elevation:2,
+		borderRadius: 5
 	},
 	title: {
 		textAlign: 'center',
-		fontSize: 80,
-		color: '#000'
+		fontSize: 120,
+		color: '#00000050'
 	},
 	subTitle: {
 		textAlign: 'center',
+		color: '#00000050',
 		fontSize:15,
 		fontStyle: 'italic',
 		marginBottom:20
@@ -170,13 +192,14 @@ const styles = StyleSheet.create({
 		fontSize: 18
 	},
 	signUpText: {
-		color:'#000',
+		color:'#fff',
 		fontSize: 18
 	},
 	responseText: {
 		height: 40,
 		marginTop:20,
-		textAlign: 'center'
+		textAlign: 'center',
+		color: '#00000050'
 	}
 });
 

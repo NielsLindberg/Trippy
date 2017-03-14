@@ -7,6 +7,7 @@ export default class TopNavigation extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
+            title: this.props.title
 		};
 
 		this.onPressNavItem = this.onPressNavItem.bind(this);
@@ -19,7 +20,7 @@ export default class TopNavigation extends Component{
 	render(){
 		return (
 	    <View style={styles.container}>
-            <Text style={styles.pageTitle}>Page Title Bar</Text>
+            <Text style={styles.pageTitle}>{this.state.title}</Text>
 	    </View>
     );
 	}

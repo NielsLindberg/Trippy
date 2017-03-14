@@ -8,19 +8,21 @@ export default class BottomNavigation extends Component{
 		super(props);
 		this.state = {
 		};
-
 		this.onPressNavItem = this.onPressNavItem.bind(this);
 	}
 
-	onPressNavItem(page){
-
+	onPressNavItem(page, title){
+		this.props.navigator.push({
+			id: page,
+			title: title 
+		});
 	}
 
 	render(){
 		return (
 	    <View style={styles.container}>
         <TouchableOpacity
-        	onPress={() => {this.onPressNavItem('map')}}
+        	onPress={() => {this.onPressNavItem('trips', 'Trips')}}
         	activeOpacity={0.5}
         >
         	<View style={styles.navItem}>
@@ -28,7 +30,7 @@ export default class BottomNavigation extends Component{
         	</View>
         </TouchableOpacity>
         <TouchableOpacity
-        	onPress={() => {this.onPressNavItem('map')}}
+        	onPress={() => {this.onPressNavItem('map', 'Map')}}
         	activeOpacity={0.5}
         >
         	<View style={styles.navItem}>
@@ -36,7 +38,7 @@ export default class BottomNavigation extends Component{
         	</View>
         </TouchableOpacity>
         <TouchableOpacity
-        	onPress={() => {this.onPressNavItem('directions')}}
+        	onPress={() => {this.onPressNavItem('directions', 'Directions')}}
         	activeOpacity={0.5}
         >
         	<View style={styles.navItem}>
@@ -44,7 +46,7 @@ export default class BottomNavigation extends Component{
         	</View>
         </TouchableOpacity>
         <TouchableOpacity
-        	onPress={() => {this.onPressNavItem('settings')}}
+        	onPress={() => {this.onPressNavItem('settings', 'Settings')}}
         	activeOpacity={0.5}
         >
         	<View style={styles.navItem}>
