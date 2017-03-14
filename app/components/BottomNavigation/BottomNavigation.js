@@ -25,9 +25,6 @@ export default class BottomNavigation extends Component{
         >
         	<View style={styles.navItem}>
         		<Icon name="playlist-add" style={styles.navItemIcon}/>
-        		<Text style={styles.navItemText}>
-        			Trips
-        		</Text>
         	</View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -36,9 +33,6 @@ export default class BottomNavigation extends Component{
         >
         	<View style={styles.navItem}>
         		<Icon name="map" style={styles.navItemIcon}/>
-        		<Text style={styles.navItemText}>
-        			Map
-        		</Text>
         	</View>
         </TouchableOpacity>
         <TouchableOpacity
@@ -47,9 +41,14 @@ export default class BottomNavigation extends Component{
         >
         	<View style={styles.navItem}>
         		<Icon name="directions" style={styles.navItemIcon}/>
-        		<Text style={styles.navItemText}>
-        			Directions
-        		</Text>
+        	</View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        	onPress={() => {this.onPressNavItem('settings')}}
+        	activeOpacity={0.5}
+        >
+        	<View style={styles.navItem}>
+        		<Icon name="settings" style={styles.navItemIcon}/>
         	</View>
         </TouchableOpacity>
 	    </View>
@@ -71,21 +70,14 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
-		width: Dimensions.get('window').width / 3
+		width: Dimensions.get('window').width / 4
 	},
 	navItemIcon: {
 		textAlign: 'center',
 		alignSelf: 'center',
 		justifyContent: 'center',
 		color: '#FFF',
-		fontSize: 22
-	},
-	navItemText: {
-		textAlign: 'center',
-		alignSelf: 'center',
-		justifyContent: 'center',
-		color:'#FFF',
-		fontSize: 18
+		fontSize: 30
 	}
 });
 

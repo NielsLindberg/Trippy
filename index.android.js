@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {AppRegistry, Text, View, Navigator, StyleSheet, Dimensions, StatusBar} from 'react-native';
 
 import Login from './app/components/Login/Login';
+
+import TopNavigation from './app/components/TopNavigation/TopNavigation';
 import BottomNavigation from './app/components/BottomNavigation/BottomNavigation';
 
 export default class Trippy extends Component{
@@ -15,6 +17,7 @@ export default class Trippy extends Component{
       case 'login':
         return (
           <View style={styles.screen}>
+            <TopNavigation />
             <StatusBar
               backgroundColor='#00838F'
               barStyle="light-content"
