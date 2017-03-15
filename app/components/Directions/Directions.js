@@ -7,7 +7,24 @@ export default class Directions extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
+			response: 'placeholder'
 		};
+		this.getDirections = this.getDirections.bind(this)
+	}
+	async getDirections() {
+    try {
+      let response = await fetch('https://maps.googleapis.com/maps/api/directions/json?mode=transit&origin=55.68,12.56&destination=55.69,12.56&key=AIzaSyA7a8aISd9T8geGAmFiQbag2H_tf2XQK8A');
+      this.setState({
+            response: response
+        });
+    } catch(error) {
+      this.setState({
+            response: error
+        });
+    }
+  }
+	componentWillMount(){
+		this.getDirections();
 	}
 
 	render(){

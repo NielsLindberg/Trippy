@@ -42,7 +42,7 @@ var mapStyles = [{
     "featureType": "water",
     "elementType": "all",
     "stylers": [{
-        "color": "#7dcdcd"
+        "color": "#00BCD4"
     }]
 }];
 

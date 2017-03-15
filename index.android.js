@@ -68,7 +68,7 @@ export default class Trippy extends Component{
               hidden={false}
               translucent={false}
             />
-            <Settings navigator={navigator} title='directions'/>
+            <Directions navigator={navigator} title='directions'/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
         )

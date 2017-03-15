@@ -73,22 +73,48 @@
 			}
 		},
 		{
-			"contents": "import React, {Component} from 'react';\nimport {AppRegistry, Text, View, Navigator, StyleSheet, Dimensions, StatusBar} from 'react-native';\n\nimport TopNavigation from './app/components/TopNavigation/TopNavigation';\nimport BottomNavigation from './app/components/BottomNavigation/BottomNavigation';\n\nimport Login from './app/components/Login/Login';\nimport TripList from './app/components/TripList/TripList';\nimport MapComponent from './app/components/MapComponent/MapComponent';\nimport Directions from './app/components/Directions/Directions';\nimport Settings from './app/components/Settings/Settings';\n\nexport default class Trippy extends Component{\n  constructor(props){\n    super(props);\n    this.state = {\n    }\n  }\n  renderScene(route, navigator){\n    switch(route.id){\n      case 'login':\n        return (\n          <View style={styles.screen}>\n            <StatusBar\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={true}\n              translucent={false}\n            />\n            <Login navigator={navigator} title='login'/>\n          </View>\n        )\n      case 'trips':\n        return (\n          <View style={styles.screen}>\n            <TopNavigation title={route.title}/>\n            <StatusBar@\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={false}\n              translucent={false}\n            />\n            <TripList navigator={navigator} title='trips'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n          </View>\n        )\n      case 'map':\n        return (\n          <View style={styles.screen}>\n            <TopNavigation title={route.title}/>\n            <StatusBar\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={false}\n              translucent={false}\n            />\n            <MapComponent navigator={navigator} title='map'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n          </View>\n        )\n      case 'directions':\n        return (\n          <View style={styles.screen}>\n            <TopNavigation title={route.title}/>\n            <StatusBar\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={false}\n              translucent={false}\n            />\n            <Settings navigator={navigator} title='directions'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n          </View>\n        )\n      case 'settings':\n        return (\n          <View style={styles.screen}>\n            <TopNavigation title={route.title}/>\n            <StatusBar\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={false}\n              translucent={false}\n            />\n            <Settings navigator={navigator} title='settings'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n          </View>\n        )\n    }\n  }\n  render(){\n    return(\n      <Navigator\n        initialRoute={{id: 'login'}}\n        renderScene={this.renderScene}\n        configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromLeft}\n      />\n      )\n  }\n}\n\nconst styles = StyleSheet.create({\n  screen: {\n    flexDirection: 'column',\n    flex: 1\n  }\n});\n\nAppRegistry.registerComponent('Trippy', () => Trippy);",
-			"file": "index.android.js",
-			"file_size": 3386,
-			"file_write_time": 131340039723921289,
+			"file": "app/components/MapComponent/MapStyles.js",
 			"settings":
 			{
-				"buffer_size": 3387,
-				"line_ending": "Unix"
+				"buffer_size": 953,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/BottomNavigation/BottomNavigation.js",
+			"settings":
+			{
+				"buffer_size": 3198,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "app/components/MapComponent/MapComponent.js",
 			"settings":
 			{
-				"buffer_size": 751,
+				"buffer_size": 2549,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 774,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.android.js",
+			"settings":
+			{
+				"buffer_size": 3386,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -181,19 +207,25 @@
 	"expanded_folders":
 	[
 		"/D/Workspace/Trippy",
+		"/D/Workspace/Trippy/android/app/src",
+		"/D/Workspace/Trippy/android/app/src/main",
 		"/D/Workspace/Trippy/app",
 		"/D/Workspace/Trippy/app/components",
 		"/D/Workspace/Trippy/app/components/BottomNavigation",
+		"/D/Workspace/Trippy/app/components/Directions",
 		"/D/Workspace/Trippy/app/components/Login",
 		"/D/Workspace/Trippy/app/components/MapComponent",
-		"/D/Workspace/Trippy/app/modules"
+		"/D/Workspace/Trippy/app/components/Settings",
+		"/D/Workspace/Trippy/app/modules",
+		"/D/Workspace/Trippy/app/modules/Backend"
 	],
 	"file_history":
 	[
+		"/D/Workspace/Trippy/app/components/TopNavigation/TopNavigation.js",
+		"/D/Workspace/Trippy/android/app/src/main/AndroidManifest.xml",
 		"/D/Workspace/Trippy/index.android.js",
 		"/D/Workspace/Trippy/app/modules/Backend/Backend.js",
 		"/D/Workspace/mymobileapp/app/components/TouchableComponent/TouchableComponent.js",
-		"/D/Workspace/Trippy/app/components/TopNavigation/TopNavigation.js",
 		"/D/Workspace/Trippy/app/components/BottomNavigation/BottomNavigation.js",
 		"/D/Workspace/Trippy/app/components/TripList/TripList.js",
 		"/D/Workspace/Trippy/app/components/Settings/Settings.js",
@@ -316,8 +348,7 @@
 		"/D/Workspace/angularZero/src/app/app.component.html",
 		"/D/Workspace/ionicZero/src/pages/tabs/tabs.html",
 		"/D/Workspace/ionicZero/src/app/app.component.ts",
-		"/D/Workspace/ionicZero/src/theme/variables.scss",
-		"/D/Workspace/ionicZero/src/app/app.html"
+		"/D/Workspace/ionicZero/src/theme/variables.scss"
 	],
 	"find":
 	{
@@ -438,7 +469,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -454,8 +485,8 @@
 						"selection":
 						[
 							[
-								766,
-								771
+								3461,
+								3461
 							]
 						],
 						"settings":
@@ -464,27 +495,146 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 256.0,
+						"translation.y": 2280.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "index.android.js",
+					"file": "app/components/MapComponent/MapStyles.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3387,
+						"buffer_size": 953,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1300,
-								1300
+								902,
+								902
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 300.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/components/BottomNavigation/BottomNavigation.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3198,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1006,
+								1006
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/components/MapComponent/MapComponent.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2549,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1061,
+								1061
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 660.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 774,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								72,
+								72
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "index.android.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3386,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2755,
+								2755
 							]
 						],
 						"settings":
@@ -495,40 +645,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 420.0,
+						"translation.y": 1380.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/components/MapComponent/MapComponent.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 751,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								499,
-								499
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
