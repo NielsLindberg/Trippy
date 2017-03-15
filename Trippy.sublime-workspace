@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"e",
+				"e"
+			],
+			[
 				"Touchable",
 				"TouchableHighlight"
 			],
@@ -60,78 +64,30 @@
 	"buffers":
 	[
 		{
-			"file": "index.android.js",
-			"settings":
-			{
-				"buffer_size": 1377,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/D/Workspace/mobiletodos/app/modules/FireBaseApp/FireBaseApp.js",
-			"settings":
-			{
-				"buffer_size": 375,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/modules/Backend/Backend.js",
-			"settings":
-			{
-				"buffer_size": 376,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "app/components/Login/Login.js",
 			"settings":
 			{
-				"buffer_size": 4196,
+				"buffer_size": 4892,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/D/Workspace/mymobileapp/app/components/TouchableComponent/TouchableComponent.js",
+			"contents": "import React, {Component} from 'react';\nimport {AppRegistry, Text, View, Navigator, StyleSheet, Dimensions, StatusBar} from 'react-native';\n\nimport TopNavigation from './app/components/TopNavigation/TopNavigation';\nimport BottomNavigation from './app/components/BottomNavigation/BottomNavigation';\n\nimport Login from './app/components/Login/Login';\nimport TripList from './app/components/TripList/TripList';\nimport MapComponent from './app/components/MapComponent/MapComponent';\nimport Directions from './app/components/Directions/Directions';\nimport Settings from './app/components/Settings/Settings';\n\nexport default class Trippy extends Component{\n  constructor(props){\n    super(props);\n    this.state = {\n    }\n  }\n  renderScene(route, navigator){\n    switch(route.id){\n      case 'login':\n        return (\n          <View style={styles.screen}>\n            <StatusBar\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={true}\n              translucent={false}\n            />\n            <Login navigator={navigator} title='login'/>\n          </View>\n        )\n      case 'trips':\n        return (\n          <View style={styles.screen}>\n            <TopNavigation title={route.title}/>\n            <StatusBar@\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={false}\n              translucent={false}\n            />\n            <TripList navigator={navigator} title='trips'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n          </View>\n        )\n      case 'map':\n        return (\n          <View style={styles.screen}>\n            <TopNavigation title={route.title}/>\n            <StatusBar\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={false}\n              translucent={false}\n            />\n            <MapComponent navigator={navigator} title='map'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n          </View>\n        )\n      case 'directions':\n        return (\n          <View style={styles.screen}>\n            <TopNavigation title={route.title}/>\n            <StatusBar\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={false}\n              translucent={false}\n            />\n            <Settings navigator={navigator} title='directions'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n          </View>\n        )\n      case 'settings':\n        return (\n          <View style={styles.screen}>\n            <TopNavigation title={route.title}/>\n            <StatusBar\n              backgroundColor='#00838F'\n              barStyle=\"light-content\"\n              hidden={false}\n              translucent={false}\n            />\n            <Settings navigator={navigator} title='settings'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n          </View>\n        )\n    }\n  }\n  render(){\n    return(\n      <Navigator\n        initialRoute={{id: 'login'}}\n        renderScene={this.renderScene}\n        configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromLeft}\n      />\n      )\n  }\n}\n\nconst styles = StyleSheet.create({\n  screen: {\n    flexDirection: 'column',\n    flex: 1\n  }\n});\n\nAppRegistry.registerComponent('Trippy', () => Trippy);",
+			"file": "index.android.js",
+			"file_size": 3386,
+			"file_write_time": 131340039723921289,
 			"settings":
 			{
-				"buffer_size": 948,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/Workspace/mymobileapp/app/components/IconComponent/IconComponent.js",
-			"settings":
-			{
-				"buffer_size": 596,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/Workspace/mymobileapp/app/components/StatusBarComponent/StatusBarComponent.js",
-			"settings":
-			{
-				"buffer_size": 581,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "android/app/build.gradle",
-			"settings":
-			{
-				"buffer_size": 5476,
-				"encoding": "UTF-8",
+				"buffer_size": 3387,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/D/Workspace/mobiletodos/app/components/Login/Login.js",
+			"file": "app/components/MapComponent/MapComponent.js",
 			"settings":
 			{
-				"buffer_size": 2506,
+				"buffer_size": 751,
 				"line_ending": "Windows"
 			}
 		}
@@ -225,45 +181,59 @@
 	"expanded_folders":
 	[
 		"/D/Workspace/Trippy",
-		"/D/Workspace/Trippy/android",
-		"/D/Workspace/Trippy/android/app",
 		"/D/Workspace/Trippy/app",
 		"/D/Workspace/Trippy/app/components",
+		"/D/Workspace/Trippy/app/components/BottomNavigation",
 		"/D/Workspace/Trippy/app/components/Login",
-		"/D/Workspace/Trippy/app/modules",
-		"/D/Workspace/Trippy/app/modules/Backend"
+		"/D/Workspace/Trippy/app/components/MapComponent",
+		"/D/Workspace/Trippy/app/modules"
 	],
 	"file_history":
 	[
-		"/D/Workspace/Trippy/app/modules/Backend.js",
+		"/D/Workspace/Trippy/index.android.js",
+		"/D/Workspace/Trippy/app/modules/Backend/Backend.js",
+		"/D/Workspace/mymobileapp/app/components/TouchableComponent/TouchableComponent.js",
+		"/D/Workspace/Trippy/app/components/TopNavigation/TopNavigation.js",
+		"/D/Workspace/Trippy/app/components/BottomNavigation/BottomNavigation.js",
+		"/D/Workspace/Trippy/app/components/TripList/TripList.js",
+		"/D/Workspace/Trippy/app/components/Settings/Settings.js",
+		"/D/Workspace/Trippy/app/components/MapComponent/MapComponent.js",
+		"/D/Workspace/Trippy/app/components/Directions/Directions.js",
+		"/D/Workspace/Trippy/app/components/Login/Login.js",
 		"/D/Workspace/mobiletodos/index.android.js",
+		"/D/Workspace/Trippy/android/app/build.gradle",
+		"/D/Workspace/Trippy/android/gradle.properties",
+		"/D/Workspace/mobiletodos/android/gradle.properties",
+		"/D/Workspace/mobiletodos/.gitignore",
+		"/D/Workspace/Trippy/.gitignore",
+		"/D/Workspace/mobiletodos/.gitattributes",
 		"/D/Workspace/mobiletodos/app/components/Login/Login.js",
+		"/D/Workspace/mymobileapp/app/components/StatusBarComponent/StatusBarComponent.js",
+		"/D/Workspace/mymobileapp/app/components/IconComponent/IconComponent.js",
+		"/D/Workspace/mobiletodos/app/modules/FireBaseApp/FireBaseApp.js",
+		"/D/Workspace/mobiletodos/app/components/Todos/Todos.js",
+		"/D/Workspace/Trippy/app/modules/Backend.js",
 		"/D/Workspace/Trippy/components/Login/Login.js",
 		"/D/Workspace/mymobileapp/app/components/BoilerComponent/BoilerComponent.js",
 		"/D/Workspace/mobiletodos/android/app/build.gradle",
 		"/D/Workspace/mobiletodos/app/components/MapComponent/MapComponent.js",
 		"/D/Workspace/mobiletodos/android/app/src/main/AndroidManifest.xml",
-		"/D/Workspace/mobiletodos/android/gradle.properties",
 		"/D/Workspace/mobiletodos/app/components/AddForm/AddForm.js",
 		"/D/Workspace/mobiletodos/app/components/AddButton/AddButton.js",
 		"/D/Workspace/mobiletodos/app/components/EditForm/EditForm.js",
 		"/D/Workspace/mobiletodos/app/components/TodoDetails/TodoDetails.js",
 		"/D/Workspace/mobiletodos/app/components/todos/Todos.js",
 		"/D/Workspace/mobiletodos/app/components/AndroidToolbar/AndroidToolbar.js",
-		"/D/Workspace/mobiletodos/.gitignore",
-		"/D/Workspace/mobiletodos/app/modules/FireBaseApp/FireBaseApp.js",
 		"/D/Workspace/mobiletodos/app/modules/FireBase/FireBase.js",
 		"/D/Workspace/mobiletodos/app/components/FireBase/FireBase.js",
 		"/D/Workspace/mobiletodos/app/components/Todos/todos.js",
 		"/D/Workspace/mymobileapp/index.ios.js",
 		"/D/Workspace/mymobileapp/app/components/SimpleComponent1/SimpleComponent1.js",
-		"/D/Workspace/mymobileapp/app/components/StatusBarComponent/StatusBarComponent.js",
 		"/D/Workspace/mymobileapp/app/components/ScrollViewComponent/ScrollViewComponent.js",
 		"/D/Workspace/mymobileapp/app/components/PickerComponent/PickerComponent.js",
 		"/D/Workspace/mymobileapp/app/components/SliderComponent/SliderComponent.js",
 		"/D/Workspace/mymobileapp/app/components/TextInputComponent/TextInputComponent.js",
 		"/D/Workspace/mymobileapp/app/components/SimpleComponent1/TextInputComponent.js",
-		"/D/Workspace/mymobileapp/app/components/TouchableComponent/TouchableComponent.js",
 		"/D/Workspace/mymobileapp/app/components/FlexComponent2/FlexComponent2.js",
 		"/D/Workspace/mymobileapp/app/components/FlexComponent/FlexComponent.js",
 		"/D/Workspace/mymobileapp/app/components/StyledComponent/StyledComponent.js",
@@ -273,7 +243,6 @@
 		"/D/Workspace/mymobileapp/app/components/SceneComponents/SceneComponent1.js",
 		"/D/Workspace/mymobileapp/app/components/FetchComponent/FetchComponent.js",
 		"/D/Workspace/mymobileapp/app/components/ListViewComponent/ListViewComponent.js",
-		"/D/Workspace/mymobileapp/app/components/IconComponent/IconComponent.js",
 		"/D/Workspace/mymobileapp/app/components/ToolbarAndroidComponent/ToolbarAndroidComponent.js",
 		"/D/Workspace/mymobileapp/app/components/ShareComponent/ShareComponent.js",
 		"/D/Workspace/mymobileapp/app/components/ClipboardComponent/ClipboardComponent.js",
@@ -348,21 +317,7 @@
 		"/D/Workspace/ionicZero/src/pages/tabs/tabs.html",
 		"/D/Workspace/ionicZero/src/app/app.component.ts",
 		"/D/Workspace/ionicZero/src/theme/variables.scss",
-		"/D/Workspace/ionicZero/src/app/app.html",
-		"/D/Workspace/ionicZero/src/app/app.module.ts",
-		"/D/Workspace/ionicZero/src/pages/test/test.html",
-		"/D/Workspace/ionicZero/src/pages/test/test.ts",
-		"/D/Workspace/ionicZero/src/pages/tabs/tabs.ts",
-		"/D/Workspace/ionicZero/src/pages/test/test.scss",
-		"/D/Workspace/ionicZero/src/manifest.json",
-		"/D/Workspace/CBS/BigSocialData/SentimentAnalysis/qliksenseLoadScript/dataLoad.txt",
-		"/D/Workspace/CBS/BigSocialData/SentimentAnalysis/readme.md",
-		"/D/Workspace/CBS/BigSocialData/SentimentAnalysis/qliksenseLoadScript/CalendarMacro.txt",
-		"/D/Workspace/CBS/BigSocialData/SentimentAnalysis/readme.txt",
-		"/D/Workspace/Udacity/P4/css/style.css",
-		"/D/Workspace/Udacity/P4/css/style.less",
-		"/D/Workspace/Udacity/P4/Gruntfile.js",
-		"/D/Workspace/Udacity/P5/frontend-nanodegree-arcade-game/js/engine.js"
+		"/D/Workspace/ionicZero/src/app/app.html"
 	],
 	"find":
 	{
@@ -483,24 +438,53 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.android.js",
+					"file": "app/components/Login/Login.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1377,
+						"buffer_size": 4892,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								709,
-								709
+								766,
+								771
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 256.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.android.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3387,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1300,
+								1300
 							]
 						],
 						"settings":
@@ -511,246 +495,40 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 60.0,
+						"translation.y": 420.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/D/Workspace/mobiletodos/app/modules/FireBaseApp/FireBaseApp.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 375,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								375
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "app/modules/Backend/Backend.js",
-					"semi_transient": false,
+					"file": "app/components/MapComponent/MapComponent.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 376,
+						"buffer_size": 751,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								376,
-								376
+								499,
+								499
 							]
 						],
 						"settings":
 						{
 							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/components/Login/Login.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4196,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4096,
-								4096
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2940.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/D/Workspace/mymobileapp/app/components/TouchableComponent/TouchableComponent.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 948,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								732,
-								732
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/D/Workspace/mymobileapp/app/components/IconComponent/IconComponent.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 596,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								441,
-								441
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/D/Workspace/mymobileapp/app/components/StatusBarComponent/StatusBarComponent.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 581,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								460,
-								460
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "android/app/build.gradle",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5476,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3037,
-								3037
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Groovy/Groovy.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 840.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/D/Workspace/mobiletodos/app/components/Login/Login.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2506,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								685,
-								685
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -837,7 +615,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 275.0,
+	"side_bar_width": 256.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

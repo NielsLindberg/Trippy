@@ -62,7 +62,7 @@ export default class Login extends Component{
 	        <View style={styles.wrapper}>
 	        	<Icon name='flight-takeoff' style={styles.title}/>
 	        	<Text style={styles.subTitle}>
-	        		A travellers best friend!
+	        		trippy
 	        	</Text>
 	        	<View style={styles.inputWrap}>
 	        		<View style={styles.iconWrap}>
@@ -186,8 +186,7 @@ const styles = StyleSheet.create({
 	subTitle: {
 		textAlign: 'center',
 		color: '#00000050',
-		fontSize:15,
-		fontStyle: 'italic',
+		fontSize:20,
 		marginBottom:20
 	},
 	loginText: {

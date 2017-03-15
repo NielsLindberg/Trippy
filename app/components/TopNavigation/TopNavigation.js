@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     elevation: 2
 	},
 	pageTitle: {
-        paddingLeft: 10,
+    paddingLeft: 10,
 		alignSelf: 'center',
 		color:'#FFF',
 		fontSize: 25

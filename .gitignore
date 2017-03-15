@@ -2,17 +2,6 @@
 #
 .DS_Store
 
-## Firebase
-#
-app/modules/Backend/
-
-## Keystore
-# 
-android/app/my-release-key.keystore
-
-## GradleProps
-android/gradle.properties
-
 # Xcode
 #
 build/
