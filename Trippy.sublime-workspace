@@ -67,7 +67,7 @@
 			"file": "app/components/Login/Login.js",
 			"settings":
 			{
-				"buffer_size": 5106,
+				"buffer_size": 5180,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -84,7 +84,7 @@
 			"file": "app/components/TripList/TripList.js",
 			"settings":
 			{
-				"buffer_size": 2025,
+				"buffer_size": 2049,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -102,7 +102,7 @@
 			"file": "app/components/MapComponent/MapStyles.js",
 			"settings":
 			{
-				"buffer_size": 953,
+				"buffer_size": 2726,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -111,35 +111,25 @@
 			"file": "app/components/Directions/Directions.js",
 			"settings":
 			{
-				"buffer_size": 1255,
+				"buffer_size": 1349,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "import React, {Component} from 'react';\nimport {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity, Dimensions} from 'react-native';\nimport Icon from 'react-native-vector-icons/MaterialIcons';\n\nimport Backend from '../../modules/Backend/Backend';\nimport CommonStyles from '../../modules/CommonStyles/CommonStyles';\n\nexport default class BottomNavigation extends Component{\n\tconstructor(props){\n\t\tsuper(props);\n\t\tthis.state = {\n\t\t\ttitle: this.props.title,\n\t\t\ttripsPageActive: this.props.title == 'Trips',\n\t\t\tmapPageActive: this.props.title == 'Map',\n\t\t\tdirectionsPageActive: this.props.title == 'Directions',\n\t\t\tsettingsPageActive: this.props.title == 'Settings'\n\t\t};\n\t\tthis.onPressNavItem = this.onPressNavItem.bind(this);\n\t}\n\n\tstatic defaultProps = {\n\t\ttitle: 'Trips'\n\t}\n\n\tonPressNavItem(page, title){\n\t\tthis.props.navigator.push({\n\t\t\tid: page,\n\t\t\ttitle: title \n\t\t});\n\t}\n\n\trender(){\n\t\treturn (\n\t    <View style={styles.container}>\n        <TouchableOpacity\n        \tonPress={() => {this.onPressNavItem('trips', 'Trips')}}\n        \tactiveOpacity={0.5}\n        >\n\t\t\n        \t<View style={styles.navItem}>\n        \t\t<Icon name=\"playlist-add\" style={[this.state.tripsPageActive && styles.navItemIconActive, !this.state.tripsPageActive && styles.navItemIcon]}/>\n        \t</View>\n        </TouchableOpacity>\n        <TouchableOpacity\n        \tonPress={() => {this.onPressNavItem('map', 'Map')}}\n        \tactiveOpacity={0.5}\n        >\n        \t<View style={styles.navItem}>\n        \t\t<Icon name=\"map\" style={[this.state.mapPageActive && styles.navItemIconActive, !this.state.mapPageActive && styles.navItemIcon]}/>\n        \t</View>\n        </TouchableOpacity>\n        <TouchableOpacity\n        \tonPress={() => {this.onPressNavItem('directions', 'Directions')}}\n        \tactiveOpacity={0.5}\n        >\n        \t<View style={styles.navItem}>\n        \t\t<Icon name=\"directions\" style={[this.state.directionsPageActive && styles.navItemIconActive, !this.state.directionsPageActive && styles.navItemIcon]}/>\n        \t</View>\n        </TouchableOpacity>\n        <TouchableOpacity\n        \tonPress={() => {this.onPressNavItem('settings', 'Settings')}}\n        \tactiveOpacity={0.5}\n        >\n        \t<View style={styles.navItem}>\n        \t\t<Icon name=\"settings\" style={[this.state.settingsPageActive && styles.navItemIconActive, !this.state.settingsPageActive && styles.navItemIcon]}/>\n        \t</View>\n        </TouchableOpacity>\n\t    </View>\n    );\n\t}\n}\n\nconst styles = StyleSheet.create({\n\tcontainer: {\n    backgroundColor: CommonStyles.colorPrimary,\n    alignSelf: 'stretch',\n    flexDirection: 'row',\n    alignItems: 'center',\n    justifyContent: 'center',\n    height: 68,\n    borderTopWidth: 1,\n    borderColor: CommonStyles.colorBorder\n\t},\n\tnavItem: {\n\t\tflex: 1,\n\t\tflexDirection: 'column',\n\t\talignItems: 'center',\n\t\tjustifyContent: 'center',\n\t\twidth: Dimensions.get('window').width / 4\n\t},\n\tnavItemIconActive: {\n\t\tpadding: 10,\n\t\ttextAlign: 'center',\n\t\talignSelf: 'center',\n\t\tjustifyContent: 'center',\n\t\tfontSize: 30,\n\t\tcolor: CommonStyles.colorAccentText,\n\t\tborderRadius: 25,\n\t\tbackgroundColor: CommonStyles.colorAccent,\n\t\televation: 2\n\t},\n\tnavItemIcon: {\n\t\tpadding: 10,\n\t\ttextAlign: 'center',\n\t\talignSelf: 'center',\n\t\tjustifyContent: 'center',\n\t\tfontSize: 30,\n\t\tcolor: CommonStyles.colorPrimaryText,\n\t\tborderRadius: 25,\n\t}\n});\n\nAppRegistry.registerComponent('BottomNavigation', () => BottomNavigation);",
 			"file": "app/components/BottomNavigation/BottomNavigation.js",
-			"file_size": 3521,
-			"file_write_time": 131342653229435066,
 			"settings":
 			{
-				"buffer_size": 3409,
+				"buffer_size": 3324,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "android/settings.gradle",
-			"settings":
-			{
-				"buffer_size": 194,
-				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "app/components/Settings/Settings.js",
 			"settings":
 			{
-				"buffer_size": 736,
+				"buffer_size": 830,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -157,7 +147,7 @@
 			"file": "app/components/MapComponent/MapComponent.js",
 			"settings":
 			{
-				"buffer_size": 2632,
+				"buffer_size": 2656,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -181,13 +171,18 @@
 			}
 		},
 		{
-			"contents": "var commonStyles = {\n\tcolorPrimaryLight: '#9E9E9E',\n\tcolorPrimaryLightText: '#fff',\n\tcolorPrimary: '#fff',\n\tcolorPrimaryText: '#424242',\n\tcolorPrimaryDark: '#424242',\n\tcolorPrimaryDarkText: '#FFF',\n\tcolorAccent: '#E040FB',\n\tcolorAccentText: '#fff',\n\tcolorBorder: '#9E9E9E',\n\tcolorDarkGrey: ''\n};\nexport default CommonStyles = commonStyles;",
-			"file": "app/modules/CommonStyles/CommonStyles.js",
-			"file_size": 330,
-			"file_write_time": 131342654039590092,
+			"file": "index.ios.js",
 			"settings":
 			{
-				"buffer_size": 339,
+				"buffer_size": 1060,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/modules/CommonStyles/CommonStyles.js",
+			"settings":
+			{
+				"buffer_size": 323,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -209,7 +204,7 @@
 	"command_palette":
 	{
 		"height": 185.0,
-		"last_filter": "Package Control: Install",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -290,7 +285,6 @@
 	"expanded_folders":
 	[
 		"/D/Workspace/Trippy",
-		"/D/Workspace/Trippy/android/build/intermediates",
 		"/D/Workspace/Trippy/app",
 		"/D/Workspace/Trippy/app/components",
 		"/D/Workspace/Trippy/app/components/BottomNavigation",
@@ -554,7 +548,7 @@
 	"groups":
 	[
 		{
-			"selected": 13,
+			"selected": 11,
 			"sheets":
 			[
 				{
@@ -563,15 +557,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5106,
+						"buffer_size": 5180,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4003,
-								4003
+								4542,
+								4542
 							]
 						],
 						"settings":
@@ -580,10 +574,10 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1260.0,
+						"translation.y": 2546.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -611,7 +605,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 480.0,
+						"translation.y": 432.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 12,
@@ -623,15 +617,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2025,
+						"buffer_size": 2049,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1752,
-								1752
+								345,
+								225
 							]
 						],
 						"settings":
@@ -641,10 +635,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 840.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -673,7 +667,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -682,15 +676,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 953,
+						"buffer_size": 2726,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								902,
-								902
+								2726,
+								2726
 							]
 						],
 						"settings":
@@ -701,10 +695,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 59.0,
+						"translation.y": 1242.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -713,15 +707,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1255,
+						"buffer_size": 1349,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1120,
-								1120
+								317,
+								317
 							]
 						],
 						"settings":
@@ -730,7 +724,7 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
+						"translation.x": -0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -743,15 +737,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3409,
+						"buffer_size": 3324,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2079,
-								2079
+								2964,
+								2964
 							]
 						],
 						"settings":
@@ -760,55 +754,27 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 900.0,
+						"translation.y": 954.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "android/settings.gradle",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 194,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Groovy/Groovy.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
 					"file": "app/components/Settings/Settings.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 736,
+						"buffer_size": 830,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								536,
-								536
+								317,
+								317
 							]
 						],
 						"settings":
@@ -821,11 +787,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 8,
 					"file": "app/components/StatusBarComponent/StatusBarComponent.js",
 					"semi_transient": false,
 					"settings":
@@ -852,24 +818,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "app/components/MapComponent/MapComponent.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2632,
+						"buffer_size": 2656,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2346,
-								2346
+								2028,
+								2028
 							]
 						],
 						"settings":
@@ -879,14 +845,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1379.0,
+						"translation.y": 918.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 10,
 					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
@@ -915,7 +881,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 11,
 					"file": "index.android.js",
 					"semi_transient": false,
 					"settings":
@@ -927,8 +893,8 @@
 						"selection":
 						[
 							[
-								2430,
-								2430
+								2578,
+								2578
 							]
 						],
 						"settings":
@@ -939,10 +905,41 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1020.0,
+						"translation.y": 1028.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "index.ios.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1060,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								710,
+								710
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -951,15 +948,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 339,
+						"buffer_size": 323,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								292,
-								292
+								323,
+								323
 							]
 						],
 						"settings":
@@ -972,7 +969,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1000,7 +997,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 120.0,
+						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 13,
