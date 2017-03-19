@@ -67,7 +67,7 @@ export default class Trippy extends Component{
   render(){
     return(
       <Navigator
-        initialRoute={{id: 'trips'}}
+        initialRoute={{id: 'login'}}
         renderScene={this.renderScene}
         configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromLeft}
       />
