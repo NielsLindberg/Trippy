@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, ScrollView, StyleSheet, TextInput, Switch, Button, TouchableOpacity} from 'react-native';
-import Backend from '../../modules/Backend/Backend';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import Backend from '../../modules/Backend/Backend';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class TripList extends Component{
 	constructor(props){
@@ -48,9 +51,9 @@ export default class TripList extends Component{
 					/>
 					<View>
 						<Button
+							style={styles.button}
 							title='SUBMIT'
 							onPress={this.onSubmit}
-							color='black'
 						/>
 					</View>
 					<View>
@@ -65,13 +68,17 @@ export default class TripList extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-    backgroundColor: '#00BCD4'
+    backgroundColor: CommonStyles.colorPrimaryLight
 	},
 	wrapper: {
 		paddingHorizontal: 60,
 		justifyContent: 'center',
 		flex: 1
 	},
+	button: {
+		backgroundColor: CommonStyles.colorAccent,
+		color: CommonStyles.colorAccentText
+	}
 });
 
 AppRegistry.registerComponent('TripList', () => TripList);

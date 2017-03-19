@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity, Dimensions} from 'react-native';
-import Backend from '../../modules/Backend/Backend';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import Backend from '../../modules/Backend/Backend';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+
 
 export default class TopNavigation extends Component{
 	constructor(props){
@@ -24,17 +27,18 @@ export default class TopNavigation extends Component{
 
 const styles = StyleSheet.create({
 	container: {
-    backgroundColor: '#0097A7',
+    backgroundColor: CommonStyles.colorPrimary,
     alignSelf: 'stretch',
     flexDirection: 'row',
     alignItems: 'center',
     height: 58,
-    elevation: 2
+    borderBottomWidth: 1,
+    borderColor: CommonStyles.colorBorder
 	},
 	pageTitle: {
     paddingLeft: 10,
 		alignSelf: 'center',
-		color:'#FFF',
+		color: CommonStyles.colorPrimaryText,
 		fontSize: 25
 	}
 });

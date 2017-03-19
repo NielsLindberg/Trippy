@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, Navigator, StyleSheet, Dimensions, StatusBar} from 'react-native';
+import {AppRegistry, View, Navigator, StyleSheet} from 'react-native';
 
+import StatusBarComponent from './app/components/StatusBarComponent/StatusBarComponent';
 import TopNavigation from './app/components/TopNavigation/TopNavigation';
 import BottomNavigation from './app/components/BottomNavigation/BottomNavigation';
 
@@ -21,25 +22,15 @@ export default class Trippy extends Component{
       case 'login':
         return (
           <View style={styles.screen}>
-            <StatusBar
-              backgroundColor='#00838F'
-              barStyle="light-content"
-              hidden={true}
-              translucent={false}
-            />
+            <StatusBarComponent hidden={true}/>
             <Login navigator={navigator} title='login'/>
           </View>
         )
       case 'trips':
         return (
           <View style={styles.screen}>
+            <StatusBarComponent/>
             <TopNavigation title={route.title}/>
-            <StatusBar
-              backgroundColor='#00838F'
-              barStyle="light-content"
-              hidden={false}
-              translucent={false}
-            />
             <TripList navigator={navigator} title='trips'/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
@@ -47,13 +38,8 @@ export default class Trippy extends Component{
       case 'map':
         return (
           <View style={styles.screen}>
+            <StatusBarComponent/>
             <TopNavigation title={route.title}/>
-            <StatusBar
-              backgroundColor='#00838F'
-              barStyle="light-content"
-              hidden={false}
-              translucent={false}
-            />
             <MapComponent navigator={navigator} title='map'/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
@@ -61,13 +47,8 @@ export default class Trippy extends Component{
       case 'directions':
         return (
           <View style={styles.screen}>
+            <StatusBarComponent/>
             <TopNavigation title={route.title}/>
-            <StatusBar
-              backgroundColor='#00838F'
-              barStyle="light-content"
-              hidden={false}
-              translucent={false}
-            />
             <Directions navigator={navigator} title='directions'/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
@@ -75,13 +56,8 @@ export default class Trippy extends Component{
       case 'settings':
         return (
           <View style={styles.screen}>
+            <StatusBarComponent/>
             <TopNavigation title={route.title}/>
-            <StatusBar
-              backgroundColor='#00838F'
-              barStyle="light-content"
-              hidden={false}
-              translucent={false}
-            />
             <Settings navigator={navigator} title='settings'/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>

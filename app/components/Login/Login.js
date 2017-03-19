@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import Backend from '../../modules/Backend/Backend';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import Backend from '../../modules/Backend/Backend';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class Login extends Component{
 	constructor(props){
@@ -121,8 +123,7 @@ export default class Login extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-    backgroundColor: '#00BCD4',
-    elevation: -2
+    backgroundColor: CommonStyles.colorPrimary,
 	},
 	wrapper: {
 		paddingHorizontal: 60,
@@ -132,13 +133,13 @@ const styles = StyleSheet.create({
 	inputWrap: {
 		flexDirection: 'row',
 		marginVertical: 5,
-		backgroundColor: '#00BCD4',
+		backgroundColor: CommonStyles.colorPrimary,
 		elevation:2,
 		borderRadius: 5
 	},
 	iconWrap: {
 		alignSelf: 'stretch',
-		backgroundColor: '#FF4081',
+		backgroundColor: CommonStyles.colorAccent,
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderTopLeftRadius: 5,
@@ -146,7 +147,8 @@ const styles = StyleSheet.create({
 	},
 	icon: {
 		paddingHorizontal: 10,
-		color: '#FFF',
+		color: CommonStyles.colorAccentText,
+		paddingVertical: 5,
 		fontSize: 18,
 		alignSelf: 'center',
 		justifyContent: 'center',
@@ -154,6 +156,7 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		flex: 1,
+		paddingVertical: 5,
 		fontSize: 14,
 		paddingHorizontal: 10,
 		backgroundColor: '#FFF',
@@ -161,7 +164,7 @@ const styles = StyleSheet.create({
 		borderBottomRightRadius: 5
 	},
 	login: {
-		backgroundColor: '#FF4081',
+		backgroundColor: CommonStyles.colorAccent,
 		paddingVertical: 10,
 		marginVertical: 5,
 		alignItems: 'center',
@@ -170,7 +173,9 @@ const styles = StyleSheet.create({
 		borderRadius: 5
 	},
 	signUp: {
-		backgroundColor: '#FF4081',
+		borderColor: CommonStyles.colorAccent,
+		borderWidth: 2,
+		backgroundColor: 'transparent',
 		paddingVertical: 10,
 		marginVertical: 5,
 		alignItems: 'center',
@@ -190,11 +195,11 @@ const styles = StyleSheet.create({
 		marginBottom:20
 	},
 	loginText: {
-		color:'#FFF',
+		color: CommonStyles.colorAccentText,
 		fontSize: 18
 	},
 	signUpText: {
-		color:'#fff',
+		color: CommonStyles.colorAccentText,
 		fontSize: 18
 	},
 	responseText: {

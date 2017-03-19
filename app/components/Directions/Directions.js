@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import Backend from '../../modules/Backend/Backend';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import Backend from '../../modules/Backend/Backend';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class Directions extends Component{
 	constructor(props){
@@ -40,7 +43,7 @@ export default class Directions extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-    backgroundColor: '#00BCD4'
+    backgroundColor: CommonStyles.colorPrimaryLight
 	},
 	wrapper: {
 		paddingHorizontal: 60,

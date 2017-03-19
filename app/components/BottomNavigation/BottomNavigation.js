@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity, Dimensions} from 'react-native';
-import Backend from '../../modules/Backend/Backend';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import Backend from '../../modules/Backend/Backend';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class BottomNavigation extends Component{
 	constructor(props){
@@ -31,37 +33,32 @@ export default class BottomNavigation extends Component{
 		return (
 	    <View style={styles.container}>
         <TouchableOpacity
+        	style={[styles.navItem, this.state.tripsPageActive && styles.navItemActive]}
         	onPress={() => {this.onPressNavItem('trips', 'Trips')}}
         	activeOpacity={0.5}
         >
-		
-        	<View style={styles.navItem}>
-        		<Icon name="playlist-add" style={[this.state.tripsPageActive && styles.navItemIconActive, !this.state.tripsPageActive && styles.navItemIcon]}/>
-        	</View>
+        	<Icon name="playlist-add" style={[styles.navItemIcon, this.state.tripsPageActive && styles.navItemIconActive]}/>
         </TouchableOpacity>
         <TouchableOpacity
+        	style={[styles.navItem, this.state.mapPageActive && styles.navItemActive]}
         	onPress={() => {this.onPressNavItem('map', 'Map')}}
         	activeOpacity={0.5}
         >
-        	<View style={styles.navItem}>
-        		<Icon name="map" style={[this.state.mapPageActive && styles.navItemIconActive, !this.state.mapPageActive && styles.navItemIcon]}/>
-        	</View>
+        	<Icon name="map" style={[styles.navItemIcon, this.state.mapPageActive && styles.navItemIconActive]}/>
         </TouchableOpacity>
         <TouchableOpacity
+        	style={[styles.navItem, this.state.directionsPageActive && styles.navItemActive]}
         	onPress={() => {this.onPressNavItem('directions', 'Directions')}}
         	activeOpacity={0.5}
         >
-        	<View style={styles.navItem}>
-        		<Icon name="directions" style={[this.state.directionsPageActive && styles.navItemIconActive, !this.state.directionsPageActive && styles.navItemIcon]}/>
-        	</View>
+        	<Icon name="directions" style={[styles.navItemIcon, this.state.directionsPageActive && styles.navItemIconActive]}/>
         </TouchableOpacity>
         <TouchableOpacity
+        	style={[styles.navItem, this.state.settingsPageActive && styles.navItemActive]}
         	onPress={() => {this.onPressNavItem('settings', 'Settings')}}
         	activeOpacity={0.5}
         >
-        	<View style={styles.navItem}>
-        		<Icon name="settings" style={[this.state.settingsPageActive && styles.navItemIconActive, !this.state.settingsPageActive && styles.navItemIcon]}/>
-        	</View>
+        	<Icon name="settings" style={[styles.navItemIcon, this.state.settingsPageActive && styles.navItemIconActive]}/>
         </TouchableOpacity>
 	    </View>
     );
@@ -70,30 +67,25 @@ export default class BottomNavigation extends Component{
 
 const styles = StyleSheet.create({
 	container: {
-    backgroundColor: '#0097A7',
+    backgroundColor: CommonStyles.colorPrimary,
     alignSelf: 'stretch',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
-    height: 68
 	},
 	navItem: {
 		flex: 1,
+		borderTopWidth: 3,
+		borderTopColor: CommonStyles.colorPrimary,
+		borderRightColor: '#FFFFFF',
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
 		width: Dimensions.get('window').width / 4
 	},
-	navItemIconActive: {
-		padding: 10,
-		textAlign: 'center',
-		alignSelf: 'center',
-		justifyContent: 'center',
-		fontSize: 30,
-		color: '#fff',
-		borderRadius: 25,
-		backgroundColor: '#FF4081',
-		elevation: 2
+	navItemActive: {
+		backgroundColor: CommonStyles.colorAccent20,
+		borderTopColor: CommonStyles.colorAccent,
 	},
 	navItemIcon: {
 		padding: 10,
@@ -101,9 +93,11 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		justifyContent: 'center',
 		fontSize: 30,
-		color: '#fff',
-		borderRadius: 25,
-	}
+		color: CommonStyles.colorPrimaryText,
+	},
+	navItemIconActive: {
+		color: CommonStyles.colorPrimaryText
+	},
 });
 
 AppRegistry.registerComponent('BottomNavigation', () => BottomNavigation);

@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import Backend from '../../modules/Backend/Backend';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MapView from 'react-native-maps';
+
 import MapStyles from './MapStyles';
+import Backend from '../../modules/Backend/Backend';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class MapComponent extends Component{
 	constructor(props){
@@ -81,11 +83,11 @@ export default class MapComponent extends Component{
 		        	region={this.state.region}
 		        	onRegionChange={this.onRegionChange}
 	         		style={styles.map}
-	         		customMapStyle={MapStyles}
+	         		//customMapStyle={MapStyles}
 	       		>
 	       		{this.state.markers.map(marker => (
 					    <MapView.Marker
-					    	pinColor={'#FF4081'}
+					    	pinColor={CommonStyles.colorAccent}
 					    	key={marker.id}
 					      coordinate={marker.latlng}
 					      title={marker.title}
@@ -101,7 +103,7 @@ export default class MapComponent extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-    backgroundColor: '#00BCD4'
+    backgroundColor: CommonStyles.colorPrimaryLight
 	},
 	map: {
 		paddingHorizontal: 60,
