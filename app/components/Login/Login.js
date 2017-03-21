@@ -123,7 +123,7 @@ export default class Login extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-    backgroundColor: CommonStyles.colorPrimary,
+    backgroundColor: CommonStyles.colorPrimary800,
 	},
 	wrapper: {
 		paddingHorizontal: 60,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
 	inputWrap: {
 		flexDirection: 'row',
 		marginVertical: 5,
-		backgroundColor: CommonStyles.colorPrimary,
+		backgroundColor: CommonStyles.colorPrimary800,
 		elevation:2,
 		borderRadius: 5
 	},

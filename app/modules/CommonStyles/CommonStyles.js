@@ -1,12 +1,16 @@
 var commonStyles = {
-	colorPrimaryLight: '#ECEFF1',
-	colorPrimaryLightText: '#000',
-	colorPrimary: '#37474F',
-	colorPrimaryText: '#fff',
-	colorPrimaryDark: '#263238',
-	colorPrimaryDarkText: '#FFF',
+	colorPrimary100: '#ECEFF1',
+	colorPrimary100Text: '#000',
+	colorPrimary400: '#78909C',
+	colorPrimary400Text: '#fff',
+	colorPrimary600: '#546E7A',
+	colorPrimary600Text: '#fff',
+	colorPrimary800: '#37474F',
+	colorPrimary800Text: '#FFF',
+	colorPrimary900: '#263238',
+	colorPrimary900Text: '#FFF',
 	colorAccent: '#FF5252',
-	colorAccent20: '#FF525220',
+	colorAccent20P: '#FF525220',
 	colorAccentText: '#fff'
 };
 export default CommonStyles = commonStyles;

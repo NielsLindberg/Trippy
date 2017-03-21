@@ -103,7 +103,7 @@ export default class MapComponent extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-    backgroundColor: CommonStyles.colorPrimaryLight
+    backgroundColor: CommonStyles.colorPrimary100
 	},
 	map: {
 		paddingHorizontal: 60,

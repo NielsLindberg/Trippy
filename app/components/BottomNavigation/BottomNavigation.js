@@ -67,7 +67,7 @@ export default class BottomNavigation extends Component{
 
 const styles = StyleSheet.create({
 	container: {
-    backgroundColor: CommonStyles.colorPrimary,
+    backgroundColor: CommonStyles.colorPrimary800,
     alignSelf: 'stretch',
     flexDirection: 'row',
     alignItems: 'stretch',
@@ -76,14 +76,14 @@ const styles = StyleSheet.create({
 	navItem: {
 		flex: 1,
 		borderTopWidth: 3,
-		borderTopColor: CommonStyles.colorPrimary,
+		borderTopColor: CommonStyles.colorPrimary800,
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
 		width: Dimensions.get('window').width / 4
 	},
 	navItemActive: {
-		backgroundColor: CommonStyles.colorAccent20,
+		backgroundColor: CommonStyles.colorAccent20P,
 		borderTopColor: CommonStyles.colorAccent,
 	},
 	navItemIcon: {
@@ -92,10 +92,10 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		justifyContent: 'center',
 		fontSize: 30,
-		color: CommonStyles.colorPrimaryText,
+		color: CommonStyles.colorPrimary800Text,
 	},
 	navItemIconActive: {
-		color: CommonStyles.colorPrimaryText
+		color: CommonStyles.colorPrimary800Text
 	},
 });
 

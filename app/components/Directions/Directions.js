@@ -43,7 +43,7 @@ export default class Directions extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-    backgroundColor: CommonStyles.colorPrimaryLight
+    backgroundColor: CommonStyles.colorPrimary100
 	},
 	wrapper: {
 		paddingHorizontal: 60,

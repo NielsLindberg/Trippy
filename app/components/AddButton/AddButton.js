@@ -47,20 +47,19 @@ export default class AddButton extends Component{
 
 const styles = StyleSheet.create({
 	addButton: {
-		margin: 5,
-		top: 20,
+		top: 30,
 		right: 10,
-		padding: 10,
+		padding: 15,
 		backgroundColor: CommonStyles.colorAccent,
 		alignItems: 'center',
 		justifyContent: 'center',
 		position: 'absolute',
-		elevation: 10,
+		elevation: 6,
 		borderRadius: 30,
 	},
 	addButtonIcon: {
-		fontSize: 40,
-		color: CommonStyles.colorPrimaryText
+		fontSize: 20,
+		color: CommonStyles.colorAccentText
 	},
 });
 

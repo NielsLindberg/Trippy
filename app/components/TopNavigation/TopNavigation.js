@@ -27,7 +27,7 @@ export default class TopNavigation extends Component{
 
 const styles = StyleSheet.create({
 	container: {
-    backgroundColor: CommonStyles.colorPrimary,
+    backgroundColor: CommonStyles.colorPrimary800,
     alignSelf: 'stretch',
     flexDirection: 'row',
     alignItems: 'center',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 	pageTitle: {
     paddingLeft: 10,
 		alignSelf: 'center',
-		color: CommonStyles.colorPrimaryText,
+		color: CommonStyles.colorPrimary800Text,
 		fontSize: 25
 	}
 });
