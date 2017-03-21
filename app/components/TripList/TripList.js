@@ -20,7 +20,7 @@ export default class TripList extends Component{
 				<View style={styles.wrapper}>
 					<View style={styles.tripCard}>
 						<View style={styles.tripCardTopWrapper}>
-							<TextInput style={styles.tripCardName} underlineColorAndroid={'transparent'}>Super Cool Placeholder Trip</TextInput>
+							<TextInput style={styles.tripCardName} selectionColor={CommonStyles.colorAccent20P} underlineColorAndroid={'transparent'}>Super Cool Placeholder Trip</TextInput>
 							<TextInput style={styles.tripCardDate} underlineColorAndroid={'transparent'}>24/11/1989</TextInput>
 						</View>
 					</View>
