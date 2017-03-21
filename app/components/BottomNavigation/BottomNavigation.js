@@ -77,7 +77,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		borderTopWidth: 3,
 		borderTopColor: CommonStyles.colorPrimary,
-		borderRightColor: '#FFFFFF',
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',

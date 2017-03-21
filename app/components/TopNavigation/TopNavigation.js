@@ -32,8 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: 58,
-    borderBottomWidth: 1,
-    borderColor: CommonStyles.colorBorder
+    elevation: 5,
 	},
 	pageTitle: {
     paddingLeft: 10,

@@ -10,12 +10,24 @@ import TripList from './app/components/TripList/TripList';
 import MapComponent from './app/components/MapComponent/MapComponent';
 import Directions from './app/components/Directions/Directions';
 import Settings from './app/components/Settings/Settings';
+import AddButton from './app/components/AddButton/AddButton';
 
 export default class Trippy extends Component{
   constructor(props){
     super(props);
     this.state = {
+      text: '',
+      response: ''
     }
+    this.handleResponse = this.handleResponse.bind(this);
+    this.handleText = this.handleText.bind(this);
+    this.renderScene = this.renderScene.bind(this);
+  }
+  handleText(text) {
+    this.setState({text: text});
+  }
+  handleResponse(response) {
+    this.setState({response: response});
   }
   renderScene(route, navigator){
     switch(route.id){
@@ -31,7 +43,8 @@ export default class Trippy extends Component{
           <View style={styles.screen}>
             <StatusBarComponent/>
             <TopNavigation title={route.title}/>
-            <TripList navigator={navigator} title='trips'/>
+            <AddButton navigator={navigator} handleResponse={this.handleResponse} text={this.state.text}/>
+            <TripList navigator={navigator} title='trips' response={this.state.response} handleText={this.handleText}/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
         )
