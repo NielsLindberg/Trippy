@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
 import Backend from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
@@ -11,23 +12,58 @@ export default class Login extends Component{
 		this.state = {
 			email: '',
 			password: '',
-			response: ''
+			response: '',
+			user: '',
+			token: ''
 		};
 
 		this.signUp = this.signUp.bind(this);
 		this.signIn = this.signIn.bind(this);
+		this.signInWithGoogle = this.signInWithGoogle.bind(this);
 	  this.listenForAuth = this.listenForAuth.bind(this);
+	  this.getGoogleSignin = this.getGoogleSignin.bind(this);
+	  this.letGoogleSignin = this.letGoogleSignin.bind(this);
+	  this.setGoogleSigninConfigure = this.setGoogleSigninConfigure.bind(this);
+  }
+  setGoogleSigninConfigure(){
+  	GoogleSignin.configure({
+  		scopes: [
+  		'email', 
+  		'profile', 
+  		'https://www.googleapis.com/auth/plus.login'],
+       webClientId: '829908519527-ctbffmpd93dmoodqtug63ekd945nosa8.apps.googleusercontent.com',
+       offlineAccess: false,
+       forceConsentPrompt: false
+		})
+		.then(() => {
+	  	this.getGoogleSignin()
+	  })
+  }
+  getGoogleSignin(){
+  	GoogleSignin.currentUserAsync().then((user) => {
+      this.signInWithGoogle(user.idToken);
+    }).done();
+  }
+  letGoogleSignin(){
+  	GoogleSignin.signIn()
+		.then((user) => {
+		  this.setState({user: user});
+		  this.signInWithGoogle(user.idToken);
+		})
+		.catch((err) => {
+		  console.log('WRONG SIGNIN', err);
+		})
+		.done();
   }
   listenForAuth() {
     Backend.auth.listenForAuth((evt) => {
       if (!evt.authenticated) {
-        console.error(evt.error)
       } else {
         console.log('User details', evt.user);
-        this.props.navigator.push({
-        	id: 'trips',
-        	title: 'Trips'
-        });
+         this.props.navigator.push({
+         	id: 'trips',
+         	title: 'Trips'
+         });
         Backend.auth.unlistenForAuth()
       }
     })
@@ -65,7 +101,24 @@ export default class Login extends Component{
         })
     }
   }
+  async signInWithGoogle(token) {
+
+    try {
+        await Backend.auth.signInWithProvider('google', token);
+
+        this.setState({
+            response: "Logged In!"
+        });
+
+    } catch (error) {
+    	console.log(error);
+        this.setState({
+            response: JSON.stringify(error)
+        })
+    }
+  }
   componentDidMount(){
+  	this.setGoogleSigninConfigure();
     this.listenForAuth();
   }
 	render(){
@@ -119,7 +172,17 @@ export default class Login extends Component{
               >
               	<View style={styles.signUp}>
               		<Text style={styles.signUpText}>
-              			Sign Up
+              			Sign up with email
+              		</Text>
+              	</View>
+              </TouchableOpacity>
+              <TouchableOpacity
+              	onPress={() => {this.letGoogleSignin()}}
+              	activeOpacity={0.5}
+              >
+              	<View style={styles.loginGoogle}>
+              		<Text style={styles.signUpText}>
+              			Login with Google+
               		</Text>
               	</View>
               </TouchableOpacity>
@@ -175,6 +238,15 @@ const styles = StyleSheet.create({
 	},
 	login: {
 		backgroundColor: CommonStyles.colorAccent,
+		paddingVertical: 10,
+		marginVertical: 5,
+		alignItems: 'center',
+		justifyContent: 'center',
+		elevation:2,
+		borderRadius: 5
+	},
+	loginGoogle: {
+		backgroundColor: '#dc4e42',
 		paddingVertical: 10,
 		marginVertical: 5,
 		alignItems: 'center',
