@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, View, Navigator, StyleSheet} from 'react-native';
+import {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';
 
 import StatusBarComponent from './app/components/StatusBarComponent/StatusBarComponent';
 import TopNavigation from './app/components/TopNavigation/TopNavigation';
@@ -11,6 +11,8 @@ import MapComponent from './app/components/MapComponent/MapComponent';
 import Directions from './app/components/Directions/Directions';
 import Settings from './app/components/Settings/Settings';
 import AddButton from './app/components/AddButton/AddButton';
+
+import Backend from './app/modules/Backend/Backend';
 
 export default class Trippy extends Component{
   constructor(props){
@@ -80,9 +82,9 @@ export default class Trippy extends Component{
   render(){
     return(
       <Navigator
-        initialRoute={{id: 'trips'}}
-        renderScene={this.renderScene}
-        configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromLeft}
+       initialRoute={{id: 'login'}}
+       renderScene={this.renderScene}
+       configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromLeft}
       />
       )
   }

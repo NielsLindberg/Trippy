@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"trip",
+				"tripCardDate"
+			],
+			[
 				"e",
 				"e"
 			],
@@ -64,143 +68,27 @@
 	"buffers":
 	[
 		{
-			"file": "app/components/Login/Login.js",
+			"file": "android/app/src/main/AndroidManifest.xml",
 			"settings":
 			{
-				"buffer_size": 5180,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/Workspace/mobiletodos/index.android.js",
-			"settings":
-			{
-				"buffer_size": 2539,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/components/TripList/TripList.js",
-			"settings":
-			{
-				"buffer_size": 1152,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/AddButton/AddButton.js",
-			"settings":
-			{
-				"buffer_size": 1726,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/TopNavigation/TopNavigation.js",
-			"settings":
-			{
-				"buffer_size": 1089,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/MapComponent/MapStyles.js",
-			"settings":
-			{
-				"buffer_size": 2726,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/Directions/Directions.js",
-			"settings":
-			{
-				"buffer_size": 1349,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/BottomNavigation/BottomNavigation.js",
-			"settings":
-			{
-				"buffer_size": 3293,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/Settings/Settings.js",
-			"settings":
-			{
-				"buffer_size": 830,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/StatusBarComponent/StatusBarComponent.js",
-			"settings":
-			{
-				"buffer_size": 674,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/MapComponent/MapComponent.js",
-			"settings":
-			{
-				"buffer_size": 2656,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 774,
+				"buffer_size": 1763,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "index.android.js",
+			"file": "android/app/build.gradle",
 			"settings":
 			{
-				"buffer_size": 3289,
-				"encoding": "UTF-8",
+				"buffer_size": 5969,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/modules/CommonStyles/CommonStyles.js",
+			"file": "node_modules/react-native-firestack/android/build.gradle",
 			"settings":
 			{
-				"buffer_size": 323,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/modules/Backend/Backend.js",
-			"settings":
-			{
-				"buffer_size": 376,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/Workspace/mymobileapp/index.android.js",
-			"settings":
-			{
-				"buffer_size": 2268,
+				"buffer_size": 824,
 				"line_ending": "Unix"
 			}
 		}
@@ -294,43 +182,53 @@
 	"expanded_folders":
 	[
 		"/D/Workspace/Trippy",
+		"/D/Workspace/Trippy/android/app",
+		"/D/Workspace/Trippy/android/app/src",
+		"/D/Workspace/Trippy/android/app/src/main",
+		"/D/Workspace/Trippy/android/app/src/main/java",
+		"/D/Workspace/Trippy/android/app/src/main/java/com",
+		"/D/Workspace/Trippy/android/app/src/main/java/com/trippy",
+		"/D/Workspace/Trippy/android/app/src/main/res/values",
 		"/D/Workspace/Trippy/app",
-		"/D/Workspace/Trippy/app/components",
-		"/D/Workspace/Trippy/app/components/AddButton",
-		"/D/Workspace/Trippy/app/components/BottomNavigation",
-		"/D/Workspace/Trippy/app/components/Directions",
-		"/D/Workspace/Trippy/app/components/Login",
-		"/D/Workspace/Trippy/app/components/MapComponent",
-		"/D/Workspace/Trippy/app/components/Settings",
-		"/D/Workspace/Trippy/app/components/StatusBarComponent",
-		"/D/Workspace/Trippy/app/components/TopNavigation",
-		"/D/Workspace/Trippy/app/components/TripList",
-		"/D/Workspace/Trippy/app/modules",
-		"/D/Workspace/Trippy/app/modules/Backend",
-		"/D/Workspace/Trippy/app/modules/CommonStyles"
+		"/D/Workspace/Trippy/node_modules",
+		"/D/Workspace/Trippy/node_modules/react-native-firestack"
 	],
 	"file_history":
 	[
+		"/D/Workspace/Trippy/node_modules/react-native-firestack/android/src/main/AndroidManifest.xml",
+		"/D/Workspace/Trippy/node_modules/react-native-firestack/package.json",
+		"/D/Workspace/Trippy/node_modules/react-native-firestack/firestack.android.js",
+		"/D/Workspace/Trippy/package.json",
+		"/D/Workspace/Trippy/android/app/build.gradle",
+		"/D/Workspace/Trippy/android/app/src/main/java/com/trippy/MainApplication.java",
+		"/D/Workspace/Trippy/android/app/src/main/AndroidManifest.xml",
+		"/D/Workspace/Trippy/android/settings.gradle",
+		"/D/Workspace/Trippy/app/components/Login/Login.js",
+		"/D/Workspace/Trippy/app/modules/Backend/Backend.js",
+		"/D/Workspace/Trippy/android/app/src/main/java/com/trippy/MainActivity.java",
+		"/D/Workspace/Trippy/android/build.gradle",
+		"/D/Workspace/mobiletodos/index.android.js",
+		"/D/Workspace/Trippy/app/components/TripList/TripList.js",
+		"/D/Workspace/Trippy/android/app/src/main/res/values/styles.xml",
+		"/D/Workspace/Trippy/app/components/AddButton/AddButton.js",
+		"/D/Workspace/Trippy/app/components/TopNavigation/TopNavigation.js",
+		"/D/Workspace/Trippy/app/components/MapComponent/MapStyles.js",
+		"/D/Workspace/Trippy/app/components/Directions/Directions.js",
+		"/D/Workspace/Trippy/app/components/BottomNavigation/BottomNavigation.js",
+		"/D/Workspace/Trippy/app/components/Settings/Settings.js",
+		"/D/Workspace/Trippy/app/components/StatusBarComponent/StatusBarComponent.js",
+		"/D/Workspace/Trippy/app/components/MapComponent/MapComponent.js",
+		"/D/Workspace/Trippy/.gitignore",
+		"/D/Workspace/Trippy/index.android.js",
+		"/D/Workspace/Trippy/android/gradle.properties",
+		"/D/Workspace/Trippy/app/modules/CommonStyles/CommonStyles.js",
+		"/D/Workspace/mymobileapp/index.android.js",
 		"/D/Workspace/mobiletodos/app/components/AddForm/AddForm.js",
 		"/D/Workspace/mobiletodos/app/components/Login/Login.js",
 		"/D/Workspace/Udacity/mapApp/src/js/models/mapEntries.js",
-		"/D/Workspace/Trippy/app/components/TopNavigation/TopNavigation.js",
-		"/D/Workspace/Trippy/android/app/src/main/AndroidManifest.xml",
-		"/D/Workspace/Trippy/index.android.js",
-		"/D/Workspace/Trippy/app/modules/Backend/Backend.js",
 		"/D/Workspace/mymobileapp/app/components/TouchableComponent/TouchableComponent.js",
-		"/D/Workspace/Trippy/app/components/BottomNavigation/BottomNavigation.js",
-		"/D/Workspace/Trippy/app/components/TripList/TripList.js",
-		"/D/Workspace/Trippy/app/components/Settings/Settings.js",
-		"/D/Workspace/Trippy/app/components/MapComponent/MapComponent.js",
-		"/D/Workspace/Trippy/app/components/Directions/Directions.js",
-		"/D/Workspace/Trippy/app/components/Login/Login.js",
-		"/D/Workspace/mobiletodos/index.android.js",
-		"/D/Workspace/Trippy/android/app/build.gradle",
-		"/D/Workspace/Trippy/android/gradle.properties",
 		"/D/Workspace/mobiletodos/android/gradle.properties",
 		"/D/Workspace/mobiletodos/.gitignore",
-		"/D/Workspace/Trippy/.gitignore",
 		"/D/Workspace/mobiletodos/.gitattributes",
 		"/D/Workspace/mymobileapp/app/components/StatusBarComponent/StatusBarComponent.js",
 		"/D/Workspace/mymobileapp/app/components/IconComponent/IconComponent.js",
@@ -372,7 +270,6 @@
 		"/D/Workspace/mymobileapp/app/components/GeoLocationComponent/GeoLocationComponent.js",
 		"/D/Workspace/mymobileapp/app/components/CameraRollComponent/CameraRollComponent.js",
 		"/D/Workspace/mymobileapp/app/components/AsyncStorageComponent/AsyncStorageComponent.js",
-		"/D/Workspace/mymobileapp/index.android.js",
 		"/D/Workspace/mymobileapp/ios/mymobileapp/Info.plist",
 		"/D/Workspace/mymobileapp/android/app/src/main/AndroidManifest.xml",
 		"/D/Workspace/mymobileapp/android/app/components/SimpleComponent1/SimpleComponent1.js",
@@ -425,20 +322,7 @@
 		"/D/Workspace/ionicReddit/src/pages/settings/settings.html",
 		"/D/Workspace/ionicReddit/resources/icon.png",
 		"/D/Workspace/ionicReddit/src/pages/reddit/reddit.html",
-		"/D/Workspace/ionicReddit/src/pages/settings/settings.ts",
-		"/D/Workspace/ionicReddit/src/pages/settings/settings.scss",
-		"/D/Workspace/ionicReddit/src/pages/reddit/reddit.scss",
-		"/D/Workspace/ionicReddit/src/pages/tabs/tabs.html",
-		"/D/Workspace/ionicReddit/src/pages/tabs/tabs.ts",
-		"/D/Workspace/ionicReddit/src/app/app.module.ts",
-		"/D/Workspace/ionicReddit/src/pages/details/details.ts",
-		"/D/Workspace/ionicReddit/src/pages/details/details.html",
-		"/D/Workspace/ionicReddit/src/pages/reddit/reddit.ts",
-		"/D/Workspace/angularZero/src/app/app.component.css",
-		"/D/Workspace/angularZero/src/app/app.component.html",
-		"/D/Workspace/ionicZero/src/pages/tabs/tabs.html",
-		"/D/Workspace/ionicZero/src/app/app.component.ts",
-		"/D/Workspace/ionicZero/src/theme/variables.scss"
+		"/D/Workspace/ionicReddit/src/pages/settings/settings.ts"
 	],
 	"find":
 	{
@@ -559,485 +443,97 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/components/Login/Login.js",
+					"file": "android/app/src/main/AndroidManifest.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5180,
+						"buffer_size": 1763,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4542,
-								4542
+								1078,
+								1078
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2546.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/D/Workspace/mobiletodos/index.android.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2539,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1454,
-								1454
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"syntax": "Packages/XML/XML.sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 432.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/components/TripList/TripList.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1152,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								810,
-								810
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 108.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/components/AddButton/AddButton.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1726,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								441,
-								441
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/components/TopNavigation/TopNavigation.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1089,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								894,
-								894
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/components/MapComponent/MapStyles.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2726,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2726,
-								2726
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1205.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/components/Directions/Directions.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1349,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								317,
-								317
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/components/BottomNavigation/BottomNavigation.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3293,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								816,
-								816
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 648.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/components/Settings/Settings.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 830,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								317,
-								317
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/components/StatusBarComponent/StatusBarComponent.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 674,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								380,
-								380
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"open_with_edit": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/components/MapComponent/MapComponent.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2656,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2028,
-								2028
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 918.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								72,
-								72
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "index.android.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3289,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1123,
-								1123
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
-					"file": "app/modules/CommonStyles/CommonStyles.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 323,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								323,
-								323
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"open_with_edit": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "app/modules/Backend/Backend.js",
+					"buffer": 1,
+					"file": "android/app/build.gradle",
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 376,
+						"buffer_size": 5969,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1112,
+								1112
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+							"syntax": "Packages/Groovy/Groovy.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1998.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "node_modules/react-native-firestack/android/build.gradle",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 824,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								473,
+								473
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Groovy/Groovy.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "/D/Workspace/mymobileapp/index.android.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2268,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1920,
-								1920
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 108.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1124,7 +620,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 287.0,
+	"side_bar_width": 360.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

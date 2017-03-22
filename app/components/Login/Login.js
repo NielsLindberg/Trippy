@@ -16,39 +16,47 @@ export default class Login extends Component{
 
 		this.signUp = this.signUp.bind(this);
 		this.signIn = this.signIn.bind(this);
-	}
-
-	async signUp() {
-
-    try {
-        await Backend.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
-        this.setState({
-            response: "account created"
-        });
+	  this.listenForAuth = this.listenForAuth.bind(this);
+  }
+  listenForAuth() {
+    Backend.auth.listenForAuth((evt) => {
+      if (!evt.authenticated) {
+        console.error(evt.error)
+      } else {
+        console.log('User details', evt.user);
         this.props.navigator.push({
         	id: 'trips',
         	title: 'Trips'
         });
+        Backend.auth.unlistenForAuth()
+      }
+    })
+    .then(() => {
+      console.log('Listening for authentication changes')
+    })
+  }
 
+	async signUp() {
+
+    try {
+        await Backend.auth.createUserWithEmail(this.state.email, this.state.password);
+        this.setState({
+            response: "account created"
+        });
     } catch (error) {
         this.setState({
             response: error.toString()
         })
     }
-
   }
 
 	async signIn() {
 
     try {
-        await Backend.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
+        await Backend.auth.signInWithEmail(this.state.email, this.state.password);
 
         this.setState({
             response: "Logged In!"
-        });
-        this.props.navigator.push({
-        	id: 'trips',
-        	title: 'Trips'
         });
 
     } catch (error) {
@@ -57,7 +65,9 @@ export default class Login extends Component{
         })
     }
   }
-
+  componentDidMount(){
+    this.listenForAuth();
+  }
 	render(){
 		return (
 	    <View style={styles.container}>
