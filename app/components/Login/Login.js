@@ -16,110 +16,11 @@ export default class Login extends Component{
 			user: '',
 			token: ''
 		};
-
-		this.signUp = this.signUp.bind(this);
-		this.signIn = this.signIn.bind(this);
-		this.signInWithGoogle = this.signInWithGoogle.bind(this);
-	  this.listenForAuth = this.listenForAuth.bind(this);
-	  this.getGoogleSignin = this.getGoogleSignin.bind(this);
-	  this.letGoogleSignin = this.letGoogleSignin.bind(this);
-	  this.setGoogleSigninConfigure = this.setGoogleSigninConfigure.bind(this);
-  }
-  setGoogleSigninConfigure(){
-  	GoogleSignin.configure({
-  		scopes: [
-  		'email', 
-  		'profile', 
-  		'https://www.googleapis.com/auth/plus.login'],
-       webClientId: '829908519527-ctbffmpd93dmoodqtug63ekd945nosa8.apps.googleusercontent.com',
-       offlineAccess: false,
-       forceConsentPrompt: false
-		})
-		.then(() => {
-	  	this.getGoogleSignin()
-	  })
-  }
-  getGoogleSignin(){
-  	GoogleSignin.currentUserAsync().then((user) => {
-      this.signInWithGoogle(user.idToken);
-    }).done();
-  }
-  letGoogleSignin(){
-  	GoogleSignin.signIn()
-		.then((user) => {
-		  this.setState({user: user});
-		  this.signInWithGoogle(user.idToken);
-		})
-		.catch((err) => {
-		  console.log('WRONG SIGNIN', err);
-		})
-		.done();
-  }
-  listenForAuth() {
-    Backend.auth.listenForAuth((evt) => {
-      if (!evt.authenticated) {
-      } else {
-        console.log('User details', evt.user);
-         this.props.navigator.push({
-         	id: 'trips',
-         	title: 'Trips'
-         });
-        Backend.auth.unlistenForAuth()
-      }
-    })
-    .then(() => {
-      console.log('Listening for authentication changes')
-    })
-  }
-
-	async signUp() {
-
-    try {
-        await Backend.auth.createUserWithEmail(this.state.email, this.state.password);
-        this.setState({
-            response: "account created"
-        });
-    } catch (error) {
-        this.setState({
-            response: error.toString()
-        })
-    }
-  }
-
-	async signIn() {
-
-    try {
-        await Backend.auth.signInWithEmail(this.state.email, this.state.password);
-
-        this.setState({
-            response: "Logged In!"
-        });
-
-    } catch (error) {
-        this.setState({
-            response: error.toString()
-        })
-    }
-  }
-  async signInWithGoogle(token) {
-
-    try {
-        await Backend.auth.signInWithProvider('google', token);
-
-        this.setState({
-            response: "Logged In!"
-        });
-
-    } catch (error) {
-    	console.log(error);
-        this.setState({
-            response: JSON.stringify(error)
-        })
-    }
   }
   componentDidMount(){
-  	this.setGoogleSigninConfigure();
-    this.listenForAuth();
+  	this.Backend = new Backend(this.props.navigator);
+  	this.Backend.setGoogleSigninConfigure();
+    this.Backend.listenForAuth();
   }
 	render(){
 		return (
@@ -157,7 +58,7 @@ export default class Login extends Component{
 	            />
 	          </View>
               <TouchableOpacity
-              	onPress={() => {this.signIn()}}
+              	onPress={() => {Backend.signIn(this.state.email,this.state.password)}}
               	activeOpacity={0.5}
               >
               	<View style={styles.login}>
@@ -167,7 +68,7 @@ export default class Login extends Component{
               	</View>
               </TouchableOpacity>
               <TouchableOpacity
-              	onPress={() => {this.signUp()}}
+              	onPress={() => {Backend.signUp(this.state.email,this.state.password)}}
               	activeOpacity={0.5}
               >
               	<View style={styles.signUp}>
@@ -177,7 +78,7 @@ export default class Login extends Component{
               	</View>
               </TouchableOpacity>
               <TouchableOpacity
-              	onPress={() => {this.letGoogleSignin()}}
+              	onPress={() => {Backend.letGoogleSignin()}}
               	activeOpacity={0.5}
               >
               	<View style={styles.loginGoogle}>

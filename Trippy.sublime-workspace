@@ -68,27 +68,28 @@
 	"buffers":
 	[
 		{
-			"file": "android/app/src/main/AndroidManifest.xml",
+			"file": "app/components/Login/Login.js",
 			"settings":
 			{
-				"buffer_size": 1763,
+				"buffer_size": 7457,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "android/app/build.gradle",
+			"file": "app/modules/CommonStyles/CommonStyles.js",
 			"settings":
 			{
-				"buffer_size": 5969,
-				"line_ending": "Unix"
+				"buffer_size": 442,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "node_modules/react-native-firestack/android/build.gradle",
+			"file": "index.android.js",
 			"settings":
 			{
-				"buffer_size": 824,
+				"buffer_size": 3346,
 				"line_ending": "Unix"
 			}
 		}
@@ -182,45 +183,64 @@
 	"expanded_folders":
 	[
 		"/D/Workspace/Trippy",
-		"/D/Workspace/Trippy/android/app",
-		"/D/Workspace/Trippy/android/app/src",
 		"/D/Workspace/Trippy/android/app/src/main",
 		"/D/Workspace/Trippy/android/app/src/main/java",
 		"/D/Workspace/Trippy/android/app/src/main/java/com",
 		"/D/Workspace/Trippy/android/app/src/main/java/com/trippy",
-		"/D/Workspace/Trippy/android/app/src/main/res/values",
+		"/D/Workspace/Trippy/android/gradle/wrapper",
 		"/D/Workspace/Trippy/app",
-		"/D/Workspace/Trippy/node_modules",
-		"/D/Workspace/Trippy/node_modules/react-native-firestack"
+		"/D/Workspace/Trippy/app/components",
+		"/D/Workspace/Trippy/app/components/Login",
+		"/D/Workspace/Trippy/app/modules",
+		"/D/Workspace/Trippy/app/modules/CommonStyles",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/build",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java/co",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java/co/apptailor",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java/co/apptailor/googlesignin"
 	],
 	"file_history":
 	[
+		"/D/Workspace/Trippy/app/components/Login/Login.js",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java/co/apptailor/googlesignin/RNGoogleSigninModule.java",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/GoogleSignin.android.js",
+		"/D/Workspace/Trippy/android/app/src/main/AndroidManifest.xml",
+		"/D/Downloads/google-services (3).json",
+		"/D/Workspace/Trippy/index.android.js",
+		"/D/Workspace/Trippy/android/keystores/debug.keystore.properties",
+		"/D/Workspace/Trippy/android/app/build.gradle",
+		"/D/Workspace/Trippy/android/app/build/generated/res/google-services/debug/values/values.xml",
+		"/D/Workspace/Trippy/android/build.gradle",
+		"/D/Downloads/google-services (4).json",
+		"/D/Downloads/google-services (2).json",
+		"/D/Workspace/Trippy/app/modules/Backend/Backend.js",
+		"/D/Workspace/Trippy/app/modules/GoogleSignin/GoogleSignin.js",
+		"/D/Workspace/Trippy/android/gradle.properties",
+		"/D/Workspace/Trippy/app/modules/OAuth/OAuth.js",
+		"/D/Workspace/Trippy/android/settings.gradle",
+		"/D/Workspace/Trippy/app/components/AddButton/AddButton.js",
+		"/D/Workspace/Trippy/node_modules/react-native-firestack/android/build.gradle",
+		"/D/Workspace/Trippy/app/components/Directions/Directions.js",
+		"/D/Workspace/Trippy/app/components/BottomNavigation/BottomNavigation.js",
+		"/D/Workspace/Trippy/app/components/TripList/TripList.js",
+		"/D/Workspace/Trippy/app/components/TopNavigation/TopNavigation.js",
+		"/D/Workspace/Trippy/app/components/StatusBarComponent/StatusBarComponent.js",
+		"/D/Workspace/Trippy/app/components/Settings/Settings.js",
+		"/D/Workspace/Trippy/app/components/MapComponent/MapComponent.js",
+		"/D/Workspace/Trippy/android/app/src/main/java/com/trippy/MainApplication.java",
+		"/D/Workspace/Trippy/node_modules/react-native-oauth/package.json",
+		"/D/Downloads/google-services.json",
 		"/D/Workspace/Trippy/node_modules/react-native-firestack/android/src/main/AndroidManifest.xml",
 		"/D/Workspace/Trippy/node_modules/react-native-firestack/package.json",
 		"/D/Workspace/Trippy/node_modules/react-native-firestack/firestack.android.js",
 		"/D/Workspace/Trippy/package.json",
-		"/D/Workspace/Trippy/android/app/build.gradle",
-		"/D/Workspace/Trippy/android/app/src/main/java/com/trippy/MainApplication.java",
-		"/D/Workspace/Trippy/android/app/src/main/AndroidManifest.xml",
-		"/D/Workspace/Trippy/android/settings.gradle",
-		"/D/Workspace/Trippy/app/components/Login/Login.js",
-		"/D/Workspace/Trippy/app/modules/Backend/Backend.js",
 		"/D/Workspace/Trippy/android/app/src/main/java/com/trippy/MainActivity.java",
-		"/D/Workspace/Trippy/android/build.gradle",
 		"/D/Workspace/mobiletodos/index.android.js",
-		"/D/Workspace/Trippy/app/components/TripList/TripList.js",
 		"/D/Workspace/Trippy/android/app/src/main/res/values/styles.xml",
-		"/D/Workspace/Trippy/app/components/AddButton/AddButton.js",
-		"/D/Workspace/Trippy/app/components/TopNavigation/TopNavigation.js",
 		"/D/Workspace/Trippy/app/components/MapComponent/MapStyles.js",
-		"/D/Workspace/Trippy/app/components/Directions/Directions.js",
-		"/D/Workspace/Trippy/app/components/BottomNavigation/BottomNavigation.js",
-		"/D/Workspace/Trippy/app/components/Settings/Settings.js",
-		"/D/Workspace/Trippy/app/components/StatusBarComponent/StatusBarComponent.js",
-		"/D/Workspace/Trippy/app/components/MapComponent/MapComponent.js",
 		"/D/Workspace/Trippy/.gitignore",
-		"/D/Workspace/Trippy/index.android.js",
-		"/D/Workspace/Trippy/android/gradle.properties",
 		"/D/Workspace/Trippy/app/modules/CommonStyles/CommonStyles.js",
 		"/D/Workspace/mymobileapp/index.android.js",
 		"/D/Workspace/mobiletodos/app/components/AddForm/AddForm.js",
@@ -310,19 +330,7 @@
 		"/D/Workspace/ionicMap/src/providers/connectivity-service.ts",
 		"/D/Workspace/ionicMap/src/pages/contact/contact.html",
 		"/D/Workspace/ionicMap/src/pages/about/about.html",
-		"/D/Workspace/ionicMap/src/pages/about/about.ts",
-		"/D/Workspace/ionicMap/src/app/app.module.ts",
-		"/D/Workspace/ionicMap/src/theme/variables.scss",
-		"/D/Workspace/ionicMap/src/pages/home/mapstuff.ts",
-		"/C/Users/Niels/AppData/Roaming/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
-		"/D/Workspace/ionicMap/readme.md",
-		"/D/Workspace/ionicReddit/src/app/app.component.ts",
-		"/D/Workspace/ionicReddit/src/app/services/reddit.service.ts",
-		"/D/Workspace/ionicReddit/src/pages/about/about.html",
-		"/D/Workspace/ionicReddit/src/pages/settings/settings.html",
-		"/D/Workspace/ionicReddit/resources/icon.png",
-		"/D/Workspace/ionicReddit/src/pages/reddit/reddit.html",
-		"/D/Workspace/ionicReddit/src/pages/settings/settings.ts"
+		"/D/Workspace/ionicMap/src/pages/about/about.ts"
 	],
 	"find":
 	{
@@ -343,6 +351,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Token",
+			"getTokenId",
 			"signIn",
 			"Firebase",
 			"location",
@@ -448,29 +458,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": "android/app/src/main/AndroidManifest.xml",
+					"file": "app/components/Login/Login.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1763,
+						"buffer_size": 7457,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1078,
-								1078
+								2120,
+								2120
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 824.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -478,29 +487,29 @@
 				},
 				{
 					"buffer": 1,
-					"file": "android/app/build.gradle",
-					"semi_transient": true,
+					"file": "app/modules/CommonStyles/CommonStyles.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5969,
+						"buffer_size": 442,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1112,
-								1112
+								442,
+								442
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Groovy/Groovy.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1998.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -508,25 +517,26 @@
 				},
 				{
 					"buffer": 2,
-					"file": "node_modules/react-native-firestack/android/build.gradle",
-					"semi_transient": false,
+					"file": "index.android.js",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 824,
+						"buffer_size": 3346,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								473,
-								473
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Groovy/Groovy.sublime-syntax",
-							"tab_size": 4,
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -536,6 +546,11 @@
 					"stack_index": 2,
 					"type": "text"
 				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
@@ -556,11 +571,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -620,7 +642,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 360.0,
+	"side_bar_width": 331.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
