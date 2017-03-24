@@ -12,7 +12,7 @@ import Directions from './app/components/Directions/Directions';
 import Settings from './app/components/Settings/Settings';
 import AddButton from './app/components/AddButton/AddButton';
 
-import Backend from './app/modules/Backend/Backend';
+import { Backend } from './app/modules/Backend/Backend';
 
 export default class Trippy extends Component{
   constructor(props){
@@ -31,6 +31,11 @@ export default class Trippy extends Component{
   handleResponse(response) {
     this.setState({response: response});
   }
+  componentDidMount(){
+    console.log(navigator);
+    // Backend.setGoogleSigninConfigure();
+    // Backend.listenForAuth(navigator);
+  }
   renderScene(route, navigator){
     switch(route.id){
       case 'login':
@@ -44,7 +49,7 @@ export default class Trippy extends Component{
         return (
           <View style={styles.screen}>
             <StatusBarComponent/>
-            <TopNavigation title={route.title}/>
+            <TopNavigation title={route.title} navigator={navigator}/>
             <AddButton navigator={navigator} handleResponse={this.handleResponse} text={this.state.text}/>
             <TripList navigator={navigator} title='trips' response={this.state.response} handleText={this.handleText}/>
             <BottomNavigation navigator={navigator} title={route.title}/>
@@ -54,7 +59,7 @@ export default class Trippy extends Component{
         return (
           <View style={styles.screen}>
             <StatusBarComponent/>
-            <TopNavigation title={route.title}/>
+            <TopNavigation title={route.title} navigator={navigator}/>
             <MapComponent navigator={navigator} title='map'/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
@@ -63,7 +68,7 @@ export default class Trippy extends Component{
         return (
           <View style={styles.screen}>
             <StatusBarComponent/>
-            <TopNavigation title={route.title}/>
+            <TopNavigation title={route.title} navigator={navigator}/>
             <Directions navigator={navigator} title='directions'/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>
@@ -72,7 +77,7 @@ export default class Trippy extends Component{
         return (
           <View style={styles.screen}>
             <StatusBarComponent/>
-            <TopNavigation title={route.title}/>
+            <TopNavigation title={route.title} navigator={navigator}/>
             <Settings navigator={navigator} title='settings'/>
             <BottomNavigation navigator={navigator} title={route.title}/>
           </View>

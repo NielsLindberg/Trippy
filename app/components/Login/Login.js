@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 
-import Backend from '../../modules/Backend/Backend';
+import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class Login extends Component{
@@ -16,11 +15,6 @@ export default class Login extends Component{
 			user: '',
 			token: ''
 		};
-  }
-  componentDidMount(){
-  	this.Backend = new Backend(this.props.navigator);
-  	this.Backend.setGoogleSigninConfigure();
-    this.Backend.listenForAuth();
   }
 	render(){
 		return (

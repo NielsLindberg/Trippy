@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity, Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Backend from '../../modules/Backend/Backend';
+import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
-
 
 export default class TopNavigation extends Component{
 	constructor(props){
@@ -20,6 +19,16 @@ export default class TopNavigation extends Component{
 		return (
 	    <View style={styles.container}>
             <Text style={styles.pageTitle}>{this.state.title}</Text>
+            <TouchableOpacity
+              	onPress={() => {Backend.signOut()}}
+              	activeOpacity={0.5}
+              >
+              	<View>
+              		<Text>
+              			Logout
+              		</Text>
+              	</View>
+              </TouchableOpacity>
 	    </View>
     );
   }
