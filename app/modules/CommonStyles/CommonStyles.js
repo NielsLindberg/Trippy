@@ -5,6 +5,8 @@ var commonStyles = {
 	colorPrimary400Text: '#fff',
 	colorPrimary600: '#546E7A',
 	colorPrimary600Text: '#fff',
+	colorPrimary700: '#455A64',
+	colorPrimary700Text: '#fff',
 	colorPrimary800: '#37474F',
 	colorPrimary800Text: '#FFF',
 	colorPrimary900: '#263238',

@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     backgroundColor: CommonStyles.colorPrimary100
 	},
 	map: {
-		paddingHorizontal: 60,
 		justifyContent: 'center',
 		flex: 1
 	},
