@@ -25,7 +25,7 @@ export default class TripsScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            <TripList backend={this.props.backend}/>
+            <TripList/>
         </View>
       )
   }

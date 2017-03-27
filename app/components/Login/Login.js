@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class Login extends Component{
@@ -71,7 +71,7 @@ export default class Login extends Component{
               	</View>
               </TouchableOpacity>
               <TouchableOpacity
-              	onPress={() => {Backend.letGoogleSignin()}}
+              	onPress={() => {Backend.getGoogleSignin(this.props.navigator)}}
               	activeOpacity={0.5}
               >
               	<View style={styles.loginGoogle}>

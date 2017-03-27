@@ -25,7 +25,7 @@ export default class MapScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            <MapComponent backend={this.props.backend}/>
+            <MapComponent/>
         </View>
       )
   }

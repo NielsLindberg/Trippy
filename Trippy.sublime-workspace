@@ -71,13 +71,13 @@
 			"file": "app/components/Login/Login.js",
 			"settings":
 			{
-				"buffer_size": 4954,
+				"buffer_size": 4953,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/screens/Directions",
+			"file": "app/screens/DirectionsScreen",
 			"settings":
 			{
 				"buffer_size": 0,
@@ -88,7 +88,24 @@
 			"file": "app/modules/Backend/Backend.js",
 			"settings":
 			{
-				"buffer_size": 2224,
+				"buffer_size": 2273,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/BottomNavigation/BottomNavigation.js",
+			"settings":
+			{
+				"buffer_size": 3306,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/config/router.js",
+			"settings":
+			{
+				"buffer_size": 1706,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -106,65 +123,61 @@
 			"file": "index.android.js",
 			"settings":
 			{
-				"buffer_size": 3577,
+				"buffer_size": 460,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/screens/Login/Login.js",
+			"file": "app/screens/LoginScreen/LoginScreen.js",
 			"settings":
 			{
-				"buffer_size": 765,
+				"buffer_size": 940,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "import React, {Component} from 'react';\nimport {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';\n\nimport StatusBarComponent from './../components/StatusBarComponent/StatusBarComponent';\nimport TopNavigation from './../components/TopNavigation/TopNavigation';\nimport BottomNavigation from '../../components/BottomNavigation/BottomNavigation';\n\nimport Directions from '../../components/Directions/Directions';\n\nimport { Backend } from '../../modules/Backend/Backend';\n\nexport default class Directions extends Component{\n  render(){\n    return(\n    \t\t<View style={styles.screen}>\n            <StatusBarComponent/>\n            <TopNavigation title={route.title} navigator={navigator}/>\n            <Directions navigator={navigator} title='directions'/>\n            <BottomNavigation navigator={navigator} title={route.title}/>\n        </View>\n      )\n  }\n}\n\nAppRegistry.registerComponent('Directions', () => Directions);",
-			"file": "app/screens/Directions/Directions.js",
-			"file_size": 0,
-			"file_write_time": 131350907402712567,
+			"file": "app/screens/DirectionsScreen/DirectionsScreen.js",
 			"settings":
 			{
-				"buffer_size": 936,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "const manager = new OAuthManager('Trippy')",
-			"file": "app/modules/OAuth/OAuth.js",
-			"file_size": 42,
-			"file_write_time": 131346780563614447,
-			"settings":
-			{
-				"buffer_size": 42,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/screens/Map/Map.js",
-			"settings":
-			{
-				"buffer_size": 880,
+				"buffer_size": 1288,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/screens/Settings/Settings.js",
+			"file": "app/screens/MapScreen/MapScreen.js",
 			"settings":
 			{
-				"buffer_size": 920,
+				"buffer_size": 1045,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/screens/Trips/Trips.js",
+			"file": "app/components/MapComponent/MapComponent.js",
 			"settings":
 			{
-				"buffer_size": 896,
+				"buffer_size": 2629,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/screens/SettingsScreen/SettingsScreen.js",
+			"settings":
+			{
+				"buffer_size": 1060,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/screens/TripsScreen/TripsScreen.js",
+			"settings":
+			{
+				"buffer_size": 1049,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -173,7 +186,7 @@
 			"file": "app/modules/CommonStyles/CommonStyles.js",
 			"settings":
 			{
-				"buffer_size": 442,
+				"buffer_size": 501,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -268,18 +281,28 @@
 	"expanded_folders":
 	[
 		"/D/Workspace/Trippy",
-		"/D/Workspace/Trippy/app/components/AddButton",
+		"/D/Workspace/Trippy/app",
+		"/D/Workspace/Trippy/app/components",
+		"/D/Workspace/Trippy/app/components/BottomNavigation",
 		"/D/Workspace/Trippy/app/components/Directions",
-		"/D/Workspace/Trippy/app/components/TopNavigation",
+		"/D/Workspace/Trippy/app/components/Login",
+		"/D/Workspace/Trippy/app/components/StatusBarComponent",
+		"/D/Workspace/Trippy/app/components/TripList",
+		"/D/Workspace/Trippy/app/config",
 		"/D/Workspace/Trippy/app/modules",
-		"/D/Workspace/Trippy/app/screens/Directions",
-		"/D/Workspace/Trippy/app/screens/Login",
-		"/D/Workspace/Trippy/app/screens/Map",
-		"/D/Workspace/Trippy/app/screens/Settings",
-		"/D/Workspace/Trippy/app/screens/Trips"
+		"/D/Workspace/Trippy/app/modules/Backend",
+		"/D/Workspace/Trippy/app/modules/CommonStyles",
+		"/D/Workspace/Trippy/app/screens",
+		"/D/Workspace/Trippy/app/screens/DirectionsScreen",
+		"/D/Workspace/Trippy/app/screens/LoginScreen",
+		"/D/Workspace/Trippy/app/screens/MapScreen",
+		"/D/Workspace/Trippy/app/screens/SettingsScreen",
+		"/D/Workspace/Trippy/app/screens/TripsScreen"
 	],
 	"file_history":
 	[
+		"/D/Workspace/Trippy/node_modules/joi/examples/customMessage.js",
+		"/D/Workspace/Trippy/app/screens/MapScreen/MapScreen.js",
 		"/D/Workspace/Trippy/app/components/Login/Login.js",
 		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java/co/apptailor/googlesignin/RNGoogleSigninModule.java",
 		"/D/Workspace/Trippy/node_modules/react-native-google-signin/GoogleSignin.android.js",
@@ -405,9 +428,7 @@
 		"/D/Workspace/Udacity/mapApp/src/js/main.js",
 		"/D/Workspace/ionicMap/src/pages/home/home.ts",
 		"/D/Workspace/ionicMap/src/providers/connectivity-service.ts",
-		"/D/Workspace/ionicMap/src/pages/contact/contact.html",
-		"/D/Workspace/ionicMap/src/pages/about/about.html",
-		"/D/Workspace/ionicMap/src/pages/about/about.ts"
+		"/D/Workspace/ionicMap/src/pages/contact/contact.html"
 	],
 	"find":
 	{
@@ -544,15 +565,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4954,
+						"buffer_size": 4953,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3722,
-								3722
+								671,
+								671
 							]
 						],
 						"settings":
@@ -561,15 +582,15 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 918.0,
+						"translation.y": 162.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/screens/Directions",
+					"file": "app/screens/DirectionsScreen",
 					"semi_transient": false,
 					"settings":
 					{
@@ -586,6 +607,7 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"open_with_edit": true,
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
@@ -593,7 +615,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -602,15 +624,44 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2224,
+						"buffer_size": 2273,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1312,
-								1312
+								1391,
+								1391
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 684.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/components/BottomNavigation/BottomNavigation.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								739,
+								739
 							]
 						],
 						"settings":
@@ -622,11 +673,43 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
+					"file": "app/config/router.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1706,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1705,
+								1705
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 756.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "app/components/TopNavigation/TopNavigation.js",
 					"semi_transient": false,
 					"settings":
@@ -651,24 +734,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 6,
 					"file": "index.android.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3577,
+						"buffer_size": 460,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								936,
-								936
+								460,
+								460
 							]
 						],
 						"settings":
@@ -678,36 +761,7 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 324.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/screens/Login/Login.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 765,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								678,
-								678
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
+						"translation.x": 5.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -715,24 +769,55 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "app/screens/Directions/Directions.js",
+					"buffer": 7,
+					"file": "app/screens/LoginScreen/LoginScreen.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 936,
+						"buffer_size": 940,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								936,
-								936
+								775,
+								775
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/screens/DirectionsScreen/DirectionsScreen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1288,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								737,
+								737
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"open_with_edit": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
@@ -746,114 +831,84 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "app/modules/OAuth/OAuth.js",
-					"semi_transient": true,
+					"buffer": 9,
+					"file": "app/screens/MapScreen/MapScreen.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 42,
+						"buffer_size": 1045,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								854,
+								854
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/screens/Map/Map.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 880,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								880,
-								880
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/screens/Settings/Settings.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 920,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								753,
-								753
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 10,
-					"file": "app/screens/Trips/Trips.js",
+					"file": "app/components/MapComponent/MapComponent.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 896,
+						"buffer_size": 2629,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								790,
-								790
+								2557,
+								2557
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 1404.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/screens/SettingsScreen/SettingsScreen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1060,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								859,
+								859
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"open_with_edit": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
@@ -863,24 +918,56 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "app/modules/CommonStyles/CommonStyles.js",
+					"buffer": 12,
+					"file": "app/screens/TripsScreen/TripsScreen.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 442,
+						"buffer_size": 1049,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								442,
-								442
+								854,
+								854
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/modules/CommonStyles/CommonStyles.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								501,
+								501
 							]
 						],
 						"settings":
@@ -893,7 +980,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -980,7 +1067,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 351.0,
+	"side_bar_width": 344.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

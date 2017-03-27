@@ -5,7 +5,7 @@ import { Backend } from './app/modules/Backend/Backend';
 
 export default class Trippy extends Component {
   render(){
-    return <Root style={styles.screen} backend={Backend}/>
+    return <Root style={styles.screen}/>
   }
 }
 

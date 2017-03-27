@@ -69,7 +69,7 @@ export const Root = StackNavigator({
   }
 },
   {
-    initialRouteName: 'TabsStack',
+    initialRouteName: 'LoginStack',
     headerMode: 'none'
   }
 );
