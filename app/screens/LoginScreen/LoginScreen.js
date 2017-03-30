@@ -9,6 +9,17 @@ import Login from '../../components/Login/Login';
 export default class LoginScreen extends Component{
   constructor(props) {
     super(props);
+    this.state = {
+    }
+  }
+  static navigationOptions = {
+    title: 'Login',
+      tabBar: {
+      visible: false
+    },
+    header: {
+    	visible: false
+    }
   }
   componentDidMount(){
     Backend.setGoogleSigninConfigure();
@@ -17,7 +28,7 @@ export default class LoginScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent hidden={true}/>
-            <Login navigator={this.props.navigation}/>
+            <Login navigation={this.props.navigation}/>
         </View>
       )
   }

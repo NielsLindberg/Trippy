@@ -25,7 +25,7 @@ export default class SettingsScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            <Settings/>
+            <Settings navigation={this.props.navigation}/>
         </View>
       )
   }

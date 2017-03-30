@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Backend from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import Logout from '../../components/Logout/Logout';
 
 export default class Settings extends Component{
 	constructor(props){
@@ -17,6 +18,7 @@ export default class Settings extends Component{
 		return (
 	    <View style={styles.container}>
 	        <View style={styles.wrapper}>
+	        	<Logout navigation={this.props.navigation}/>
 	        </View>
 	    </View>
     );

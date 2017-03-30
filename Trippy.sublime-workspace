@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"ini",
+				"initialRouteName"
+			],
+			[
 				"trip",
 				"tripCardDate"
 			],
@@ -71,7 +75,16 @@
 			"file": "app/components/Login/Login.js",
 			"settings":
 			{
-				"buffer_size": 4953,
+				"buffer_size": 4974,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/Settings/Settings.js",
+			"settings":
+			{
+				"buffer_size": 936,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -88,16 +101,8 @@
 			"file": "app/modules/Backend/Backend.js",
 			"settings":
 			{
-				"buffer_size": 2273,
+				"buffer_size": 2384,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/components/BottomNavigation/BottomNavigation.js",
-			"settings":
-			{
-				"buffer_size": 3306,
 				"line_ending": "Windows"
 			}
 		},
@@ -105,7 +110,7 @@
 			"file": "app/config/router.js",
 			"settings":
 			{
-				"buffer_size": 1706,
+				"buffer_size": 1825,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -132,7 +137,25 @@
 			"file": "app/screens/LoginScreen/LoginScreen.js",
 			"settings":
 			{
-				"buffer_size": 940,
+				"buffer_size": 1016,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/StatusBarComponent/StatusBarComponent.js",
+			"settings":
+			{
+				"buffer_size": 673,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/components/Logout/Logout.js",
+			"settings":
+			{
+				"buffer_size": 830,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -141,7 +164,7 @@
 			"file": "app/screens/DirectionsScreen/DirectionsScreen.js",
 			"settings":
 			{
-				"buffer_size": 1288,
+				"buffer_size": 1310,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -168,7 +191,7 @@
 			"file": "app/screens/SettingsScreen/SettingsScreen.js",
 			"settings":
 			{
-				"buffer_size": 1060,
+				"buffer_size": 1095,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -283,11 +306,7 @@
 		"/D/Workspace/Trippy",
 		"/D/Workspace/Trippy/app",
 		"/D/Workspace/Trippy/app/components",
-		"/D/Workspace/Trippy/app/components/BottomNavigation",
-		"/D/Workspace/Trippy/app/components/Directions",
-		"/D/Workspace/Trippy/app/components/Login",
 		"/D/Workspace/Trippy/app/components/StatusBarComponent",
-		"/D/Workspace/Trippy/app/components/TripList",
 		"/D/Workspace/Trippy/app/config",
 		"/D/Workspace/Trippy/app/modules",
 		"/D/Workspace/Trippy/app/modules/Backend",
@@ -295,12 +314,11 @@
 		"/D/Workspace/Trippy/app/screens",
 		"/D/Workspace/Trippy/app/screens/DirectionsScreen",
 		"/D/Workspace/Trippy/app/screens/LoginScreen",
-		"/D/Workspace/Trippy/app/screens/MapScreen",
-		"/D/Workspace/Trippy/app/screens/SettingsScreen",
-		"/D/Workspace/Trippy/app/screens/TripsScreen"
+		"/D/Workspace/Trippy/app/screens/SettingsScreen"
 	],
 	"file_history":
 	[
+		"/D/Workspace/Trippy/app/components/Logout/logout.js",
 		"/D/Workspace/Trippy/node_modules/joi/examples/customMessage.js",
 		"/D/Workspace/Trippy/app/screens/MapScreen/MapScreen.js",
 		"/D/Workspace/Trippy/app/components/Login/Login.js",
@@ -427,8 +445,7 @@
 		"/D/Workspace/Udacity/mapApp/src/index.html",
 		"/D/Workspace/Udacity/mapApp/src/js/main.js",
 		"/D/Workspace/ionicMap/src/pages/home/home.ts",
-		"/D/Workspace/ionicMap/src/providers/connectivity-service.ts",
-		"/D/Workspace/ionicMap/src/pages/contact/contact.html"
+		"/D/Workspace/ionicMap/src/providers/connectivity-service.ts"
 	],
 	"find":
 	{
@@ -556,7 +573,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -565,15 +582,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4953,
+						"buffer_size": 4974,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								671,
-								671
+								1681,
+								1681
 							]
 						],
 						"settings":
@@ -581,15 +598,44 @@
 							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
-						"translation.x": 0.0,
-						"translation.y": 162.0,
+						"translation.x": 42.0,
+						"translation.y": 702.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "app/components/Settings/Settings.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 936,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								666,
+								666
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "app/screens/DirectionsScreen",
 					"semi_transient": false,
 					"settings":
@@ -615,53 +661,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/modules/Backend/Backend.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2273,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1391,
-								1391
-							]
-						],
-						"settings":
-						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 684.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "app/components/BottomNavigation/BottomNavigation.js",
-					"semi_transient": true,
+					"file": "app/modules/Backend/Backend.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3306,
+						"buffer_size": 2384,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								739,
-								739
+								1331,
+								1331
 							]
 						],
 						"settings":
@@ -670,10 +687,10 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 216.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -682,15 +699,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1706,
+						"buffer_size": 1825,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1705,
-								1705
+								1008,
+								1008
 							]
 						],
 						"settings":
@@ -702,10 +719,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 756.0,
+						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -734,7 +751,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -750,8 +767,8 @@
 						"selection":
 						[
 							[
-								460,
-								460
+								260,
+								260
 							]
 						],
 						"settings":
@@ -761,11 +778,11 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 5.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -774,15 +791,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 940,
+						"buffer_size": 1016,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								775,
-								775
+								593,
+								499
 							]
 						],
 						"settings":
@@ -795,24 +812,82 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "app/screens/DirectionsScreen/DirectionsScreen.js",
+					"file": "app/components/StatusBarComponent/StatusBarComponent.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1288,
+						"buffer_size": 673,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								737,
-								737
+								366,
+								366
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/components/Logout/Logout.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 830,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								573,
+								573
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/screens/DirectionsScreen/DirectionsScreen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1000,
+								1000
 							]
 						],
 						"settings":
@@ -824,14 +899,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 54.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "app/screens/MapScreen/MapScreen.js",
 					"semi_transient": false,
 					"settings":
@@ -856,11 +931,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 12,
 					"file": "app/components/MapComponent/MapComponent.js",
 					"semi_transient": false,
 					"settings":
@@ -882,28 +957,28 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
+						"translation.x": 0.0,
 						"translation.y": 1404.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 13,
 					"file": "app/screens/SettingsScreen/SettingsScreen.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1060,
+						"buffer_size": 1095,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								859,
-								859
+								821,
+								821
 							]
 						],
 						"settings":
@@ -918,11 +993,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 14,
 					"file": "app/screens/TripsScreen/TripsScreen.js",
 					"semi_transient": false,
 					"settings":
@@ -950,11 +1025,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 15,
 					"file": "app/modules/CommonStyles/CommonStyles.js",
 					"semi_transient": false,
 					"settings":
@@ -980,7 +1055,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]

@@ -71,7 +71,7 @@ export default class Login extends Component{
               	</View>
               </TouchableOpacity>
               <TouchableOpacity
-              	onPress={() => {Backend.getGoogleSignin(this.props.navigator)}}
+              	onPress={() => {Backend.getGoogleSignin(this.props.navigation)}}
               	activeOpacity={0.5}
               >
               	<View style={styles.loginGoogle}>

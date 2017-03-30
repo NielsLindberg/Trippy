@@ -24,7 +24,8 @@ export const Tabs = TabNavigator({
 }, {
     headerMode: 'card',
     swipEnabled: true,
-    initialRouteName: 'TripsScreen',
+    animationEnabled: false,
+    lazyLoad: true,
     tabBarOptions: {
       showIcon: true,
       showLabel: false,
@@ -43,33 +44,15 @@ export const Tabs = TabNavigator({
   }
 );
 
-export const LoginStack = StackNavigator({
+export const Root = StackNavigator({
   LoginScreen: {
     screen: LoginScreen
-  }
-}, {
-  headerMode: 'none'
-});
-
-export const TabsStack = StackNavigator({  
-  Tabs: {
-    screen: Tabs,
-  }
-}, {
-    initialRouteName: 'Tabs'
-  }
-);
-
-export const Root = StackNavigator({
-  LoginStack: {
-    screen: LoginStack,
   },
-  TabsStack: {
-    screen: TabsStack,
+  Tabs: {
+    screen: Tabs
   }
 },
   {
-    initialRouteName: 'LoginStack',
-    headerMode: 'none'
+    headerMode: 'screen'
   }
 );

@@ -6,16 +6,15 @@ import StatusBarComponent from '../../components/StatusBarComponent/StatusBarCom
 import Directions from '../../components/Directions/Directions';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 import { Backend } from '../../modules/Backend/Backend';
+import Logout from '../../components/Logout/Logout';
 
 export default class DirectionsScreen extends Component{
   constructor(props) {
     super(props);
-    this.onSignOut = this.onSignOut.bind(this);
   }
   static navigationOptions = {
     title: 'Directions',
     header: {
-      right: <Button onPress={() => {this.onSignOut}} title='Signout'/>,
       style: {
         backgroundColor: CommonStyles.colorPrimary800
       },
@@ -27,9 +26,6 @@ export default class DirectionsScreen extends Component{
       label: 'Directions',
       icon: ({ tintColor }) => <Icon name="directions" size={25} color={tintColor} />
     }
-  }
-  onSignOut(){
-    Backend.signOut(this.props.navigation);
   }
   render(){
     return(
