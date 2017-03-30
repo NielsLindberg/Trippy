@@ -14,14 +14,17 @@ export default class DirectionsScreen extends Component{
   }
   static navigationOptions = {
     title: 'Directions',
-    header: {
+    header: (navigation) => ({
+      right: (
+          <Logout navigation={navigation}/>
+      ),
       style: {
         backgroundColor: CommonStyles.colorPrimary800
       },
       titleStyle: {
         color: CommonStyles.colorPrimary800Text
       }
-    },
+    }),
     tabBar: {
       label: 'Directions',
       icon: ({ tintColor }) => <Icon name="directions" size={25} color={tintColor} />

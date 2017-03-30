@@ -4,18 +4,22 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import MapComponent from '../../components/MapComponent/MapComponent';
+import Logout from '../../components/Logout/Logout';
 
 export default class MapScreen extends Component{
   static navigationOptions = {
   	title: 'Map',
-    header: {
+    header: (navigation) => ({
+      right: (
+          <Logout navigation={navigation}/>
+      ),
       style: {
         backgroundColor: CommonStyles.colorPrimary800
       },
       titleStyle: {
         color: CommonStyles.colorPrimary800Text
       }
-    },
+    }),
     tabBar: {
       label: 'Map',
       icon: ({ tintColor }) => <Icon name="map" size={25} color={tintColor} />

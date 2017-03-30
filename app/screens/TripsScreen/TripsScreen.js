@@ -4,18 +4,22 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import TripList from '../../components/TripList/TripList';
+import Logout from '../../components/Logout/Logout';
 
 export default class TripsScreen extends Component{
   static navigationOptions = {
     title: 'Trips',
-    header: {
+    header: (navigation) => ({
+      right: (
+          <Logout navigation={navigation}/>
+      ),
       style: {
         backgroundColor: CommonStyles.colorPrimary800
       },
       titleStyle: {
         color: CommonStyles.colorPrimary800Text
       }
-    },
+    }),
     tabBar: {
       label: 'Trips',
       icon: ({ tintColor }) => <Icon name="playlist-add" size={25} color={tintColor} />

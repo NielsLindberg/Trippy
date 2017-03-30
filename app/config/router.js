@@ -4,7 +4,6 @@ import { TabNavigator, StackNavigator, TabView } from 'react-navigation';
 import DirectionsScreen from '../screens/DirectionsScreen/DirectionsScreen';
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import MapScreen from '../screens/MapScreen/MapScreen';
-import SettingsScreen from '../screens/SettingsScreen/SettingsScreen';
 import TripsScreen from '../screens/TripsScreen/TripsScreen';
 import CommonStyles from '../modules/CommonStyles/CommonStyles';
 
@@ -17,15 +16,10 @@ export const Tabs = TabNavigator({
   },
   DirectionsScreen: {
     screen: DirectionsScreen,
-  },
-  SettingsScreen: {
-    screen: SettingsScreen,
   }
 }, {
     headerMode: 'card',
     swipEnabled: true,
-    animationEnabled: false,
-    lazyLoad: true,
     tabBarOptions: {
       showIcon: true,
       showLabel: false,

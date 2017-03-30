@@ -16,12 +16,9 @@ export default class Logout extends Component{
         <TouchableOpacity
         	onPress={() => {Backend.signOut(this.props.navigation)}}
         	activeOpacity={0.5}
+          style={styles.icon}
         >
-        	<View>
-        		<Text>
-        			Logout
-        		</Text>
-        	</View>
+          <Icon name="exit-to-app" size={25} color={CommonStyles.colorAccentText} />
         </TouchableOpacity>
 	    </View>
     );
@@ -29,6 +26,9 @@ export default class Logout extends Component{
 }
 
 const styles = StyleSheet.create({
+  icon: {
+    paddingRight: 10
+  }
 });
 
 AppRegistry.registerComponent('Logout', () => Logout);
