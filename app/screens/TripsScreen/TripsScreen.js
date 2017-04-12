@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import TripList from '../../components/TripList/TripList';
 import Logout from '../../components/Logout/Logout';
+import AddButton from '../../components/AddButton/AddButton';
 
 export default class TripsScreen extends Component{
   static navigationOptions = {
@@ -30,6 +31,7 @@ export default class TripsScreen extends Component{
     		<View style={styles.screen}>
             <StatusBarComponent/>
             <TripList/>
+            <AddButton/>
         </View>
       )
   }

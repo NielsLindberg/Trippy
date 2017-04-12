@@ -101,7 +101,7 @@
 			"file": "app/modules/Backend/Backend.js",
 			"settings":
 			{
-				"buffer_size": 2384,
+				"buffer_size": 2542,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -110,7 +110,7 @@
 			"file": "app/config/router.js",
 			"settings":
 			{
-				"buffer_size": 1825,
+				"buffer_size": 1264,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -137,7 +137,7 @@
 			"file": "app/screens/LoginScreen/LoginScreen.js",
 			"settings":
 			{
-				"buffer_size": 1016,
+				"buffer_size": 1058,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -155,7 +155,7 @@
 			"file": "app/components/Logout/Logout.js",
 			"settings":
 			{
-				"buffer_size": 830,
+				"buffer_size": 894,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -164,7 +164,7 @@
 			"file": "app/screens/DirectionsScreen/DirectionsScreen.js",
 			"settings":
 			{
-				"buffer_size": 1310,
+				"buffer_size": 1396,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -173,7 +173,7 @@
 			"file": "app/screens/MapScreen/MapScreen.js",
 			"settings":
 			{
-				"buffer_size": 1045,
+				"buffer_size": 1184,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -188,11 +188,13 @@
 			}
 		},
 		{
+			"contents": "import React, {Component} from 'react';\nimport {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';\nimport Icon from 'react-native-vector-icons/MaterialIcons';\n\nimport StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';\nimport Settings from '../../components/Settings/Settings';\n\nexport default class SettingsScreen extends Component{\n  static navigationOptions = {\n    title: 'Settings',\n    header: {\n      style: {\n        backgroundColor: CommonStyles.colorPrimary800\n      },\n      titleStyle: {\n        color: CommonStyles.colorPrimary800Text\n      }\n    },\n    tabBar: {\n      label: 'Settings',\n      icon: ({ tintColor }) => <Icon name=\"settings\" size={25} color={tintColor} />\n    },\n  }\n  render(){\n    return(\n    \t\t<View style={styles.screen}>\n            <StatusBarComponent/>\n            <Settings navigation={this.props.navigation}/>\n        </View>\n      )\n  }\n}\n\nconst styles = StyleSheet.create({\n  screen: {\n    flexDirection: 'column',\n    flex: 1\n  }\n});\n\nAppRegistry.registerComponent('SettingsScreen', () => SettingsScreen);",
 			"file": "app/screens/SettingsScreen/SettingsScreen.js",
+			"file_size": 1135,
+			"file_write_time": 131353002516882780,
 			"settings":
 			{
 				"buffer_size": 1095,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -200,9 +202,17 @@
 			"file": "app/screens/TripsScreen/TripsScreen.js",
 			"settings":
 			{
-				"buffer_size": 1049,
+				"buffer_size": 1188,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "node_modules/react-native-google-signin/android/src/main/java/co/apptailor/googlesignin/RNGoogleSigninModule.java",
+			"settings":
+			{
+				"buffer_size": 12899,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -306,15 +316,19 @@
 		"/D/Workspace/Trippy",
 		"/D/Workspace/Trippy/app",
 		"/D/Workspace/Trippy/app/components",
-		"/D/Workspace/Trippy/app/components/StatusBarComponent",
-		"/D/Workspace/Trippy/app/config",
-		"/D/Workspace/Trippy/app/modules",
 		"/D/Workspace/Trippy/app/modules/Backend",
 		"/D/Workspace/Trippy/app/modules/CommonStyles",
-		"/D/Workspace/Trippy/app/screens",
 		"/D/Workspace/Trippy/app/screens/DirectionsScreen",
 		"/D/Workspace/Trippy/app/screens/LoginScreen",
-		"/D/Workspace/Trippy/app/screens/SettingsScreen"
+		"/D/Workspace/Trippy/app/screens/MapScreen",
+		"/D/Workspace/Trippy/app/screens/TripsScreen",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java/co",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java/co/apptailor",
+		"/D/Workspace/Trippy/node_modules/react-native-google-signin/android/src/main/java/co/apptailor/googlesignin"
 	],
 	"file_history":
 	[
@@ -466,6 +480,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"lazyload",
+			"lazyloa",
 			"Text",
 			"            \n",
 			"Text",
@@ -589,8 +605,8 @@
 						"selection":
 						[
 							[
-								1681,
-								1681
+								1327,
+								1327
 							]
 						],
 						"settings":
@@ -598,8 +614,8 @@
 							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
-						"translation.x": 42.0,
-						"translation.y": 702.0,
+						"translation.x": 0.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
@@ -624,6 +640,7 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -631,7 +648,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -661,7 +678,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -670,15 +687,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2384,
+						"buffer_size": 2542,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1331,
-								1331
+								1304,
+								1304
 							]
 						],
 						"settings":
@@ -687,10 +704,10 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 216.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -699,15 +716,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1825,
+						"buffer_size": 1264,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1008,
-								1008
+								902,
+								902
 							]
 						],
 						"settings":
@@ -719,10 +736,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 108.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -751,7 +768,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -767,8 +784,8 @@
 						"selection":
 						[
 							[
-								260,
-								260
+								460,
+								460
 							]
 						],
 						"settings":
@@ -782,7 +799,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -791,15 +808,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1016,
+						"buffer_size": 1058,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								593,
-								499
+								761,
+								761
 							]
 						],
 						"settings":
@@ -834,13 +851,14 @@
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -849,28 +867,29 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 830,
+						"buffer_size": 894,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								573,
-								573
+								838,
+								838
 							]
 						],
 						"settings":
 						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -879,15 +898,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1310,
+						"buffer_size": 1396,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1000,
-								1000
+								517,
+								465
 							]
 						],
 						"settings":
@@ -899,7 +918,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 54.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 9,
@@ -911,15 +930,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1045,
+						"buffer_size": 1184,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								854,
-								854
+								390,
+								390
 							]
 						],
 						"settings":
@@ -931,7 +950,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -961,7 +980,7 @@
 						"translation.y": 1404.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
@@ -977,8 +996,40 @@
 						"selection":
 						[
 							[
-								821,
-								821
+								927,
+								927
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+							"open_with_edit": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/screens/TripsScreen/TripsScreen.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								478,
+								478
 							]
 						],
 						"settings":
@@ -997,39 +1048,37 @@
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "app/screens/TripsScreen/TripsScreen.js",
-					"semi_transient": false,
+					"buffer": 15,
+					"file": "node_modules/react-native-google-signin/android/src/main/java/co/apptailor/googlesignin/RNGoogleSigninModule.java",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1049,
+						"buffer_size": 12899,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								854,
-								854
+								5314,
+								5314
 							]
 						],
 						"settings":
 						{
-							"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
-							"open_with_edit": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
+							"syntax": "Packages/Java/Java.sublime-syntax",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1944.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "app/modules/CommonStyles/CommonStyles.js",
 					"semi_transient": false,
 					"settings":
@@ -1142,7 +1191,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 344.0,
+	"side_bar_width": 349.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

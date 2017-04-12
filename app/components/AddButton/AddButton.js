@@ -3,7 +3,7 @@ import {AppRegistry, Text, View, StyleSheet, TouchableOpacity} from 'react-nativ
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Backend from '../../modules/Backend/Backend';
+import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class AddButton extends Component{
@@ -12,24 +12,11 @@ export default class AddButton extends Component{
 		this.state = {
 		}
 		this.onSubmit = this.onSubmit.bind(this);
-
-		this.getPlacesSearch = this.getPlacesSearch.bind(this);
-		this.webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
-		this.apiKey = '&key=AIzaSyA7a8aISd9T8geGAmFiQbag2H_tf2XQK8A';
 	}
-	async getPlacesSearch() {
-    try {
-      let response = await fetch(this.webServicePlaceSearch + this.props.text + this.apiKey);
-      let responseString = JSON.stringify(response)
-      this.props.handleResponse(responseString)
-    } catch(error) {
-      let responseString = JSON.stringify(error)
-      this.props.handleResponse(responseString)
-    }
-  }
-
 	onSubmit(){
-		this.getPlacesSearch();
+		Backend.addUserItem({
+			text: 'test'
+		});
 	}
 
 	render(){
