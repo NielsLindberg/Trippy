@@ -29,7 +29,7 @@ export const Tabs = TabNavigator({
       pressColor: CommonStyles.colorAccent20P,
       style: {
         backgroundColor: CommonStyles.colorPrimary700,
-        paddingVertical: 5,
+        paddingVertical: 5
       },
       indicatorStyle: {
         backgroundColor: CommonStyles.colorAccent

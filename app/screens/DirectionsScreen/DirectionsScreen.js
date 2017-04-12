@@ -22,7 +22,8 @@ export default class DirectionsScreen extends Component{
         backgroundColor: CommonStyles.colorPrimary800
       },
       titleStyle: {
-        color: CommonStyles.colorPrimary800Text
+        color: CommonStyles.colorPrimary800Text,
+        fontFamily: CommonStyles.fontPrimary
       }
     }),
     tabBar: {

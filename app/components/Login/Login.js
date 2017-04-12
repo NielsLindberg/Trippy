@@ -162,7 +162,8 @@ const styles = StyleSheet.create({
 	title: {
 		textAlign: 'center',
 		fontSize: 120,
-		color: '#00000050'
+		color: '#00000050',
+    fontFamily: CommonStyles.fontPrimary
 	},
 	subTitle: {
 		textAlign: 'center',
@@ -172,17 +173,20 @@ const styles = StyleSheet.create({
 	},
 	loginText: {
 		color: CommonStyles.colorAccentText,
-		fontSize: 18
+		fontSize: 18,
+    fontFamily: CommonStyles.fontPrimary
 	},
 	signUpText: {
 		color: CommonStyles.colorAccentText,
-		fontSize: 18
+		fontSize: 18,
+    fontFamily: CommonStyles.fontPrimary
 	},
 	responseText: {
 		height: 40,
 		marginTop:20,
 		textAlign: 'center',
-		color: '#00000050'
+		color: '#00000050',
+    fontFamily: CommonStyles.fontPrimary
 	}
 });
 

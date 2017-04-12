@@ -1,0 +1,141 @@
+import React, {Component} from 'react';
+import {AppRegistry, Text, View, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import { Backend } from '../../modules/Backend/Backend';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+
+export default class Trip extends Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			id: this.props.id,
+			title: this.props.title,
+			subTitle: this.props.subTitle,
+			description: this.props.description
+		}
+		this.pressRow = this.pressRow.bind(this);
+		this.onTextChange = this.onTextChange.bind(this);
+		this.onTextChangeDone = this.onTextChangeDone.bind(this);
+		this.deletePressConfirm = this.deletePressConfirm.bind(this);
+		this.deletePress = this.deletePress.bind(this);
+		this.editDetails = this.editDetails.bind(this);
+	}
+	pressRow(trip){
+	}
+	onTextChange(value, key){
+		var newState = {};
+		newState[key] = value;
+		this.setState(newState);
+	}
+	onTextChangeDone(key){
+		var newItem = {};
+		newItem[key] = this.state[key];
+		Backend.updateUserItem(this.props.id, newItem)
+	}
+	deletePressConfirm(){
+		var self = this;
+		Alert.alert(
+		  'Delete Trip',
+		  'WARNING: Deleting a trip is irreversable!',
+		  [
+		    {text: 'Cancel', style: 'cancel'},
+		    {text: 'OK', onPress: () => self.deletePress()},
+		  ],
+		  { cancelable: false }
+		)
+	}
+	deletePress(){
+		Backend.deleteUserItem(this.state.id);
+	}
+	editDetails(){
+	}
+	render(){
+		return(
+			<View style={styles.row}>
+				<View style={styles.rowContent}>
+						<TextInput 
+							style={styles.title}
+							value={this.state.title}
+							onChangeText= {(value) => this.onTextChange(value, 'title')}
+							onSubmitEditing= {this.onTextChangeDone('title')}
+						/>
+						<TextInput 
+							style={styles.subTitle}
+							value={this.state.subTitle}
+							onChangeText= {(value) => this.onTextChange(value, 'subTitle')}
+							onSubmitEditing= {this.onTextChangeDone('subTitle')}
+						/>
+						<TextInput 
+							style={styles.description}
+							value={this.state.description}
+							onChangeText= {(value) => this.onTextChange(value, 'description')}
+							onSubmitEditing= {this.onTextChangeDone('description')}
+						/>
+				</View>
+				<View style={styles.buttons}>
+					<TouchableOpacity style={styles.editDetails} onPress={() => {this.editDetails()}}>
+						<Text style={styles.editDetailsText}>Edit details</Text>
+					</TouchableOpacity>
+				</View>
+			</View>
+		)
+	}
+}
+
+const styles = StyleSheet.create({
+	row: {
+		flexDirection: 'row',
+		flex: 1
+	},
+	rowContent: {
+		flexDirection: 'column',
+		flex: 1,
+		paddingTop: 8,
+		paddingBottom: 8,
+		paddingLeft: 16
+	},
+	buttons: {
+		flexDirection: 'column',
+		justifyContent: 'flex-end',
+		paddingTop: 8,
+		paddingBottom: 12,
+		paddingRight: 16		
+	},
+	title: {
+		fontSize: 16,
+		margin: 0,
+		padding: 0,
+		fontFamily: 'Roboto'
+	},
+	subTitle: {
+		fontSize: 14,
+		margin: 0,
+		padding: 0,
+		fontFamily: 'Roboto'
+	},
+	description: {
+		fontSize: 12,
+		margin: 0,
+		padding: 0,
+    fontFamily: CommonStyles.fontPrimary
+	},
+	editDetails: {
+		backgroundColor: CommonStyles.colorAccent,
+		borderRadius: 2,
+		alignSelf: 'flex-start',
+		elevation: 2
+	},
+	editDetailsText: {
+		fontFamily: CommonStyles.fontPrimary,
+		padding: 5,
+		fontSize: 14,
+		color: CommonStyles.colorAccentText
+	},
+	delete: {
+		alignSelf: 'flex-end'
+	}
+});
+
+AppRegistry.registerComponent('Trip', () => Trip);

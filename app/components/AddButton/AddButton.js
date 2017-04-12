@@ -15,7 +15,9 @@ export default class AddButton extends Component{
 	}
 	onSubmit(){
 		Backend.addUserItem({
-			text: 'test'
+			title: 'Enter a Title',
+			subTitle: 'Enter a Sub-Title',
+			description: 'Enter a Description'
 		});
 	}
 
@@ -34,18 +36,18 @@ export default class AddButton extends Component{
 
 const styles = StyleSheet.create({
 	addButton: {
-		top: 30,
-		right: 10,
+		bottom: 15,
+		right: 15,
 		padding: 15,
 		backgroundColor: CommonStyles.colorAccent,
 		alignItems: 'center',
 		justifyContent: 'center',
 		position: 'absolute',
-		elevation: 6,
-		borderRadius: 30,
+		elevation: 4,
+		borderRadius: 50,
 	},
 	addButtonIcon: {
-		fontSize: 20,
+		fontSize: 35,
 		color: CommonStyles.colorAccentText
 	},
 });

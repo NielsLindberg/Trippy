@@ -1,5 +1,7 @@
 var commonStyles = {
-	colorPrimary100: '#ECEFF1',
+	colorPrimary50: '#ECEFF1',
+	colorPrimary50Text: '#000',
+	colorPrimary100: '#CFD8DC',
 	colorPrimary100Text: '#000',
 	colorPrimary400: '#78909C',
 	colorPrimary400Text: '#fff',
@@ -13,6 +15,7 @@ var commonStyles = {
 	colorPrimary900Text: '#FFF',
 	colorAccent: '#FF5252',
 	colorAccent20P: '#FF525220',
-	colorAccentText: '#fff'
+	colorAccentText: '#fff',
+	fontPrimary: 'Roboto'
 };
 export default CommonStyles = commonStyles;
