@@ -11,14 +11,11 @@ export default class TripsScreen extends Component{
   static navigationOptions = {
     title: 'Trips',
     header: (navigation) => ({
-      right: (
-          <Logout navigation={navigation}/>
-      ),
       style: {
-        backgroundColor: CommonStyles.colorPrimary800
+        backgroundColor: CommonStyles.colorPrimary700
       },
       titleStyle: {
-        color: CommonStyles.colorPrimary800Text,
+        color: CommonStyles.colorPrimary700Text,
         fontFamily: CommonStyles.fontPrimary
       }
     }),
@@ -31,7 +28,7 @@ export default class TripsScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            <TripList/>
+            <TripList navigation={this.props.navigation}/>
             <AddButton/>
         </View>
       )

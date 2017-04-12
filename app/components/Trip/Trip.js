@@ -50,6 +50,7 @@ export default class Trip extends Component{
 		Backend.deleteUserItem(this.state.id);
 	}
 	editDetails(){
+		this.props.navigation.navigate('TripDetailScreen', {id: this.state.id}); 
 	}
 	render(){
 		return(
@@ -76,7 +77,7 @@ export default class Trip extends Component{
 				</View>
 				<View style={styles.buttons}>
 					<TouchableOpacity style={styles.editDetails} onPress={() => {this.editDetails()}}>
-						<Text style={styles.editDetailsText}>Edit details</Text>
+						<Icon name="mode-edit" style={styles.editDetailsText}/>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -98,8 +99,8 @@ const styles = StyleSheet.create({
 	},
 	buttons: {
 		flexDirection: 'column',
-		justifyContent: 'flex-end',
-		paddingTop: 8,
+		justifyContent: 'flex-start',
+		paddingTop: 12,
 		paddingBottom: 12,
 		paddingRight: 16		
 	},
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
 	},
 	editDetails: {
 		backgroundColor: CommonStyles.colorAccent,
-		borderRadius: 2,
+		borderRadius: 20,
 		alignSelf: 'flex-start',
 		elevation: 2
 	},

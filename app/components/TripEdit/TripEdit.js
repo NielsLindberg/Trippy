@@ -33,17 +33,6 @@ export default class TripList extends Component{
 	componentWillMount(){
 		this.getTrips();
 	}
-	renderRow(trip) {
-		return(
-			<Trip
-				id={trip.key}
-				title={trip.value.title}
-				subTitle={trip.value.subTitle}
-				description={trip.value.description}
-				navigation={this.props.navigation}
-			/>
-		)
-	}
 	render(){
 		return(
 			<ScrollView style={styles.container}>

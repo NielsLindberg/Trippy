@@ -5,17 +5,31 @@ import DirectionsScreen from '../screens/DirectionsScreen/DirectionsScreen';
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import MapScreen from '../screens/MapScreen/MapScreen';
 import TripsScreen from '../screens/TripsScreen/TripsScreen';
+import TripDetailScreen from '../screens/TripDetailScreen/TripDetailScreen';
 import CommonStyles from '../modules/CommonStyles/CommonStyles';
 
-export const Tabs = TabNavigator({
+export const TripsStack = StackNavigator({
   TripsScreen: {
-    screen: TripsScreen,
+    screen: TripsScreen
+  },
+  TripDetailScreen: {
+    screen: TripDetailScreen
+  }
+},
+  {
+    headerMode: 'screen'
+  }
+);
+
+export const Tabs = TabNavigator({
+  TripsStack: {
+    screen: TripsStack
   },
   MapScreen: {
     screen: MapScreen
   },
   DirectionsScreen: {
-    screen: DirectionsScreen,
+    screen: DirectionsScreen
   }
 }, {
     headerMode: 'card',
@@ -28,7 +42,7 @@ export const Tabs = TabNavigator({
       activeTintColor: CommonStyles.colorAccentText,
       pressColor: CommonStyles.colorAccent20P,
       style: {
-        backgroundColor: CommonStyles.colorPrimary700,
+        backgroundColor: CommonStyles.colorPrimary800,
         paddingVertical: 5
       },
       indicatorStyle: {
@@ -47,6 +61,6 @@ export const Root = StackNavigator({
   }
 },
   {
-    headerMode: 'screen'
+    headerMode: 'none'
   }
 );

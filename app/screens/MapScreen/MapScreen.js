@@ -14,10 +14,10 @@ export default class MapScreen extends Component{
           <Logout navigation={navigation}/>
       ),
       style: {
-        backgroundColor: CommonStyles.colorPrimary800
+        backgroundColor: CommonStyles.colorPrimary700
       },
       titleStyle: {
-        color: CommonStyles.colorPrimary800Text,
+        color: CommonStyles.colorPrimary700Text,
         fontFamily: CommonStyles.fontPrimary
       }
     }),
