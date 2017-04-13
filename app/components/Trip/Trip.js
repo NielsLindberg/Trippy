@@ -18,6 +18,7 @@ export default class Trip extends Component{
 	}
 	childHandler(newState) {
 		this.setState(newState);
+		this.props.updateList();
 	}
 	editDetails(){
 		this.props.navigation.navigate('TripDetailScreen', {tripState: this.state, childHandler: this.childHandler});

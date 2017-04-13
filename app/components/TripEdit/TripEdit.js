@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, ListView, ScrollView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {AppRegistry, Alert, Text, View, ListView, ScrollView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
@@ -39,6 +39,7 @@ export default class TripEdit extends Component{
 	}
 	deletePress(){
 		Backend.deleteUserItem(this.props.tripState.id);
+		this.props.navigation.goBack();
 	}
 	componentWillMount(){
 	}
@@ -63,9 +64,9 @@ export default class TripEdit extends Component{
 					onChangeText= {(value) => this.onTextChange(value, 'description')}
 					onSubmitEditing= {this.onTextChangeDone('description')}
 				/>
-				<TouchableOpacity
-				>
-				</TouchableOpacity>
+				<TouchableOpacity style={styles.deleteButton} onPress={() => {this.deletePressConfirm()}}>
+						<Icon name="delete" style={styles.deleteButtonText}/>
+					</TouchableOpacity>
 			</ScrollView>
 		)
 	}
@@ -81,6 +82,18 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#8E8E8E'
   },
+  deleteButton: {
+		backgroundColor: CommonStyles.colorAccent,
+		borderRadius: 20,
+		alignSelf: 'flex-start',
+		elevation: 2
+	},
+	deleteButtonText: {
+		fontFamily: CommonStyles.fontPrimary,
+		padding: 5,
+		fontSize: 14,
+		color: CommonStyles.colorAccentText
+	}
 });
 
 AppRegistry.registerComponent('TripEdit', () => TripEdit);

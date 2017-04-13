@@ -37,6 +37,7 @@ export default class TripList extends Component{
 				subTitle={trip.value.subTitle}
 				description={trip.value.description}
 				navigation={this.props.navigation}
+				updateList={this.getTrips}
 			/>
 		)
 	}
