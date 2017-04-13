@@ -5,41 +5,76 @@ import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 import Trip from '../Trip/Trip';
 
-export default class TripList extends Component{
+export default class TripEdit extends Component{
 	constructor(props){
 		super(props);
-		const ds = new ListView.DataSource({
-			rowHasChanged: (r1, r2) => r1 !== r2
-		});
 		this.state = {
-			datasource: ds
+			id: this.props.id
 		}
-		this.pressRow = this.pressRow.bind(this);
-		this.renderRow = this.renderRow.bind(this);
-		this.getTrips = this.getTrips.bind(this);
+		this.onTextChange = this.onTextChange.bind(this);
+		this.onTextChangeDone = this.onTextChangeDone.bind(this);
+		this.deletePressConfirm = this.deletePressConfirm.bind(this);
+		this.deletePress = this.deletePress.bind(this);
+		this.getUserItem - this.getUserItem.bind(this);
 	}
-	static defaultProps = {
-	}
-	getTrips(){
-	  Backend.getUserItems((trips) => {
+	getUserItem() {
+		Backend.getUserItem(this.props.id)
+		.then((trip) => {
 			this.setState({
-				datasource: this.state.datasource.cloneWithRows(trips)
+				title: trip.title,
+				subTitle: trip.subTitle,
+				description: trip.description
 			});
-		});
+		})
 	}
-	pressRow(trip) {
-
+	onTextChange(value, key){
+		var newState = {};
+		newState[key] = value;
+		this.setState(newState);
 	}
-	componentWillMount(){
-		this.getTrips();
+	onTextChangeDone(key){
+		var newItem = {};
+		newItem[key] = this.state[key];
+		Backend.updateUserItem(this.props.id, newItem)
+	}
+	deletePressConfirm(){
+		var self = this;
+		Alert.alert(
+		  'Delete Trip',
+		  'WARNING: Deleting a trip is irreversable!',
+		  [
+		    {text: 'Cancel', style: 'cancel'},
+		    {text: 'OK', onPress: () => self.deletePress()},
+		  ],
+		  { cancelable: false }
+		)
+	}
+	deletePress(){
+		Backend.deleteUserItem(this.state.id);
+	}
+	componentDidMount(){
+		this.getUserItem();
 	}
 	render(){
 		return(
 			<ScrollView style={styles.container}>
-				<ListView
-					dataSource={this.state.datasource}
-					renderRow={this.renderRow}
-					renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
+				<TextInput 
+					style={styles.title}
+					value={this.state.title}
+					onChangeText= {(value) => this.onTextChange(value, 'title')}
+					onSubmitEditing= {this.onTextChangeDone('title')}
+				/>
+				<TextInput 
+					style={styles.subTitle}
+					value={this.state.subTitle}
+					onChangeText= {(value) => this.onTextChange(value, 'subTitle')}
+					onSubmitEditing= {this.onTextChangeDone('subTitle')}
+				/>
+				<TextInput 
+					style={styles.description}
+					value={this.state.description}
+					onChangeText= {(value) => this.onTextChange(value, 'description')}
+					onSubmitEditing= {this.onTextChangeDone('description')}
 				/>
 			</ScrollView>
 		)
@@ -58,4 +93,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('TripList', () => TripList);
+AppRegistry.registerComponent('TripEdit', () => TripEdit);

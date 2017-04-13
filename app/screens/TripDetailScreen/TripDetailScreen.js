@@ -3,7 +3,7 @@ import {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Backend } from '../../modules/Backend/Backend';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
-import TripList from '../../components/TripList/TripList';
+import TripEdit from '../../components/TripEdit/TripEdit';
 import Logout from '../../components/Logout/Logout';
 import AddButton from '../../components/AddButton/AddButton';
 
@@ -29,6 +29,7 @@ export default class TripDetailScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
+            <TripEdit id={this.props.navigation.state.params.id}/>
             <AddButton/>
         </View>
       )

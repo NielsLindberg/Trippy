@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
@@ -15,14 +13,11 @@ export default class Trip extends Component{
 			subTitle: this.props.subTitle,
 			description: this.props.description
 		}
-		this.pressRow = this.pressRow.bind(this);
 		this.onTextChange = this.onTextChange.bind(this);
 		this.onTextChangeDone = this.onTextChangeDone.bind(this);
 		this.deletePressConfirm = this.deletePressConfirm.bind(this);
 		this.deletePress = this.deletePress.bind(this);
 		this.editDetails = this.editDetails.bind(this);
-	}
-	pressRow(trip){
 	}
 	onTextChange(value, key){
 		var newState = {};
@@ -50,30 +45,15 @@ export default class Trip extends Component{
 		Backend.deleteUserItem(this.state.id);
 	}
 	editDetails(){
-		this.props.navigation.navigate('TripDetailScreen', {id: this.state.id}); 
+		this.props.navigation.navigate('TripDetailScreen', {id: this.state.id});
 	}
 	render(){
 		return(
 			<View style={styles.row}>
 				<View style={styles.rowContent}>
-						<TextInput 
-							style={styles.title}
-							value={this.state.title}
-							onChangeText= {(value) => this.onTextChange(value, 'title')}
-							onSubmitEditing= {this.onTextChangeDone('title')}
-						/>
-						<TextInput 
-							style={styles.subTitle}
-							value={this.state.subTitle}
-							onChangeText= {(value) => this.onTextChange(value, 'subTitle')}
-							onSubmitEditing= {this.onTextChangeDone('subTitle')}
-						/>
-						<TextInput 
-							style={styles.description}
-							value={this.state.description}
-							onChangeText= {(value) => this.onTextChange(value, 'description')}
-							onSubmitEditing= {this.onTextChangeDone('description')}
-						/>
+						<Text style={styles.title}>{this.state.title}</Text>
+						<Text style={styles.subTitle}>{this.state.subTitle}</Text>
+						<Text style={styles.description}>{this.state.description}</Text>
 				</View>
 				<View style={styles.buttons}>
 					<TouchableOpacity style={styles.editDetails} onPress={() => {this.editDetails()}}>

@@ -14,21 +14,18 @@ export default class TripList extends Component{
 		this.state = {
 			datasource: ds
 		}
-		this.pressRow = this.pressRow.bind(this);
 		this.renderRow = this.renderRow.bind(this);
 		this.getTrips = this.getTrips.bind(this);
 	}
 	static defaultProps = {
 	}
 	getTrips(){
-	  Backend.getUserItems((trips) => {
+	  Backend.getUserItems()
+	  .then((trips) => {
 			this.setState({
 				datasource: this.state.datasource.cloneWithRows(trips)
 			});
 		});
-	}
-	pressRow(trip) {
-
 	}
 	componentWillMount(){
 		this.getTrips();
