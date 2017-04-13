@@ -13,39 +13,14 @@ export default class Trip extends Component{
 			subTitle: this.props.subTitle,
 			description: this.props.description
 		}
-		this.onTextChange = this.onTextChange.bind(this);
-		this.onTextChangeDone = this.onTextChangeDone.bind(this);
-		this.deletePressConfirm = this.deletePressConfirm.bind(this);
-		this.deletePress = this.deletePress.bind(this);
 		this.editDetails = this.editDetails.bind(this);
+		this.childHandler = this.childHandler.bind(this);
 	}
-	onTextChange(value, key){
-		var newState = {};
-		newState[key] = value;
+	childHandler(newState) {
 		this.setState(newState);
 	}
-	onTextChangeDone(key){
-		var newItem = {};
-		newItem[key] = this.state[key];
-		Backend.updateUserItem(this.props.id, newItem)
-	}
-	deletePressConfirm(){
-		var self = this;
-		Alert.alert(
-		  'Delete Trip',
-		  'WARNING: Deleting a trip is irreversable!',
-		  [
-		    {text: 'Cancel', style: 'cancel'},
-		    {text: 'OK', onPress: () => self.deletePress()},
-		  ],
-		  { cancelable: false }
-		)
-	}
-	deletePress(){
-		Backend.deleteUserItem(this.state.id);
-	}
 	editDetails(){
-		this.props.navigation.navigate('TripDetailScreen', {id: this.state.id});
+		this.props.navigation.navigate('TripDetailScreen', {tripState: this.state, childHandler: this.childHandler});
 	}
 	render(){
 		return(

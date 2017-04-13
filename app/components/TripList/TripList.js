@@ -20,8 +20,7 @@ export default class TripList extends Component{
 	static defaultProps = {
 	}
 	getTrips(){
-	  Backend.getUserItems()
-	  .then((trips) => {
+	  Backend.getUserItems((trips) => {
 			this.setState({
 				datasource: this.state.datasource.cloneWithRows(trips)
 			});

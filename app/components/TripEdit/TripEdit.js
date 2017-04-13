@@ -8,34 +8,22 @@ import Trip from '../Trip/Trip';
 export default class TripEdit extends Component{
 	constructor(props){
 		super(props);
-		this.state = {
-			id: this.props.id
-		}
+		this.state = this.props.tripState;
 		this.onTextChange = this.onTextChange.bind(this);
 		this.onTextChangeDone = this.onTextChangeDone.bind(this);
 		this.deletePressConfirm = this.deletePressConfirm.bind(this);
 		this.deletePress = this.deletePress.bind(this);
-		this.getUserItem - this.getUserItem.bind(this);
-	}
-	getUserItem() {
-		Backend.getUserItem(this.props.id)
-		.then((trip) => {
-			this.setState({
-				title: trip.title,
-				subTitle: trip.subTitle,
-				description: trip.description
-			});
-		})
 	}
 	onTextChange(value, key){
-		var newState = {};
+		var newState = {}
 		newState[key] = value;
 		this.setState(newState);
+		this.props.childHandler(newState);
 	}
 	onTextChangeDone(key){
 		var newItem = {};
-		newItem[key] = this.state[key];
-		Backend.updateUserItem(this.props.id, newItem)
+		newItem[key] = this.props.tripState[key];
+		Backend.updateUserItem(this.props.tripState.id, newItem);
 	}
 	deletePressConfirm(){
 		var self = this;
@@ -50,10 +38,9 @@ export default class TripEdit extends Component{
 		)
 	}
 	deletePress(){
-		Backend.deleteUserItem(this.state.id);
+		Backend.deleteUserItem(this.props.tripState.id);
 	}
-	componentDidMount(){
-		this.getUserItem();
+	componentWillMount(){
 	}
 	render(){
 		return(
@@ -76,6 +63,9 @@ export default class TripEdit extends Component{
 					onChangeText= {(value) => this.onTextChange(value, 'description')}
 					onSubmitEditing= {this.onTextChangeDone('description')}
 				/>
+				<TouchableOpacity
+				>
+				</TouchableOpacity>
 			</ScrollView>
 		)
 	}

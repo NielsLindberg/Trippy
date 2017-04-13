@@ -29,7 +29,10 @@ export default class TripDetailScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            <TripEdit id={this.props.navigation.state.params.id}/>
+            <TripEdit 
+              tripState={this.props.navigation.state.params.tripState}
+              childHandler={this.props.navigation.state.params.childHandler}
+            />
             <AddButton/>
         </View>
       )
