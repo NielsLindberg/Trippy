@@ -7,29 +7,18 @@ import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 export default class Trip extends Component{
 	constructor(props){
 		super(props);
-		this.state = {
-			id: this.props.id,
-			title: this.props.title,
-			subTitle: this.props.subTitle,
-			description: this.props.description
-		}
 		this.editDetails = this.editDetails.bind(this);
-		this.childHandler = this.childHandler.bind(this);
-	}
-	childHandler(newState) {
-		this.setState(newState);
-		this.props.updateList();
 	}
 	editDetails(){
-		this.props.navigation.navigate('TripDetailScreen', {tripState: this.state, childHandler: this.childHandler});
+		this.props.navigation.navigate('TripDetailScreen', {tripState: this.props});
 	}
 	render(){
 		return(
 			<View style={styles.row}>
 				<View style={styles.rowContent}>
-						<Text style={styles.title}>{this.state.title}</Text>
-						<Text style={styles.subTitle}>{this.state.subTitle}</Text>
-						<Text style={styles.description}>{this.state.description}</Text>
+						<Text style={styles.title}>{this.props.title}</Text>
+						<Text style={styles.subTitle}>{this.props.subTitle}</Text>
+						<Text style={styles.description}>{this.props.description}</Text>
 				</View>
 				<View style={styles.buttons}>
 					<TouchableOpacity style={styles.editDetails} onPress={() => {this.editDetails()}}>

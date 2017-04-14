@@ -37,11 +37,11 @@ export default class TripList extends Component{
 				subTitle={trip.value.subTitle}
 				description={trip.value.description}
 				navigation={this.props.navigation}
-				updateList={this.getTrips}
 			/>
 		)
 	}
 	render(){
+		console.log(this.state.datasource)
 		return(
 			<ScrollView style={styles.container}>
 				<ListView

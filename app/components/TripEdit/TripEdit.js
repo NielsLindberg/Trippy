@@ -8,22 +8,16 @@ import Trip from '../Trip/Trip';
 export default class TripEdit extends Component{
 	constructor(props){
 		super(props);
-		this.state = this.props.tripState;
 		this.onTextChange = this.onTextChange.bind(this);
 		this.onTextChangeDone = this.onTextChangeDone.bind(this);
 		this.deletePressConfirm = this.deletePressConfirm.bind(this);
 		this.deletePress = this.deletePress.bind(this);
 	}
 	onTextChange(value, key){
-		var newState = {}
-		newState[key] = value;
-		this.setState(newState);
-		this.props.childHandler(newState);
+		this.props.tripState[key] = value;
 	}
 	onTextChangeDone(key){
-		var newItem = {};
-		newItem[key] = this.props.tripState[key];
-		Backend.updateUserItem(this.props.tripState.id, newItem);
+		Backend.updateUserItem(this.props.tripState.id, this.props.tripState);
 	}
 	deletePressConfirm(){
 		var self = this;
@@ -48,19 +42,19 @@ export default class TripEdit extends Component{
 			<ScrollView style={styles.container}>
 				<TextInput 
 					style={styles.title}
-					value={this.state.title}
+					value={this.props.tripState.title}
 					onChangeText= {(value) => this.onTextChange(value, 'title')}
 					onSubmitEditing= {this.onTextChangeDone('title')}
 				/>
 				<TextInput 
 					style={styles.subTitle}
-					value={this.state.subTitle}
+					value={this.props.tripState.subTitle}
 					onChangeText= {(value) => this.onTextChange(value, 'subTitle')}
 					onSubmitEditing= {this.onTextChangeDone('subTitle')}
 				/>
 				<TextInput 
 					style={styles.description}
-					value={this.state.description}
+					value={this.props.tripState.description}
 					onChangeText= {(value) => this.onTextChange(value, 'description')}
 					onSubmitEditing= {this.onTextChangeDone('description')}
 				/>
