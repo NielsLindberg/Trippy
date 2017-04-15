@@ -1,0 +1,100 @@
+import * as types from './types';
+import { Backend } from '../lib/Backend';
+import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
+import Firestack from 'react-native-firestack';
+
+export function setGoogleSigninConfigure() {
+	return () => {
+		GoogleSignin.configure({
+  		scopes: [
+  		'email', 
+  		'profile', 
+  		'https://www.googleapis.com/auth/plus.login'],
+       webClientId: '829908519527-ctbffmpd93dmoodqtug63ekd945nosa8.apps.googleusercontent.com',
+       offlineAccess: false,
+       forceConsentPrompt: true
+		});
+	}
+}
+
+export function addFirestack() {
+	let firestack = new Firestack();
+	return {
+		type: types.SET_FIRESTACK,
+		firestack
+	}
+}
+export function setCurrentUser(user) {
+	return {
+		type: types.SET_FIREBASE_USER,
+		user
+	}
+}
+
+export function setGoogleUser(user) {
+	return {
+		type: types.SET_GOOGLE_USER,
+		user
+	}
+}
+
+export function getGoogleSignin() {
+	return (dispatch) => {
+		GoogleSignin.currentUserAsync().then((user) => {
+     if(user != null) {
+     	dispatch(signInWithGoogle(user.idToken));
+     	dispatch(setGoogleUser(user));
+     } else {
+     	dispatch(letGoogleSignin());
+     }
+    })
+	}
+}
+
+export function letGoogleSignin() {
+	return (dispatch) => {
+		GoogleSignin.signIn()
+		.then(() => {
+			dispatch(getGoogleSignin())
+		})
+		.catch((err) => {
+		  console.log('WRONG SIGNIN', err);
+		})
+	}
+}
+
+export function signInWithGoogle(idToken){
+	return (dispatch, getState) => {
+     getState().setFirestack.auth.signInWithProvider('google', idToken)
+     .then(() => {
+     	dispatch(getCurrentUser());
+     });
+  }
+}
+
+export function getUserRef(user) {
+  return (dispatch, getState) => {
+     let userRef = getState().setFirestack.itemsRef.child("users/" + user.uid);
+     dispatch(setUserRef(userRef));
+  }
+}
+
+export function setUserRef(userRef) {
+	return {
+		type: types.SET_FIREBASE_USERREF,
+		userRef
+	}
+}
+
+export function getCurrentUser() {
+	return (dispatch, getState) => {
+    getState().setFirestack.auth.getCurrentUser()
+    .then(user => {
+      dispatch(setCurrentUser(user))
+      dispatch(getUserRef(user))
+    })
+    .catch(err => {
+      console.log(err)
+    });
+  }
+}

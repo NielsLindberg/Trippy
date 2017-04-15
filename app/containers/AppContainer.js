@@ -8,22 +8,15 @@ import { bindActionCreators } from 'redux';
 class AppContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			recipeCount: 0
-		}
 	}
-	incrementRecipeCount() {
-		this.setState({recipeCount: this.state.recipeCount+1});
-	}
-	addRecipe(){
-		this.props.addRecipe();
-	}
-	componentWillMount() {
-		this.addRecipe();
+	componentDidMount() {
+		this.props.addFirestack();
+		this.props.setGoogleSigninConfigure();
+		this.props.getGoogleSignin();
 	}
  render() {
  	return (
- 		<Root style={styles.screen}/>
+ 		<Root style={styles.screen} {...this.props}/>
  	)
  }
 }
@@ -32,7 +25,12 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect(() => {return {} }, mapDispatchToProps)(AppContainer);
+function mapStateToProps(state) {
+	return {
+	}
+}
+
+export default connect((state) => {return {} }, mapDispatchToProps)(AppContainer);
 
 const styles = StyleSheet.create({
   screen: {

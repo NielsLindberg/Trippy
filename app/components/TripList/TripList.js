@@ -41,7 +41,6 @@ export default class TripList extends Component{
 		)
 	}
 	render(){
-		console.log(this.state.datasource)
 		return(
 			<ScrollView style={styles.container}>
 				<ListView

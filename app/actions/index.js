@@ -1,5 +1,5 @@
-import * as RecipeActions from './recipes';
+import * as BackendActions from './backend';
 
 export const ActionCreators = Object.assign({},
-	RecipeActions,
+	BackendActions,
 );
