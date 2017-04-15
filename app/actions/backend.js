@@ -74,8 +74,9 @@ export function signInWithGoogle(idToken){
 
 export function getUserRef(user) {
   return (dispatch, getState) => {
-     let userRef = getState().setFirestack.itemsRef.child("users/" + user.uid);
+     let userRef = getState().setFirestack.itemsRef.child("users/" + user.user.uid);
      dispatch(setUserRef(userRef));
+     dispatch(getUserTrips());
   }
 }
 
@@ -98,3 +99,24 @@ export function getCurrentUser() {
     });
   }
 }
+
+export function setUserTrips(trips) {
+	return {
+		type: types.SET_USER_TRIPS,
+		trips
+	}
+}
+
+export function getUserTrips() {
+	 return (dispatch, getState) => {
+	   	getState().setFirebaseUserRef.on('value', (snap) => {
+				var items = [];
+				snap.forEach((child) => {
+					items.push(child);
+				});
+				dispatch(setUserTrips(items));
+		});
+  }
+}
+
+

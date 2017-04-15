@@ -9,10 +9,19 @@ export const setGoogleUser = createReducer({}, {
 
 export const setFirebaseUser = createReducer({}, {
 	[types.SET_FIREBASE_USER](state, action) {
-		return state.user = action.user;
-	},
+		return action.user;
+	}
+})
+
+export const setFirebaseUserRef = createReducer({}, {
 	[types.SET_FIREBASE_USERREF](state, action) {
-		return state.UserRef = action.userRef;
+		return action.userRef;
+	}
+})
+
+export const setUserTrips = createReducer({}, {
+	[types.SET_USER_TRIPS](state, action) {
+		return action.trips;
 	}
 })
 
