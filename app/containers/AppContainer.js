@@ -4,6 +4,7 @@ import { Root } from '../config/router';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../actions';
 import { bindActionCreators } from 'redux';
+import { addNavigationHelpers } from 'react-navigation';
 
 class AppContainer extends Component {
 	constructor(props) {
@@ -15,8 +16,15 @@ class AppContainer extends Component {
 		this.props.getGoogleSignin();
 	}
  render() {
+ 	console.log(this.props);
  	return (
- 		<Root style={styles.screen} {...this.props}/>
+ 		<Root 
+ 			style={styles.screen}
+ 			navigation={addNavigationHelpers({
+        dispatch: this.props.dispatch,
+        state: this.props.nav
+      })}
+ 		/>
  	)
  }
 }
@@ -26,12 +34,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
+	console.log(state);
 	return {
-		userTrips: state.setUserTrips 
+		nav: state.setNavigationState 
 	}
 }
 
-export default connect((state) => {return {} }, mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
 
 const styles = StyleSheet.create({
   screen: {
