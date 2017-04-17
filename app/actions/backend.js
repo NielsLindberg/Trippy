@@ -4,7 +4,7 @@ import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import Firestack from 'react-native-firestack';
 
 export function setGoogleSigninConfigure() {
-	return () => {
+	return (dispatch) => {
 		GoogleSignin.configure({
   		scopes: [
   		'email', 
@@ -14,6 +14,13 @@ export function setGoogleSigninConfigure() {
        offlineAccess: false,
        forceConsentPrompt: true
 		});
+		dispatch(setGoogleSigninConfigureState());
+	}
+}
+
+export function setGoogleSigninConfigureState() {
+	return {
+		type: types.SET_GOOGLE_CONFIG
 	}
 }
 
@@ -39,15 +46,20 @@ export function setGoogleUser(user) {
 }
 
 export function getGoogleSignin() {
-	return (dispatch) => {
+	return (dispatch, getState) => {
+		if(getState().setGoogleConfig) {
 		GoogleSignin.currentUserAsync().then((user) => {
-     if(user != null) {
-     	dispatch(signInWithGoogle(user.idToken));
-     	dispatch(setGoogleUser(user));
-     } else {
-     	dispatch(letGoogleSignin());
-     }
-    })
+		  if(user != null) {
+		    dispatch(signInWithGoogle(user.idToken));
+		    dispatch(setGoogleUser(user));
+		  } else {
+		    dispatch(letGoogleSignin());
+		  }
+		})
+	} else {
+		dispatch(setGoogleSigninConfigure());
+		dispatch(getGoogleSignin());
+	}
 	}
 }
 
@@ -105,6 +117,24 @@ export function setUserTrips(trips) {
 		type: types.SET_USER_TRIPS,
 		trips
 	}
+}
+
+export function addUserItem(item){
+	return (dispatch, getState) => {
+		getState().setFirebaseUserRef.push(item);
+	}
+}
+
+export function updateUserItem(key, item) {
+	return (dispatch, getState) => {
+		getState().setFirebaseUserRef.child(key).update(item);
+	}
+}
+
+export function deleteUserItem(key) {
+		return (dispatch, getState) => {
+			getState().setFirebaseUserRef.child(key).remove();
+  }
 }
 
 export function getUserTrips() {

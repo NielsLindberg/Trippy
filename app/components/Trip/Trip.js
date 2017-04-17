@@ -3,8 +3,11 @@ import {AppRegistry, Text, View, Alert, StyleSheet, TextInput, TouchableOpacity}
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+import { bindActionCreators } from 'redux';
 
-export default class Trip extends Component{
+class Trip extends Component{
 	constructor(props){
 		super(props);
 		this.editDetails = this.editDetails.bind(this);
@@ -84,4 +87,12 @@ const styles = StyleSheet.create({
 	}
 });
 
-AppRegistry.registerComponent('Trip', () => Trip);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(ActionCreators, dispatch);
+}
+
+function mapStateToProps(state) {
+	return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Trip);

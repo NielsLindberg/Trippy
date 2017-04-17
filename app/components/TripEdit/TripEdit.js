@@ -3,21 +3,18 @@ import {AppRegistry, Alert, Text, View, ListView, ScrollView, StyleSheet, TextIn
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
-import Trip from '../Trip/Trip';
+import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+import { bindActionCreators } from 'redux';
 
-export default class TripEdit extends Component{
+class TripEdit extends Component{
 	constructor(props){
 		super(props);
-		this.onTextChange = this.onTextChange.bind(this);
-		this.onTextChangeDone = this.onTextChangeDone.bind(this);
 		this.deletePressConfirm = this.deletePressConfirm.bind(this);
 		this.deletePress = this.deletePress.bind(this);
 	}
 	onTextChange(value, key){
 		this.props.tripState[key] = value;
-	}
-	onTextChangeDone(key){
-		Backend.updateUserItem(this.props.tripState.id, this.props.tripState);
 	}
 	deletePressConfirm(){
 		var self = this;
@@ -32,7 +29,7 @@ export default class TripEdit extends Component{
 		)
 	}
 	deletePress(){
-		Backend.deleteUserItem(this.props.tripState.id);
+		this.props.deleteUserItem(this.props.tripState.id);
 		this.props.navigation.goBack();
 	}
 	componentWillMount(){
@@ -43,20 +40,20 @@ export default class TripEdit extends Component{
 				<TextInput 
 					style={styles.title}
 					value={this.props.tripState.title}
-					onChangeText= {(value) => this.onTextChange(value, 'title')}
-					onSubmitEditing= {this.onTextChangeDone('title')}
+					onChangeText= {(value) => {this.props.tripState.title = value}}
+					onSubmitEditing={this.props.updateUserItem(this.props.tripState.id, this.props.tripState)}
 				/>
 				<TextInput 
 					style={styles.subTitle}
 					value={this.props.tripState.subTitle}
-					onChangeText= {(value) => this.onTextChange(value, 'subTitle')}
-					onSubmitEditing= {this.onTextChangeDone('subTitle')}
+					onChangeText= {(value) => {this.props.tripState.subTitle = value}}
+					onSubmitEditing={this.props.updateUserItem(this.props.tripState.id, this.props.tripState)}
 				/>
 				<TextInput 
 					style={styles.description}
 					value={this.props.tripState.description}
-					onChangeText= {(value) => this.onTextChange(value, 'description')}
-					onSubmitEditing= {this.onTextChangeDone('description')}
+					onChangeText= {(value) => {this.props.tripState.description = value}}
+					onSubmitEditing={this.props.updateUserItem(this.props.tripState.id, this.props.tripState)}
 				/>
 				<TouchableOpacity style={styles.deleteButton} onPress={() => {this.deletePressConfirm()}}>
 						<Icon name="delete" style={styles.deleteButtonText}/>
@@ -90,4 +87,12 @@ const styles = StyleSheet.create({
 	}
 });
 
-AppRegistry.registerComponent('TripEdit', () => TripEdit);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(ActionCreators, dispatch);
+}
+
+function mapStateToProps(state) {
+	return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TripEdit);

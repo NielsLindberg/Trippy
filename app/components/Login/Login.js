@@ -3,8 +3,13 @@ import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from '
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+import { bindActionCreators } from 'redux';
+import { NavigationActions } from 'react-navigation';
 
-export default class Login extends Component{
+const goToTrips = NavigationActions.reset({index: 0,actions: [NavigationActions.navigate({ routeName: 'Tabs'})]});
+class Login extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -14,6 +19,11 @@ export default class Login extends Component{
 			user: '',
 			token: ''
 		};
+  }
+  componentWillReceiveProps(){
+  	if(this.props.authenticated && this.props.userRef) {
+  		this.props.navigation.dispatch(goToTrips);
+  	}
   }
 	render(){
 		return (
@@ -71,7 +81,7 @@ export default class Login extends Component{
               	</View>
               </TouchableOpacity>
               <TouchableOpacity
-              	onPress={() => {Backend.getGoogleSignin(this.props.navigation)}}
+              	onPress={() => {this.props.getGoogleSignin()}}
               	activeOpacity={0.5}
               >
               	<View style={styles.loginGoogle}>
@@ -190,4 +200,15 @@ const styles = StyleSheet.create({
 	}
 });
 
-AppRegistry.registerComponent('Login', () => Login);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(ActionCreators, dispatch);
+}
+
+function mapStateToProps(state) {
+	return {
+		authenticated: state.setFirebaseUser.authenticated,
+		userRef: state.setFirebaseUserRef
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

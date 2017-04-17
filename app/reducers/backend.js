@@ -7,6 +7,12 @@ export const setGoogleUser = createReducer({}, {
 	}
 });
 
+export const setGoogleConfig = createReducer({}, {
+	[types.SET_GOOGLE_CONFIG](state, action) {
+		return true;
+	}
+})
+
 export const setFirebaseUser = createReducer({}, {
 	[types.SET_FIREBASE_USER](state, action) {
 		return action.user;
