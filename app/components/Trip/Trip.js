@@ -81,9 +81,6 @@ const styles = StyleSheet.create({
 		padding: 5,
 		fontSize: 14,
 		color: CommonStyles.colorAccentText
-	},
-	delete: {
-		alignSelf: 'flex-end'
 	}
 });
 

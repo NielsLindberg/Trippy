@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		position: 'absolute',
-		elevation: 4,
+		elevation: 8,
 		borderRadius: 50,
 	},
 	addButtonIcon: {
