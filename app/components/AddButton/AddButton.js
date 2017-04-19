@@ -14,10 +14,9 @@ class AddButton extends Component {
 	}
 	addUserItem() {
 		this.props.addUserItem({
-        	 	title: 'Add Title',
-        		subTitle: 'Add SubTitle',
-        	 	description: 'Add Description'
-    });
+        	 	title: '',
+        	 	active: false
+    }, this.props.navigation);
 	}
 	render(){
 		return(

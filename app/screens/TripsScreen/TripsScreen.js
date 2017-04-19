@@ -29,7 +29,7 @@ export default class TripsScreen extends Component{
     		<View style={styles.screen}>
             <StatusBarComponent/>
             <TripList navigation={this.props.navigation}/>
-            <AddButton/>
+            <AddButton navigation={this.props.navigation}/>
         </View>
       )
   }

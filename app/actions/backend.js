@@ -119,10 +119,10 @@ export function setUserTrips(trips) {
 	}
 }
 
-export function addUserItem(item){
+export function addUserItem(item, navigation){
 	return (dispatch, getState) => {
-		let itemRef = getState().setFirebaseUserRef.push(item);
-		return itemRef.key;
+		getState().setFirebaseUserRef.push(item)
+		.then((response) => dispatch(getUserTrip(response.key, navigation)));
 	}
 }
 

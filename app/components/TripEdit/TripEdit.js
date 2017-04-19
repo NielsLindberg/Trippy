@@ -33,15 +33,13 @@ class TripEdit extends Component{
 		this.props.deleteUserItem(this.props.params.id);
 		this.props.navigation.goBack();
 	}
-	componentWillMount(){
-		console.log(this.props);
-	}
 	render(){
 		return(
 			<ScrollView style={styles.container}>
 				<TextInput 
 					style={styles.title}
 					value={this.state.title}
+					placeholder='Add Title'
 					onChangeText= {(title) => this.setState({title})}
 					onEndEditing={() => this.props.updateUserItem(this.props.params.id, this.state)}
 				/>
