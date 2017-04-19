@@ -30,7 +30,7 @@ export default class TripDetailScreen extends Component{
     		<View style={styles.screen}>
             <StatusBarComponent/>
             <TripEdit 
-              tripState={this.props.navigation.state.params.tripState}
+              params={this.props.navigation.state.params}
               navigation={this.props.navigation}
             />
             <AddButton/>

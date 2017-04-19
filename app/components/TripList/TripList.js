@@ -18,8 +18,7 @@ class TripList extends Component{
 			<Trip
 				id={trip.key}
 				title={trip.value.title}
-				subTitle={trip.value.subTitle}
-				description={trip.value.description}
+				active={trip.value.active}
 				navigation={this.props.navigation}
 			/>
 		)
@@ -30,7 +29,6 @@ class TripList extends Component{
 				<ListView
 					dataSource={this.props.userTrips}
 					renderRow={this.renderRow}
-					renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
 				/>
 			</ScrollView>
 		)
@@ -39,13 +37,10 @@ class TripList extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		paddingTop: 5,
+		paddingBottom: 5,
     backgroundColor: CommonStyles.colorPrimary50
-	},
-	separator: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#8E8E8E'
-  },
+	}
 });
 
 const ds = new ListView.DataSource({

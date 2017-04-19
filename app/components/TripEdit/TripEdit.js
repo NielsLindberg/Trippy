@@ -11,9 +11,8 @@ class TripEdit extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			title: this.props.tripState.title,
-			subTitle: this.props.tripState.subTitle,
-			description: this.props.tripState.description
+			title: this.props.trip.title,
+			active: this.props.trip.active
 		}
 		this.deletePressConfirm = this.deletePressConfirm.bind(this);
 		this.deletePress = this.deletePress.bind(this);
@@ -31,10 +30,11 @@ class TripEdit extends Component{
 		)
 	}
 	deletePress(){
-		this.props.deleteUserItem(this.props.tripState.id);
+		this.props.deleteUserItem(this.props.params.id);
 		this.props.navigation.goBack();
 	}
 	componentWillMount(){
+		console.log(this.props);
 	}
 	render(){
 		return(
@@ -43,19 +43,7 @@ class TripEdit extends Component{
 					style={styles.title}
 					value={this.state.title}
 					onChangeText= {(title) => this.setState({title})}
-					onEndEditing={() => this.props.updateUserItem(this.props.tripState.id, this.state)}
-				/>
-				<TextInput 
-					style={styles.subTitle}
-					value={this.state.subTitle}
-					onChangeText= {(subTitle) => this.setState({subTitle})}
-					onEndEditing={() => this.props.updateUserItem(this.props.tripState.id, this.state)}
-				/>
-				<TextInput 
-					style={styles.description}
-					value={this.state.description}
-					onChangeText= {(description) => this.setState({description})}
-					onEndEditing={() => this.props.updateUserItem(this.props.tripState.id, this.state)}
+					onEndEditing={() => this.props.updateUserItem(this.props.params.id, this.state)}
 				/>
 				<TouchableOpacity style={styles.deleteButton} onPress={() => {this.deletePressConfirm()}}>
 						<Icon name="delete" style={styles.deleteButtonText}/>
@@ -94,7 +82,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-	return {}
+	return {
+		trip: state.currentTrip.value
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripEdit);

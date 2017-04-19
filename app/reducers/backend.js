@@ -39,3 +39,9 @@ export const setFirestack = createReducer({}, {
 		return newState;
 	}
 });
+
+export const currentTrip = createReducer({}, {
+	[types.SET_CURRENT_TRIP](state, action) {
+		return action.payload;
+	}
+})

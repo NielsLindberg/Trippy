@@ -121,7 +121,8 @@ export function setUserTrips(trips) {
 
 export function addUserItem(item){
 	return (dispatch, getState) => {
-		getState().setFirebaseUserRef.push(item);
+		let itemRef = getState().setFirebaseUserRef.push(item);
+		return itemRef.key;
 	}
 }
 
@@ -148,5 +149,24 @@ export function getUserTrips() {
 		});
   }
 }
+export function setCurrentTrip(trip) {
+	return {
+		type: types.SET_CURRENT_TRIP,
+		payload: trip
+	}
+}
 
+export function navigateToDetails(key, navigation) {
+	return (dispatch, getState) => {
+				dispatch(getUserTrip(key, navigation));
+	}
+}
 
+export function getUserTrip(key, navigation) {
+	 return (dispatch, getState) => {
+	   	getState().setFirebaseUserRef.child(key).once('value', (snap) => {
+	   		dispatch(setCurrentTrip(snap));
+	   		navigation.navigate('TripDetailScreen', {id: key});
+		});
+  }
+}
