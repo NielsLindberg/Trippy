@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../actions';
 import { bindActionCreators, dispatch} from 'redux';
 import { addNavigationHelpers } from 'react-navigation';
+import CommonStyles from '../lib/CommonStyles';
 
 
 class AppContainer extends Component {
@@ -26,7 +27,8 @@ class AppContainer extends Component {
 const styles = StyleSheet.create({
   screen: {
     flexDirection: 'column',
-    flex: 1
+    flex: 1,
+    backgroundColor: CommonStyles.colorPrimary50
   }
 });
 

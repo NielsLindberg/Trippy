@@ -68,8 +68,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		borderRadius: 50,
 		alignSelf: 'center',
-		justifyContent: 'space-around',
-		elevation: 2
+		justifyContent: 'space-around'
 	},
 	mapButtonActive: {
 		backgroundColor: CommonStyles.colorAccent
