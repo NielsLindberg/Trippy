@@ -6,13 +6,14 @@ import StatusBarComponent from '../../components/StatusBarComponent/StatusBarCom
 import TripEdit from '../../components/TripEdit/TripEdit';
 import Logout from '../../components/Logout/Logout';
 import AddButton from '../../components/AddButton/AddButton';
+import Gradient from '../../components/Gradient/Gradient';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class TripDetailScreen extends Component{
   static navigationOptions = {
     title: 'TripDetails',
     header: (navigation) => ({
       style: {
-        backgroundColor: CommonStyles.colorPrimary50,
         elevation: 0
       },
       tintColor: CommonStyles.colorPrimary50Text,
@@ -30,6 +31,7 @@ export default class TripDetailScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
+            <Gradient colorTop={CommonStyles.colorGradient3} colorBottom={CommonStyles.colorGradient4}/>
             <TripEdit 
               params={this.props.navigation.state.params}
               navigation={this.props.navigation}

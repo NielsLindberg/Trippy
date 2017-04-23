@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 5,
-		paddingBottom: 5,
-    backgroundColor: CommonStyles.colorPrimary50
+		paddingBottom: 5
 	}
 });
 

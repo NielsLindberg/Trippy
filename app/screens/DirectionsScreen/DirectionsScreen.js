@@ -5,8 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import Directions from '../../components/Directions/Directions';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
-import { Backend } from '../../modules/Backend/Backend';
-import Logout from '../../components/Logout/Logout';
+import Gradient from '../../components/Gradient/Gradient';
 
 export default class DirectionsScreen extends Component{
   constructor(props) {
@@ -15,9 +14,6 @@ export default class DirectionsScreen extends Component{
   static navigationOptions = {
     title: 'Directions',
     header: (navigation) => ({
-      right: (
-          <Logout navigation={navigation}/>
-      ),
       style: {
         backgroundColor: CommonStyles.colorPrimary700
       },
@@ -35,6 +31,7 @@ export default class DirectionsScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
+            <Gradient colorTop={CommonStyles.colorGradient3} colorBottom={CommonStyles.colorGradient4}/>
             <Directions/>
         </View>
       )

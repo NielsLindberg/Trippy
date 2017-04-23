@@ -23,6 +23,12 @@ var commonStyles = {
 	fontPrimary: 'Roboto',
 	colorGradient1: '#2bc0e4',
 	colorGradient2: '#eaecc6',
+	colorGradient3: '#134E5E',
+	colorGradient4: '#71B280',
+	colorGradient5: '#E55D87',
+	colorGradient6: '#5FC3E4',
+	colorGradient7: '#3CA55C',
+	colorGradient8: '#B5AC49',
 	colorSemiBlack: 'rgba(0, 0, 0, 0.4)',
 	colorSemiWhite: 'rgba(255, 255, 255, 0.9)'
 };

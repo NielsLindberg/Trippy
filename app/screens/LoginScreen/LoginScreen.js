@@ -6,6 +6,7 @@ import { Backend } from '../../modules/Backend/Backend';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import Login from '../../components/Login/Login';
 import Gradient from '../../components/Gradient/Gradient';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class LoginScreen extends Component{
   constructor(props) {
@@ -29,7 +30,7 @@ export default class LoginScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent hidden={true}/>
-            <Gradient/>
+            <Gradient colorTop={CommonStyles.colorGradient1} colorBottom={CommonStyles.colorGradient2}/>
             <Login navigation={this.props.navigation}/>
             
         </View>

@@ -23,8 +23,8 @@ class Gradient extends Component {
         <Svg height={this.props.dimensions.height} width={this.props.dimensions.width}>
           <Defs>
             <LinearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <Stop offset="0" stopColor={CommonStyles.colorGradient1} stopOpacity="1"/>
-              <Stop offset="1" stopColor={CommonStyles.colorGradient2} stopOpacity="1"/>
+              <Stop offset="0" stopColor={this.props.colorTop} stopOpacity="1"/>
+              <Stop offset="1" stopColor={this.props.colorBottom} stopOpacity="1"/>
             </LinearGradient>
           </Defs>
           <Rect x="0" y="0" width={this.props.dimensions.width} height={this.props.dimensions.height} fill="url(#grad)"/>

@@ -6,6 +6,8 @@ import StatusBarComponent from '../../components/StatusBarComponent/StatusBarCom
 import TripList from '../../components/TripList/TripList';
 import Logout from '../../components/Logout/Logout';
 import AddButton from '../../components/AddButton/AddButton';
+import Gradient from '../../components/Gradient/Gradient';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class TripsScreen extends Component{
   static navigationOptions = {
@@ -28,6 +30,7 @@ export default class TripsScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
+            <Gradient colorTop={CommonStyles.colorGradient3} colorBottom={CommonStyles.colorGradient4}/>
             <TripList navigation={this.props.navigation}/>
             <AddButton navigation={this.props.navigation}/>
         </View>

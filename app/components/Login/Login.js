@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	wrapper: {
-		paddingHorizontal: 40,
+		paddingHorizontal:40,
 		justifyContent: 'center',
 		flex: 1
 	},
@@ -147,18 +147,20 @@ const styles = StyleSheet.create({
 		marginVertical: 2.5
 	},
 	login: {
-		backgroundColor: CommonStyles.colorSemiBlack,
+		backgroundColor: CommonStyles.colorPrimary700,
 		paddingVertical: 10,
 		marginRight: 2.5,
 		alignItems: 'center',
+		elevation:2,
 		justifyContent: 'center',
 		flex: 1
 	},
 	signUp: {
-		backgroundColor: CommonStyles.colorSemiBlack,
+		backgroundColor: CommonStyles.colorPrimary700,
 		paddingVertical: 10,
 		marginLeft: 2.5,
 		alignItems: 'center',
+		elevation:2,
 		justifyContent: 'center',
 		flex: 1
 	},
@@ -172,6 +174,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#dc4e42',
 		paddingVertical: 10,
 		marginVertical: 2.5,
+		elevation:2,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},

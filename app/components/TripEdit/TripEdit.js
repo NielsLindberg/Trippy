@@ -53,8 +53,7 @@ class TripEdit extends Component{
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-    backgroundColor: CommonStyles.colorPrimary50
+		flex: 1
 	},
 	separator: {
     flex: 1,
