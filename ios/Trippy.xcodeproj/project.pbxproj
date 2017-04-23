@@ -40,6 +40,7 @@
 		9AB3F4EE7C54436A9923E8FC /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ABE161AFF1B46B995BC71B7 /* SafariServices.framework */; };
 		CF84C7F3D28D4F4BB572C9F7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343647EA376D430E86D19E07 /* SystemConfiguration.framework */; };
 		083264977C5C4F67A179531E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C7C6ACC731481BA2EF1FE7 /* AddressBook.framework */; };
+		4229014BA0574F22B0BF376F /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F65FEE6B80841889F054D30 /* libRNSVG.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -266,6 +267,8 @@
 		7ABE161AFF1B46B995BC71B7 /* SafariServices.framework */ = {isa = PBXFileReference; name = "SafariServices.framework"; path = "System/Library/Frameworks/SafariServices.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		343647EA376D430E86D19E07 /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		36C7C6ACC731481BA2EF1FE7 /* AddressBook.framework */ = {isa = PBXFileReference; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		F89B8FC8C0A340858CAEFFB1 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		4F65FEE6B80841889F054D30 /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +300,7 @@
 				9AB3F4EE7C54436A9923E8FC /* SafariServices.framework in Frameworks */,
 				CF84C7F3D28D4F4BB572C9F7 /* SystemConfiguration.framework in Frameworks */,
 				083264977C5C4F67A179531E /* AddressBook.framework in Frameworks */,
+				4229014BA0574F22B0BF376F /* libRNSVG.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +469,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				D9734DE11E854CD6BA585018 /* OAuthManager.xcodeproj */,
 				B9E05FD8DBF7424E9B47E967 /* RNGoogleSignin.xcodeproj */,
+				F89B8FC8C0A340858CAEFFB1 /* RNSVG.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1007,9 +1012,11 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-oauth\ios\OAuthManager",
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
@@ -1033,9 +1040,11 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-oauth\ios\OAuthManager",
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
@@ -1060,6 +1069,7 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-oauth\ios\OAuthManager",
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 				);
 			};
 			name = Debug;
@@ -1082,6 +1092,7 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-oauth\ios\OAuthManager",
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 				);
 			};
 			name = Release;
@@ -1113,9 +1124,11 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-oauth\ios\OAuthManager",
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
@@ -1148,9 +1161,11 @@
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-oauth\ios\OAuthManager",
 					"$(SRCROOT)\..\node_modules\react-native-google-signin\ios\RNGoogleSignin/**",
+					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
@@ -1177,6 +1192,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1201,6 +1217,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};

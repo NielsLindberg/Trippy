@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {AppRegistry, StyleSheet} from 'react-native';
+import {AppRegistry, StyleSheet, View} from 'react-native';
 import { Root } from '../config/router';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../actions';
@@ -12,15 +12,17 @@ class AppContainer extends Component {
 	constructor(props) {
 		super(props);
 	}
+	
 	componentDidMount() {
 		this.props.addFirestack();
 		this.props.setGoogleSigninConfigure();
 	}
+	_onLayout = event => this.props.appLayout(event.nativeEvent.layout);
  render() {
  	return (
- 		<Root 
- 			style={styles.screen}
- 		/>
+ 		<View onLayout={this._onLayout} style={styles.screen}>
+	 		<Root style={styles.screen}/>
+ 		</View>
  	)
  }
 }

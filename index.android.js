@@ -8,6 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import reducer from './app/reducers';
 import AppContainer from './app/containers/AppContainer';
+import initialState from './app/reducers/initialState';
 
 const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__ });
 
@@ -21,7 +22,7 @@ function configureStore(initialState) {
 	return createStore(reducer, initialState, enhancer);
 }
 
-const store = configureStore({});
+const store = configureStore(initialState);
 
 const App = () => (
 	<Provider store={store}>

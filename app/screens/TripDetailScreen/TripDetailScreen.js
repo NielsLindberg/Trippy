@@ -12,11 +12,12 @@ export default class TripDetailScreen extends Component{
     title: 'TripDetails',
     header: (navigation) => ({
       style: {
-        backgroundColor: CommonStyles.colorPrimary700
+        backgroundColor: CommonStyles.colorPrimary50,
+        elevation: 0
       },
-      tintColor: CommonStyles.colorPrimary700Text,
+      tintColor: CommonStyles.colorPrimary50Text,
       titleStyle: {
-        color: CommonStyles.colorPrimary700Text,
+        color: CommonStyles.colorPrimary50Text,
         fontFamily: CommonStyles.fontPrimary
       }
     }),

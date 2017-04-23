@@ -17,9 +17,13 @@ var commonStyles = {
 	colorPrimary800Text: '#FFF',
 	colorPrimary900: '#263238',
 	colorPrimary900Text: '#FFF',
-	colorAccent: '#0091EA',
-	colorAccent20P: '#0091EA20',
+	colorAccent: '#2bc0e4',
+	colorAccent20P: '#2bc0e420',
 	colorAccentText: '#fff',
-	fontPrimary: 'Roboto'
+	fontPrimary: 'Roboto',
+	colorGradient1: '#2bc0e4',
+	colorGradient2: '#eaecc6',
+	colorSemiBlack: 'rgba(0, 0, 0, 0.4)',
+	colorSemiWhite: 'rgba(255, 255, 255, 0.9)'
 };
 export default CommonStyles = commonStyles;
