@@ -17,10 +17,10 @@ class AppContainer extends Component {
 		this.props.addFirestack();
 		this.props.setGoogleSigninConfigure();
 	}
-	_onLayout = event => this.props.appLayout(event.nativeEvent.layout);
+	//_onLayout = event => this.props.appLayout(event.nativeEvent.layout);
  render() {
  	return (
- 		<View onLayout={this._onLayout} style={styles.screen}>
+ 		<View style={styles.screen}>
 	 		<Root style={styles.screen}/>
  		</View>
  	)

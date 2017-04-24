@@ -30,7 +30,7 @@ export default class TripsScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            <Gradient colorTop={CommonStyles.colorGradient3} colorBottom={CommonStyles.colorGradient4}/>
+            
             <TripList navigation={this.props.navigation}/>
             <AddButton navigation={this.props.navigation}/>
         </View>

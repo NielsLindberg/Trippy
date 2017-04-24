@@ -31,7 +31,7 @@ export default class DirectionsScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            <Gradient colorTop={CommonStyles.colorGradient3} colorBottom={CommonStyles.colorGradient4}/>
+            
             <Directions/>
         </View>
       )

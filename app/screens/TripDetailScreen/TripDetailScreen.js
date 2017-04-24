@@ -31,7 +31,7 @@ export default class TripDetailScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            <Gradient colorTop={CommonStyles.colorGradient3} colorBottom={CommonStyles.colorGradient4}/>
+            
             <TripEdit 
               params={this.props.navigation.state.params}
               navigation={this.props.navigation}
