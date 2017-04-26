@@ -11,21 +11,7 @@ import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class TripDetailScreen extends Component{
   static navigationOptions = {
-    title: 'TripDetails',
-    header: (navigation) => ({
-      style: {
-        elevation: 0
-      },
-      tintColor: CommonStyles.colorPrimary50Text,
-      titleStyle: {
-        color: CommonStyles.colorPrimary50Text,
-        fontFamily: CommonStyles.fontPrimary
-      }
-    }),
-    tabBar: {
-      label: 'Trips',
-      icon: ({ tintColor }) => <Icon name="playlist-add" size={25} color={tintColor} />
-    },
+    title: 'TripDetails'
   }
   render(){
     return(

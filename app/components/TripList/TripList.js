@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, ListView, ScrollView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {AppRegistry, Text, View, FlatList, ScrollView, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
-import { Backend } from '../../modules/Backend/Backend';
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 import Trip from '../Trip/Trip';
 
 class TripList extends Component{
@@ -26,9 +23,9 @@ class TripList extends Component{
 	render(){
 		return(
 			<ScrollView style={styles.container}>
-				<ListView
-					dataSource={this.props.userTrips}
-					renderRow={this.renderRow}
+				<FlatList
+					data={this.props.userTrips}
+					renderItem={({item}) => this.renderRow(item)}
 				/>
 			</ScrollView>
 		)
@@ -42,13 +39,9 @@ const styles = StyleSheet.create({
 	}
 });
 
-const ds = new ListView.DataSource({
-  rowHasChanged: (r1, r2) => r1 !== r2
-});
-
 function mapStateToProps(state) {
 	return {
-		userTrips: ds.cloneWithRows(state.setUserTrips)
+		userTrips: state.setUserTrips
 	}
 }
 

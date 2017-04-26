@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import TripList from '../../components/TripList/TripList';
@@ -10,22 +9,6 @@ import Gradient from '../../components/Gradient/Gradient';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class TripsScreen extends Component{
-  static navigationOptions = {
-    title: 'Trips',
-    header: (navigation) => ({
-      style: {
-        backgroundColor: CommonStyles.colorPrimary700
-      },
-      titleStyle: {
-        color: CommonStyles.colorPrimary700Text,
-        fontFamily: CommonStyles.fontPrimary
-      }
-    }),
-    tabBar: {
-      label: 'Trips',
-      icon: ({ tintColor }) => <Icon name="playlist-add" size={25} color={tintColor} />
-    },
-  }
   render(){
     return(
     		<View style={styles.screen}>

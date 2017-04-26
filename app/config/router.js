@@ -1,5 +1,6 @@
 import React from 'react';
 import { TabNavigator, StackNavigator, TabView } from 'react-navigation';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import DirectionsScreen from '../screens/DirectionsScreen/DirectionsScreen';
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
@@ -10,7 +11,11 @@ import CommonStyles from '../modules/CommonStyles/CommonStyles';
 
 export const TripsStack = StackNavigator({
   TripsScreen: {
-    screen: TripsScreen
+    screen: TripsScreen,
+    navigationOptions: () => ({
+      title: 'Trips',
+      tabBarLabel: 'Trips'
+    })
   },
   TripDetailScreen: {
     screen: TripDetailScreen
@@ -23,13 +28,28 @@ export const TripsStack = StackNavigator({
 
 export const Tabs = TabNavigator({
   TripsStack: {
-    screen: TripsStack
+    screen: TripsStack,
+    navigationOptions: () => ({
+      title: 'Trips',
+      tabBarLabel: 'Trips',
+      tabBarIcon: () => <Icon name="playlist-add" size={25} color={CommonStyles.colorPrimary900Text}/>
+    }),
   },
   MapScreen: {
-    screen: MapScreen
+    screen: MapScreen,
+    navigationOptions: () => ({
+      title: 'Map',
+      tabBarLabel: 'Map',
+      tabBarIcon: () => <Icon name="map" size={25} color={CommonStyles.colorPrimary900Text}/>
+    }),
   },
   DirectionsScreen: {
-    screen: DirectionsScreen
+    screen: DirectionsScreen,
+    navigationOptions: () => ({
+      title: 'Directions',
+      tabBarLabel: 'Directions',
+      tabBarIcon: () => <Icon name="directions" size={25} color={CommonStyles.colorPrimary900Text}/>
+    }),
   }
 }, {
     headerMode: 'card',
@@ -54,7 +74,12 @@ export const Tabs = TabNavigator({
 
 export const Root = StackNavigator({
   LoginScreen: {
-    screen: LoginScreen
+    screen: LoginScreen,
+    navigationOptions: () => ({
+      title: 'Login',
+      tabBarVisible: false,
+      headerVisible: false
+    })
   },
   Tabs: {
     screen: Tabs

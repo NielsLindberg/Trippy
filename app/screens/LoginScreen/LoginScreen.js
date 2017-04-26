@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Backend } from '../../modules/Backend/Backend';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
@@ -14,15 +13,6 @@ export default class LoginScreen extends Component{
     this.state = {
     }
   }
-  static navigationOptions = {
-    title: 'Login',
-      tabBar: {
-      visible: false
-    },
-    header: {
-    	visible: false
-    }
-  }
   componentDidMount(){
     Backend.setGoogleSigninConfigure();
   }
@@ -30,7 +20,7 @@ export default class LoginScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent hidden={true}/>
-            <Gradient colorTop={CommonStyles.colorGradient1} colorBottom={CommonStyles.colorGradient2}/>
+            <Gradient colorTop={CommonStyles.colorGradient5} colorBottom={CommonStyles.colorGradient6}/>
             <Login navigation={this.props.navigation}/>
             
         </View>
