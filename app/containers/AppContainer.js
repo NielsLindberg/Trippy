@@ -21,7 +21,7 @@ class AppContainer extends Component {
  render() {
  	return (
  		<View style={styles.screen}>
-	 		<Root style={styles.screen}/>
+	 		<Root/>
  		</View>
  	)
  }
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   screen: {
     flexDirection: 'column',
     flex: 1,
-    backgroundColor: CommonStyles.colorPrimary50
+    backgroundColor: CommonStyles.colorPrimary900
   }
 });
 

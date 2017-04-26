@@ -94,8 +94,10 @@ class Login extends Component{
             		</Text>
             	</View>
             </TouchableOpacity>
-            {this.props.loginIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
-            <Text style={styles.responseText}>{this.props.response}</Text>
+            <View style={styles.response}>
+	            {this.props.loginIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
+	            <Text style={styles.responseText}>{this.props.response}</Text>
+            </View>
 	        </View>
 	    </View>
     );
@@ -199,11 +201,13 @@ const styles = StyleSheet.create({
 		fontSize: 18,
     fontFamily: CommonStyles.fontPrimary
 	},
-	responseText: {
+	response: {
 		height: 40,
-		marginTop:20,
+		marginTop: 20
+	},
+	responseText: {
 		textAlign: 'center',
-		color: '#00000050',
+		color: CommonStyles.colorSemiBlack,
     fontFamily: CommonStyles.fontPrimary
 	}
 });
