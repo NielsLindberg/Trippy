@@ -5,5 +5,9 @@ export default initialState = {
 			width: 1,
 			orientation: 'PORTRAIT'
 		}
-	}
+	},
+	loginResponse: {
+		errorMessage: ''
+	},
+	loginIndicator: false
 };

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
@@ -32,7 +31,7 @@ class Trip extends Component{
 						<Icon name='map' style={styles.activeText}/>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.rowContent} onPress={() => {this.editDetails()}}>
-							<Text style={styles.title}>{this.props.title}</Text>
+							<Text style={[styles.title, this.props.title == '' ? styles.noTitle: null]}>{this.props.title != '' ? this.props.title : 'Add Title'}</Text>
 							<Icon name="keyboard-arrow-right" style={styles.editDetailsText}/>		
 					</TouchableOpacity>
 				</View>
@@ -80,13 +79,6 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		color: CommonStyles.colorAccentText
 	},
-	buttons: {
-		flexDirection: 'column',
-		justifyContent: 'center',
-		paddingTop: 12,
-		paddingBottom: 12,
-		paddingRight: 16		
-	},
 	title: {
 		flex: 1,
 		textAlign: 'center',
@@ -94,6 +86,11 @@ const styles = StyleSheet.create({
 		margin: 0,
 		padding: 0,
 		fontFamily: 'Roboto'
+	},
+	noTitle: {
+		color: CommonStyles.colorSemiBlack,
+		fontStyle: 'italic',
+		fontSize: 16
 	},
 	editDetailsText: {
 		fontFamily: CommonStyles.fontPrimary,

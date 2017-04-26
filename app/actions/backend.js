@@ -3,6 +3,9 @@ import { Backend } from '../lib/Backend';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import Firestack from 'react-native-firestack';
 
+const noEmailPassword = {errorMessage: 'Enter an email and password.'};
+const clearErrorMessage = {errorMessage: ''};
+
 export function setGoogleSigninConfigure() {
 	return (dispatch) => {
 		GoogleSignin.configure({
@@ -75,13 +78,73 @@ export function letGoogleSignin() {
 	}
 }
 
+export function signUpWithEmail(email, password) {
+	return (dispatch, getState) => {
+		dispatch(setLoginResponse(clearErrorMessage));
+		if(email && password) {
+			dispatch(setLoginIndicator(true));
+			getState().setFirestack.auth.createUserWithEmail(email, password)
+			.then(() => {
+				dispatch(setLoginResponse(response))
+				dispatch(getCurrentUser())
+			})
+			.catch((err) => {
+				dispatch(setLoginResponse(err))
+				dispatch(setLoginIndicator(false));
+			})
+		} else {
+				dispatch(setLoginResponse(noEmailPassword));
+		}
+	}
+}
+
+export function signInWithEmail(email, password) {
+	return (dispatch, getState) => {
+		dispatch(setLoginResponse(clearErrorMessage));
+		if(email && password) {
+			dispatch(setLoginIndicator(true));
+			getState().setFirestack.auth.signInWithEmail(email, password)
+			.then((response) => {
+				dispatch(setLoginResponse(response))
+				dispatch(getCurrentUser())
+			})
+			.catch((err) => {
+				dispatch(setLoginResponse(err));
+				dispatch(setLoginIndicator(false));
+			})
+		} else {
+			dispatch(setLoginResponse(noEmailPassword));
+		}
+	}
+}
+
 export function signInWithGoogle(idToken){
 	return (dispatch, getState) => {
-     getState().setFirestack.auth.signInWithProvider('google', idToken)
-     .then(() => {
-     	dispatch(getCurrentUser());
-     });
+		dispatch(setLoginResponse(clearErrorMessage));
+		dispatch(setLoginIndicator(true));
+    getState().setFirestack.auth.signInWithProvider('google', idToken)
+    .then(() => {
+    dispatch(getCurrentUser());
+    })
+    .catch((err) => {
+			dispatch(setLoginResponse(err))
+			dispatch(setLoginIndicator(false));
+		})
   }
+}
+
+export function setLoginResponse(response) {
+	return {
+		type: types.SET_LOGIN_RESPONSE,
+		payload: response
+	}
+}
+
+export function setLoginIndicator(indicator) {
+	return {
+		type: types.SET_LOGIN_INDICATOR,
+		payload: indicator
+	}
 }
 
 export function getUserRef(user) {
@@ -107,6 +170,7 @@ export function getCurrentUser() {
       dispatch(getUserRef(user))
     })
     .catch(err => {
+    	dispatch(setLoginIndicator(false));
       console.log(err)
     });
   }
@@ -119,10 +183,9 @@ export function setUserTrips(trips) {
 	}
 }
 
-export function addUserItem(item, navigation){
+export function addUserItem(item){
 	return (dispatch, getState) => {
-		getState().setFirebaseUserRef.push(item)
-		.then((response) => dispatch(getUserTrip(response.key, navigation)));
+		getState().setFirebaseUserRef.push(item);
 	}
 }
 
@@ -166,6 +229,7 @@ export function getUserTrip(key, navigation) {
 	 return (dispatch, getState) => {
 	   	getState().setFirebaseUserRef.child(key).once('value', (snap) => {
 	   		dispatch(setCurrentTrip(snap));
+	   		dispatch(setLoginIndicator(false));
 	   		navigation.navigate('TripDetailScreen', {id: key});
 		});
   }

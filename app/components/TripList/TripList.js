@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, FlatList, ScrollView, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+import { bindActionCreators } from 'redux';
 import Trip from '../Trip/Trip';
+import AddButton from '../AddButton/AddButton';
 
 class TripList extends Component{
 	constructor(props){
 		super(props);
 		this.renderRow = this.renderRow.bind(this);
-	}
-	static defaultProps = {
+		this.renderFooter = this.renderFooter.bind(this);
 	}
 	renderRow(trip) {
 		return(
@@ -20,12 +22,19 @@ class TripList extends Component{
 			/>
 		)
 	}
+	renderFooter = () => {
+		return(
+				<AddButton addItem={this.props.addUserItem} item={{title: '', active: false}}/>
+		)
+	}
 	render(){
 		return(
 			<ScrollView style={styles.container}>
 				<FlatList
+					style={styles.flatList}
 					data={this.props.userTrips}
 					renderItem={({item}) => this.renderRow(item)}
+					ListFooterComponent={this.renderFooter}
 				/>
 			</ScrollView>
 		)
@@ -36,8 +45,15 @@ const styles = StyleSheet.create({
 		flex: 1,
 		paddingTop: 5,
 		paddingBottom: 5
+	},
+	flatList: {
+		marginBottom: 5
 	}
 });
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(ActionCreators, dispatch);
+}
 
 function mapStateToProps(state) {
 	return {
@@ -45,4 +61,4 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(TripList);
+export default connect(mapStateToProps, mapDispatchToProps)(TripList);

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {AppRegistry, Text, View, StyleSheet, ActivityIndicator, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
@@ -16,7 +15,6 @@ class Login extends Component{
 		this.state = {
 			email: '',
 			password: '',
-			response: '',
 			user: '',
 			token: ''
 		};
@@ -65,7 +63,7 @@ class Login extends Component{
 	          </View>
 	          <View style={styles.loginWrapper}>
               <TouchableOpacity
-              	onPress={() => {Backend.signIn(this.state.email,this.state.password)}}
+              	onPress={() => {this.props.loginIndicator ? null : this.props.signInWithEmail(this.state.email,this.state.password)}}
               	activeOpacity={0.5}
               	style={styles.login}
               >
@@ -74,7 +72,7 @@ class Login extends Component{
               	</Text>
               </TouchableOpacity>
               <TouchableOpacity
-              	onPress={() => {Backend.signUp(this.state.email,this.state.password)}}
+              	onPress={() => {this.props.loginIndicator ? null : this.props.signUpWithEmail(this.state.email,this.state.password)}}
               	activeOpacity={0.5}
               	style={styles.signUp}
               >
@@ -87,7 +85,7 @@ class Login extends Component{
             	OR
             </Text>
             <TouchableOpacity
-            	onPress={() => {this.props.getGoogleSignin()}}
+            	onPress={() => {this.props.loginIndicator ? null : this.props.getGoogleSignin()}}
             	activeOpacity={0.5}
             >
             	<View style={styles.loginGoogle}>
@@ -96,7 +94,8 @@ class Login extends Component{
             		</Text>
             	</View>
             </TouchableOpacity>
-            <Text style={styles.responseText}>{this.state.response}</Text>
+            {this.props.loginIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
+            <Text style={styles.responseText}>{this.props.response}</Text>
 	        </View>
 	    </View>
     );
@@ -216,7 +215,9 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
 	return {
 		authenticated: state.setFirebaseUser.authenticated,
-		userRef: state.setFirebaseUserRef
+		userRef: state.setFirebaseUserRef,
+		response: state.loginResponse.errorMessage,
+		loginIndicator: state.loginIndicator
 	}
 }
 

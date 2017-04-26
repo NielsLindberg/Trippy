@@ -7,6 +7,18 @@ export const setGoogleUser = createReducer({}, {
 	}
 });
 
+export const loginResponse = createReducer({}, {
+	[types.SET_LOGIN_RESPONSE](state, action) {
+		return action.payload;
+	}
+});
+
+export const loginIndicator = createReducer({}, {
+	[types.SET_LOGIN_INDICATOR](state, action) {
+		return action.payload;
+	}
+});
+
 export const setGoogleConfig = createReducer({}, {
 	[types.SET_GOOGLE_CONFIG](state, action) {
 		return true;
