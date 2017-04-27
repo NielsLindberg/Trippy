@@ -19,6 +19,12 @@ export const loginIndicator = createReducer({}, {
 	}
 });
 
+export const tripsIndicator = createReducer({}, {
+	[types.SET_TRIPS_INDICATOR](state, action) {
+		return action.payload;
+	}
+});
+
 export const setGoogleConfig = createReducer({}, {
 	[types.SET_GOOGLE_CONFIG](state, action) {
 		return true;

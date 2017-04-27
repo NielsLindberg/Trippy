@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, FlatList, ScrollView, StyleSheet} from 'react-native';
+import {AppRegistry, ActivityIndicator, FlatList, ScrollView, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
@@ -30,6 +30,7 @@ class TripList extends Component{
 	render(){
 		return(
 			<ScrollView style={styles.container}>
+				{this.props.tripsIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
 				<FlatList
 					style={styles.flatList}
 					data={this.props.userTrips}
@@ -57,7 +58,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		userTrips: state.setUserTrips
+		userTrips: state.setUserTrips,
+		tripsIndicator: state.tripsIndicator
 	}
 }
 

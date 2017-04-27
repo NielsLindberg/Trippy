@@ -147,6 +147,13 @@ export function setLoginIndicator(indicator) {
 	}
 }
 
+export function setTripsIndicator(indicator) {
+	return {
+		type: types.SET_TRIPS_INDICATOR,
+		payload: indicator
+	}
+}
+
 export function getUserRef(user) {
   return (dispatch, getState) => {
      let userRef = getState().setFirestack.itemsRef.child("users/" + user.user.uid);
@@ -204,12 +211,14 @@ export function deleteUserItem(key) {
 export function getUserTrips() {
 	 return (dispatch, getState) => {
 	   	getState().setFirebaseUserRef.on('value', (snap) => {
+	   		dispatch(setTripsIndicator(true));
 				var items = [];
 				snap.forEach((child) => {
 					items.push(child);
 				});
+				dispatch(setTripsIndicator(false));
 				dispatch(setUserTrips(items));
-		});
+		})
   }
 }
 export function setCurrentTrip(trip) {
@@ -229,7 +238,6 @@ export function getUserTrip(key, navigation) {
 	 return (dispatch, getState) => {
 	   	getState().setFirebaseUserRef.child(key).once('value', (snap) => {
 	   		dispatch(setCurrentTrip(snap));
-	   		dispatch(setLoginIndicator(false));
 	   		navigation.navigate('TripDetailScreen', {id: key});
 		});
   }
