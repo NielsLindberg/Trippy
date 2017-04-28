@@ -2,6 +2,10 @@
 #
 .DS_Store
 
+# Sensative
+android/gradle.properties
+app/modules/Backend/
+
 # Xcode
 #
 build/
