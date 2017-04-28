@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';
 
-import { Backend } from '../../modules/Backend/Backend';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import Login from '../../components/Login/Login';
 import Gradient from '../../components/Gradient/Gradient';
@@ -14,7 +13,6 @@ export default class LoginScreen extends Component{
     }
   }
   componentDidMount(){
-    Backend.setGoogleSigninConfigure();
   }
   render(){
     return(

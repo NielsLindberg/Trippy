@@ -1,5 +1,4 @@
 import * as types from './types';
-import { Backend } from '../lib/Backend';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import Firestack from 'react-native-firestack';
 
