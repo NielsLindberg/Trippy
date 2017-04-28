@@ -5,6 +5,7 @@ import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import Trip from '../Trip/Trip';
 import AddButton from '../AddButton/AddButton';
+import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 class TripList extends Component{
 	constructor(props){
