@@ -2,8 +2,11 @@
 #
 .DS_Store
 
-# Sensative
+# Sensetive
 android/gradle.properties
+android/app/google-services.json
+android/app/keystoredebug
+android/app/my-release-key.keystore
 app/modules/Backend/
 
 # Xcode
