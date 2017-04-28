@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {AppRegistry, Alert, Text, View, ListView, ScrollView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Backend } from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';

@@ -3,7 +3,6 @@ import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from '
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Backend from '../../modules/Backend/Backend';
 import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 
 export default class Directions extends Component{

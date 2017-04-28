@@ -1,7 +1,6 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Root } from './app/config/router';
-import { Backend } from './app/modules/Backend/Backend';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';

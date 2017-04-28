@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { Backend } from '../../modules/Backend/Backend';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import TripEdit from '../../components/TripEdit/TripEdit';
 import Logout from '../../components/Logout/Logout';
