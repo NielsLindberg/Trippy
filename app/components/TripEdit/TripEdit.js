@@ -79,7 +79,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		trip: state.currentTrip.value
+		trip: state.currentTrip.val()
 	}
 }
 

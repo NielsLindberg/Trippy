@@ -20,7 +20,7 @@ class Login extends Component{
 		};
   }
   componentWillReceiveProps(){
-  	if(this.props.authenticated && this.props.userRef) {
+  	if(this.props.userRef) {
   		this.props.navigation.dispatch(goToTrips);
   	}
   }
@@ -218,9 +218,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		authenticated: state.setFirebaseUser.authenticated,
 		userRef: state.setFirebaseUserRef,
-		response: state.loginResponse.errorMessage,
+		response: state.loginResponse.message,
 		loginIndicator: state.loginIndicator
 	}
 }

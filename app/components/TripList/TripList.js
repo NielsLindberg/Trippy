@@ -10,6 +10,9 @@ import CommonStyles from '../../modules/CommonStyles/CommonStyles';
 class TripList extends Component{
 	constructor(props){
 		super(props);
+		this.state = {
+			trips: []
+		};
 		this.renderRow = this.renderRow.bind(this);
 		this.renderFooter = this.renderFooter.bind(this);
 	}
@@ -17,11 +20,24 @@ class TripList extends Component{
 		return(
 			<Trip
 				id={trip.key}
-				title={trip.value.title}
-				active={trip.value.active}
+				title={trip.val().title}
+				active={trip.val().active}
 				navigation={this.props.navigation}
 			/>
 		)
+	}
+	componentWillReceiveProps() {
+		if(Object.keys(this.props.userTrips).length > 0) {
+			var items = [];
+			console.log(this.props.userTrips);
+			console.log(this.props.userTrips.val());
+
+				this.props.userTrips.forEach((child) => {
+					items.push(child);
+				});
+			console.log(items);
+			this.setState({trips: items});
+		}
 	}
 	renderFooter = () => {
 		return(
@@ -34,7 +50,7 @@ class TripList extends Component{
 				{this.props.tripsIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
 				<FlatList
 					style={styles.flatList}
-					data={this.props.userTrips}
+					data={this.state.trips}
 					renderItem={({item}) => this.renderRow(item)}
 					ListFooterComponent={this.renderFooter}
 				/>

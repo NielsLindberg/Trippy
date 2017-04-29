@@ -1,9 +1,9 @@
 import * as types from './types';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
-import Firestack from 'react-native-firestack';
+import RNFirebase from 'react-native-firebase';
 
-const noEmailPassword = {errorMessage: 'Enter an email and password.'};
-const clearErrorMessage = {errorMessage: ''};
+const noEmailPassword = {message: 'Enter an email and password.'};
+const clearErrorMessage = {message: ''};
 
 export function setGoogleSigninConfigure() {
 	return (dispatch) => {
@@ -27,7 +27,9 @@ export function setGoogleSigninConfigureState() {
 }
 
 export function addFirestack() {
-	let firestack = new Firestack();
+	const firestack = RNFirebase.initializeApp({
+  	debug: true
+	});	
 	return {
 		type: types.SET_FIRESTACK,
 		firestack
@@ -82,7 +84,7 @@ export function signUpWithEmail(email, password) {
 		dispatch(setLoginResponse(clearErrorMessage));
 		if(email && password) {
 			dispatch(setLoginIndicator(true));
-			getState().setFirestack.auth.createUserWithEmail(email, password)
+			getState().setFirestack.auth().createUserWithEmailAndPassword(email, password)
 			.then(() => {
 				dispatch(setLoginResponse(response))
 				dispatch(getCurrentUser())
@@ -102,7 +104,7 @@ export function signInWithEmail(email, password) {
 		dispatch(setLoginResponse(clearErrorMessage));
 		if(email && password) {
 			dispatch(setLoginIndicator(true));
-			getState().setFirestack.auth.signInWithEmail(email, password)
+			getState().setFirestack.auth().signInWithEmailAndPassword(email, password)
 			.then((response) => {
 				dispatch(setLoginResponse(response))
 				dispatch(getCurrentUser())
@@ -121,7 +123,7 @@ export function signInWithGoogle(idToken){
 	return (dispatch, getState) => {
 		dispatch(setLoginResponse(clearErrorMessage));
 		dispatch(setLoginIndicator(true));
-    getState().setFirestack.auth.signInWithProvider('google', idToken)
+    getState().setFirestack.auth().signInWithCredential({provider: 'google', token: idToken})
     .then(() => {
     dispatch(getCurrentUser());
     })
@@ -155,7 +157,7 @@ export function setTripsIndicator(indicator) {
 
 export function getUserRef(user) {
   return (dispatch, getState) => {
-     let userRef = getState().setFirestack.itemsRef.child("users/" + user.user.uid);
+     let userRef = getState().setFirestack.itemsRef.child("users/" + user.uid);
      dispatch(setUserRef(userRef));
      dispatch(getUserTrips());
   }
@@ -170,15 +172,10 @@ export function setUserRef(userRef) {
 
 export function getCurrentUser() {
 	return (dispatch, getState) => {
-    getState().setFirestack.auth.getCurrentUser()
-    .then(user => {
+    let user = getState().setFirestack.auth().currentUser
       dispatch(setCurrentUser(user))
       dispatch(getUserRef(user))
-    })
-    .catch(err => {
     	dispatch(setLoginIndicator(false));
-      console.log(err)
-    });
   }
 }
 
@@ -211,12 +208,8 @@ export function getUserTrips() {
 	 return (dispatch, getState) => {
 	   	getState().setFirebaseUserRef.on('value', (snap) => {
 	   		dispatch(setTripsIndicator(true));
-				var items = [];
-				snap.forEach((child) => {
-					items.push(child);
-				});
+				dispatch(setUserTrips(snap));
 				dispatch(setTripsIndicator(false));
-				dispatch(setUserTrips(items));
 		})
   }
 }

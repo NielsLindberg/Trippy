@@ -12,11 +12,12 @@ class Trip extends Component{
 		this.editDetails = this.editDetails.bind(this);
 	}
 	editDetails(){
+		console.log(this.props.id);
 		this.props.navigateToDetails(this.props.id, this.props.navigation);
 	}
 	activateMap(){
 		this.props.trips.forEach((trip) => {
-			let value = trip.value;
+			let value = trip.val();
 			value.active = trip.key != this.props.id ? false: true;
 			this.props.updateUserItem(trip.key, value)
 		});

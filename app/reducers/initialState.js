@@ -7,7 +7,7 @@ export default initialState = {
 		}
 	},
 	loginResponse: {
-		errorMessage: ''
+		message: ''
 	},
 	loginIndicator: false
 };

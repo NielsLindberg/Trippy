@@ -10,7 +10,8 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 
-import io.fullstack.firestack.FirestackPackage;
+// import io.fullstack.firestack.FirestackPackage;
+import io.invertase.firebase.RNFirebasePackage;
 import com.airbnb.android.react.maps.MapsPackage;
 
 import java.util.Arrays;
@@ -30,8 +31,9 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new SvgPackage(),
             new RNGoogleSigninPackage(),
-            new FirestackPackage(),
-            new MapsPackage()
+            // new FirestackPackage(),
+            new MapsPackage(),
+            new RNFirebasePackage()
       );
     }
   };

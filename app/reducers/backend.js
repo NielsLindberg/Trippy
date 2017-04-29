@@ -53,7 +53,7 @@ export const setFirestack = createReducer({}, {
 	[types.SET_FIRESTACK](state, action) {
 		let newState = {};
 		newState = action.firestack;
-		newState.itemsRef = action.firestack.database.ref();
+		newState.itemsRef = action.firestack.database().ref();
 		return newState;
 	}
 });
