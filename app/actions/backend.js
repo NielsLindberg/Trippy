@@ -28,7 +28,6 @@ export function setGoogleSigninConfigureState() {
 
 export function addFirestack() {
 	const firestack = RNFirebase.initializeApp({
-  	debug: true
 	});	
 	return {
 		type: types.SET_FIRESTACK,

@@ -29,13 +29,9 @@ class TripList extends Component{
 	componentWillReceiveProps() {
 		if(Object.keys(this.props.userTrips).length > 0) {
 			var items = [];
-			console.log(this.props.userTrips);
-			console.log(this.props.userTrips.val());
-
 				this.props.userTrips.forEach((child) => {
 					items.push(child);
 				});
-			console.log(items);
 			this.setState({trips: items});
 		}
 	}
