@@ -228,7 +228,6 @@ export function setCurrentTripIndicator(indicator) {
 
 export function setCurrentUserTrip(dest) {
 	return (dispatch, getState) => {
-		dispatch(setCurrentTrip({}));
 		dispatch(getUserTrip(dest));
 	}
 }

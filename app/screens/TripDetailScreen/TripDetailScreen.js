@@ -3,11 +3,14 @@ import {AppRegistry, View, StyleSheet} from 'react-native';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import TripEdit from '../../components/TripEdit/TripEdit';
 import CommonStyles from '../../lib/CommonStyles';
+import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+import { bindActionCreators } from 'redux';
 
-export default class TripDetailScreen extends Component{
-  static navigationOptions = {
-    title: 'TripDetails'
-  }
+class TripDetailScreen extends Component{
+  static navigationOptions = ({navigation}) => ({
+      title: `${navigation.state.params.trip.val().title}`
+  });
   render(){
     return(
     		<View style={styles.screen}>
@@ -27,4 +30,15 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('TripDetailScreen', () => TripDetailScreen);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(ActionCreators, dispatch);
+}
+
+function mapStateToProps(state) {
+  return {
+    currentTrip: state.currentTrip,
+    currentTripIndicator: state.currentTripIndicator
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TripDetailScreen);

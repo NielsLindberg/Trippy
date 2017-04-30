@@ -34,8 +34,10 @@ class TripEdit extends Component{
 		)
 	}
 	deletePress(){
+		this.props.currentTrip.ref.off('value');
+		this.props.deleteUserItem('trips/' + this.props.currentTrip.key);
 		this.props.navigation.goBack();
-		this.props.deleteUserItem('trips/' + this.props.params.trip.key);
+		
 	}
 	renderRow(location) {
 		return(
@@ -52,7 +54,6 @@ class TripEdit extends Component{
 			this.props.currentTrip.child('locations').forEach((child) => {
 				items.push(child);
 			});
-			console.log(this.props.currentTrip);
 			this.setState({
 				title: this.props.currentTrip.val().title,
 				locations: items
@@ -69,7 +70,7 @@ class TripEdit extends Component{
 	}
 	render() {
 		if(this.props.currentTripIndicator) {
-			return (<ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/>)
+			return (<ActivityIndicator size={35} style={styles.indicator} color={CommonStyles.colorSemiBlack}/>)
 		} else {
 			return (<ScrollView style={styles.container}>
 				<TextInput 
@@ -101,6 +102,9 @@ const styles = StyleSheet.create({
 	},
 	flatList: {
 		marginBottom: 5
+	},
+	indicator: {
+		alignSelf: 'center'
 	},
   deleteButton: {
 		backgroundColor: CommonStyles.colorAccent,

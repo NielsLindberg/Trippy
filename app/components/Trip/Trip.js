@@ -13,8 +13,7 @@ class Trip extends Component{
 	}
 	editDetails(){
 		this.props.setCurrentUserTrip('trips/' + this.props.trip.key);
-		this.props.getUserTrip('trips/' + this.props.trip.key);
-		this.props.navigation.navigate('TripDetailScreen');
+		this.props.navigation.navigate('TripDetailScreen', {trip: this.props.trip});
 	}
 	activateMap(){
 		this.props.trips.forEach((trip) => {
