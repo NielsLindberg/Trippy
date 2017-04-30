@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import {AppRegistry, View, Text, Navigator, StyleSheet, Button} from 'react-native';
+import {AppRegistry, View, StyleSheet} from 'react-native';
 
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import Directions from '../../components/Directions/Directions';
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
-import Gradient from '../../components/Gradient/Gradient';
+import CommonStyles from '../../lib/CommonStyles';
 
 export default class DirectionsScreen extends Component{
   render(){
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            
             <Directions/>
         </View>
       )

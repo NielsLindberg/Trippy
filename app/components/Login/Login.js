@@ -20,8 +20,8 @@ class Login extends Component{
 		};
   }
   componentWillReceiveProps(){
-  	if(this.props.userRef) {
-  		this.props.navigation.dispatch(goToTrips);
+  	if(Object.keys(this.props.userRef).length > 0) {
+  	  this.props.navigation.dispatch(goToTrips);
   	}
   }
 	render(){

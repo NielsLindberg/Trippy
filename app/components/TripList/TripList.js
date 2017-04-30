@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, ActivityIndicator, FlatList, ScrollView, StyleSheet} from 'react-native';
+import {AppRegistry, View, ActivityIndicator, FlatList, ScrollView, StyleSheet} from 'react-native';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
@@ -19,9 +19,7 @@ class TripList extends Component{
 	renderRow(trip) {
 		return(
 			<Trip
-				id={trip.key}
-				title={trip.val().title}
-				active={trip.val().active}
+				trip={trip}
 				navigation={this.props.navigation}
 			/>
 		)
@@ -37,13 +35,15 @@ class TripList extends Component{
 	}
 	renderFooter = () => {
 		return(
-				<AddButton addItem={this.props.addUserItem} item={{title: '', active: false}}/>
+			<View>
+				{this.props.tripsIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
+				<AddButton addItem={this.props.addUserItem} destination={'trips'} item={{title: '', active: false, locations: []}}/>
+			</View>
 		)
 	}
 	render(){
 		return(
 			<ScrollView style={styles.container}>
-				{this.props.tripsIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
 				<FlatList
 					style={styles.flatList}
 					data={this.state.trips}

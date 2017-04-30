@@ -185,27 +185,27 @@ export function setUserTrips(trips) {
 	}
 }
 
-export function addUserItem(item){
+export function addUserItem(dest, item){
 	return (dispatch, getState) => {
-		getState().setFirebaseUserRef.push(item);
+		getState().setFirebaseUserRef.child(dest).push(item);
 	}
 }
 
-export function updateUserItem(key, item) {
+export function updateUserItem(dest, item) {
 	return (dispatch, getState) => {
-		getState().setFirebaseUserRef.child(key).update(item);
+		getState().setFirebaseUserRef.child(dest).update(item);
 	}
 }
 
-export function deleteUserItem(key) {
+export function deleteUserItem(dest) {
 		return (dispatch, getState) => {
-			getState().setFirebaseUserRef.child(key).remove();
+			getState().setFirebaseUserRef.child(dest).remove();
   }
 }
 
 export function getUserTrips() {
 	 return (dispatch, getState) => {
-	   	getState().setFirebaseUserRef.on('value', (snap) => {
+	   	getState().setFirebaseUserRef.child('trips').on('value', (snap) => {
 	   		dispatch(setTripsIndicator(true));
 				dispatch(setUserTrips(snap));
 				dispatch(setTripsIndicator(false));
@@ -219,17 +219,26 @@ export function setCurrentTrip(trip) {
 	}
 }
 
-export function navigateToDetails(key, navigation) {
-	return (dispatch, getState) => {
-				dispatch(getUserTrip(key, navigation));
+export function setCurrentTripIndicator(indicator) {
+	return {
+		type: types.SET_CURRENT_TRIP_INDICATOR,
+		payload: indicator
 	}
 }
 
-export function getUserTrip(key, navigation) {
+export function setCurrentUserTrip(dest) {
+	return (dispatch, getState) => {
+		dispatch(setCurrentTrip({}));
+		dispatch(getUserTrip(dest));
+	}
+}
+
+export function getUserTrip(dest) {
 	 return (dispatch, getState) => {
-	   	getState().setFirebaseUserRef.child(key).once('value', (snap) => {
+	   	getState().setFirebaseUserRef.child(dest).on('value', (snap) => {
+	   		dispatch(setCurrentTripIndicator(true));
 	   		dispatch(setCurrentTrip(snap));
-	   		navigation.navigate('TripDetailScreen', {id: key});
+	   		dispatch(setCurrentTripIndicator(false));
 		});
   }
 }

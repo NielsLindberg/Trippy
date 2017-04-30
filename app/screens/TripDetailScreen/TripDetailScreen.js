@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
-import {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {AppRegistry, View, StyleSheet} from 'react-native';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import TripEdit from '../../components/TripEdit/TripEdit';
-import Logout from '../../components/Logout/Logout';
-import AddButton from '../../components/AddButton/AddButton';
-import Gradient from '../../components/Gradient/Gradient';
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import CommonStyles from '../../lib/CommonStyles';
 
 export default class TripDetailScreen extends Component{
   static navigationOptions = {
@@ -16,12 +12,9 @@ export default class TripDetailScreen extends Component{
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
-            
             <TripEdit 
-              params={this.props.navigation.state.params}
               navigation={this.props.navigation}
             />
-            <AddButton/>
         </View>
       )
   }

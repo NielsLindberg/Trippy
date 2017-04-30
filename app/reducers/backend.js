@@ -19,6 +19,12 @@ export const loginIndicator = createReducer({}, {
 	}
 });
 
+export const currentTripIndicator = createReducer({}, {
+	[types.SET_CURRENT_TRIP_INDICATOR](state, action) {
+		return action.payload;
+	}
+});
+
 export const tripsIndicator = createReducer({}, {
 	[types.SET_TRIPS_INDICATOR](state, action) {
 		return action.payload;

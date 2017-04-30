@@ -6,34 +6,21 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 
-class Trip extends Component{
+class Location extends Component{
 	constructor(props){
 		super(props);
 		this.editDetails = this.editDetails.bind(this);
 	}
 	editDetails(){
-		this.props.setCurrentUserTrip('trips/' + this.props.trip.key);
-		this.props.getUserTrip('trips/' + this.props.trip.key);
-		this.props.navigation.navigate('TripDetailScreen');
-	}
-	activateMap(){
-		this.props.trips.forEach((trip) => {
-			let value = trip.val();
-			value.active = trip.key != this.props.trip.key ? false: true;
-			this.props.updateUserItem('trips/' + trip.key, value)
-		});
+		console.log(this.props.id);
+		this.props.navigateToDetails(this.props.id, this.props.navigation);
 	}
 	render(){
 		return(
 			<View style={styles.container}>
 				<View style={styles.row}>
-					<TouchableOpacity 
-						style={[this.props.trip.val().active ? styles.mapButtonActive: styles.mapButtonInActive, styles.mapButton]}
-						onPress={() => {this.activateMap()}}>
-						<Icon name='map' style={styles.activeText}/>
-					</TouchableOpacity>
 					<TouchableOpacity style={styles.rowContent} onPress={() => {this.editDetails()}}>
-							<Text style={[styles.title, this.props.trip.val().title == '' ? styles.noTitle: null]}>{this.props.trip.val().title != '' ? this.props.trip.val().title : 'Add Title'}</Text>
+							<Text style={[styles.title, this.props.title == '' ? styles.noTitle: null]}>{this.props.title != '' ? this.props.title : 'Add Title'}</Text>
 							<Icon name="keyboard-arrow-right" style={styles.editDetailsText}/>		
 					</TouchableOpacity>
 				</View>
@@ -108,8 +95,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		trips: state.setUserTrips
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Trip);
+export default connect(mapStateToProps, mapDispatchToProps)(Location);

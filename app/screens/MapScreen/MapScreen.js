@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {AppRegistry, View, Text, Navigator, StyleSheet} from 'react-native';
+import {AppRegistry, View, StyleSheet} from 'react-native';
 
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import MapComponent from '../../components/MapComponent/MapComponent';
-import Logout from '../../components/Logout/Logout';
 
 export default class MapScreen extends Component{
   render(){

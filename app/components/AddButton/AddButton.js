@@ -9,7 +9,7 @@ export default class AddButton extends Component {
 		this.addItem = this.addItem.bind(this);
 	}
 	addItem(){
-		this.props.addItem(this.props.item);
+		this.props.addItem(this.props.destination, this.props.item);
 	}
 	render(){
 		return(
