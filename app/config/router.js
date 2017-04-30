@@ -22,7 +22,19 @@ export const TripsStack = StackNavigator({
   }
 },
   {
-    headerMode: 'screen'
+    headerMode: 'screen',
+    navigationOptions: {
+      headerTitleStyle: {
+        color: CommonStyles.colorPrimary900,
+        fontFamily: 'Roboto'
+      },
+      headerStyle: {
+        backgroundColor: CommonStyles.colorPrimary900Text,
+        margin: 5,
+        elevation: 2
+      },
+      headerTintColor: CommonStyles.colorPrimary900
+    }
   }
 );
 
