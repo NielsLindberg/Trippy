@@ -9,8 +9,16 @@ import { bindActionCreators } from 'redux';
 
 class TripDetailScreen extends Component{
   static navigationOptions = ({navigation}) => ({
-      title: `${navigation.state.params.trip.val().title}`
+      title: `${navigation.state.params.trip.val().title == '' ? 'Add Title': navigation.state.params.trip.val().title}`
   });
+
+  componentWillReceiveProps() {
+    console.log(this.props.navigation.state.params.trip.val().title);
+    if(Object.keys(this.props.currentTrip).length > 0 && this.props.navigation.state.params.trip != this.props.currentTrip) {
+      const {setParams} = this.props.navigation;
+      setParams({trip: this.props.currentTrip});
+    }
+  }
   render(){
     return(
     		<View style={styles.screen}>

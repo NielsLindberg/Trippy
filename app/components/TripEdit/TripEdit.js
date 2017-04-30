@@ -39,6 +39,11 @@ class TripEdit extends Component{
 		this.props.navigation.goBack();
 		
 	}
+	componentWillUnmount() {
+    if (this.props.currentTrip.ref) {
+      this.props.currentTrip.ref.off('value');
+    }
+  }
 	renderRow(location) {
 		return(
 			<Location
