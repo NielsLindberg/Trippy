@@ -58,7 +58,7 @@ import com.android.build.OutputFile
  *   inputExcludes: ["android/**", "ios/**"],
  *
  *   // override which node gets called and with what additional arguments
- *   nodeExecutableAndArgs: ["node"]
+ *   nodeExecutableAndArgs: ["node"],
  *
  *   // supply additional arguments to the packager
  *   extraPackagerArgs: []
@@ -84,7 +84,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "com.trippy"
@@ -126,10 +126,6 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.release
-        }
-        debug {
-            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
@@ -148,20 +144,17 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-svg')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
+
+    compile project(':react-native-svg')
     compile(project(':react-native-firebase')){
         exclude group: 'com.google.android.gms'
     }
-    // compile(project(':react-native-firestack')){
-    //     exclude group: 'com.google.android.gms', module: 'play-services-base'
-    // }
     compile(project(':react-native-maps')){
         exclude group: 'com.google.android.gms'
     }
-    // compile 'com.airbnb.android:react-native-maps:0.13.1'
     compile(project(":react-native-google-signin")){         
         exclude group: "com.google.android.gms"
     }

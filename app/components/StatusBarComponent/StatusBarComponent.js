@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AppRegistry, StatusBar} from 'react-native';
 
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import CommonStyles from '../../lib/CommonStyles';
 
 export default class StatusBarComponent extends Component{
 	constructor(props){

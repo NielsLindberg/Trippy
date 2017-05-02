@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import CommonStyles from '../../lib/CommonStyles';
 
 export default class AddButton extends Component {
 	constructor(props){

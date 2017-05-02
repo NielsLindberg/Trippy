@@ -5,7 +5,7 @@ import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import Trip from '../Trip/Trip';
 import AddButton from '../AddButton/AddButton';
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import CommonStyles from '../../lib/CommonStyles';
 
 class TripList extends Component{
 	constructor(props){
@@ -39,7 +39,7 @@ class TripList extends Component{
 	renderFooter = () => {
 		return(
 			<View>
-				{this.props.tripsIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
+				{this.props.fetching ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
 				<AddButton addItem={this.props.addUserItem} destination={'trips'} item={{title: '', active: false, locations: []}}/>
 			</View>
 		)
@@ -50,6 +50,7 @@ class TripList extends Component{
 				<FlatList
 					style={styles.flatList}
 					data={this.state.trips}
+					extraData={this.props.fetching}
 					renderItem={({item}) => this.renderRow(item)}
 					ListFooterComponent={this.renderFooter}
 				/>
@@ -75,7 +76,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
 	return {
 		userTrips: state.trips.userTrips,
-		tripsIndicator: state.trips.userTripsFetching
+		fetching: state.trips.userTripsFetching
 	}
 }
 

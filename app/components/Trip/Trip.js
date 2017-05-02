@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';

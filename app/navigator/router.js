@@ -2,12 +2,12 @@ import React from 'react';
 import { TabNavigator, StackNavigator, TabView } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import DirectionsScreen from '../screens/DirectionsScreen/DirectionsScreen';
-import LoginScreen from '../screens/LoginScreen/LoginScreen';
-import MapScreen from '../screens/MapScreen/MapScreen';
-import TripsScreen from '../screens/TripsScreen/TripsScreen';
-import TripDetailScreen from '../screens/TripDetailScreen/TripDetailScreen';
-import CommonStyles from '../modules/CommonStyles/CommonStyles';
+import DirectionsScreen from '../containers/DirectionsScreen/DirectionsScreen';
+import LoginScreen from '../containers/LoginScreen/LoginScreen';
+import MapScreen from '../containers/MapScreen/MapScreen';
+import TripsScreen from '../containers/TripsScreen/TripsScreen';
+import TripDetailScreen from '../containers/TripDetailScreen/TripDetailScreen';
+import CommonStyles from '../lib/CommonStyles';
 
 export const TripsStack = StackNavigator({
   TripsScreen: {
@@ -23,6 +23,9 @@ export const TripsStack = StackNavigator({
 },
   {
     headerMode: 'screen',
+    cardStyle: {
+      backgroundColor: CommonStyles.colorPrimary50
+    },
     navigationOptions: {
       headerTitleStyle: {
         color: CommonStyles.colorPrimary900,
@@ -98,6 +101,9 @@ export const Root = StackNavigator({
   }
 },
   {
-    headerMode: 'none'
+    headerMode: 'none',
+    cardStyle: {
+      backgroundColor: CommonStyles.colorPrimary50
+    }
   }
 );

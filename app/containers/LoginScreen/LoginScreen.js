@@ -3,7 +3,7 @@ import {AppRegistry, View, StyleSheet} from 'react-native';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import Login from '../../components/Login/Login';
 import Gradient from '../../components/Gradient/Gradient';
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import CommonStyles from '../../lib/CommonStyles';
 
 export default class LoginScreen extends Component{
   constructor(props) {
@@ -19,7 +19,6 @@ export default class LoginScreen extends Component{
             <StatusBarComponent hidden={true}/>
             <Gradient colorTop={CommonStyles.colorGradient5} colorBottom={CommonStyles.colorGradient6}/>
             <Login navigation={this.props.navigation}/>
-            
         </View>
       )
   }

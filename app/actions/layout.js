@@ -1,6 +1,7 @@
 import * as types from './types';
 
 export function appLayout(event: {width:number, height:number}) {
+	console.log(event);
 	const { width, height } = event;
 	const orientation = (width > height) ? 'LANDSCAPE' : 'PORTRAIT';
 	let payload = {};

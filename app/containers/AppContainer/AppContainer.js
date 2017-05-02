@@ -1,23 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {AppRegistry, StyleSheet, View} from 'react-native';
-import { Root } from '../config/router';
+import { Root } from '../../navigator/router';
 import { connect } from 'react-redux';
-import { ActionCreators } from '../actions';
+import { ActionCreators } from '../../actions';
 import { bindActionCreators, dispatch} from 'redux';
 import { addNavigationHelpers } from 'react-navigation';
-import CommonStyles from '../lib/CommonStyles';
-
+import CommonStyles from '../../lib/CommonStyles';
 
 class AppContainer extends Component {
 	constructor(props) {
 		super(props);
 	}
-	
 	componentDidMount() {
 		this.props.addBackend();
 		this.props.setGoogleSigninConfigure();
 	}
-	//_onLayout = event => this.props.appLayout(event.nativeEvent.layout);
+	// _onLayout = event => this.props.appLayout(event.nativeEvent.layout);
  render() {
  	return (
  		<View style={styles.screen}>

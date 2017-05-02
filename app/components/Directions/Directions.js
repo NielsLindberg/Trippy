@@ -3,7 +3,7 @@ import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from '
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import CommonStyles from '../../lib/CommonStyles';
 
 export default class Directions extends Component{
 	constructor(props){

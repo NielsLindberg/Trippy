@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import MapView from 'react-native-maps';
 
 import MapStyles from './MapStyles';
-import CommonStyles from '../../modules/CommonStyles/CommonStyles';
+import CommonStyles from '../../lib/CommonStyles';
 
 export default class MapComponent extends Component{
 	constructor(props){
