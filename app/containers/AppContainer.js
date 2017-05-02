@@ -14,7 +14,7 @@ class AppContainer extends Component {
 	}
 	
 	componentDidMount() {
-		this.props.addFirestack();
+		this.props.addBackend();
 		this.props.setGoogleSigninConfigure();
 	}
 	//_onLayout = event => this.props.appLayout(event.nativeEvent.layout);

@@ -107,7 +107,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		trips: state.setUserTrips
+		trips: state.trips.userTrips
 	}
 }
 

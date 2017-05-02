@@ -218,9 +218,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		userRef: state.setFirebaseUserRef,
-		response: state.loginResponse.message,
-		loginIndicator: state.loginIndicator
+		userRef: state.backend.userRef,
+		response: state.user.loginResponse.message,
+		loginIndicator: state.user.loginIndicator
 	}
 }
 

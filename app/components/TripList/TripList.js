@@ -33,6 +33,9 @@ class TripList extends Component{
 			this.setState({trips: items});
 		}
 	}
+	componentWillMount(){
+		this.props.getUserTrips();
+	}
 	renderFooter = () => {
 		return(
 			<View>
@@ -71,8 +74,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		userTrips: state.setUserTrips,
-		tripsIndicator: state.tripsIndicator
+		userTrips: state.trips.userTrips,
+		tripsIndicator: state.trips.userTripsFetching
 	}
 }
 

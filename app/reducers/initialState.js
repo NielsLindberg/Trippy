@@ -6,8 +6,21 @@ export default initialState = {
 			orientation: 'PORTRAIT'
 		}
 	},
-	loginResponse: {
-		message: ''
+	backend: {
+		userRef: {},
+		ref: {},
+		itemsRef: {}
 	},
-	loginIndicator: false
+	user: {
+		loginResponse: {
+		message: ''
+		},
+		loginIndicator: false
+	},
+	trips: {
+		currentTrip: {},
+		userTrips: {},
+		userTripsFetching: false,
+		currentTripFetching: false
+	}
 };

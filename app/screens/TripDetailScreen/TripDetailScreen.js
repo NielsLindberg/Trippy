@@ -44,8 +44,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    currentTrip: state.currentTrip,
-    currentTripIndicator: state.currentTripIndicator
+    currentTrip: state.trips.currentTrip,
+    currentTripIndicator: state.trips.currentTripFetching
   }
 }
 
