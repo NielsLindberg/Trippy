@@ -19,5 +19,11 @@ export const trips = createReducer({}, {
 	},
 	[types.SET_CURRENT_LOCATION_FETCHING](state, action) {
 		return {...state, currentLocationFetching: action.payload};
+	},
+	[types.SET_LOCATION_SEARCH_RESULTS](state, action) {
+		return {...state, locationSearchResults: action.payload};
+	},
+	[types.SET_CURRENT_LOCATION_FETCHING](state, action) {
+		return {...state, locationSearchFetching: action.payload};
 	}
 });

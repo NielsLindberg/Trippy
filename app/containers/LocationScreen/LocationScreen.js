@@ -13,10 +13,9 @@ class LocationScreen extends Component{
   });
 
   componentWillReceiveProps() {
-      if(Object.keys(this.props.currentLocation).length > 0 && this.props.navigation.state.params.location != this.props.currentLocation) {
-        console.log('here')
+      if(Object.keys(this.props.currentLocation).length > 0 && this.props.navigation.state.params.location != this.props.currentLocation.val().title) {
         const {setParams} = this.props.navigation;
-        setParams({location: this.props.currentLocation});
+        setParams({location: this.props.currentLocation.val().title});
       }
   }
   render(){

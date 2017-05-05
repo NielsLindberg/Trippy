@@ -12,9 +12,8 @@ class Location extends Component{
 		this.editDetails = this.editDetails.bind(this);
 	}
 	editDetails(){
-		console.log(this.props)
 		this.props.getCurrentLocation('trips/' + this.props.currentTrip.key + '/locations/' + this.props.id);
-		this.props.navigation.navigate('LocationScreen', {location: this.props.id});
+		this.props.navigation.navigate('LocationScreen', {location: ''});
 	}
 	render(){
 		return(

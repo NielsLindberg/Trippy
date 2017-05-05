@@ -10,11 +10,19 @@ class LocationEdit extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			title: ''
+			title: '',
+			search: '',
+			address: ''
 		};
 		this.deletePressConfirm = this.deletePressConfirm.bind(this);
 		this.deletePress = this.deletePress.bind(this);
+		this.updateItem = this.updateItem.bind(this);	
+		this.searchAddress = this.searchAddress.bind(this);
+		this.selectAddress = this.selectAddress.bind(this);	
 	}
+  updateItem() {
+  	this.props.updateUserItem('trips/' + this.props.currentTrip.key + '/locations/' + this.props.currentLocation.key, this.state);
+  }
 	deletePressConfirm(){
 		var self = this;
 		Alert.alert(
@@ -33,6 +41,16 @@ class LocationEdit extends Component{
 		this.props.navigation.goBack();
 		
 	}
+	searchAddress(){
+		this.props.getLocationSearch(this.state.search);
+	}
+	selectAddress(result){
+		this.setState({
+				title: result.name ? result.name : result.formatted_address,
+				address: result.formatted_address
+		});
+		this.updateItem();
+	}
 	componentWillUnmount() {
     if (this.props.currentLocation.ref) {
       this.props.currentLocation.ref.off('value');
@@ -41,7 +59,8 @@ class LocationEdit extends Component{
 	componentWillReceiveProps() {
 		if(Object.keys(this.props.currentLocation).length > 0) {
 			this.setState({
-				title: this.props.currentLocation.val().title
+				title: this.props.currentLocation.val().title,
+				address: this.props.currentLocation.val().address
 			});
 		}
 	}
@@ -52,14 +71,19 @@ class LocationEdit extends Component{
 			return (<ScrollView style={styles.container}>
 				<TextInput 
 					style={styles.title}
-					value={this.state.title}
-					placeholder='Add Title'
-					onChangeText= {(title) => this.setState({title})}
-					onEndEditing={() => this.props.updateUserItem('trips/' + this.props.currentTrip.key + '/locations/' + this.props.currentLocation.key, {'title': this.state.title})}
+					placeholder='Search for a location'
+					onChangeText={(search) => this.setState({search})}
+					onEndEditing={() => {this.searchAddress()}}
 				/>
+				<Text>{this.state.address}</Text>
 				<TouchableOpacity style={styles.deleteButton} onPress={() => {this.deletePressConfirm()}}>
 					<Icon name="delete" style={styles.deleteButtonText}/>
 				</TouchableOpacity>
+				 {this.props.locationSearchResults.map((result) =>
+				  <TouchableOpacity onPress={() => {this.selectAddress(result)}}>
+				  	<Text>{result.formatted_address}</Text>
+				  </TouchableOpacity>
+				 )}
 			</ScrollView>)
 		}
 	}
@@ -96,7 +120,9 @@ function mapStateToProps(state) {
 	return {
 		currentTrip: state.trips.currentTrip,
 		currentLocation: state.trips.currentLocation,
-		currentLocationIndicator: state.trips.currentLocationFetching
+		currentLocationIndicator: state.trips.currentLocationFetching,
+		locationSearchResults: state.trips.locationSearchResults,
+		locationSearchFetching: state.trips.locationSearchFetching
 	}
 }
 

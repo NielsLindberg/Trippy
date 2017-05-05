@@ -32,6 +32,7 @@ local.properties
 
 android/app/google-services.json
 android/gradle.properties
+app/lib/Secrets.js
 
 # node.js
 #

@@ -1,4 +1,7 @@
 import * as types from './types';
+import { googleApi } from '../lib/Secrets';
+
+const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
 
 export function setTripsIndicator(indicator) {
 	return {
@@ -98,5 +101,39 @@ export function getLocation(dest) {
 	   		dispatch(setCurrentLocation(snap));
 	   		dispatch(setCurrentLocationIndicator(false));
 		});
+  }
+}
+
+export function setLocationSearchResults(results) {
+	return {
+		type: types.SET_LOCATION_SEARCH_RESULTS,
+		payload: results
+	}
+}
+
+export function setLocationSearchFetching(indicator) {
+	return {
+		type: types.SET_LOCATION_SEARCH_FETCHING,
+		payload: indicator
+	}
+}
+
+export function getLocationSearch(searchString) {
+	return (dispatch, getState) => {
+		dispatch(setLocationSearchFetching(true));
+		fetch(webServicePlaceSearch + searchString + '&key=' + googleApi)
+		.then((response) => {
+			response.json()
+			.then((results) => {
+				dispatch(setLocationSearchResults(results.results))
+				dispatch(setLocationSearchFetching(false))
+			})
+		})
+		.catch((error) => {
+			error.json()
+			.then((results) => {
+				dispatch(setLocationSearchFetching(false))
+			})
+		})
   }
 }

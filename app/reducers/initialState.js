@@ -20,9 +20,11 @@ export default initialState = {
 	trips: {
 		currentTrip: {},
 		currentLocation: {},
+		locationSearchResults: [],
 		userTrips: {},
 		userTripsFetching: false,
 		currentTripFetching: false,
-		currentLocationFetching: false
+		currentLocationFetching: false,
+		locationSearchFetching: false
 	}
 };
