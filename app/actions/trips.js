@@ -70,3 +70,33 @@ export function getUserTrip(dest) {
 		});
   }
 }
+
+export function setCurrentLocation(location) {
+	return {
+		type: types.SET_CURRENT_LOCATION,
+		payload: location
+	}
+}
+
+export function setCurrentLocationIndicator(indicator) {
+	return {
+		type: types.SET_CURRENT_LOCATION_FETCHING,
+		payload: indicator
+	}
+}
+
+export function getCurrentLocation(dest) {
+	return (dispatch, getState) => {
+		dispatch(getLocation(dest));
+	}
+}
+
+export function getLocation(dest) {
+	 return (dispatch, getState) => {
+	   	getState().backend.userRef.child(dest).on('value', (snap) => {
+	   		dispatch(setCurrentLocationIndicator(true));
+	   		dispatch(setCurrentLocation(snap));
+	   		dispatch(setCurrentLocationIndicator(false));
+		});
+  }
+}

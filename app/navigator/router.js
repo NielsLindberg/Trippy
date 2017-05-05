@@ -7,6 +7,7 @@ import LoginScreen from '../containers/LoginScreen/LoginScreen';
 import MapScreen from '../containers/MapScreen/MapScreen';
 import TripsScreen from '../containers/TripsScreen/TripsScreen';
 import TripDetailScreen from '../containers/TripDetailScreen/TripDetailScreen';
+import LocationScreen from '../containers/LocationScreen/LocationScreen';
 import CommonStyles from '../lib/CommonStyles';
 
 export const TripsStack = StackNavigator({
@@ -19,6 +20,9 @@ export const TripsStack = StackNavigator({
   },
   TripDetailScreen: {
     screen: TripDetailScreen
+  },
+  LocationScreen: {
+    screen: LocationScreen
   }
 },
   {
