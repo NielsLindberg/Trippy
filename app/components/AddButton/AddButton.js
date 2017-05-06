@@ -14,11 +14,11 @@ export default class AddButton extends Component {
 	render(){
 		return(
 				<TouchableOpacity
-        	style={styles.addButton}
+        	style={[styles.addButton, {'alignSelf': this.props.align, 'backgroundColor': this.props.backgroundColor, 'borderColor': this.props.color}]}
         	onPress={this.addItem}
-        	activeOpacity={0.8}
+        	activeOpacity={0.5}
         	>
-        	<Icon name="add" style={styles.addButtonIcon}/>
+        	<Icon name="add" style={[styles.addButtonIcon, {'fontSize': this.props.size, 'color': this.props.color}]}/>
         </TouchableOpacity>
 		)
 	}
@@ -26,19 +26,12 @@ export default class AddButton extends Component {
 
 const styles = StyleSheet.create({
 	addButton: {
-		padding: 15,
-		marginBottom: 5,
-		backgroundColor: CommonStyles.colorAccent,
+		padding: 5,
+		borderWidth: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		alignSelf: 'center',
-		elevation: 2,
-		borderRadius: 50,
-	},
-	addButtonIcon: {
-		fontSize: 25,
-		color: CommonStyles.colorAccentText
-	},
+		borderRadius: 30,
+	}
 });
 
 AppRegistry.registerComponent('AddButton', () => AddButton);

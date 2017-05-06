@@ -19,18 +19,21 @@ export function setUserTrips(trips) {
 
 export function addUserItem(dest, item){
 	return (dispatch, getState) => {
+		dispatch(setTripsIndicator(true));
 		getState().backend.userRef.child(dest).push(item);
 	}
 }
 
 export function updateUserItem(dest, item) {
 	return (dispatch, getState) => {
+		dispatch(setTripsIndicator(true));
 		getState().backend.userRef.child(dest).update(item);
 	}
 }
 
 export function deleteUserItem(dest) {
 		return (dispatch, getState) => {
+			dispatch(setTripsIndicator(true));
 			getState().backend.userRef.child(dest).remove();
   }
 }
@@ -38,9 +41,14 @@ export function deleteUserItem(dest) {
 export function getUserTrips() {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child('trips').on('value', (snap) => {
-	   		dispatch(setTripsIndicator(true));
-				dispatch(setUserTrips(snap));
-				dispatch(setTripsIndicator(false));
+				var items = [];
+					snap.forEach((child) => {
+						items.push(child);
+
+				});
+				dispatch(setUserTrips(items));
+				dispatch(setTripsIndicator(false))
+				
 		})
   }
 }
@@ -90,6 +98,7 @@ export function setCurrentLocationIndicator(indicator) {
 
 export function getCurrentLocation(dest) {
 	return (dispatch, getState) => {
+		dispatch(setCurrentLocationIndicator(true));
 		dispatch(getLocation(dest));
 	}
 }
@@ -97,7 +106,6 @@ export function getCurrentLocation(dest) {
 export function getLocation(dest) {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child(dest).on('value', (snap) => {
-	   		dispatch(setCurrentLocationIndicator(true));
 	   		dispatch(setCurrentLocation(snap));
 	   		dispatch(setCurrentLocationIndicator(false));
 		});

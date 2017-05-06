@@ -5,6 +5,7 @@ import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
+import Gradient from '../Gradient/Gradient';
 
 class Trip extends Component{
 	constructor(props){
@@ -27,8 +28,22 @@ class Trip extends Component{
 			<View style={styles.container}>
 				<View style={styles.row}>
 					<TouchableOpacity 
-						style={[this.props.trip.val().active ? styles.mapButtonActive: styles.mapButtonInActive, styles.mapButton]}
+						style={styles.mapButton}
 						onPress={() => {this.activateMap()}}>
+						{this.props.trip.val().active && <Gradient 
+							height={40} 
+							width={40} 
+							shape="Ellipse"
+							color1={CommonStyles.colorGradient5} 
+							color2={CommonStyles.colorGradient6} 
+							color1Opacity={0.9} 
+		          color2Opacity={0.9}
+							fallbackColor={CommonStyles.colorPrimary900Text}
+							x1="0%" 
+							x2="80%" 
+							y1="0%" 
+							y2="80%"
+						/> }
 						<Icon name='map' style={styles.activeText}/>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.rowContent} onPress={() => {this.editDetails()}}>
@@ -66,8 +81,12 @@ const styles = StyleSheet.create({
 		marginTop: 8,
 		marginBottom: 8,
 		padding: 10,
-		borderRadius: 50,
+		height: 40,
+		width: 40,
+		borderRadius: 40,
 		alignSelf: 'center',
+		alignItems: 'center',
+		backgroundColor: CommonStyles.colorPrimary200,
 		justifyContent: 'space-around'
 	},
 	mapButtonActive: {

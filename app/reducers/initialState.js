@@ -21,8 +21,7 @@ export default initialState = {
 		currentTrip: {},
 		currentLocation: {},
 		locationSearchResults: [],
-		userTrips: {},
-		userTripsFetching: false,
+		userTrips: [],
 		currentTripFetching: false,
 		currentLocationFetching: false,
 		locationSearchFetching: false

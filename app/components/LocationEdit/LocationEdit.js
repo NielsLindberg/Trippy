@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import {AppRegistry, ActivityIndicator, Alert, Text, View, ScrollView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {AppRegistry, ActivityIndicator, Alert, Text, View, FlatList, ScrollView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
+import SearchResult from '../SearchResult/SearchResult';
 
 class LocationEdit extends Component{
 	constructor(props){
@@ -18,7 +19,7 @@ class LocationEdit extends Component{
 		this.deletePress = this.deletePress.bind(this);
 		this.updateItem = this.updateItem.bind(this);	
 		this.searchAddress = this.searchAddress.bind(this);
-		this.selectAddress = this.selectAddress.bind(this);	
+		this.renderFooter = this.renderFooter.bind(this);
 	}
   updateItem() {
   	this.props.updateUserItem('trips/' + this.props.currentTrip.key + '/locations/' + this.props.currentLocation.key, this.state);
@@ -44,13 +45,6 @@ class LocationEdit extends Component{
 	searchAddress(){
 		this.props.getLocationSearch(this.state.search);
 	}
-	selectAddress(result){
-		this.setState({
-				title: result.name ? result.name : result.formatted_address,
-				address: result.formatted_address
-		});
-		this.updateItem();
-	}
 	componentWillUnmount() {
     if (this.props.currentLocation.ref) {
       this.props.currentLocation.ref.off('value');
@@ -64,9 +58,25 @@ class LocationEdit extends Component{
 			});
 		}
 	}
+	renderRow(searchResult) {
+		return(
+			<SearchResult
+				searchResult={searchResult}
+				currentTripKey={this.props.currentTrip.key}
+				currentLocationKey={this.props.currentLocation.key}
+			/>
+		)
+	}
+	renderFooter(){
+		return (
+			<View>
+			{this.props.locationSearchFetching && <ActivityIndicator size={35} style={styles.indicator} color={CommonStyles.colorSemiBlack}/>}
+			</View>
+		)
+	}
 	render() {
-		if(this.props.currentLocationIndicator) {
-			return (<ActivityIndicator size={35} style={styles.indicator} color={CommonStyles.colorSemiBlack}/>)
+		if(this.props.currentLocationFetching) {
+			return (<ActivityIndicator size={35} style={styles.indicator} animating={this.props.currentLocationFetching} color={CommonStyles.colorSemiBlack}/>)
 		} else {
 			return (<ScrollView style={styles.container}>
 				<TextInput 
@@ -79,12 +89,15 @@ class LocationEdit extends Component{
 				<TouchableOpacity style={styles.deleteButton} onPress={() => {this.deletePressConfirm()}}>
 					<Icon name="delete" style={styles.deleteButtonText}/>
 				</TouchableOpacity>
-				 {this.props.locationSearchResults.map((result) =>
-				  <TouchableOpacity onPress={() => {this.selectAddress(result)}}>
-				  	<Text>{result.formatted_address}</Text>
-				  </TouchableOpacity>
-				 )}
-			</ScrollView>)
+				 <FlatList
+					style={styles.flatList}
+					data={this.props.locationSearchResults}
+					extraData={this.props.locationSearchFetching}
+					renderItem={({item}) => this.renderRow(item)}
+					ListFooterComponent={() => this.renderFooter()}
+				/>
+			</ScrollView>
+			)
 		}
 	}
 }
@@ -120,7 +133,7 @@ function mapStateToProps(state) {
 	return {
 		currentTrip: state.trips.currentTrip,
 		currentLocation: state.trips.currentLocation,
-		currentLocationIndicator: state.trips.currentLocationFetching,
+		currentLocationFetching: state.trips.currentLocationFetching,
 		locationSearchResults: state.trips.locationSearchResults,
 		locationSearchFetching: state.trips.locationSearchFetching
 	}

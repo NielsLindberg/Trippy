@@ -26,7 +26,7 @@ export const TripsStack = StackNavigator({
   }
 },
   {
-    headerMode: 'screen',
+    headerMode: 'none',
     cardStyle: {
       backgroundColor: CommonStyles.colorPrimary50
     },

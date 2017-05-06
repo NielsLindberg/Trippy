@@ -69,7 +69,7 @@ class TripEdit extends Component{
 		return(
 			<View>
 				{this.props.locationsIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
-				<AddButton addItem={this.props.addUserItem} destination={'trips/' + this.props.currentTrip.key + '/locations/'} item={{title: ''}}/>
+				<AddButton align='center' size={25} addItem={this.props.addUserItem} destination={'trips/' + this.props.currentTrip.key + '/locations/'} item={{title: ''}}/>
 			</View>
 		)
 	}
