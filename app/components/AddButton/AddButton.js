@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {AppRegistry, View, TouchableOpacity, StyleSheet, ActivityIndicator} from 'react-native';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
@@ -16,13 +16,16 @@ class AddButton extends Component {
 	}
 	render(){
 		return(
-				<TouchableOpacity
-        	style={styles.buttonStyle}
+			<View style={styles.buttonStyle}>
+				{!this.props.fetching ? 
+					<TouchableOpacity
         	onPress={this.addItem}
         	activeOpacity={0.8}
         	>
         	<Icon name="add" style={styles.buttonTextStyle}/>
-        </TouchableOpacity>
+        </TouchableOpacity> : 
+      	<ActivityIndicator size={40} style={styles.indicator} color={CommonStyles.lightText.primary}/>} 
+      </View>
 		)
 	}
 }
@@ -53,6 +56,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
+		fetching: state.trips.userTripsFetching
 	}
 }
 

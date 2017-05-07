@@ -8,6 +8,7 @@ import AddButton from '../AddButton/AddButton';
 import Gradient from '../Gradient/Gradient';
 import CommonStyles from '../../lib/CommonStyles';
 import _ from 'lodash';
+import moment from 'moment';
 
 class TripList extends Component{
 	constructor(props){
@@ -17,21 +18,22 @@ class TripList extends Component{
 		};
 		this.renderRow = this.renderRow.bind(this);
 		this.renderSection - this.renderSection.bind(this);
-		this.renderFooter = this.renderFooter.bind(this);
 	}
 	componentWillMount(){
 		this.props.getUserTrips();
 	}
 	componentWillReceiveProps(){
 		let dataSource = this.props.userTrips;
-		dataSource = _.groupBy(dataSource, d => d.val().title.charAt(0));
+		dataSource = _.groupBy(dataSource, d => moment(d.val().date).format('MMM'));
 		dataSource = _.reduce(dataSource, (acc, next, index) => {
 			acc.push({
 				key: index,
 				data: next
 			})
 			return acc}, [])
+		dataSource = _.sortBy(dataSource, 'key');
 		this.setState({sections: dataSource});
+		console.log(this.state.sections);
 	}
 	renderRow(trip) {
 		return(
@@ -49,20 +51,14 @@ class TripList extends Component{
 			</View>
 		)
 	}
-	renderFooter() {
-		return (
-			<ActivityIndicator size={35} style={styles.indicator} animating={this.props.fetching} color={CommonStyles.darkText.secondary}/>
-		)
-	}
 	render(){
 		return(
 			<ScrollView style={styles.container}>
 				<SectionList
-					style={styles.flatList}
+					style={styles.sectionList}
 					renderItem={({item}) => this.renderRow(item)}
 					renderSectionHeader={(item) => this.renderSection(item)}
 					sections={this.state.sections}
-					ListFooterComponent={() => this.renderFooter()}
 				/>
 			</ScrollView>
 		)
@@ -74,11 +70,13 @@ const styles = StyleSheet.create({
 		paddingTop: 5,
 		paddingBottom: 5
 	},
+	sectionList: {
+		marginBottom: 5
+	},
 	sectionHeader: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		paddingLeft: 16,
-		paddingTop: 5,
 		paddingBottom: 5,
 	},
 	sectionHeaderText: {

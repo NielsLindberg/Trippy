@@ -4,6 +4,7 @@ import StatusBarComponent from '../../components/StatusBarComponent/StatusBarCom
 import TripList from '../../components/TripList/TripList';
 import CommonStyles from '../../lib/CommonStyles';
 import AddButton from '../../components/AddButton/AddButton';
+import moment from 'moment';
 
 export default class TripsScreen extends Component{
   constructor(props){
@@ -12,7 +13,8 @@ export default class TripsScreen extends Component{
   static navigationOptions = ({navigation}) => {
     const itemAdd = {
       title: '', 
-      active: false, 
+      active: false,
+      date: moment(), 
       locations: []
     };
     return {

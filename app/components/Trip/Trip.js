@@ -44,10 +44,13 @@ class Trip extends Component{
 const styles = StyleSheet.create({
 	row: {
 		flexDirection: 'row',
+		marginBottom: 5,
+		marginLeft: 5,
+		marginRight: 5,
 		flex: 1,
 		backgroundColor: CommonStyles.white,
-		borderTopWidth: 1,
-		borderTopColor: CommonStyles.darkText.dividers
+		elevation: 2,
+		borderRadius: 2
 	},
 	rowContent: {
 		flexDirection: 'row',
