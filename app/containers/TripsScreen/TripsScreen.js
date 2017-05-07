@@ -1,48 +1,39 @@
 import React, {Component} from 'react';
-import {AppRegistry, View, StyleSheet} from 'react-native';
-import { connect } from 'react-redux';
-import { ActionCreators } from '../../actions';
-import { bindActionCreators } from 'redux';
+import {AppRegistry, View, StyleSheet, Text} from 'react-native';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import TripList from '../../components/TripList/TripList';
 import CommonStyles from '../../lib/CommonStyles';
 import AddButton from '../../components/AddButton/AddButton';
 
-const buttonStyle = {
-      padding: 5,
-      elevation: 4,
-      backgroundColor: CommonStyles.colorAccent,
-      borderWidth: 0,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 30,
-    };
-    const buttonTextStyle = {
-      fontSize: 45,
-      color: CommonStyles.lightText.primary
-    };
+export default class TripsScreen extends Component{
+  constructor(props){
+    super(props);
+  }
+  static navigationOptions = ({navigation}) => {
     const itemAdd = {
       title: '', 
       active: false, 
       locations: []
     };
-
-class TripsScreen extends Component{
-  static navigationOptions = ({navigation}) => ({
-      headerRight: <AddButton 
-              styles={buttonStyle}
-              textStyles={buttonTextStyle}
-              addItem={this.props.addUserItem} 
+    return {
+      header: (
+        <View>
+          <View style={styles.header}>
+            <Text style={styles.headerTitle}>Add New Trips</Text>
+          </View>
+          <AddButton 
               destination={'trips'} 
               item={itemAdd}
-            />
-  });
+          />
+        </View>
+      )
+    }
+  };
   render(){
     return(
     		<View style={styles.screen}>
             <StatusBarComponent/>
             <TripList navigation={this.props.navigation}/>
-            
         </View>
       )
   }
@@ -52,16 +43,18 @@ const styles = StyleSheet.create({
   screen: {
     flexDirection: 'column',
     flex: 1
+  },
+  header: {
+    height: 50,
+    backgroundColor: CommonStyles.colorPrimary,
+    justifyContent: 'center',
+    paddingLeft: 16
+  },
+  headerTitle: {
+    color: CommonStyles.lightText.primary,
+    fontWeight: 'normal',
+    fontSize: 16
   }
 });
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ActionCreators, dispatch);
-}
-
-function mapStateToProps(state) {
-  return {
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TripsScreen);
+AppRegistry.registerComponent('TripsScreen', () => TripsScreen);

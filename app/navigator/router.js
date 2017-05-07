@@ -84,7 +84,7 @@ export const Tabs = TabNavigator({
         backgroundColor: CommonStyles.colorPrimary,
         elevation: 0,
         borderBottomWidth: 0.5,
-        borderBottomColor: CommonStyles.lightText.dividers,
+        borderBottomColor: CommonStyles.lightText.dividers
       },
       indicatorStyle: {
         backgroundColor: CommonStyles.colorAccent,
