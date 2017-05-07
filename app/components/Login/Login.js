@@ -42,7 +42,7 @@ class Login extends Component{
 	                onChangeText={(email) => this.setState({email})}
 	                keyboardType="email-address"
 	                autoCapitalize="none"
-	                placeholderTextColor={CommonStyles.colorSemiBlack}
+	                placeholderTextColor={CommonStyles.darkText.secondary}
 	                underlineColorAndroid="transparent"
 	            />
 	          </View>
@@ -57,7 +57,7 @@ class Login extends Component{
 	                secureTextEntry={true}
 	                password={true}
 	                autoCapitalize="none"
-	                placeholderTextColor={CommonStyles.colorSemiBlack}
+	                placeholderTextColor={CommonStyles.darkText.secondary}
 	                underlineColorAndroid="transparent"
 	            />
 	          </View>
@@ -95,7 +95,7 @@ class Login extends Component{
             	</View>
             </TouchableOpacity>
             <View style={styles.response}>
-	            {this.props.loginIndicator ? <ActivityIndicator size={35} color={CommonStyles.colorSemiBlack}/> : null}
+	            {this.props.loginIndicator ? <ActivityIndicator size={35} color={CommonStyles.darkText.secondary}/> : null}
 	            <Text style={styles.responseText}>{this.props.response}</Text>
             </View>
 	        </View>
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		marginVertical: 5,
 		borderBottomWidth: 1,
-		borderBottomColor: CommonStyles.colorSemiBlack
+		borderBottomColor: CommonStyles.darkText.dividers
 	},
 	iconWrap: {
 		alignSelf: 'stretch',
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	icon: {
-		color: CommonStyles.colorSemiBlack,
+		color: CommonStyles.darkText.secondary,
 		padding: 0,
 		paddingVertical: 0,
 		fontSize: 28,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		flex: 1,
-		color: CommonStyles.colorSemiBlack,
+		color: CommonStyles.darkText.secondary,
 		paddingVertical: 5,
 		fontSize: 18,
 		paddingHorizontal: 5
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
 		marginVertical: 2.5
 	},
 	login: {
-		backgroundColor: CommonStyles.colorPrimary700,
+		backgroundColor: CommonStyles.colorPrimary,
 		paddingVertical: 10,
 		marginRight: 2.5,
 		alignItems: 'center',
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	signUp: {
-		backgroundColor: CommonStyles.colorPrimary700,
+		backgroundColor: CommonStyles.colorPrimary,
 		paddingVertical: 10,
 		marginLeft: 2.5,
 		alignItems: 'center',
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		margin: 5,
 		fontSize: 16,
-		color: CommonStyles.colorSemiBlack
+		color: CommonStyles.darkText.secondary
 	},
 	loginGoogle: {
 		backgroundColor: '#dc4e42',
@@ -182,24 +182,21 @@ const styles = StyleSheet.create({
 	title: {
 		textAlign: 'center',
 		fontSize: 120,
-		color: CommonStyles.colorSemiBlack,
-    fontFamily: CommonStyles.fontPrimary
+		color: CommonStyles.darkText.secondary,
 	},
 	subTitle: {
 		textAlign: 'center',
-		color: CommonStyles.colorSemiBlack,
+		color: CommonStyles.darkText.secondary,
 		fontSize:20,
 		marginBottom:20
 	},
 	loginText: {
-		color: CommonStyles.colorAccentText,
-		fontSize: 18,
-    fontFamily: CommonStyles.fontPrimary
+		color: CommonStyles.lightText.primary,
+		fontSize: 18
 	},
 	signUpText: {
-		color: CommonStyles.colorAccentText,
-		fontSize: 18,
-    fontFamily: CommonStyles.fontPrimary
+		color: CommonStyles.lightText.primary,
+		fontSize: 18
 	},
 	response: {
 		height: 40,
@@ -207,8 +204,7 @@ const styles = StyleSheet.create({
 	},
 	responseText: {
 		textAlign: 'center',
-		color: CommonStyles.colorSemiBlack,
-    fontFamily: CommonStyles.fontPrimary
+		color: CommonStyles.darkText.secondary
 	}
 });
 

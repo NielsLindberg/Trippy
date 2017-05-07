@@ -102,7 +102,7 @@ export default class MapComponent extends Component{
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-    backgroundColor: CommonStyles.colorPrimary100
+    backgroundColor: CommonStyles.white
 	},
 	map: {
 		justifyContent: 'center',

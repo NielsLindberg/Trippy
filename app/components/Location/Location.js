@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 		marginLeft: 5,
 		marginRight: 5,
 		flex: 1,
-		backgroundColor: '#FFFFFF',
+		backgroundColor: CommonStyles.white,
 		elevation: 2,
 		borderRadius: 2
 	},
@@ -62,11 +62,7 @@ const styles = StyleSheet.create({
 		backgroundColor: CommonStyles.colorAccent
 	},
 	mapButtonInActive: {
-		backgroundColor: CommonStyles.colorPrimary200
-	},
-	activeText: {
-		fontSize: 18,
-		color: CommonStyles.colorAccentText
+		backgroundColor: CommonStyles.darkIcons.inactive
 	},
 	title: {
 		flex: 1,
@@ -77,15 +73,14 @@ const styles = StyleSheet.create({
 		fontFamily: 'Roboto'
 	},
 	noTitle: {
-		color: CommonStyles.colorSemiBlack,
+		color: CommonStyles.darkText.disabled,
 		fontStyle: 'italic',
 		fontSize: 16
 	},
 	editDetailsText: {
-		fontFamily: CommonStyles.fontPrimary,
 		fontSize: 20,
 		paddingRight: 5,
-		color: CommonStyles.colorPrimary800
+		color: CommonStyles.darkText.primary
 	}
 });
 

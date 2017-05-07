@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   screen: {
     flexDirection: 'column',
     flex: 1,
-    backgroundColor: CommonStyles.colorPrimary900
+    backgroundColor: CommonStyles.lightText.dividers
   }
 });
 

@@ -5,7 +5,6 @@ import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
-import Gradient from '../Gradient/Gradient';
 
 class Trip extends Component{
 	constructor(props){
@@ -28,22 +27,8 @@ class Trip extends Component{
 			<View style={styles.container}>
 				<View style={styles.row}>
 					<TouchableOpacity 
-						style={styles.mapButton}
+						style={[styles.mapButton, this.props.trip.val().active ? styles.mapButtonActive : null]}
 						onPress={() => {this.activateMap()}}>
-						{this.props.trip.val().active && <Gradient 
-							height={40} 
-							width={40} 
-							shape="Ellipse"
-							color1={CommonStyles.colorGradient5} 
-							color2={CommonStyles.colorGradient6} 
-							color1Opacity={0.9} 
-		          color2Opacity={0.9}
-							fallbackColor={CommonStyles.colorPrimary900Text}
-							x1="0%" 
-							x2="80%" 
-							y1="0%" 
-							y2="80%"
-						/> }
 						<Icon name='map' style={styles.activeText}/>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.rowContent} onPress={() => {this.editDetails()}}>
@@ -63,7 +48,7 @@ const styles = StyleSheet.create({
 		marginLeft: 5,
 		marginRight: 5,
 		flex: 1,
-		backgroundColor: '#FFFFFF',
+		backgroundColor: CommonStyles.white,
 		elevation: 2,
 		borderRadius: 2
 	},
@@ -86,18 +71,15 @@ const styles = StyleSheet.create({
 		borderRadius: 40,
 		alignSelf: 'center',
 		alignItems: 'center',
-		backgroundColor: CommonStyles.colorPrimary200,
+		backgroundColor: CommonStyles.darkIcons.inactive,
 		justifyContent: 'space-around'
 	},
 	mapButtonActive: {
 		backgroundColor: CommonStyles.colorAccent
 	},
-	mapButtonInActive: {
-		backgroundColor: CommonStyles.colorPrimary200
-	},
 	activeText: {
 		fontSize: 18,
-		color: CommonStyles.colorAccentText
+		color: CommonStyles.lightText.primary
 	},
 	title: {
 		flex: 1,
@@ -105,18 +87,16 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		margin: 0,
 		padding: 0,
-		fontFamily: 'Roboto'
 	},
 	noTitle: {
-		color: CommonStyles.colorSemiBlack,
+		color: CommonStyles.darkText.secondary,
 		fontStyle: 'italic',
 		fontSize: 16
 	},
 	editDetailsText: {
-		fontFamily: CommonStyles.fontPrimary,
 		fontSize: 20,
 		paddingRight: 5,
-		color: CommonStyles.colorPrimary800
+		color: CommonStyles.darkText.primary
 	}
 });
 

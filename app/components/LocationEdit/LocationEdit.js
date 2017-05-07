@@ -70,13 +70,13 @@ class LocationEdit extends Component{
 	renderFooter(){
 		return (
 			<View>
-			{this.props.locationSearchFetching && <ActivityIndicator size={35} style={styles.indicator} color={CommonStyles.colorSemiBlack}/>}
+			{this.props.locationSearchFetching && <ActivityIndicator size={35} style={styles.indicator} color={CommonStyles.darkText.secondary}/>}
 			</View>
 		)
 	}
 	render() {
 		if(this.props.currentLocationFetching) {
-			return (<ActivityIndicator size={35} style={styles.indicator} animating={this.props.currentLocationFetching} color={CommonStyles.colorSemiBlack}/>)
+			return (<ActivityIndicator size={35} style={styles.indicator} animating={this.props.currentLocationFetching} color={CommonStyles.darkText.secondary}/>)
 		} else {
 			return (<ScrollView style={styles.container}>
 				<TextInput 
@@ -118,10 +118,9 @@ const styles = StyleSheet.create({
 		elevation: 2
 	},
 	deleteButtonText: {
-		fontFamily: CommonStyles.fontPrimary,
 		padding: 5,
 		fontSize: 14,
-		color: CommonStyles.colorAccentText
+		color: CommonStyles.lightIcons.active
 	}
 });
 

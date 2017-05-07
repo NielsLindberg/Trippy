@@ -14,8 +14,7 @@ export const TripsStack = StackNavigator({
   TripsScreen: {
     screen: TripsScreen,
     navigationOptions: () => ({
-      title: 'Trips',
-      tabBarLabel: 'Trips'
+      title: 'Add New Trips'
     })
   },
   TripDetailScreen: {
@@ -26,21 +25,17 @@ export const TripsStack = StackNavigator({
   }
 },
   {
-    headerMode: 'none',
-    cardStyle: {
-      backgroundColor: CommonStyles.colorPrimary50
-    },
+    headerMode: 'screen',
     navigationOptions: {
       headerTitleStyle: {
-        color: CommonStyles.colorPrimary900,
-        fontFamily: 'Roboto'
+        color: CommonStyles.lightText.primary,
+        fontWeight: 'normal'
       },
       headerStyle: {
-        backgroundColor: CommonStyles.colorPrimary900Text,
-        margin: 5,
+        backgroundColor: CommonStyles.colorPrimary,
         elevation: 2
       },
-      headerTintColor: CommonStyles.colorPrimary900
+      headerTintColor: CommonStyles.white
     }
   }
 );
@@ -51,7 +46,7 @@ export const Tabs = TabNavigator({
     navigationOptions: () => ({
       title: 'Trips',
       tabBarLabel: 'Trips',
-      tabBarIcon: () => <Icon name="playlist-add" size={25} color={CommonStyles.colorPrimary900Text}/>
+      tabBarIcon: () => <Icon name="playlist-add" size={25} color={CommonStyles.lightText.primary}/>
     }),
   },
   MapScreen: {
@@ -59,7 +54,7 @@ export const Tabs = TabNavigator({
     navigationOptions: () => ({
       title: 'Map',
       tabBarLabel: 'Map',
-      tabBarIcon: () => <Icon name="map" size={25} color={CommonStyles.colorPrimary900Text}/>
+      tabBarIcon: () => <Icon name="map" size={25} color={CommonStyles.lightText.primary}/>
     }),
   },
   DirectionsScreen: {
@@ -67,7 +62,7 @@ export const Tabs = TabNavigator({
     navigationOptions: () => ({
       title: 'Directions',
       tabBarLabel: 'Directions',
-      tabBarIcon: () => <Icon name="directions" size={25} color={CommonStyles.colorPrimary900Text}/>
+      tabBarIcon: () => <Icon name="directions" size={25} color={CommonStyles.lightText.primary}/>
     }),
   }
 }, {
@@ -75,17 +70,25 @@ export const Tabs = TabNavigator({
     swipEnabled: true,
     tabBarOptions: {
       showIcon: true,
-      showLabel: false,
-      upperCaseLabel: false,
-      inactiveTintColor: CommonStyles.colorAccentText,
-      activeTintColor: CommonStyles.colorAccentText,
-      pressColor: CommonStyles.colorAccent20P,
+      showLabel: true,
+      upperCaseLabel: true,
+      inactiveTintColor: CommonStyles.lightText.secondary,
+      activeTintColor: CommonStyles.lightText.primary,
+      pressColor: CommonStyles.lightText.secondary,
+      labelStyle: {
+        padding: 0,
+        margin: 0,
+        fontSize: 12
+      },
       style: {
-        backgroundColor: CommonStyles.colorPrimary800,
-        paddingVertical: 5
+        backgroundColor: CommonStyles.colorPrimary,
+        elevation: 0,
+        borderBottomWidth: 0.5,
+        borderBottomColor: CommonStyles.lightText.dividers,
       },
       indicatorStyle: {
-        backgroundColor: CommonStyles.colorAccent
+        backgroundColor: CommonStyles.colorAccent,
+        display: 'none'
       }
     }
   }
@@ -106,8 +109,5 @@ export const Root = StackNavigator({
 },
   {
     headerMode: 'none',
-    cardStyle: {
-      backgroundColor: CommonStyles.colorPrimary50
-    }
   }
 );

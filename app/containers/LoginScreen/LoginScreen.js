@@ -27,7 +27,7 @@ export default class LoginScreen extends Component{
               color2={CommonStyles.colorGradient6}
               color1Opacity={1} 
               color2Opacity={1}
-              fallbackColor={CommonStyles.colorPrimary900Text}
+              fallbackColor={CommonStyles.colorPrimary}
               x1="0%" 
               x2="0%" 
               y1="0%" 

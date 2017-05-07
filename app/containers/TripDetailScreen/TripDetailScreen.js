@@ -13,7 +13,6 @@ class TripDetailScreen extends Component{
   });
 
   componentWillReceiveProps() {
-    console.log(this.props.navigation.state.params.trip.val().title);
     if(Object.keys(this.props.currentTrip).length > 0 && this.props.navigation.state.params.trip != this.props.currentTrip) {
       const {setParams} = this.props.navigation;
       setParams({trip: this.props.currentTrip});

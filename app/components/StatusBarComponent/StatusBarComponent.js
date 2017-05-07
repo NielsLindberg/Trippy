@@ -17,7 +17,7 @@ export default class StatusBarComponent extends Component{
 	render(){
 		return (
 	    <StatusBar
-              backgroundColor={CommonStyles.colorPrimary900}
+              backgroundColor={CommonStyles.colorStatusBar}
               barStyle="light-content"
               hidden={this.state.hidden}
               translucent={false}

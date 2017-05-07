@@ -1,28 +1,17 @@
+import Material from './colors.es2015';
+
 export default CommonStyles = {
-	colorPrimary50: '#ECEFF1',
-	colorPrimary50Text: '#000',
-	colorPrimary100: '#CFD8DC',
-	colorPrimary100Text: '#000',
-	colorPrimary200: '#B0BEC5',
-	colorPrimary200Text: '#000',
-	colorPrimary300: '#90A4AE',
-	colorPrimary300Text: '#000',
-	colorPrimary400: '#78909C',
-	colorPrimary400Text: '#fff',
-	colorPrimary500: '#607D8B',
-	colorPrimary500Text: '#fff',
-	colorPrimary600: '#546E7A',
-	colorPrimary600Text: '#fff',
-	colorPrimary700: '#455A64',
-	colorPrimary700Text: '#fff',
-	colorPrimary800: '#37474F',
-	colorPrimary800Text: '#FFF',
-	colorPrimary900: '#263238',
-	colorPrimary900Text: '#FFF',
-	colorAccent: '#FF3D00',
-	colorAccent20P: '#FF3D0020',
-	colorAccentText: '#fff',
-	fontPrimary: 'Roboto',
+	colorStatusBar: Material.indigo['700'],
+	colorPrimary: Material.indigo['500'],
+	colorSecondary: Material.indigo['300'],
+	colorAccent: Material.deepOrange['a200'],
+	colorAccent20P: Material.deepOrange['a200'] + '20',
+	lightText: Material.lightText,
+	lightIcons: Material.lightIcons,
+	darkText: Material.darkText,
+	darkIcons: Material.darkIcons,
+	white: Material.white,
+	black: Material.black,
 	colorGradient1: '#2bc0e4',
 	colorGradient2: '#eaecc6',
 	colorGradient3: '#134E5E',
@@ -30,7 +19,8 @@ export default CommonStyles = {
 	colorGradient5: '#E55D87',
 	colorGradient6: '#5FC3E4',
 	colorGradient7: '#3CA55C',
-	colorGradient8: '#B5AC49',
-	colorSemiBlack: 'rgba(0, 0, 0, 0.4)',
-	colorSemiWhite: 'rgba(255, 255, 255, 0.9)'
+	colorGradient8: '#B5AC49'
 };
+
+console.log(Material);
+console.log(CommonStyles);
