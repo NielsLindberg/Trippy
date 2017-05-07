@@ -18,7 +18,6 @@ class TripList extends Component{
 		this.renderRow = this.renderRow.bind(this);
 		this.renderSection - this.renderSection.bind(this);
 		this.renderFooter = this.renderFooter.bind(this);
-		this.renderHeader = this.renderHeader.bind(this);
 	}
 	componentWillMount(){
 		this.props.getUserTrips();
@@ -43,9 +42,11 @@ class TripList extends Component{
 		)
 	}
 	renderSection(item) {
-		console.log(item);
+		let header = item.section.key ? item.section.key : 'No Title';
 		return(
-			<Text>{item.section.key}</Text>
+			<View style={styles.sectionHeader}>
+				<Text style={styles.sectionHeaderText}>{_.toUpper(header)}</Text>
+			</View>
 		)
 	}
 	renderFooter() {
@@ -53,15 +54,7 @@ class TripList extends Component{
 			<ActivityIndicator size={35} style={styles.indicator} animating={this.props.fetching} color={CommonStyles.darkText.secondary}/>
 		)
 	}
-	renderHeader() { 
-		return (
-			<View style={styles.header}>
-				<Text style={styles.headerTitle}>Trips</Text>
-			</View>
-		)
-	}
 	render(){
-		console.log(this.state.sections);
 		return(
 			<ScrollView style={styles.container}>
 				<SectionList
@@ -70,7 +63,6 @@ class TripList extends Component{
 					renderSectionHeader={(item) => this.renderSection(item)}
 					sections={this.state.sections}
 					ListFooterComponent={() => this.renderFooter()}
-					ListHeaderComponent={() => this.renderHeader()}
 				/>
 			</ScrollView>
 		)
@@ -82,18 +74,16 @@ const styles = StyleSheet.create({
 		paddingTop: 5,
 		paddingBottom: 5
 	},
-	header: {
-		padding: 10,
+	sectionHeader: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		marginBottom: 10,
-		borderBottomWidth: 1,
-		borderBottomColor: CommonStyles.darkText.dividers
+		paddingLeft: 16,
+		paddingTop: 5,
+		paddingBottom: 5,
 	},
-	headerTitle: {
-		fontSize: 16,
-		color: CommonStyles.colorPrimary400Text,
-		fontFamily: CommonStyles.fontFamily
+	sectionHeaderText: {
+		fontSize: 18,
+		color: CommonStyles.darkText.secondary,
 	},
 	indicator: {
 		alignSelf: 'center',

@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 30,
     position: 'absolute',
-    top: 25,
+    top: 27,
     right: 16
    },
 	buttonTextStyle: {

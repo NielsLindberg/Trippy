@@ -45,10 +45,11 @@ const styles = StyleSheet.create({
     flex: 1
   },
   header: {
-    height: 50,
+    height: 55,
     backgroundColor: CommonStyles.colorPrimary,
     justifyContent: 'center',
-    paddingLeft: 16
+    paddingLeft: 16,
+    elevation: 2
   },
   headerTitle: {
     color: CommonStyles.lightText.primary,
