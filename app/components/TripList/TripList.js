@@ -28,12 +28,12 @@ class TripList extends Component{
 		dataSource = _.reduce(dataSource, (acc, next, index) => {
 			acc.push({
 				key: index,
+				month: moment().month(index).format("M"),
 				data: next
 			})
 			return acc}, [])
-		dataSource = _.sortBy(dataSource, 'key');
+		dataSource = _.sortBy(dataSource, 'month');
 		this.setState({sections: dataSource});
-		console.log(this.state.sections);
 	}
 	renderRow(trip) {
 		return(

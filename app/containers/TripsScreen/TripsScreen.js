@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {AppRegistry, View, StyleSheet, Text} from 'react-native';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import TripList from '../../components/TripList/TripList';
+import StackHeader from '../../components/StackHeader/StackHeader';
 import CommonStyles from '../../lib/CommonStyles';
 import AddButton from '../../components/AddButton/AddButton';
 import moment from 'moment';
@@ -19,15 +20,13 @@ export default class TripsScreen extends Component{
     };
     return {
       header: (
-        <View>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>Add New Trips</Text>
-          </View>
-          <AddButton 
-              destination={'trips'} 
-              item={itemAdd}
-          />
-        </View>
+        <StackHeader
+          navigation={navigation}
+          backButton={false}
+          itemAdd={itemAdd}
+          itemAddDestination='trips'
+          headerTitle='Add New Trips'
+        />
       )
     }
   };

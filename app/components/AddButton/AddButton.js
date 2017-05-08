@@ -12,7 +12,8 @@ class AddButton extends Component {
 		this.addItem = this.addItem.bind(this);
 	}
 	addItem(){
-		this.props.addUserItem(this.props.destination, this.props.item);
+		let dest = this.props.destination == 'locations' ? 'trips/' + this.props.currentTrip.key + '/locations/' : this.props.destination;
+		this.props.addUserItem(dest, this.props.item);
 	}
 	render(){
 		return(
@@ -56,7 +57,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		fetching: state.trips.userTripsFetching
+		fetching: state.trips.userTripsFetching,
+		currentTrip: state.trips.currentTrip
 	}
 }
 

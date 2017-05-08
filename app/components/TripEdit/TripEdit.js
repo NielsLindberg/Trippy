@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, ActivityIndicator, Alert, Text, View, FlatList, ScrollView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {AppRegistry, ActivityIndicator, DatePickerAndroid, Alert, Text, View, FlatList, ScrollView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CommonStyles from '../../lib/CommonStyles';
 import AddButton from '../AddButton/AddButton';
@@ -7,6 +7,7 @@ import Location from '../Location/Location';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 
 class TripEdit extends Component{
 	constructor(props){
@@ -14,12 +15,14 @@ class TripEdit extends Component{
 		this.state = {
 			title: '',
 			active: false,
+			date: '',
 			locations: []
 		};
 		this.renderRow = this.renderRow.bind(this);
 		this.renderFooter = this.renderFooter.bind(this);
 		this.deletePressConfirm = this.deletePressConfirm.bind(this);
 		this.deletePress = this.deletePress.bind(this);
+		this.datePicker = this.datePicker.bind(this);
 	}
 	deletePressConfirm(){
 		var self = this;
@@ -61,9 +64,25 @@ class TripEdit extends Component{
 			});
 			this.setState({
 				title: this.props.currentTrip.val().title,
-				locations: items
+				locations: items,
+				date: this.props.currentTrip.val().date
 			});
 		}
+	}
+	datePicker(){
+		DatePickerAndroid.open({
+		    date: new Date()
+		})
+		.then((response) => {
+			if(response.action !== DatePickerAndroid.dismissedAction) {
+				console.log(response);
+				let date = new Date(response.year, response.month, response.day);
+				this.props.updateUserItem('trips/' + this.props.currentTrip.key, {'date': date});
+			}
+		})
+		.catch((error) => {
+		  console.log('Cannot open date picker', error);
+		})
 	}
 	renderFooter = () => {
 		return(
@@ -87,6 +106,9 @@ class TripEdit extends Component{
 				/>
 				<TouchableOpacity style={styles.deleteButton} onPress={() => {this.deletePressConfirm()}}>
 					<Icon name="delete" style={styles.deleteButtonText}/>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.datePicker} onPress={() => {this.datePicker()}}>
+					<Text style={styles.deleteButtonText}>{this.state.date != '' ? this.state.date : 'Pick a date'}</Text>
 				</TouchableOpacity>
 				<FlatList
 					style={styles.flatList}

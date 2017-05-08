@@ -1,9 +1,9 @@
 import Material from './colors.es2015';
 
 export default CommonStyles = {
-	colorStatusBar: Material.indigo['700'],
-	colorPrimary: Material.indigo['500'],
-	colorSecondary: Material.indigo['300'],
+	colorStatusBar: Material.teal['900'],
+	colorPrimary: Material.teal['700'],
+	colorSecondary: Material.teal['400'],
 	colorAccent: Material.deepOrange['a200'],
 	colorAccent20P: Material.deepOrange['a200'] + '20',
 	lightText: Material.lightText,
