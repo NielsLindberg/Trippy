@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {AppRegistry, Alert, Text, View, SectionList, ScrollView, StyleSheet, TextInput, TouchableOpacity, TimePickerAndroid} from 'react-native';
+import {AppRegistry, Alert, Text, View, SectionList, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import SearchResult from '../SearchResult/SearchResult';
+import LocationHeader from '../LocationHeader/LocationHeader';
 import moment from 'moment';
 import _ from 'lodash';
 
@@ -16,44 +17,20 @@ class LocationEdit extends Component{
 			location: {
 				title: '',
 				place: {},
-				place: {},
 				arrival: {},
 				end: {}
 			},
 			search: '',
 			sections: []
 		};
-		this.updateItem = this.updateItem.bind(this);	
 		this.searchAddress = this.searchAddress.bind(this);
-		this.timePicker = this.timePicker.bind(this);
+		this.extractKey = this.extractKey.bind(this);
+		this.renderRow = this.renderRow.bind(this);
+		this.renderSection = this.renderSection.bind(this);
 	}
-  updateItem() {
-  	this.props.updateUserItem('trips/' + this.props.currentTrip.key + '/locations/' + this.props.currentLocation.key, this.state.location);
-  }
 	searchAddress(){
 		this.props.getLocationSearch(this.state.search);
 	}
-	timePicker(key){
-		TimePickerAndroid.open({
-		    is24Hour: false
-		})
-		.then((response) => {
-			if(response.action !== TimePickerAndroid.dismissedAction) {
-				let newState = {};
-				newState.hour = response.hour;
-				newState.minute = response.minute;
-				this.props.updateUserItem('trips/' + this.props.currentTrip.key + '/locations/' + this.props.currentLocation.key, {[key]: newState});
-			}
-		})
-		.catch((error) => {
-		  console.log('Cannot open time picker', error);
-		})
-	}
-	componentWillUnmount() {
-    if (this.props.currentLocation.ref) {
-      this.props.currentLocation.ref.off('value');
-    }
-  }
 	componentWillReceiveProps() {
 		if(Object.keys(this.props.currentLocation).length > 0) {
 			this.setState({
@@ -66,30 +43,24 @@ class LocationEdit extends Component{
 			});
 		}
 		let dataSource = this.props.locationSearchResults;
-		dataSource = _.groupBy(dataSource, d => d.rating);
+		dataSource = _.groupBy(dataSource, d => d.types[0]);
 		dataSource = _.reduce(dataSource, (acc, next, index) => {
 			acc.push({
 				key: index,
-				month: moment().month(index).format("M"),
 				data: next
 			})
 			return acc}, [])
-		dataSource = _.sortBy(dataSource, 'month');
+		dataSource = _.sortBy(dataSource, 'key');
 		this.setState({sections: dataSource});
-	}
-	renderRow(trip) {
-		return(
-			<Trip
-				trip={trip}
-				navigation={this.props.navigation}
-			/>
-		)
 	}
 	renderSection(item) {
 		let header = item.section.key ? item.section.key : 'No Title';
 		return(
-				<Text style={styles.sectionHeader}>{header}</Text>
+			<Text style={styles.sectionHeader}>{_.capitalize(header)}</Text>
 		)
+	}
+	extractKey(item) {
+		return(item.id)
 	}
 	renderRow(searchResult) {
 		return(
@@ -102,39 +73,28 @@ class LocationEdit extends Component{
 	}
 	render() {
 		return (
-			<ScrollView style={styles.container}>
-				<Text style={styles.sectionHeader}>Location Details</Text>
-				<View style={styles.tripContainer}>
-					<View style={styles.title}>
-						<Icon style={styles.icon} name="access-time"/>
-						<Text style={styles.subTitle}>Arrival: </Text>
-						<TouchableOpacity onPress={() => {this.timePicker('arrival')}}>
-							<Text style={styles.datePickerText}>{this.state.location.arrival.hour}:{this.state.location.arrival.minute}</Text>
-						</TouchableOpacity>
-					</View>
-				<View style={styles.datePicker}>
-					<Icon style={styles.icon} name="access-time"/>
-					<Text style={styles.subTitle}>End: </Text>
-					<TouchableOpacity onPress={() => {this.timePicker('end')}}>
-						<Text style={styles.datePickerText}>{this.state.location.end.hour}:{this.state.location.end.minute}</Text>
-					</TouchableOpacity>
+			<View style={styles.container}>
+				<LocationHeader/>
+				<View style={styles.searchContainer}>
+					{!this.props.locationSearchFetching ? 
+					<Icon style={styles.icon} name="search"/> : 
+					<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>}
+					<TextInput 
+						style={styles.search}
+						placeholder='Search for a location'
+						onChangeText={(search) => this.setState({search})}
+						onEndEditing={() => {this.searchAddress()}}
+					/>
 				</View>
-			</View>
-				<Text style={styles.sectionHeader}>Locations</Text>
-				<TextInput 
-					style={styles.title}
-					placeholder='Search for a location'
-					onChangeText={(search) => this.setState({search})}
-					onEndEditing={() => {this.searchAddress()}}
-				/>
-				<Text>{this.state.address}</Text>
-				 <SectionList
+				{!this.props.currentLocationFetching ? 
+				<SectionList
 					style={styles.sectionList}
 					renderItem={({item}) => this.renderRow(item)}
+					keyExtractor={(item) => this.extractKey(item)}
 					renderSectionHeader={(item) => this.renderSection(item)}
 					sections={this.state.sections}		
-				/>
-			</ScrollView>
+				/> : <ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.darkText.secondary}/>}
+			</View>
 		)
 	}
 }
@@ -143,10 +103,8 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: 5,
-		paddingBottom: 5
-	},
-	flatList: {
-		flex: 1
+		paddingBottom: 5,
+		flexDirection: 'column'
 	},
 	sectionHeader: {
 		flexDirection: 'row',
@@ -157,7 +115,7 @@ const styles = StyleSheet.create({
 		fontSize: 18,
 		color: CommonStyles.darkText.secondary,
 	},
-	tripContainer: {
+	locationDetails: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignItems: 'center',
@@ -171,14 +129,29 @@ const styles = StyleSheet.create({
 	},
 	icon: {
 		color: CommonStyles.colorAccent,
-		fontSize: 25
-	},
-	title: {
-		flex: 1,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'flex-start',
+		fontSize: 25,
 		paddingLeft: 5,
+		paddingRight: 5
+	},
+	indicator: {
+		paddingLeft: 5,
+		paddingRight: 5
+	},
+	searchContainer: {
+		flexDirection: 'row',
+		marginLeft: 10,
+		marginRight: 10,
+		marginTop: 10,
+		marginBottom: 10,
+		elevation: 2,
+		borderRadius: 2,
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+		padding: 5,
+		backgroundColor: CommonStyles.white
+	},
+	search: {
+		flex: 1,
 	},
 	titleInput: {
 		flex: 1,
@@ -191,12 +164,18 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		alignContent: 'center',
-		justifyContent: 'center',
-		paddingRight: 5,
+		justifyContent: 'flex-start',
+		padding: 5
+	},
+	subTitle: {
+		color: CommonStyles.darkText.secondary,
 	},
 	datePickerText: {
-		fontSize: 14,
-		margin: 0
+		fontSize: 18,
+		paddingLeft: 5,
+		paddingRight: 5,
+		margin: 0,
+		color: CommonStyles.darkText.primary
 	}
 });
 

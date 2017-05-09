@@ -15,8 +15,9 @@ class TripDetailScreen extends Component{
     const itemAdd = {
       title: '',
       address: '',
-      arrival: {hour: 12, minute: 30},
-      end: {hour: 13, minute: 30}
+      place: {},
+      arrival: {hour: 0, minute: 0},
+      end: {hour: 0, minute: 0}
     };
     return {
       header: (
@@ -25,17 +26,11 @@ class TripDetailScreen extends Component{
           backButton={true}
           itemAdd={itemAdd}
           itemAddDestination={'locations'}
-          headerTitle={navigation.state.params.trip.val().title == '' ? 'Add Title': navigation.state.params.trip.val().title}
+          headerTitle='Edit Trip'
         />
       )
     }
   };
-  componentWillReceiveProps() {
-    if(Object.keys(this.props.currentTrip).length > 0 && this.props.navigation.state.params.trip != this.props.currentTrip) {
-      const {setParams} = this.props.navigation;
-      setParams({trip: this.props.currentTrip});
-    }
-  }
   render(){
     return(
     		<View style={styles.screen}>

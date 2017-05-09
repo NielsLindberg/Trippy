@@ -15,17 +15,11 @@ class LocationScreen extends Component{
         <StackHeader
           navigation={navigation}
           backButton={true}
-          headerTitle= {navigation.state.params.location == '' ? 'Add Location': navigation.state.params.location}
+          headerTitle='Choose Location'
         />
       )
     }
   };
-  componentWillReceiveProps() {
-      if(Object.keys(this.props.currentLocation).length > 0 && this.props.navigation.state.params.location != this.props.currentLocation.val().title) {
-        const {setParams} = this.props.navigation;
-        setParams({location: this.props.currentLocation.val().title});
-      }
-  }
   render(){
     return(
     		<View style={styles.screen}>

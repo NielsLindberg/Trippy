@@ -27,8 +27,7 @@ class DeleteButton extends Component {
 	deletePress(){
 		this.props.currentTrip.ref.off('value');
 		this.props.deleteUserItem('trips/' + this.props.currentTrip.key);
-		this.props.navigation.goBack();
-		
+		this.props.navigation.goBack();		
 	}
 	render(){
 		return(

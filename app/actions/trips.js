@@ -26,7 +26,6 @@ export function addUserItem(dest, item){
 
 export function updateUserItem(dest, item) {
 	return (dispatch, getState) => {
-		dispatch(setTripsIndicator(true));
 		getState().backend.userRef.child(dest).update(item);
 	}
 }
@@ -89,7 +88,7 @@ export function setCurrentLocation(location) {
 	}
 }
 
-export function setCurrentLocationIndicator(indicator) {
+export function setCurrentLocationFetching(indicator) {
 	return {
 		type: types.SET_CURRENT_LOCATION_FETCHING,
 		payload: indicator
@@ -98,7 +97,7 @@ export function setCurrentLocationIndicator(indicator) {
 
 export function getCurrentLocation(dest) {
 	return (dispatch, getState) => {
-		dispatch(setCurrentLocationIndicator(true));
+		dispatch(setCurrentLocationFetching(true));
 		dispatch(getLocation(dest));
 	}
 }
@@ -107,7 +106,7 @@ export function getLocation(dest) {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child(dest).on('value', (snap) => {
 	   		dispatch(setCurrentLocation(snap));
-	   		dispatch(setCurrentLocationIndicator(false));
+	   		dispatch(setCurrentLocationFetching(false));
 		});
   }
 }
