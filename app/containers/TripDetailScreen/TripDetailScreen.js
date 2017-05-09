@@ -8,11 +8,15 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import StackHeader from '../../components/StackHeader/StackHeader';
+import DeleteButton from '../../components/DeleteButton/DeleteButton';
 
 class TripDetailScreen extends Component{
     static navigationOptions = ({navigation}) => {
     const itemAdd = {
-      title: ''
+      title: '',
+      address: '',
+      arrival: {hour: 12, minute: 30},
+      end: {hour: 13, minute: 30}
     };
     return {
       header: (
@@ -37,6 +41,9 @@ class TripDetailScreen extends Component{
     		<View style={styles.screen}>
             <StatusBarComponent/>
             <TripEdit 
+              navigation={this.props.navigation}
+            />
+            <DeleteButton
               navigation={this.props.navigation}
             />
         </View>

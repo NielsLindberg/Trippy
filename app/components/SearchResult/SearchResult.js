@@ -16,8 +16,7 @@ class SearchResult extends Component{
 	}
 	selectAddress(result){
 		this.setState({
-				title: result.name ? result.name : result.formatted_address,
-				address: result.formatted_address
+				result: result
 		});
 		this.updateItem();
 	}

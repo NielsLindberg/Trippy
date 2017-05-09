@@ -11,6 +11,7 @@ export default CommonStyles = {
 	darkText: Material.darkText,
 	darkIcons: Material.darkIcons,
 	white: Material.white,
+	grey: Material.grey,
 	black: Material.black,
 	colorGradient1: '#2bc0e4',
 	colorGradient2: '#eaecc6',
@@ -21,6 +22,3 @@ export default CommonStyles = {
 	colorGradient7: '#3CA55C',
 	colorGradient8: '#B5AC49'
 };
-
-console.log(Material);
-console.log(CommonStyles);

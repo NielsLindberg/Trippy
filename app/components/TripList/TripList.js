@@ -24,7 +24,7 @@ class TripList extends Component{
 	}
 	componentWillReceiveProps(){
 		let dataSource = this.props.userTrips;
-		dataSource = _.groupBy(dataSource, d => moment(d.val().date).format('MMM'));
+		dataSource = _.groupBy(dataSource, d => moment(d.val().date).format('MMMM'));
 		dataSource = _.reduce(dataSource, (acc, next, index) => {
 			acc.push({
 				key: index,
@@ -47,7 +47,7 @@ class TripList extends Component{
 		let header = item.section.key ? item.section.key : 'No Title';
 		return(
 			<View style={styles.sectionHeader}>
-				<Text style={styles.sectionHeaderText}>{_.toUpper(header)}</Text>
+				<Text style={styles.sectionHeaderText}>{header}</Text>
 			</View>
 		)
 	}

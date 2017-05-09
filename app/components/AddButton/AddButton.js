@@ -18,14 +18,14 @@ class AddButton extends Component {
 	render(){
 		return(
 			<View style={styles.buttonStyle}>
-				{!this.props.fetching ? 
+				{!this.props.userTripsFetching && !this.props.currentTripFetching ? 
 					<TouchableOpacity
         	onPress={this.addItem}
         	activeOpacity={0.8}
         	>
         	<Icon name="add" style={styles.buttonTextStyle}/>
         </TouchableOpacity> : 
-      	<ActivityIndicator size={40} style={styles.indicator} color={CommonStyles.lightText.primary}/>} 
+      	<ActivityIndicator size={40} color={CommonStyles.lightText.primary}/>} 
       </View>
 		)
 	}
@@ -57,7 +57,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		fetching: state.trips.userTripsFetching,
+		userTripsFetching: state.trips.userTripsFetching,
+		currentTripFetching: state.trips.currentTripFetching,
 		currentTrip: state.trips.currentTrip
 	}
 }
