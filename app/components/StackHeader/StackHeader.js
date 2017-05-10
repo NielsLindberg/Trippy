@@ -11,7 +11,6 @@ export default class StackHeader extends Component{
     this.backHandler = this.backHandler.bind(this);
   }
   backHandler(){
-    console.log(this.props);
     this.props.navigation.goBack();
   }
   

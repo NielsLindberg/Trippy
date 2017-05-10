@@ -2,7 +2,9 @@ import * as types from './types';
 import { googleApi } from '../lib/Secrets';
 
 const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
-
+export function snapToObject(snap) {
+	return Object.assign({}, {key: snap.key}, snap.val());
+}
 export function setTripsIndicator(indicator) {
 	return {
 		type: types.SET_USER_TRIPS_FETCHING,
@@ -27,6 +29,8 @@ export function addUserItem(dest, item){
 export function updateUserItem(dest, item) {
 	return (dispatch, getState) => {
 		getState().backend.userRef.child(dest).update(item);
+		console.log(getState().backend.userRef.child(dest));
+		console.log(item);
 	}
 }
 
@@ -105,7 +109,7 @@ export function getCurrentLocation(dest) {
 export function getLocation(dest) {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child(dest).on('value', (snap) => {
-	   		dispatch(setCurrentLocation(snap));
+	   		dispatch(setCurrentLocation(snapToObject(snap)));
 	   		dispatch(setCurrentLocationFetching(false));
 		});
   }

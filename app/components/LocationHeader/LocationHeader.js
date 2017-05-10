@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, StyleSheet, TouchableOpacity, TimePickerAndroid} from 'react-native';
+import {AppRegistry, Text, View, StyleSheet, TouchableOpacity, TimePickerAndroid, ActivityIndicator, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
@@ -12,19 +12,15 @@ class LocationHeader extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			location: {
-				title: '',
-				place: {},
-				arrival: {},
-				end: {}
-			}
+			address: [],
+			search: ''
 		};
-		this.updateItem = this.updateItem.bind(this);	
+		this.searchAddress = this.searchAddress.bind(this);
 		this.timePicker = this.timePicker.bind(this);
 	}
-  updateItem() {
-  	this.props.updateUserItem('trips/' + this.props.currentTrip.key + '/locations/' + this.props.currentLocation.key, this.state.location);
-  }
+	searchAddress(){
+		this.props.getLocationSearch(this.state.search);
+	}
 	timePicker(key){
 		TimePickerAndroid.open({
 		    is24Hour: false
@@ -42,60 +38,111 @@ class LocationHeader extends Component{
 		})
 	}
 	componentWillReceiveProps() {
-		if(Object.keys(this.props.currentLocation).length > 0) {
-			this.setState({
-				location: {
-				title: this.props.currentLocation.val().title,
-				place: this.props.currentLocation.val().place,
-				arrival: this.props.currentLocation.val().arrival,
-				end: this.props.currentLocation.val().end,
-				}
-			});
+		if(typeof this.props.currentLocation.place === 'object') {
+			let string = this.props.currentLocation.place.formatted_address;
+			string = string.split(', ');
+			this.setState({address: string});
 		}
 	}
 	render() {
-		return (
-			<View style={styles.locationDetails}>
-				<View style={styles.datePicker}>
-					<Icon style={styles.icon} name="access-time"/>
-					<Text style={styles.subTitle}>Arrival: </Text>
-					<TouchableOpacity onPress={() => {this.timePicker('arrival')}}>
-						<Text style={styles.datePickerText}>{this.state.location.arrival.hour}:{this.state.location.arrival.minute}</Text>
-					</TouchableOpacity>
+			if(this.props.currentLocationFetching) {
+				return (<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>)
+			} else {
+				return (
+			<View style={styles.container}>
+				<View style={styles.row}>
+					<View style={styles.datePicker}>
+						<Icon style={styles.icon} name="place"/>
+						<View style={styles.address}>
+							<Text style={styles.datePickerText}>{this.props.currentLocation.place ? this.props.currentLocation.place.name: null}</Text>
+							{this.state.address.map((address, index) => {
+		      			return (
+		        	<Text key={index} style={styles.addressText}>{address}</Text>
+	      			)})}
+						</View>
+					</View>
+					<View style={styles.datePicker}>
+						<Icon style={styles.icon} name="star"/>
+						<Text style={styles.subTitle}>Rating: </Text>
+						<Text style={styles.datePickerText}>{this.props.currentLocation.place ? this.props.currentLocation.place.rating: null}</Text>
+					</View>
 				</View>
-				<View style={styles.datePicker}>
-					<Icon style={styles.icon} name="access-time"/>
-					<Text style={styles.subTitle}>End: </Text>
-					<TouchableOpacity onPress={() => {this.timePicker('end')}}>
-						<Text style={styles.datePickerText}>{this.state.location.end.hour}:{this.state.location.end.minute}</Text>
-					</TouchableOpacity>
+				<View style={styles.row}>
+					<View style={styles.datePicker}>
+						<Icon style={styles.icon} name="access-time"/>
+						<Text style={styles.subTitle}>Arrival: </Text>
+						<TouchableOpacity onPress={() => {this.timePicker('arrival')}}>
+							<Text style={styles.datePickerText}>{this.props.currentLocation.arrival.hour}:{this.props.currentLocation.arrival.minute}</Text>
+						</TouchableOpacity>
+					</View>
+					<View style={styles.datePicker}>
+						<Icon style={styles.icon} name="access-time"/>
+						<Text style={styles.subTitle}>End: </Text>
+						<TouchableOpacity onPress={() => {this.timePicker('end')}}>
+							<Text style={styles.datePickerText}>{this.props.currentLocation.end.hour}:{this.props.currentLocation.end.minute}</Text>
+						</TouchableOpacity>
+					</View>
+				</View>
+				<View style={styles.searchContainer}>
+					{!this.props.locationSearchFetching ? 
+					<Icon style={styles.searchIcon} name="search"/> : 
+					<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>}
+					<TextInput 
+						style={styles.search}
+						placeholder='Search for a location'
+						onChangeText={(search) => this.setState({search})}
+						onEndEditing={() => {this.searchAddress()}}
+					/>
 				</View>
 			</View>
-		)
+			)
+		}		
 	}
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		paddingTop: 5,
-		paddingBottom: 5,
+	indicator: {
+		alignSelf: 'center',
+		alignContent: 'center'
+	},
+	address: {
 		flexDirection: 'column'
 	},
-	locationDetails: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		backgroundColor: CommonStyles.white,
-		elevation: 2,
-		borderRadius: 2,
+	container: {
+		flexDirection: 'column',
 		marginLeft: 10,
 		marginRight: 10,
 		paddingTop: 10,
-		paddingBottom: 10
+		paddingBottom: 10,
+		elevation: 2,
+		borderRadius: 2,
+		backgroundColor: CommonStyles.white
+	},
+	row: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		alignItems: 'flex-start',
+	},
+	searchContainer: {
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+		padding: 5
+	},
+	search: {
+		flex: 1,
+		fontSize: 16,
+	},
+	searchIcon: {
+		color: CommonStyles.colorAccent,
+		alignSelf: 'center',
+		fontSize: 25,
+		paddingLeft: 5,
+		paddingRight: 5
 	},
 	icon: {
 		color: CommonStyles.colorAccent,
+		alignSelf: 'flex-start',
 		fontSize: 25,
 		paddingLeft: 5,
 		paddingRight: 5
@@ -109,9 +156,7 @@ const styles = StyleSheet.create({
 		padding: 5
 	},
 	datePickerText: {
-		fontSize: 18,
-		paddingLeft: 5,
-		paddingRight: 5,
+		fontSize: 14,
 		margin: 0,
 		color: CommonStyles.darkText.primary
 	}

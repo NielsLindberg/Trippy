@@ -11,9 +11,6 @@ export default class LoginScreen extends Component{
     this.state = {
     }
   }
-  componentDidMount(){
-
-  }
   render(){
     let {height, width} = Dimensions.get('window');
     return(

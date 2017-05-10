@@ -34,6 +34,7 @@ class TripList extends Component{
 			return acc}, [])
 		dataSource = _.sortBy(dataSource, 'month');
 		this.setState({sections: dataSource});
+		console.log(dataSource);
 	}
 	renderRow(trip) {
 		return(

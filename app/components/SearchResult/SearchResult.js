@@ -9,21 +9,11 @@ import { bindActionCreators } from 'redux';
 class SearchResult extends Component{
 	constructor(props){
 		super(props);
-		this.state = {
-			result: {}
-		};
-		this.selectAddress = this.selectAddress.bind(this);	
-	}
-	updateItem(){
-		this.props.setCurrentLocationFetching(true);
-		console.log('trips/' + this.props.currentTripKey + '/locations/' + this.props.currentLocationKey);
-		this.props.updateUserItem('trips/' + this.props.currentTripKey + '/locations/' + this.props.currentLocationKey + '/place', this.state.result);
+		this.selectAddress = this.selectAddress.bind(this);
 	}
 	selectAddress(result){
-		this.setState({
-				result: result
-		});
-		this.updateItem();
+		this.props.setCurrentLocationFetching(true);
+		this.props.updateUserItem('trips/' + this.props.currentTripKey + '/locations/' + this.props.currentLocationKey, {place: result});
 	}
 	componentWillMount(){
 		let string = this.props.searchResult.formatted_address;

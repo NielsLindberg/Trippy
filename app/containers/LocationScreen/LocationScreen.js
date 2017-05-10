@@ -20,6 +20,10 @@ class LocationScreen extends Component{
       )
     }
   };
+  componentWillUnmount(){
+    this.props.setCurrentLocation({});
+    this.props.navigation.goBack();   
+  }
   render(){
     return(
     		<View style={styles.screen}>
