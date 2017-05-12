@@ -3,6 +3,7 @@ import {AppRegistry, View, StyleSheet} from 'react-native';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import LocationEdit from '../../components/LocationEdit/LocationEdit';
 import StackHeader from '../../components/StackHeader/StackHeader';
+import DeleteButton from '../../components/DeleteButton/DeleteButton';
 import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
@@ -22,6 +23,7 @@ class LocationScreen extends Component{
   };
   componentWillUnmount(){
     this.props.setCurrentLocation({});
+    this.props.setLocationSearchResults({});
     this.props.navigation.goBack();   
   }
   render(){
@@ -30,6 +32,10 @@ class LocationScreen extends Component{
             <StatusBarComponent/>
             <LocationEdit 
               navigation={this.props.navigation}
+            />
+            <DeleteButton
+              navigation={this.props.navigation}
+              item='currentLocation'
             />
         </View>
       )

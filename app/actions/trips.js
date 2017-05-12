@@ -5,7 +5,7 @@ const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textse
 export function snapToObject(snap) {
 	return Object.assign({}, {key: snap.key}, snap.val());
 }
-export function setTripsIndicator(indicator) {
+export function setUserTripsFetching(indicator) {
 	return {
 		type: types.SET_USER_TRIPS_FETCHING,
 		payload: indicator
@@ -21,37 +21,31 @@ export function setUserTrips(trips) {
 
 export function addUserItem(dest, item){
 	return (dispatch, getState) => {
-		dispatch(setTripsIndicator(true));
+		dispatch(setUserTripsFetching(true));
 		getState().backend.userRef.child(dest).push(item);
 	}
 }
 
 export function updateUserItem(dest, item) {
 	return (dispatch, getState) => {
+		dispatch(setUserTripsFetching(true));
 		getState().backend.userRef.child(dest).update(item);
-		console.log(getState().backend.userRef.child(dest));
-		console.log(item);
 	}
 }
 
-export function deleteUserItem(dest) {
+export function deleteUserItem(ref) {
 		return (dispatch, getState) => {
-			dispatch(setTripsIndicator(true));
-			getState().backend.userRef.child(dest).remove();
+			dispatch(setUserTripsFetching(true));
+			ref.off();
+			ref.remove();
   }
 }
 
 export function getUserTrips() {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child('trips').on('value', (snap) => {
-				var items = [];
-					snap.forEach((child) => {
-						items.push(child);
-
-				});
-				dispatch(setUserTrips(items));
-				dispatch(setTripsIndicator(false))
-				
+				dispatch(setUserTrips(snap));
+				dispatch(setUserTripsFetching(false))		
 		})
   }
 }
@@ -62,7 +56,7 @@ export function setCurrentTrip(trip) {
 	}
 }
 
-export function setCurrentTripIndicator(indicator) {
+export function setCurrentTripFetching(indicator) {
 	return {
 		type: types.SET_CURRENT_TRIP_FETCHING,
 		payload: indicator
@@ -71,6 +65,7 @@ export function setCurrentTripIndicator(indicator) {
 
 export function setCurrentUserTrip(dest) {
 	return (dispatch, getState) => {
+		dispatch(setCurrentTripFetching(true));
 		dispatch(getUserTrip(dest));
 	}
 }
@@ -78,9 +73,8 @@ export function setCurrentUserTrip(dest) {
 export function getUserTrip(dest) {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child(dest).on('value', (snap) => {
-	   		dispatch(setCurrentTripIndicator(true));
 	   		dispatch(setCurrentTrip(snap));
-	   		dispatch(setCurrentTripIndicator(false));
+	   		dispatch(setCurrentTripFetching(false));
 		});
   }
 }
@@ -109,7 +103,7 @@ export function getCurrentLocation(dest) {
 export function getLocation(dest) {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child(dest).on('value', (snap) => {
-	   		dispatch(setCurrentLocation(snapToObject(snap)));
+	   		dispatch(setCurrentLocation(snap));
 	   		dispatch(setCurrentLocationFetching(false));
 		});
   }

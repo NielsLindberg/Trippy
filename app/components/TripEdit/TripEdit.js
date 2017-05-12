@@ -19,7 +19,6 @@ class TripEdit extends Component{
 			locations: []
 		};
 		this.renderRow = this.renderRow.bind(this);
-		this.renderFooter = this.renderFooter.bind(this);
 		this.datePicker = this.datePicker.bind(this);
 	}
 	renderRow(location) {
@@ -38,9 +37,9 @@ class TripEdit extends Component{
 				items.push(child);
 			});
 			this.setState({
-				title: this.props.currentTrip.val().title,
+				title: this.props.currentTripVal.title,
 				locations: items,
-				date: this.props.currentTrip.val().date
+				date: this.props.currentTripVal.date
 			});
 		}
 	}
@@ -50,7 +49,6 @@ class TripEdit extends Component{
 		})
 		.then((response) => {
 			if(response.action !== DatePickerAndroid.dismissedAction) {
-				console.log(response);
 				let date = new Date(response.year, response.month, response.day);
 				this.props.updateUserItem('trips/' + this.props.currentTrip.key, {'date': date});
 			}
@@ -58,13 +56,6 @@ class TripEdit extends Component{
 		.catch((error) => {
 		  console.log('Cannot open date picker', error);
 		})
-	}
-	renderFooter = () => {
-		return(
-			<View>
-				<AddButton align='center' size={25} addItem={this.props.addUserItem} destination={'trips/' + this.props.currentTrip.key + '/locations/'} item={{title: ''}}/>
-			</View>
-		)
 	}
 	render() {
 		return (
@@ -168,6 +159,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
 	return {
 		currentTrip: state.trips.currentTrip,
+		currentTripVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val() : null,
 		currentTripIndicator: state.trips.currentTripFetching
 	}
 }

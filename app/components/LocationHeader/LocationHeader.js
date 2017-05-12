@@ -45,58 +45,56 @@ class LocationHeader extends Component{
 		}
 	}
 	render() {
-			if(this.props.currentLocationFetching) {
-				return (<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>)
-			} else {
-				return (
-			<View style={styles.container}>
-				<View style={styles.row}>
-					<View style={styles.datePicker}>
-						<Icon style={styles.icon} name="place"/>
-						<View style={styles.address}>
-							<Text style={styles.datePickerText}>{this.props.currentLocation.place ? this.props.currentLocation.place.name: null}</Text>
-							{this.state.address.map((address, index) => {
-		      			return (
-		        	<Text key={index} style={styles.addressText}>{address}</Text>
-	      			)})}
+		return (
+			<View style={styles.wrapper}>
+				<View style={styles.container}>
+					<View style={styles.column}>
+						<View style={styles.datePicker}>
+							<Icon style={styles.icon} name="place"/>
+							<View style={styles.address}>
+								<Text style={styles.datePickerText}>{this.props.currentLocation.place ? this.props.currentLocation.place.name: 'Search for a location'}</Text>
+								{this.state.address.map((address, index) => {
+			      			return (
+			        	<Text key={index} style={styles.addressText}>{address}</Text>
+		      			)})}
+							</View>
 						</View>
 					</View>
-					<View style={styles.datePicker}>
-						<Icon style={styles.icon} name="star"/>
-						<Text style={styles.subTitle}>Rating: </Text>
-						<Text style={styles.datePickerText}>{this.props.currentLocation.place ? this.props.currentLocation.place.rating: null}</Text>
-					</View>
-				</View>
-				<View style={styles.row}>
-					<View style={styles.datePicker}>
-						<Icon style={styles.icon} name="access-time"/>
-						<Text style={styles.subTitle}>Arrival: </Text>
-						<TouchableOpacity onPress={() => {this.timePicker('arrival')}}>
-							<Text style={styles.datePickerText}>{this.props.currentLocation.arrival.hour}:{this.props.currentLocation.arrival.minute}</Text>
-						</TouchableOpacity>
-					</View>
-					<View style={styles.datePicker}>
-						<Icon style={styles.icon} name="access-time"/>
-						<Text style={styles.subTitle}>End: </Text>
-						<TouchableOpacity onPress={() => {this.timePicker('end')}}>
-							<Text style={styles.datePickerText}>{this.props.currentLocation.end.hour}:{this.props.currentLocation.end.minute}</Text>
-						</TouchableOpacity>
+					<View style={styles.column}>
+						<View style={styles.datePicker}>
+							<Icon style={styles.icon} name="star"/>
+							<Text style={styles.subTitle}>Rating: </Text>
+							<Text style={styles.datePickerText}>{this.props.currentLocation.place ? this.props.currentLocation.place.rating: null}</Text>
+						</View>
+						<View style={styles.datePicker}>
+							<Icon style={styles.icon} name="access-time"/>
+							<Text style={styles.subTitle}>Arrival: </Text>
+							<TouchableOpacity onPress={() => {this.timePicker('arrival')}}>
+								<Text style={styles.datePickerText}>{this.props.currentLocation.arrival ? this.props.currentLocation.arrival.hour + ':' + this.props.currentLocation.arrival.minute: 'Select Arrival'}</Text>
+							</TouchableOpacity>
+						</View>
+						<View style={styles.datePicker}>
+							<Icon style={styles.icon} name="access-time"/>
+							<Text style={styles.subTitle}>End: </Text>
+							<TouchableOpacity onPress={() => {this.timePicker('end')}}>
+								<Text style={styles.datePickerText}>{this.props.currentLocation.end ? this.props.currentLocation.end.hour + ':' + this.props.currentLocation.end.minute: 'Select End'}</Text>
+							</TouchableOpacity>
+						</View>
 					</View>
 				</View>
 				<View style={styles.searchContainer}>
-					{!this.props.locationSearchFetching ? 
-					<Icon style={styles.searchIcon} name="search"/> : 
-					<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>}
-					<TextInput 
-						style={styles.search}
-						placeholder='Search for a location'
-						onChangeText={(search) => this.setState({search})}
-						onEndEditing={() => {this.searchAddress()}}
-					/>
-				</View>
+						{!this.props.locationSearchFetching ? 
+						<Icon style={styles.searchIcon} name="search"/> : 
+						<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>}
+						<TextInput 
+							style={styles.search}
+							placeholder='Search for a location'
+							onChangeText={(search) => this.setState({search})}
+							onEndEditing={() => {this.searchAddress()}}
+						/>
+					</View>
 			</View>
-			)
-		}		
+		)	
 	}
 }
 
@@ -108,7 +106,7 @@ const styles = StyleSheet.create({
 	address: {
 		flexDirection: 'column'
 	},
-	container: {
+	wrapper: {
 		flexDirection: 'column',
 		marginLeft: 10,
 		marginRight: 10,
@@ -116,17 +114,23 @@ const styles = StyleSheet.create({
 		paddingBottom: 10,
 		elevation: 2,
 		borderRadius: 2,
-		backgroundColor: CommonStyles.white
+		backgroundColor: CommonStyles.white,
+		height: 180
 	},
-	row: {
+	container: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		alignItems: 'flex-start',
+		flex: 1
+	},
+	column: {
+		flexDirection: 'column',
+		flex: 1,
+		paddingBottom: 5
 	},
 	searchContainer: {
+		borderTopColor: CommonStyles.darkText.dividers,
+		borderTopWidth: 1,
 		flexDirection: 'row',
-		justifyContent: 'flex-start',
-		alignItems: 'center',
 		padding: 5
 	},
 	search: {
@@ -142,7 +146,6 @@ const styles = StyleSheet.create({
 	},
 	icon: {
 		color: CommonStyles.colorAccent,
-		alignSelf: 'flex-start',
 		fontSize: 25,
 		paddingLeft: 5,
 		paddingRight: 5
@@ -150,10 +153,6 @@ const styles = StyleSheet.create({
 	datePicker: {
 		flex: 1,
 		flexDirection: 'row',
-		alignItems: 'center',
-		alignContent: 'center',
-		justifyContent: 'flex-start',
-		padding: 5
 	},
 	datePickerText: {
 		fontSize: 14,

@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import {AppRegistry, View, TouchableOpacity, StyleSheet, Alert, ActivityIndicator} from 'react-native';
-import { connect } from 'react-redux';
-import { ActionCreators } from '../../actions';
-import { bindActionCreators } from 'redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CommonStyles from '../../lib/CommonStyles';
 
-class DeleteButton extends Component {
+export default class DeleteButton extends Component {
 	constructor(props){
 		super(props);
 		this.deletePressConfirm = this.deletePressConfirm.bind(this);
@@ -16,7 +13,7 @@ class DeleteButton extends Component {
 		var self = this;
 		Alert.alert(
 		  'Delete Trip',
-		  'WARNING: Deleting a trip is irreversable!',
+		  'WARNING: Deleting an item is irreversable!',
 		  [
 		    {text: 'Cancel', style: 'cancel'},
 		    {text: 'OK', onPress: () => self.deletePress()},
@@ -25,21 +22,18 @@ class DeleteButton extends Component {
 		)
 	}
 	deletePress(){
-		this.props.currentTrip.ref.off('value');
-		this.props.deleteUserItem('trips/' + this.props.currentTrip.key);
-		this.props.navigation.goBack();		
+		this.props.navigation.goBack();	
+		this.props.deleteHandler(this.props.item.ref);	
 	}
 	render(){
 		return(
 			<View style={styles.buttonStyle}>
-				{!this.props.userTripsFetching && !this.props.currentTripFetching ?
 					<TouchableOpacity
         	onPress={this.deletePressConfirm}
         	activeOpacity={0.8}
         	>
         	<Icon name="clear" style={styles.buttonTextStyle}/>
-        </TouchableOpacity> : 
-      	<ActivityIndicator size={40} color={CommonStyles.darkText.secondary}/>} 
+        </TouchableOpacity>
       </View>
 		)
 	}
@@ -65,16 +59,4 @@ const styles = StyleSheet.create({
 });
 
 
-function mapDispatchToProps(dispatch) {
-	return bindActionCreators(ActionCreators, dispatch);
-}
-
-function mapStateToProps(state) {
-	return {
-		userTripsFetching: state.trips.userTripsFetching,
-		currentTripFetching: state.trips.currentTripFetching,
-		currentTrip: state.trips.currentTrip
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeleteButton);
+AppRegistry.registerComponent('DeleteButton', () => DeleteButton);

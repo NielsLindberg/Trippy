@@ -23,22 +23,28 @@ class TripList extends Component{
 		this.props.getUserTrips();
 	}
 	componentWillReceiveProps(){
-		let dataSource = this.props.userTrips;
-		dataSource = _.groupBy(dataSource, d => moment(d.val().date).format('MMMM'));
-		dataSource = _.reduce(dataSource, (acc, next, index) => {
+		if(Object.keys(this.props.userTrips).length > 0) {
+			var items = [];
+			this.props.userTrips.forEach((child) => {
+				items.push(child);
+			});
+			let dataSource = items;
+			dataSource = _.groupBy(dataSource, d => moment(d.val().date).format('MMMM'));
+			dataSource = _.reduce(dataSource, (acc, next, index) => {
 			acc.push({
 				key: index,
 				month: moment().month(index).format("M"),
 				data: next
 			})
 			return acc}, [])
-		dataSource = _.sortBy(dataSource, 'month');
-		this.setState({sections: dataSource});
-		console.log(dataSource);
+			dataSource = _.sortBy(dataSource, 'month');
+			this.setState({sections: dataSource});
+		}
 	}
 	renderRow(trip) {
 		return(
 			<Trip
+				setCurrentUserTrip={this.props.setCurrentUserTrip}
 				trip={trip}
 				navigation={this.props.navigation}
 			/>

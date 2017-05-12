@@ -40,6 +40,8 @@ class TripDetailScreen extends Component{
             />
             <DeleteButton
               navigation={this.props.navigation}
+              item={this.props.currentTrip}
+              deleteHandler={this.props.deleteUserItem}
             />
         </View>
       )
