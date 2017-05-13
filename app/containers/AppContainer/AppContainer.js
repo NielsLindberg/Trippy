@@ -14,6 +14,7 @@ class AppContainer extends Component {
 	componentDidMount() {
 		this.props.addBackend();
 		this.props.setGoogleSigninConfigure();
+		this.props.getGeoLocation();
 	}
 	// _onLayout = event => this.props.appLayout(event.nativeEvent.layout);
  render() {

@@ -19,8 +19,6 @@ class MapComponent extends Component{
 	}
 	componentWillReceiveProps(){
 		if(this.props.coordinates.length > 0) {
-			console.log(this.props.coordinates);
-			console.log(this.mapRef);
 			this.props.zoomMapToMarkers(this.mapRef);
 		}
 	}
@@ -40,6 +38,14 @@ class MapComponent extends Component{
 					      description={marker.description}
 					    />
 					  ))}
+					  {this.props.userCoords ? 
+					 		<MapView.Marker
+					    	pinColor={CommonStyles.colorPrimary}
+					    	key={'You'}
+					      coordinate={this.props.userCoords}
+					      title='Your Position'
+					      description='Your Position'
+					    /> : null}
 	       		</MapView>
 	    </View>
     );
@@ -65,7 +71,8 @@ function mapStateToProps(state) {
 	return {
 		currentTripVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val() : null,
 		markers: state.map.markers,
-		coordinates: state.map.coordinates
+		coordinates: state.map.coordinates,
+		userCoords: state.map.geoLocation
 	}
 }
 

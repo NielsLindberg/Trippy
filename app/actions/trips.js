@@ -1,5 +1,6 @@
 import * as types from './types';
 import { googleApi } from '../lib/Secrets';
+import { GeoLocation } from 'react-native';
 
 const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
 export function snapToObject(snap) {
@@ -182,6 +183,7 @@ export function getCoordinates(markers) {
 		markers.map((marker) => {
 			coordinates.push(marker.latlng)
 		})
+		
 		dispatch(setCoordinates(coordinates));
 	}
 }
@@ -197,10 +199,29 @@ export function zoomMapToMarkers(mapRef) {
 	return (dispatch, getState) => {
 		mapRef.fitToCoordinates(getState().map.coordinates, {
 			edgePadding: {
-				top: 100,
-			  right: 15,
-			  bottom: 15,
-			  left: 15
+				top: 150,
+			  right: 150,
+			  bottom: 50,
+			  left: 150
 			}, animated: false});
+	}
+}
+
+export function getGeoLocation(){
+	return (dispatch, getState) => {
+		navigator.geolocation.getCurrentPosition(
+		(position) => {
+			let latlng = {latitude: position.coords.latitude, longitude: position.coords.longitude};
+			dispatch(setGeoLocation(latlng));
+		},
+		(error) => alert(JSON.stringify(error)),
+		{enableHighAccuracy: false, timeout: 20000, maximumAge: 10000});
+	}
+}
+
+export function setGeoLocation(coordinates){
+	return {
+		type: types.SET_MAP_GEOLOCATION,
+		payload: coordinates
 	}
 }

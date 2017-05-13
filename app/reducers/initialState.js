@@ -28,6 +28,6 @@ export default initialState = {
 	},
 	map: {
 		coordinates: [],
-		markers: []
+		markers: [],
 	}
 };

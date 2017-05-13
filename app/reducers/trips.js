@@ -30,9 +30,12 @@ export const trips = createReducer({}, {
 
 export const map = createReducer({}, {
 	[types.SET_MAP_COORDINATES](state, action) {
-		return {...state, coordinates: action.payload}
+		return {...state, coordinates: action.payload.concat(state.geoLocation)}
 	},
 	[types.SET_MAP_MARKERS](state, action) {
 		return {...state, markers: action.payload}
+	},
+	[types.SET_MAP_GEOLOCATION](state, action) {
+		return {...state, geoLocation: action.payload}
 	}
 });
