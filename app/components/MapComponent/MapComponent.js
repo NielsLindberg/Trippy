@@ -3,88 +3,35 @@ import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from '
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MapView from 'react-native-maps';
 
+import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+import { bindActionCreators } from 'redux';
+
 import MapStyles from './MapStyles';
 import CommonStyles from '../../lib/CommonStyles';
 
-export default class MapComponent extends Component{
+class MapComponent extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			markers: this.props.markers,
-			region: this.props.region
 		};
-		this.onRegionChange = this.onRegionChange.bind(this);
 		this.mapRef = null;
-		this.zoomMapToMarkers = this.zoomMapToMarkers.bind(this);
 	}
-
-	static defaultProps = {
-		markers: [{
-			id: 'Marker1',
-			latlng: {
-				longitude: 12.54,
-				latitude: 55.65
-			},
-			title: 'Marker 1',
-			description: 'Description 1'
-			}, {
-			id: 'Marker2',	
-			latlng: {
-				longitude: 12.56,
-				latitude: 55.67
-			},
-			title: 'Marker 2',
-			description: 'Description 2'}, {
-			id: 'Marker3',	
-			latlng: {
-				longitude: 12.56,
-				latitude: 55.68
-			},
-			title: 'Marker 3',
-			description: 'Description 3'}],
-		region: {
-			latitude: 55.69,
-	    longitude: 12.56,
-	    latitudeDelta: 0.05,
-	    longitudeDelta: 0.05
+	componentWillReceiveProps(){
+		if(this.props.coordinates.length > 0) {
+			console.log(this.props.coordinates);
+			console.log(this.mapRef);
+			this.props.zoomMapToMarkers(this.mapRef);
 		}
 	}
-
-	onRegionChange(region) {
-  	this.setState({ region });
-	}
-
-	zoomMapToMarkers() {
-		let coordinates = [];
-		this.state.markers.map(marker => (
-					   coordinates.push(marker.latlng)
-		));
-		let edgePadding = {
-			top: 100,
-		  right: 15,
-		  bottom: 15,
-		  left: 15
-		};
-		let animated = false;
-		let options = {edgePadding: edgePadding, animated: animated};
-		this.mapRef.fitToCoordinates(coordinates, options);
-	}
-
-	componentDidMount() {
-	}
-
 	render(){
 		return (
 	    <View style={styles.container}>
 		        <MapView
-		        	onLayout={this.zoomMapToMarkers}
 		        	ref={(ref) => { this.mapRef = ref }}
-		        	region={this.state.region}
-		        	onRegionChange={this.onRegionChange}
 	         		style={styles.map}
-	         		//customMapStyle={MapStyles}
 	       		>
-	       		{this.state.markers.map(marker => (
+	       		{this.props.markers.map(marker => (
 					    <MapView.Marker
 					    	pinColor={CommonStyles.colorAccent}
 					    	key={marker.id}
@@ -110,4 +57,16 @@ const styles = StyleSheet.create({
 	},
 });
 
-AppRegistry.registerComponent('MapComponent', () => MapComponent);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(ActionCreators, dispatch);
+}
+
+function mapStateToProps(state) {
+	return {
+		currentTripVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val() : null,
+		markers: state.map.markers,
+		coordinates: state.map.coordinates
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapComponent);

@@ -24,8 +24,7 @@ class TripEdit extends Component{
 	renderRow(location) {
 		return(
 			<Location
-				id={location.key}
-				title={location.val().title}
+				location={location}
 				navigation={this.props.navigation}
 			/>
 		)
@@ -50,7 +49,7 @@ class TripEdit extends Component{
 		.then((response) => {
 			if(response.action !== DatePickerAndroid.dismissedAction) {
 				let date = new Date(response.year, response.month, response.day);
-				this.props.updateUserItem('trips/' + this.props.currentTrip.key, {'date': date});
+				this.props.updateUserItem(this.props.currentTrip.ref, {'date': date});
 			}
 		})
 		.catch((error) => {
@@ -69,7 +68,7 @@ class TripEdit extends Component{
 							style={styles.titleInput}
 							placeholder='Add Title'
 							onChangeText= {(title) => this.setState({title})}
-							onEndEditing={() => this.props.updateUserItem('trips/' + this.props.currentTrip.key, {'title': this.state.title})}
+							onEndEditing={() => this.props.updateUserItem(this.props.currentTrip.ref, {'title': this.state.title})}
 						/>
 					</View>
 					<View style={styles.datePicker}>

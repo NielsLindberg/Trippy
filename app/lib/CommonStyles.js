@@ -22,6 +22,3 @@ export default CommonStyles = {
 	colorGradient7: '#3CA55C',
 	colorGradient8: '#B5AC49'
 };
-
-console.log(Material);
-console.log(CommonStyles);

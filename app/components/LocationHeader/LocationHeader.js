@@ -30,7 +30,7 @@ class LocationHeader extends Component{
 				let newState = {};
 				newState.hour = response.hour;
 				newState.minute = response.minute;
-				this.props.updateUserItem('trips/' + this.props.currentTrip.key + '/locations/' + this.props.currentLocation.key, {[key]: newState});
+				this.props.updateUserItem(this.props.currentLocation.ref, {[key]: newState});
 			}
 		})
 		.catch((error) => {
@@ -38,13 +38,18 @@ class LocationHeader extends Component{
 		})
 	}
 	componentWillReceiveProps() {
-		if(typeof this.props.currentLocation.place === 'object') {
-			let string = this.props.currentLocation.place.formatted_address;
-			string = string.split(', ');
-			this.setState({address: string});
+		if(this.props.currentLocationVal) {
+			if(typeof this.props.currentLocationVal.place === 'object') {
+				let string = this.props.currentLocationVal.place.formatted_address;
+				string = string.split(', ');
+				this.setState({address: string});
+			}
 		}
 	}
 	render() {
+		if(!this.props.currentLocationVal) {
+			return(<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>)
+		} else {
 		return (
 			<View style={styles.wrapper}>
 				<View style={styles.container}>
@@ -52,7 +57,7 @@ class LocationHeader extends Component{
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="place"/>
 							<View style={styles.address}>
-								<Text style={styles.datePickerText}>{this.props.currentLocation.place ? this.props.currentLocation.place.name: 'Search for a location'}</Text>
+								<Text style={styles.datePickerText}>{this.props.currentLocationVal.place ? this.props.currentLocationVal.place.name: 'Search for a location'}</Text>
 								{this.state.address.map((address, index) => {
 			      			return (
 			        	<Text key={index} style={styles.addressText}>{address}</Text>
@@ -64,20 +69,20 @@ class LocationHeader extends Component{
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="star"/>
 							<Text style={styles.subTitle}>Rating: </Text>
-							<Text style={styles.datePickerText}>{this.props.currentLocation.place ? this.props.currentLocation.place.rating: null}</Text>
+							<Text style={styles.datePickerText}>{this.props.currentLocationVal.place ? this.props.currentLocationVal.place.rating: null}</Text>
 						</View>
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="access-time"/>
 							<Text style={styles.subTitle}>Arrival: </Text>
 							<TouchableOpacity onPress={() => {this.timePicker('arrival')}}>
-								<Text style={styles.datePickerText}>{this.props.currentLocation.arrival ? this.props.currentLocation.arrival.hour + ':' + this.props.currentLocation.arrival.minute: 'Select Arrival'}</Text>
+								<Text style={styles.datePickerText}>{this.props.currentLocationVal.arrival ? this.props.currentLocationVal.arrival.hour + ':' + this.props.currentLocationVal.arrival.minute: 'Select Arrival'}</Text>
 							</TouchableOpacity>
 						</View>
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="access-time"/>
 							<Text style={styles.subTitle}>End: </Text>
 							<TouchableOpacity onPress={() => {this.timePicker('end')}}>
-								<Text style={styles.datePickerText}>{this.props.currentLocation.end ? this.props.currentLocation.end.hour + ':' + this.props.currentLocation.end.minute: 'Select End'}</Text>
+								<Text style={styles.datePickerText}>{this.props.currentLocationVal.end ? this.props.currentLocationVal.end.hour + ':' + this.props.currentLocationVal.end.minute: 'Select End'}</Text>
 							</TouchableOpacity>
 						</View>
 					</View>
@@ -95,6 +100,8 @@ class LocationHeader extends Component{
 					</View>
 			</View>
 		)	
+					
+		}
 	}
 }
 
@@ -167,8 +174,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		currentTrip: state.trips.currentTrip,
 		currentLocation: state.trips.currentLocation,
+		currentLocationVal: typeof state.trips.currentLocation.val === 'function' ? state.trips.currentLocation.val() : null,
 		currentLocationFetching: state.trips.currentLocationFetching
 	}
 }

@@ -27,3 +27,12 @@ export const trips = createReducer({}, {
 		return {...state, locationSearchFetching: action.payload};
 	}
 });
+
+export const map = createReducer({}, {
+	[types.SET_MAP_COORDINATES](state, action) {
+		return {...state, coordinates: action.payload}
+	},
+	[types.SET_MAP_MARKERS](state, action) {
+		return {...state, markers: action.payload}
+	}
+});

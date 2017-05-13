@@ -47,8 +47,7 @@ class LocationEdit extends Component{
 		return(
 			<SearchResult
 				searchResult={searchResult}
-				currentTripKey={this.props.currentTrip.key}
-				currentLocationKey={this.props.currentLocation.key}
+				currentLocation={this.props.currentLocation}
 			/>
 		)
 	}
@@ -63,7 +62,7 @@ class LocationEdit extends Component{
 					keyExtractor={(item) => this.extractKey(item)}
 					renderSectionHeader={(item) => this.renderSection(item)}
 					sections={this.state.sections}		
-				/> : null}
+				/> : <ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>}
 			</View>
 		)
 	}
@@ -92,8 +91,9 @@ const styles = StyleSheet.create({
 		paddingRight: 5
 	},
 	indicator: {
-		paddingLeft: 5,
-		paddingRight: 5
+		flex: 1,
+		alignContent: 'center',
+		alignSelf: 'center'
 	}
 });
 
@@ -103,8 +103,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		currentTrip: state.trips.currentTrip,
 		currentLocation: state.trips.currentLocation,
+		currentLocationVal: typeof state.trips.currentLocation.val === 'function' ? state.trips.currentLocation.val() : null,
 		currentLocationFetching: state.trips.currentLocationFetching,
 		locationSearchResults: state.trips.locationSearchResults,
 		locationSearchFetching: state.trips.locationSearchFetching

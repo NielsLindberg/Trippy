@@ -35,7 +35,8 @@ class LocationScreen extends Component{
             />
             <DeleteButton
               navigation={this.props.navigation}
-              item='currentLocation'
+              item={this.props.currentLocation}
+              deleteHandler={this.props.deleteUserItem}
             />
         </View>
       )

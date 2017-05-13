@@ -12,8 +12,7 @@ class SearchResult extends Component{
 		this.selectAddress = this.selectAddress.bind(this);
 	}
 	selectAddress(result){
-		this.props.setCurrentLocationFetching(true);
-		this.props.updateUserItem('trips/' + this.props.currentTripKey + '/locations/' + this.props.currentLocationKey, {place: result});
+		this.props.updateUserItem(this.props.currentLocation.ref, {place: result});
 	}
 	componentWillMount(){
 		let string = this.props.searchResult.formatted_address;

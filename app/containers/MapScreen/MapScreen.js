@@ -3,6 +3,7 @@ import {AppRegistry, View, StyleSheet} from 'react-native';
 
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import MapComponent from '../../components/MapComponent/MapComponent';
+import TripPicker from '../../components/TripPicker/TripPicker';
 
 export default class MapScreen extends Component{
   render(){
@@ -10,6 +11,7 @@ export default class MapScreen extends Component{
     		<View style={styles.screen}>
             <StatusBarComponent/>
             <MapComponent/>
+            <TripPicker/>
         </View>
       )
   }

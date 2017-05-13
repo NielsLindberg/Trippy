@@ -25,5 +25,9 @@ export default initialState = {
 		currentTripFetching: false,
 		currentLocationFetching: false,
 		locationSearchFetching: false
+	},
+	map: {
+		coordinates: [],
+		markers: []
 	}
 };

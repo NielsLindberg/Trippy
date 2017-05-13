@@ -26,10 +26,10 @@ export function addUserItem(dest, item){
 	}
 }
 
-export function updateUserItem(dest, item) {
+export function updateUserItem(ref, item) {
 	return (dispatch, getState) => {
 		dispatch(setUserTripsFetching(true));
-		getState().backend.userRef.child(dest).update(item);
+		ref.update(item);
 	}
 }
 
@@ -74,6 +74,7 @@ export function getUserTrip(dest) {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child(dest).on('value', (snap) => {
 	   		dispatch(setCurrentTrip(snap));
+	   		dispatch(getMarkers(snap));
 	   		dispatch(setCurrentTripFetching(false));
 		});
   }
@@ -93,16 +94,16 @@ export function setCurrentLocationFetching(indicator) {
 	}
 }
 
-export function getCurrentLocation(dest) {
+export function getCurrentLocation(ref) {
 	return (dispatch, getState) => {
 		dispatch(setCurrentLocationFetching(true));
-		dispatch(getLocation(dest));
+		dispatch(getLocation(ref));
 	}
 }
 
-export function getLocation(dest) {
+export function getLocation(ref) {
 	 return (dispatch, getState) => {
-	   	getState().backend.userRef.child(dest).on('value', (snap) => {
+	   		ref.on('value', (snap) => {
 	   		dispatch(setCurrentLocation(snap));
 	   		dispatch(setCurrentLocationFetching(false));
 		});
@@ -141,4 +142,65 @@ export function getLocationSearch(searchString) {
 			})
 		})
   }
+}
+
+export function getMarkers(trip){
+	return (dispatch, getState) => {
+		var items = [];
+		if(typeof trip.val().locations === 'object') {
+			trip.child('locations').forEach((child) => {
+				if(child.val().place) {
+					var marker = {
+						id: child.val().place.id,
+						title: child.val().place.name,
+						description: child.val().place.name,
+						latlng: {
+							latitude: child.val().place.geometry.location.lat,
+							longitude: child.val().place.geometry.location.lng
+						}
+					}
+					items.push(marker);
+				}
+			});
+		}
+		dispatch(setMarkers(items));
+		dispatch(getCoordinates(items));
+	}
+}
+
+export function setMarkers(markers) {
+	return {
+		type: types.SET_MAP_MARKERS,
+		payload: markers
+	}
+}
+
+
+export function getCoordinates(markers) {
+	return (dispatch, getState) => {
+		var coordinates = [];
+		markers.map((marker) => {
+			coordinates.push(marker.latlng)
+		})
+		dispatch(setCoordinates(coordinates));
+	}
+}
+
+export function setCoordinates(coordinates) {
+	return {
+		type: types.SET_MAP_COORDINATES,
+		payload: coordinates
+	}
+}
+
+export function zoomMapToMarkers(mapRef) {
+	return (dispatch, getState) => {
+		mapRef.fitToCoordinates(getState().map.coordinates, {
+			edgePadding: {
+				top: 100,
+			  right: 15,
+			  bottom: 15,
+			  left: 15
+			}, animated: false});
+	}
 }
