@@ -1,8 +1,11 @@
 import * as types from './types';
 import { googleApi } from '../lib/Secrets';
 import { GeoLocation } from 'react-native';
+import polyline from '@mapbox/polyline';
 
 const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
+const webServiceDirectionsSearch = 'https://maps.googleapis.com/maps/api/directions/json?';
+
 export function snapToObject(snap) {
 	return Object.assign({}, {key: snap.key}, snap.val());
 }
@@ -46,6 +49,7 @@ export function getUserTrips() {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child('trips').on('value', (snap) => {
 				dispatch(setUserTrips(snap));
+				dispatch(setCurrentUserTrip('trips/' + Object.keys(snap.val())[0]));
 				dispatch(setUserTripsFetching(false))		
 		})
   }
@@ -76,6 +80,7 @@ export function getUserTrip(dest) {
 	   	getState().backend.userRef.child(dest).on('value', (snap) => {
 	   		dispatch(setCurrentTrip(snap));
 	   		dispatch(getMarkers(snap));
+	   		dispatch(getDirections('mode=transit&origin=' + getState().map.geoLocation.latitude + ',' + getState().map.geoLocation.longitude + '&destination=' + getState().map.coordinates[0].latitude + ',' + getState().map.coordinates[0].longitude));
 	   		dispatch(setCurrentTripFetching(false));
 		});
   }
@@ -223,5 +228,58 @@ export function setGeoLocation(coordinates){
 	return {
 		type: types.SET_MAP_GEOLOCATION,
 		payload: coordinates
+	}
+}
+
+export function setDirectionsResults(results) {
+	return {
+		type: types.SET_DIRECTIONS_RESULTS,
+		payload: results
+	}
+}
+
+export function setDirectionsFetching(indicator) {
+	return {
+		type: types.SET_DIRECTIONS_FETCHING,
+		payload: indicator
+	}
+}
+
+export function getDirections(searchString) {
+	return (dispatch, getState) => {
+		dispatch(setDirectionsFetching(true));
+		fetch(webServiceDirectionsSearch + searchString + '&key=' + googleApi)
+		.then((response) => {
+			response.json()
+			.then((results) => {
+				dispatch(setDirectionsResults(results))
+				dispatch(transformPolyLine(results.routes[0].overview_polyline.points))
+				dispatch(setDirectionsFetching(false))
+			})
+		})
+		.catch((error) => {
+			error.json()
+			.then((results) => {
+				dispatch(setDirectionsFetching(false))
+			})
+		})
+  }
+}
+
+export function transformPolyLine(polylineData) {
+	return (dispatch, getState) => {
+		var polyfinal = [];
+		let polydata = polyline.decode(polylineData);
+		polydata.map(polyray => {
+			polyfinal.push({latitude: polyray[0], longitude: polyray[1]});
+		})
+		dispatch(setPolyline(polyfinal));
+	}
+}
+
+export function setPolyline(polyline) {
+	return {
+		type: types.SET_MAP_POLYLINE,
+		payload: polyline
 	}
 }

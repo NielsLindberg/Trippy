@@ -24,6 +24,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "@mapbox/polyline": "^0.2.0",
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
     "jest": "19.0.2",

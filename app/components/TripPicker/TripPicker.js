@@ -9,11 +9,13 @@ class TripPicker extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			trips: []
+			trips: [],
+			currentTripKey: ''
 		};
 		this.selectTrip = this.selectTrip.bind(this);
 	}
 	selectTrip(trip){
+		console.log(trip);
 		this.props.setCurrentUserTrip('trips/' + trip);
 	}
 	componentWillReceiveProps(){
@@ -23,6 +25,11 @@ class TripPicker extends Component{
 				items.push(child);
 			});
 			this.setState({trips: items});
+			if(!this.props.currentTripVal && Object.keys(this.props.userTrips).length > 0) {
+				this.setState({currentTripKey: Object.keys(this.props.userTrips)[0].key})
+			} else {
+				this.setState({currentTripKey: this.props.currentTrip.key});
+			}
 		}
 	}
 	render(){
@@ -32,7 +39,7 @@ class TripPicker extends Component{
 				<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> : 
 				<Picker
 					mode='dropdown'
-				  selectedValue={this.props.currentTripVal ? this.props.currentTrip.key : null}
+				  selectedValue={this.state.currentTripKey}
 				  onValueChange={(trip) => this.selectTrip(trip)}>
 				  {this.state.trips.map((trip, index) => {
 				    return (
@@ -65,6 +72,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
 	return {
 		userTrips: state.trips.userTrips,
+		userTripsVal: typeof state.trips.userTrips.val === 'function' ? state.trips.userTrips.val() : null,
+		userTripsFetching: state.userTripsFetching,
 		currentTrip: state.trips.currentTrip,
 		currentTripVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val() : null,
 		currentTripFetching: state.trips.currentTripFetching

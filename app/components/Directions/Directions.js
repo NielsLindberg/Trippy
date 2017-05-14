@@ -1,41 +1,49 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-
+import {AppRegistry, ScrollView, View, StyleSheet, FlatList, ActivityIndicator} from 'react-native';
+import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+import { bindActionCreators } from 'redux';
+import DirectionsStep from '../DirectionsStep/DirectionsStep';
+import DirectionsHeader from '../DirectionsHeader/DirectionsHeader';
+import DirectionsPicker from '../DirectionsPicker/DirectionsPicker';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import _ from 'lodash';
 
 import CommonStyles from '../../lib/CommonStyles';
 
-export default class Directions extends Component{
+class Directions extends Component{
 	constructor(props){
 		super(props);
-		this.state = {
-			response: 'placeholder'
-		};
-		this.getDirections = this.getDirections.bind(this)
+		this.renderRow = this.renderRow.bind(this);
 	}
-	async getDirections() {
-    try {
-      let response = await fetch('https://maps.googleapis.com/maps/api/directions/json?mode=transit&origin=55.68,12.56&destination=55.69,12.56&key=AIzaSyA7a8aISd9T8geGAmFiQbag2H_tf2XQK8A');
-      this.setState({
-            response: response
-        });
-    } catch(error) {
-      this.setState({
-            response: error
-        });
-    }
-  }
-	componentWillMount(){
-		this.getDirections();
+	componentWillReceiveProps(){
+		console.log(this.props.steps);
 	}
-
+	renderRow(item, index) {
+		return(
+			<DirectionsStep
+				step={item}
+				key={item.polyline.points}
+			/>
+		)
+	}
 	render(){
 		return (
-	    <View style={styles.container}>
-	        <View style={styles.wrapper}>
-	        </View>
-	    </View>
-    );
+	    <ScrollView style={styles.container}>
+	    	<DirectionsPicker/>
+	    	{Object.keys(this.props.directions).length === 0 ? null : 
+	    	<DirectionsHeader
+	    		directions={this.props.directions}
+	    	/>}
+	    	{this.props.directionsFetching ? <ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> :
+	    	<FlatList
+					style={styles.stepContainer}
+					data={this.props.steps}
+					keyExtractor={(item, index) => {return(item.polyline.points)}}
+					renderItem={({item, index}) => this.renderRow(item, index)}
+				/>}
+	    </ScrollView>
+    )
 	}
 }
 
@@ -43,11 +51,28 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1
 	},
-	wrapper: {
-		paddingHorizontal: 60,
-		justifyContent: 'center',
-		flex: 1
+	indicator: {
+		flex: 1,
+		alignSelf: 'center',
+		alignContent: 'center'
 	},
+	stepContainer: {
+		margin: 10,
+		elevation: 2,
+		borderRadius: 2
+	}
 });
 
-AppRegistry.registerComponent('Directions', () => Directions);
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(ActionCreators, dispatch);
+}
+
+function mapStateToProps(state) {
+	return {
+		directionsFetching: state.map.directionsFetching,
+		directions: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].legs[0] : {},
+		steps: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].legs[0].steps : []
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Directions);

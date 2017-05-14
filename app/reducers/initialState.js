@@ -29,5 +29,8 @@ export default initialState = {
 	map: {
 		coordinates: [],
 		markers: [],
+		polyline: [],
+		geoLocation: {},
+		directions: {}
 	}
 };
