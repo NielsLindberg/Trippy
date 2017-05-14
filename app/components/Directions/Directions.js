@@ -34,6 +34,7 @@ class Directions extends Component{
 	    	{Object.keys(this.props.directions).length === 0 ? null : 
 	    	<DirectionsHeader
 	    		directions={this.props.directions}
+	    		key={this.props.directionsPolyLine}
 	    	/>}
 	    	{this.props.directionsFetching ? <ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> :
 	    	<FlatList
@@ -70,6 +71,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
 	return {
 		directionsFetching: state.map.directionsFetching,
+		directionsPolyLine: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].overview_polyline.points : '',
 		directions: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].legs[0] : {},
 		steps: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].legs[0].steps : []
 	}

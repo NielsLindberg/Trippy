@@ -12,8 +12,9 @@ export default class DirectionsHeader extends Component{
     this.setState({
       startAddress: this.props.directions.start_address,
       endAddress: this.props.directions.end_address,
-      startTime: this.props.directions.departure_time.text,
-      endTime: this.props.directions.arrival_time.text
+      startTime: this.props.directions.departure_time ? this.props.directions.departure_time.text : null,
+      endTime: this.props.directions.arrival_time ? this.props.directions.arrival_time.text : null,
+      duration: this.props.directions.duration ? this.props.directions.duration.text : null
     });
   }
   render(){
@@ -21,9 +22,10 @@ export default class DirectionsHeader extends Component{
       <View style={styles.container}>
            <Text style={[styles.text, styles.textSecondary, {flex:1}]} numberOfLines={1} ellipseMode='head'>Departure:</Text>
            <Text style={[styles.text, {flex:3}]} numberOfLines={1} ellipseMode='head'>{this.state.startAddress}</Text>
-           <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.startTime}</Text>
+           {this.state.startTime ? <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.startTime}</Text> : null}
            <Text style={[styles.text, {flex:3}]} numberOfLines={1} ellipseMode='head'>{this.state.endAddress}</Text>
-           <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.endTime}</Text>
+           {this.state.startTime ? <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.endTime}</Text> : null}
+           {!this.state.startTime && !this.state.endTime ? <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.duration}</Text> : null}
       </View>
     )
   }
