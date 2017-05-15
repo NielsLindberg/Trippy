@@ -49,7 +49,7 @@ export function getUserTrips() {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child('trips').on('value', (snap) => {
 				dispatch(setUserTrips(snap));
-				dispatch(setCurrentUserTrip('trips/' + Object.keys(snap.val())[0]));
+				//dispatch(setCurrentUserTrip('trips/' + Object.keys(snap.val())[0]));
 				dispatch(setUserTripsFetching(false))		
 		})
   }
@@ -160,6 +160,8 @@ export function getMarkers(trip){
 						id: child.val().place.id,
 						title: child.val().place.name,
 						description: child.val().place.name,
+						arrival: child.val().arrival,
+						end: child.val().end,
 						latlng: {
 							latitude: child.val().place.geometry.location.lat,
 							longitude: child.val().place.geometry.location.lng
@@ -252,8 +254,10 @@ export function getDirections(searchString) {
 		.then((response) => {
 			response.json()
 			.then((results) => {
-				dispatch(setDirectionsResults(results))
-				dispatch(transformPolyLine(results.routes[0].overview_polyline.points))
+				if(results.routes[0].status !== 'ZERO RESULTS') {
+					dispatch(setDirectionsResults(results))
+					dispatch(transformPolyLine(results.routes[0].overview_polyline.points))
+				}
 				dispatch(setDirectionsFetching(false))
 			})
 		})
@@ -282,4 +286,11 @@ export function setPolyline(polyline) {
 		type: types.SET_MAP_POLYLINE,
 		payload: polyline
 	}
+}
+
+export function pad(num, size) {
+	return (dispatch, getState) => {
+		var s = "000000000" + num;
+    return s.substr(s.length-size);
+	}  
 }

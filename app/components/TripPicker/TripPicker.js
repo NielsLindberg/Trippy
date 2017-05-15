@@ -36,9 +36,10 @@ class TripPicker extends Component{
 		return(
 			<View style={styles.picker}>
 			{this.props.currentTripFetching ?
-				<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> : 
+				<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> :
 				<Picker
 					mode='dropdown'
+					color={CommonStyles.lightText.secondary}
 				  selectedValue={this.state.currentTripKey}
 				  onValueChange={(trip) => this.selectTrip(trip)}>
 				  {this.state.trips.map((trip, index) => {
@@ -53,15 +54,8 @@ class TripPicker extends Component{
 }
 const styles = StyleSheet.create({
 	picker: {
-		position: 'absolute',
 		backgroundColor: CommonStyles.white,
-		elevation: 2,
-		height: 40,
-		borderRadius: 5,
-		width: 200,
-		flex: 1,
-		top: 10,
-		left: 10
+		elevation: 2
 	}
 });
 

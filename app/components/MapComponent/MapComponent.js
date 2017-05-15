@@ -40,23 +40,28 @@ class MapComponent extends Component{
 	       		{_.compact(this.props.markers).map((marker) => {
 	       			return(
 					    <MapView.Marker
-					    	pinColor={CommonStyles.colorAccent}
 					    	key={marker.id}
 					      coordinate={marker.latlng}
-					      title={marker.title}
-					      description={marker.description}
-					    />)}
+					    >
+					    <View style={styles.markerWrap}>
+					    	<View style={styles.customMarker}>
+					    		<Text style={styles.customMarkerText}>{this.props.pad(marker.arrival.hour,2) + ':' + this.props.pad(marker.arrival.minute,2)}</Text>
+					    	</View>
+					    	<View style={styles.markerPin}>
+					    	</View>
+					    </View>
+					    </MapView.Marker>
+					    )}
 					   )}
 					 		<MapView.Marker
-					    	pinColor={CommonStyles.colorPrimary}
-					    	key={'You'}
 					      coordinate={this.state.userCoords}
-					      title='Your Position'
-					      description='Your Position'
-					    />
+					    >
+					    	<View style={styles.userMarker}>
+					    	</View>
+					    </MapView.Marker>
 					    {this.props.polyline.length == 0 ? null :
 					   	<MapView.Polyline
-					   	strokeColor={CommonStyles.colorSecondary}
+					   	strokeColor={CommonStyles.grey['700']}
 					   	coordinates={this.props.polyline}
 					   	strokeWidth={3}
 					   	/>}
@@ -75,6 +80,38 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		flex: 1
 	},
+	userMarker: {
+		width: 10,
+		height: 10,
+		backgroundColor: CommonStyles.colorAccent,
+		borderRadius: 10
+	},
+	customMarker: {
+		width: 40,
+		height: 20,
+		justifyContent: 'center',
+		alignItems: 'center',
+		backgroundColor: CommonStyles.colorSecondary,
+		elevation: 4,
+		borderRadius: 2
+	},
+	customMarkerText: {
+		color: CommonStyles.lightText.primary
+	},
+	markerPin:{
+    width: 0,
+    height: 0,
+    borderTopWidth: 5,
+    borderBottomWidth: 0,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    borderRightColor: 'transparent',
+    borderLeftColor: 'transparent',
+    borderTopColor: CommonStyles.colorSecondary,
+    borderBottomColor: CommonStyles.colorSecondary,
+    alignSelf: 'center',
+    justifyContent: 'center'
+	}
 });
 
 function mapDispatchToProps(dispatch) {

@@ -24,7 +24,9 @@ class DirectionsPicker extends Component{
 		if(this.props.currentTripLocations) {
 			var items = [];
 			this.props.currentTripLocations.forEach((child) => {
-				items.push(child);
+				if(typeof child.val().place === 'object') {
+					items.push(child);
+				}
 			});
 			this.setState({currentTripLocations: items});
 			if(!this.props.currentTripLocationsVal && Object.keys(this.props.currentTripLocations).length > 0) {

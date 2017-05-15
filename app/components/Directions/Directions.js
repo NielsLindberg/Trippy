@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import DirectionsStep from '../DirectionsStep/DirectionsStep';
 import DirectionsHeader from '../DirectionsHeader/DirectionsHeader';
 import DirectionsPicker from '../DirectionsPicker/DirectionsPicker';
+import TripPicker from '../TripPicker/TripPicker';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import _ from 'lodash';
 
@@ -30,7 +31,9 @@ class Directions extends Component{
 	render(){
 		return (
 	    <ScrollView style={styles.container}>
+	    	<TripPicker/>
 	    	<DirectionsPicker/>
+
 	    	{Object.keys(this.props.directions).length === 0 ? null : 
 	    	<DirectionsHeader
 	    		directions={this.props.directions}

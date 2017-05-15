@@ -21,9 +21,10 @@ export default class DirectionsHeader extends Component{
     return(
       <View style={styles.container}>
            <Text style={[styles.text, styles.textSecondary, {flex:1}]} numberOfLines={1} ellipseMode='head'>Departure:</Text>
-           <Text style={[styles.text, {flex:3}]} numberOfLines={1} ellipseMode='head'>{this.state.startAddress}</Text>
+           <Text style={[styles.text, {flex:3}]} numberOfLines={2} ellipseMode='head'>{this.state.startAddress}</Text>
            {this.state.startTime ? <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.startTime}</Text> : null}
-           <Text style={[styles.text, {flex:3}]} numberOfLines={1} ellipseMode='head'>{this.state.endAddress}</Text>
+           <Text style={[styles.text, styles.textSecondary, {flex:1}]} numberOfLines={1} ellipseMode='head'>Arrival:</Text>
+           <Text style={[styles.text, {flex:3}]} numberOfLines={2} ellipseMode='head'>{this.state.endAddress}</Text>
            {this.state.startTime ? <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.endTime}</Text> : null}
            {!this.state.startTime && !this.state.endTime ? <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.duration}</Text> : null}
       </View>

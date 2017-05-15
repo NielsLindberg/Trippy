@@ -41,33 +41,33 @@ export default class DirectionsStep extends Component{
         </View>
         <View style={styles.row}>
               <View style={[styles.textWrap, {flex:5}]}>
-                <Text style={[styles.text, styles.textSecondary, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.travelMode + ':'}</Text>
-                <Text style={[styles.text, {flex:3}]} numberOfLines={1} ellipseMode='head'>{this.state.duration}</Text>
+                <Text style={[styles.text, styles.textSecondary, {flex:4}]} numberOfLines={1} ellipseMode='head'>{this.state.travelMode + ':'}</Text>
+                <Text style={[styles.text, {flex:11}]} numberOfLines={1} ellipseMode='head'>{this.state.duration}</Text>
               </View>
-              <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.distance}</Text>
+              <Text style={[styles.text, {flex:1.2}]} numberOfLines={1} ellipseMode='head'>{this.state.distance}</Text>
             </View>
         {this.props.step.travel_mode === 'WALKING' ? null :
          <View style={styles.transitContainer}>
             <View style={styles.row}>
               <View style={[styles.textWrap, {flex:5}]}>
-                <Text style={[styles.text, styles.textSecondary, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.vehicleType + ':'}</Text>
-                <Text style={[styles.text, {flex:3}]} numberOfLines={1} ellipseMode='head'>{this.state.lineName ? this.state.lineName : this.state.headSign}</Text>
+                <Text style={[styles.text, styles.textSecondary, {flex:4}]} numberOfLines={1} ellipseMode='head'>{this.state.vehicleType + ':'}</Text>
+                <Text style={[styles.text, {flex:11}]} numberOfLines={2} ellipseMode='head'>{this.state.lineName ? this.state.lineName : this.state.headSign}</Text>
               </View>
-              <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.lineShortName}</Text>
+              <Text style={[styles.text, {flex:1.2}]} numberOfLines={1} ellipseMode='head'>{this.state.lineShortName}</Text>
             </View>
             <View style={styles.row}>
               <View style={[styles.textWrap, {flex:5}]}>
-                <Text style={[styles.text, styles.textSecondary, {flex:1}]} numberOfLines={1} ellipseMode='head'>Departure:</Text>
-                <Text style={[styles.text, {flex:3}]} numberOfLines={1} ellipseMode='head'>{this.state.departureStop}</Text>
+                <Text style={[styles.text, styles.textSecondary, {flex:4}]} numberOfLines={1} ellipseMode='head'>Departure:</Text>
+                <Text style={[styles.text, {flex:11}]} numberOfLines={2} ellipseMode='head'>{this.state.departureStop}</Text>
               </View>
-              <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.departureTime}</Text>
+              <Text style={[styles.text, {flex:1.2}]} numberOfLines={1} ellipseMode='head'>{this.state.departureTime}</Text>
             </View>
             <View style={styles.row}>
               <View style={[styles.textWrap, {flex:5}]}>
-                <Text style={[styles.text, styles.textSecondary, {flex:1}]} numberOfLines={1} ellipseMode='head'>Arrival:</Text>
-                <Text style={[styles.text, {flex:3}]} numberOfLines={1} ellipseMode='head'>{this.state.arrivalStop}</Text>
+                <Text style={[styles.text, styles.textSecondary, {flex:4}]} numberOfLines={1} ellipseMode='head'>Arrival:</Text>
+                <Text style={[styles.text, {flex:11}]} numberOfLines={2} ellipseMode='head'>{this.state.arrivalStop}</Text>
               </View>
-              <Text style={[styles.text, {flex:1}]} numberOfLines={1} ellipseMode='head'>{this.state.arrivalTime}</Text>
+              <Text style={[styles.text, {flex:1.2}]} numberOfLines={1} ellipseMode='head'>{this.state.arrivalTime}</Text>
             </View>
          </View> 
         }
