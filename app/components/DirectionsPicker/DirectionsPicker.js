@@ -4,21 +4,22 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import CommonStyles from '../../lib/CommonStyles';
+import _ from 'lodash';
 
 class DirectionsPicker extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
 			currentTripLocations: [],
-			currentLocationKey: ''
+			currentLocationKey: 'default'
 		};
 		this.selectDirections = this.selectDirections.bind(this);
 	}
 	selectDirections(location){
-		this.setState({currentLocationKey: location})
-		var {latitude, longitude} = this.props.geoLocation;
-		var {lat, lng} = this.props.currentTripLocations.child(location).val().place.geometry.location;
-		this.props.getDirections('mode=transit&origin=' + latitude + ',' + longitude + '&destination=' + lat + ',' + lng);
+		if(location !== 'default') {
+			this.props.getCurrentLocation(this.props.currentTripLocations.child(location).ref);
+			this.setState({currentLocationKey: location})
+		}
 	}
 	componentWillReceiveProps(){
 		if(this.props.currentTripLocations) {
@@ -29,9 +30,6 @@ class DirectionsPicker extends Component{
 				}
 			});
 			this.setState({currentTripLocations: items});
-			if(!this.props.currentTripLocationsVal && Object.keys(this.props.currentTripLocations).length > 0) {
-				this.setState({currentLocationKey: Object.keys(this.props.currentTripLocations)[0].key})
-			}
 		}
 	}
 	render(){
@@ -41,8 +39,9 @@ class DirectionsPicker extends Component{
 				<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> : 
 				<Picker
 					mode='dropdown'
-				  selectedValue={this.state.currentLocationKey}
+					selectedValue={this.state.currentLocationKey}
 				  onValueChange={(location) => this.selectDirections(location)}>
+				  <Picker.Item key='default' label='Select a Location' value='default'/>
 				  {this.state.currentTripLocations.map((location, index) => {
 				    return (
 				      <Picker.Item key={index} label={location.val().place.name ? location.val().place.name : 'No Title'} value={location.key} />
@@ -68,7 +67,7 @@ function mapStateToProps(state) {
 	return {
 		geoLocation: state.map.geoLocation,
 		currentTripLocations: typeof state.trips.currentTrip.child === 'function' ? state.trips.currentTrip.child('locations') : null,
-		currentTripLocationsVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val().locations : null,
+		currentTripLocationsVal: typeof state.trips.currentTrip.val === 'function' ? typeof state.trips.currentTrip.val() : null,
 		currentTripFetching: state.trips.currentTripFetching
 	}
 }

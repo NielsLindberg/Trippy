@@ -7,6 +7,7 @@ import DirectionsStep from '../DirectionsStep/DirectionsStep';
 import DirectionsHeader from '../DirectionsHeader/DirectionsHeader';
 import DirectionsPicker from '../DirectionsPicker/DirectionsPicker';
 import TripPicker from '../TripPicker/TripPicker';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import _ from 'lodash';
 
@@ -16,9 +17,6 @@ class Directions extends Component{
 	constructor(props){
 		super(props);
 		this.renderRow = this.renderRow.bind(this);
-	}
-	componentWillReceiveProps(){
-		console.log(this.props.steps);
 	}
 	renderRow(item, index) {
 		return(
@@ -75,8 +73,8 @@ function mapStateToProps(state) {
 	return {
 		directionsFetching: state.map.directionsFetching,
 		directionsPolyLine: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].overview_polyline.points : '',
-		directions: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].legs[0] : {},
-		steps: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].legs[0].steps : []
+		directions: typeof state.trips.currentLocation.val === 'function' && typeof state.trips.currentLocation.val().directions === 'object' ? state.trips.currentLocation.val().directions.routes[0].legs[0] : {},
+		steps: typeof state.trips.currentLocation.val === 'function' && typeof state.trips.currentLocation.val().directions === 'object' ? state.trips.currentLocation.val().directions.routes[0].legs[0].steps : [],
 	}
 }
 

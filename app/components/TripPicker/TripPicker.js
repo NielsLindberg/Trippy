@@ -10,13 +10,15 @@ class TripPicker extends Component{
 		super(props);
 		this.state = {
 			trips: [],
-			currentTripKey: ''
+			currentTripKey: 'default'
 		};
 		this.selectTrip = this.selectTrip.bind(this);
 	}
 	selectTrip(trip){
-		console.log(trip);
-		this.props.setCurrentUserTrip('trips/' + trip);
+		if(trip !== 'default') {
+			this.props.setCurrentUserTrip(this.props.userTrips.child(trip).ref);
+			this.setState({currentTripKey: trip})
+		}
 	}
 	componentWillReceiveProps(){
 		if(Object.keys(this.props.userTrips).length > 0) {
@@ -25,9 +27,7 @@ class TripPicker extends Component{
 				items.push(child);
 			});
 			this.setState({trips: items});
-			if(!this.props.currentTripVal && Object.keys(this.props.userTrips).length > 0) {
-				this.setState({currentTripKey: Object.keys(this.props.userTrips)[0].key})
-			} else {
+			if(this.props.currentTrip) {
 				this.setState({currentTripKey: this.props.currentTrip.key});
 			}
 		}
@@ -35,13 +35,14 @@ class TripPicker extends Component{
 	render(){
 		return(
 			<View style={styles.picker}>
-			{this.props.currentTripFetching ?
+			{this.props.userTripsFetching ?
 				<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> :
 				<Picker
 					mode='dropdown'
 					color={CommonStyles.lightText.secondary}
 				  selectedValue={this.state.currentTripKey}
 				  onValueChange={(trip) => this.selectTrip(trip)}>
+				  <Picker.Item key='default' label='Select a Trip' value='default'/>
 				  {this.state.trips.map((trip, index) => {
 				    return (
 				      <Picker.Item key={index} label={trip.val().title ? trip.val().title : 'No Title'} value={trip.key} />
@@ -69,8 +70,6 @@ function mapStateToProps(state) {
 		userTripsVal: typeof state.trips.userTrips.val === 'function' ? state.trips.userTrips.val() : null,
 		userTripsFetching: state.userTripsFetching,
 		currentTrip: state.trips.currentTrip,
-		currentTripVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val() : null,
-		currentTripFetching: state.trips.currentTripFetching
 	}
 }
 

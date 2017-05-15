@@ -9,7 +9,8 @@ export default class Trip extends Component{
 		this.editDetails = this.editDetails.bind(this);
 	}
 	editDetails(){
-		this.props.setCurrentUserTrip('trips/' + this.props.trip.key);
+		console.log(this.props.trip);
+		this.props.setCurrentUserTrip(this.props.trip.ref);
 		this.props.navigation.navigate('TripDetailScreen', {trip: this.props.trip});
 	}
 	render(){

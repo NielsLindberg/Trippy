@@ -6,9 +6,6 @@ import polyline from '@mapbox/polyline';
 const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
 const webServiceDirectionsSearch = 'https://maps.googleapis.com/maps/api/directions/json?';
 
-export function snapToObject(snap) {
-	return Object.assign({}, {key: snap.key}, snap.val());
-}
 export function setUserTripsFetching(indicator) {
 	return {
 		type: types.SET_USER_TRIPS_FETCHING,
@@ -49,7 +46,6 @@ export function getUserTrips() {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child('trips').on('value', (snap) => {
 				dispatch(setUserTrips(snap));
-				//dispatch(setCurrentUserTrip('trips/' + Object.keys(snap.val())[0]));
 				dispatch(setUserTripsFetching(false))		
 		})
   }
@@ -68,19 +64,18 @@ export function setCurrentTripFetching(indicator) {
 	}
 }
 
-export function setCurrentUserTrip(dest) {
+export function setCurrentUserTrip(ref) {
 	return (dispatch, getState) => {
 		dispatch(setCurrentTripFetching(true));
-		dispatch(getUserTrip(dest));
+		dispatch(getUserTrip(ref));
 	}
 }
 
-export function getUserTrip(dest) {
+export function getUserTrip(ref) {
 	 return (dispatch, getState) => {
-	   	getState().backend.userRef.child(dest).on('value', (snap) => {
+	   	  ref.on('value', (snap) => {
 	   		dispatch(setCurrentTrip(snap));
 	   		dispatch(getMarkers(snap));
-	   		dispatch(getDirections('mode=transit&origin=' + getState().map.geoLocation.latitude + ',' + getState().map.geoLocation.longitude + '&destination=' + getState().map.coordinates[0].latitude + ',' + getState().map.coordinates[0].longitude));
 	   		dispatch(setCurrentTripFetching(false));
 		});
   }
@@ -247,7 +242,7 @@ export function setDirectionsFetching(indicator) {
 	}
 }
 
-export function getDirections(searchString) {
+export function getDirections(ref, searchString) {
 	return (dispatch, getState) => {
 		dispatch(setDirectionsFetching(true));
 		fetch(webServiceDirectionsSearch + searchString + '&key=' + googleApi)
@@ -255,8 +250,9 @@ export function getDirections(searchString) {
 			response.json()
 			.then((results) => {
 				if(results.routes[0].status !== 'ZERO RESULTS') {
-					dispatch(setDirectionsResults(results))
-					dispatch(transformPolyLine(results.routes[0].overview_polyline.points))
+				// 	dispatch(setDirectionsResults(results));
+				// 	dispatch(transformPolyLine(results.routes[0].overview_polyline.points))
+					dispatch(updateUserItem(ref, {directions: results}));
 				}
 				dispatch(setDirectionsFetching(false))
 			})

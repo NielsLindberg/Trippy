@@ -13,8 +13,6 @@ import DeleteButton from '../../components/DeleteButton/DeleteButton';
 class TripDetailScreen extends Component{
     static navigationOptions = ({navigation}) => {
     const itemAdd = {
-      title: '',
-      address: '',
       place: {},
       arrival: {hour: 0, minute: 0},
       end: {hour: 0, minute: 0}

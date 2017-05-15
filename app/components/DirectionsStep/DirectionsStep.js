@@ -9,7 +9,6 @@ export default class DirectionsStep extends Component{
     super(props);
   }
   componentWillMount(){
-    console.log(this.props);
     this.setState({
       distance: this.props.step.distance.text,
       duration: this.props.step.duration.text,

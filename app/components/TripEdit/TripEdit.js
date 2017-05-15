@@ -36,7 +36,6 @@ class TripEdit extends Component{
 				items.push(child);
 			});
 			this.setState({
-				title: this.props.currentTripVal.title,
 				locations: items,
 				date: this.props.currentTripVal.date
 			});
