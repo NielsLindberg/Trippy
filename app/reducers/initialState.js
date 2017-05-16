@@ -30,7 +30,7 @@ export default initialState = {
 		coordinates: [],
 		markers: [],
 		polyline: [],
-		geoLocation: {},
+		geoLocation: {latitude: 50, longitude: 12},
 		directions: {}
 	}
 };

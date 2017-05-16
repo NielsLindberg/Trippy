@@ -37,6 +37,7 @@ class LocationScreen extends Component{
               navigation={this.props.navigation}
               item={this.props.currentLocation}
               deleteHandler={this.props.deleteUserItem}
+              removeCurrentLocation={this.props.setCurrentLocation}
             />
         </View>
       )

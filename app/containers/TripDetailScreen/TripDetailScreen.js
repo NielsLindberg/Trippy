@@ -40,6 +40,8 @@ class TripDetailScreen extends Component{
               navigation={this.props.navigation}
               item={this.props.currentTrip}
               deleteHandler={this.props.deleteUserItem}
+              removeCurrentTrip={this.props.setCurrentTrip}
+              removeCurrentLocation={this.props.setCurrentLocation}
             />
         </View>
       )

@@ -42,7 +42,7 @@ class TripPicker extends Component{
 					color={CommonStyles.lightText.secondary}
 				  selectedValue={this.state.currentTripKey}
 				  onValueChange={(trip) => this.selectTrip(trip)}>
-				  <Picker.Item key='default' label='Select a Trip' value='default'/>
+				  <Picker.Item key='default' label='Trip' value='default'/>
 				  {this.state.trips.map((trip, index) => {
 				    return (
 				      <Picker.Item key={index} label={trip.val().title ? trip.val().title : 'No Title'} value={trip.key} />
@@ -56,7 +56,9 @@ class TripPicker extends Component{
 const styles = StyleSheet.create({
 	picker: {
 		backgroundColor: CommonStyles.white,
-		elevation: 2
+		elevation: 2,
+		height: 50,
+		flex: 1
 	}
 });
 

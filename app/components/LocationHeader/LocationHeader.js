@@ -75,14 +75,14 @@ class LocationHeader extends Component{
 							<Icon style={styles.icon} name="access-time"/>
 							<Text style={styles.subTitle}>Arrival: </Text>
 							<TouchableOpacity onPress={() => {this.timePicker('arrival')}}>
-								<Text style={styles.datePickerText}>{this.props.currentLocationVal.arrival ? this.props.currentLocationVal.arrival.hour + ':' + this.props.currentLocationVal.arrival.minute: 'Select Arrival'}</Text>
+								<Text style={styles.datePickerText}>{this.props.currentLocationVal.arrival ? this.props.pad(this.props.currentLocationVal.arrival.hour,2) + ':' + this.props.pad(this.props.currentLocationVal.arrival.minute,2): 'Select Arrival'}</Text>
 							</TouchableOpacity>
 						</View>
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="access-time"/>
 							<Text style={styles.subTitle}>End: </Text>
 							<TouchableOpacity onPress={() => {this.timePicker('end')}}>
-								<Text style={styles.datePickerText}>{this.props.currentLocationVal.end ? this.props.currentLocationVal.end.hour + ':' + this.props.currentLocationVal.end.minute: 'Select End'}</Text>
+								<Text style={styles.datePickerText}>{this.props.currentLocationVal.end ? this.props.pad(this.props.currentLocationVal.end.hour,2) + ':' + this.props.pad(this.props.currentLocationVal.end.minute,2): 'Select End'}</Text>
 							</TouchableOpacity>
 						</View>
 					</View>

@@ -23,7 +23,15 @@ export default class DeleteButton extends Component {
 	}
 	deletePress(){
 		this.props.navigation.goBack();	
-		this.props.deleteHandler(this.props.item.ref);	
+		this.props.item.ref.off();
+		this.props.deleteHandler(this.props.item.ref);
+		if(this.props.removeCurrentLocation) {
+			this.props.removeCurrentLocation({});
+		}
+		if(this.props.removeCurrentTrip) {
+			this.props.removeCurrentTrip({});
+		}
+		
 	}
 	render(){
 		return(

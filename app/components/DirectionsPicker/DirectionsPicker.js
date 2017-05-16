@@ -41,7 +41,7 @@ class DirectionsPicker extends Component{
 					mode='dropdown'
 					selectedValue={this.state.currentLocationKey}
 				  onValueChange={(location) => this.selectDirections(location)}>
-				  <Picker.Item key='default' label='Select a Location' value='default'/>
+				  <Picker.Item key='default' label='Location' value='default'/>
 				  {this.state.currentTripLocations.map((location, index) => {
 				    return (
 				      <Picker.Item key={index} label={location.val().place.name ? location.val().place.name : 'No Title'} value={location.key} />
@@ -55,7 +55,9 @@ class DirectionsPicker extends Component{
 const styles = StyleSheet.create({
 	picker: {
 		backgroundColor: CommonStyles.white,
-		elevation: 2
+		elevation: 2,
+		height: 50,
+		flex: 1
 	}
 });
 

@@ -59,12 +59,14 @@ class MapComponent extends Component{
 					    	<View style={styles.userMarker}>
 					    	</View>
 					    </MapView.Marker>
-					    {this.props.polyline.length == 0 ? null :
-					   	<MapView.Polyline
-					   	strokeColor={CommonStyles.grey['700']}
-					   	coordinates={this.props.polyline}
-					   	strokeWidth={3}
-					   	/>}
+					    {this.props.currentLocationVal ? this.props.currentLocationVal.polylines.map((polyline, index) =>
+		       		 	<MapView.Polyline
+		       		 	key={index}
+						   	strokeColor={Object.keys(polyline)[0] === 'WALKING' ? CommonStyles.grey['400'] : CommonStyles.grey['700']}
+						   	coordinates={polyline[Object.keys(polyline)[0]]}
+						   	strokeWidth={Object.keys(polyline)[0] === 'WALKING' ? 2 : 3}
+						   	/>
+	       			) : null}
 	       		</MapView>
 	    </View>
     );
@@ -121,6 +123,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
 	return {
 		currentTripVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val() : null,
+		currentLocationVal: typeof state.trips.currentLocation.val === 'function' ? state.trips.currentLocation.val() : null,
 		markers: state.map.markers,
 		polyline: state.map.polyline,
 		coordinates: state.map.coordinates,

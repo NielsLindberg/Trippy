@@ -29,15 +29,12 @@ class Directions extends Component{
 	render(){
 		return (
 	    <ScrollView style={styles.container}>
-	    	<TripPicker/>
-	    	<DirectionsPicker/>
-
 	    	{Object.keys(this.props.directions).length === 0 ? null : 
 	    	<DirectionsHeader
 	    		directions={this.props.directions}
 	    		key={this.props.directionsPolyLine}
 	    	/>}
-	    	{this.props.directionsFetching ? <ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> :
+	    	{this.props.fetchingAll ? <ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> :
 	    	<FlatList
 					style={styles.stepContainer}
 					data={this.props.steps}
@@ -75,6 +72,7 @@ function mapStateToProps(state) {
 		directionsPolyLine: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].overview_polyline.points : '',
 		directions: typeof state.trips.currentLocation.val === 'function' && typeof state.trips.currentLocation.val().directions === 'object' ? state.trips.currentLocation.val().directions.routes[0].legs[0] : {},
 		steps: typeof state.trips.currentLocation.val === 'function' && typeof state.trips.currentLocation.val().directions === 'object' ? state.trips.currentLocation.val().directions.routes[0].legs[0].steps : [],
+    fetchingAll: !state.trips.userTripsFetching && !state.trips.currentTripFetching && !state.trips.currentLocationFetching && !state.map.directionsFetching ? false : true
 	}
 }
 

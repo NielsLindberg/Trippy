@@ -3,7 +3,7 @@ import { googleApi } from '../lib/Secrets';
 import { GeoLocation } from 'react-native';
 import polyline from '@mapbox/polyline';
 
-const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=';
+const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=Copenhagen+';
 const webServiceDirectionsSearch = 'https://maps.googleapis.com/maps/api/directions/json?';
 
 export function setUserTripsFetching(indicator) {
@@ -37,7 +37,6 @@ export function updateUserItem(ref, item) {
 export function deleteUserItem(ref) {
 		return (dispatch, getState) => {
 			dispatch(setUserTripsFetching(true));
-			ref.off();
 			ref.remove();
   }
 }
@@ -199,13 +198,16 @@ export function setCoordinates(coordinates) {
 
 export function zoomMapToMarkers(mapRef) {
 	return (dispatch, getState) => {
-		mapRef.fitToCoordinates(getState().map.coordinates, {
-			edgePadding: {
-				top: 150,
-			  right: 150,
-			  bottom: 50,
-			  left: 150
-			}, animated: false});
+		if(getState().map.coordinates.length > 0) {
+			mapRef.fitToCoordinates(getState().map.coordinates, {
+				edgePadding: {
+					top: 150,
+				  right: 150,
+				  bottom: 50,
+				  left: 150
+				}, animated: false
+			});
+		}
 	}
 }
 
@@ -252,7 +254,13 @@ export function getDirections(ref, searchString) {
 				if(results.routes[0].status !== 'ZERO RESULTS') {
 				// 	dispatch(setDirectionsResults(results));
 				// 	dispatch(transformPolyLine(results.routes[0].overview_polyline.points))
-					dispatch(updateUserItem(ref, {directions: results}));
+					var polylines = [];
+					results.routes[0].legs[0].steps.forEach((step) => {
+						var polystep = {};
+						polystep[step.travel_mode] = dispatch(transformPolyLine(step.polyline.points));
+						polylines.push(polystep);
+					});
+					dispatch(updateUserItem(ref, {directions: results, polylines: polylines}));
 				}
 				dispatch(setDirectionsFetching(false))
 			})
@@ -273,7 +281,7 @@ export function transformPolyLine(polylineData) {
 		polydata.map(polyray => {
 			polyfinal.push({latitude: polyray[0], longitude: polyray[1]});
 		})
-		dispatch(setPolyline(polyfinal));
+		return(polyfinal);
 	}
 }
 
