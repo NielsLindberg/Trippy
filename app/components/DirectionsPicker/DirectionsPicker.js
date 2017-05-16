@@ -30,6 +30,9 @@ class DirectionsPicker extends Component{
 				}
 			});
 			this.setState({currentTripLocations: items});
+			if(this.props.currentLocation) {
+				this.setState({currentLocationKey: this.props.currentLocation.key});
+			}
 		}
 	}
 	render(){
@@ -68,6 +71,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
 	return {
 		geoLocation: state.map.geoLocation,
+		currentLocation: state.trips.currentLocation,
 		currentTripLocations: typeof state.trips.currentTrip.child === 'function' ? state.trips.currentTrip.child('locations') : null,
 		currentTripLocationsVal: typeof state.trips.currentTrip.val === 'function' ? typeof state.trips.currentTrip.val() : null,
 		currentTripFetching: state.trips.currentTripFetching

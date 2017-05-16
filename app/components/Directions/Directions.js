@@ -32,7 +32,6 @@ class Directions extends Component{
 	    	{Object.keys(this.props.directions).length === 0 ? null : 
 	    	<DirectionsHeader
 	    		directions={this.props.directions}
-	    		key={this.props.directionsPolyLine}
 	    	/>}
 	    	{this.props.fetchingAll ? <ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> :
 	    	<FlatList
@@ -67,11 +66,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
+	var directionsReady = typeof state.trips.currentLocation.val === 'function' && state.trips.currentLocation.val() && typeof state.trips.currentLocation.val().directions === 'object' ? true : false;
 	return {
 		directionsFetching: state.map.directionsFetching,
-		directionsPolyLine: typeof state.map.directions.routes === 'object' ? state.map.directions.routes[0].overview_polyline.points : '',
-		directions: typeof state.trips.currentLocation.val === 'function' && typeof state.trips.currentLocation.val().directions === 'object' ? state.trips.currentLocation.val().directions.routes[0].legs[0] : {},
-		steps: typeof state.trips.currentLocation.val === 'function' && typeof state.trips.currentLocation.val().directions === 'object' ? state.trips.currentLocation.val().directions.routes[0].legs[0].steps : [],
+		directions: directionsReady ? state.trips.currentLocation.val().directions.routes[0].legs[0] : {},
+		steps: directionsReady ? state.trips.currentLocation.val().directions.routes[0].legs[0].steps : [],
     fetchingAll: !state.trips.userTripsFetching && !state.trips.currentTripFetching && !state.trips.currentLocationFetching && !state.map.directionsFetching ? false : true
 	}
 }

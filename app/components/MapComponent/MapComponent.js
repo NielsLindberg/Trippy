@@ -37,7 +37,7 @@ class MapComponent extends Component{
 		        	ref={(ref) => { this.mapRef = ref }}
 	         		style={styles.map}
 	       		>
-	       		{_.compact(this.props.markers).map((marker) => {
+	       		{this.props.markers ? this.props.markers.map((marker) => {
 	       			return(
 					    <MapView.Marker
 					    	key={marker.id}
@@ -52,14 +52,14 @@ class MapComponent extends Component{
 					    </View>
 					    </MapView.Marker>
 					    )}
-					   )}
+					   ) : null}
 					 		<MapView.Marker
 					      coordinate={this.state.userCoords}
 					    >
 					    	<View style={styles.userMarker}>
 					    	</View>
 					    </MapView.Marker>
-					    {this.props.currentLocationVal ? this.props.currentLocationVal.polylines.map((polyline, index) =>
+					    {this.props.currentLocationVal && this.props.currentLocationVal.polylines ? this.props.currentLocationVal.polylines.map((polyline, index) =>
 		       		 	<MapView.Polyline
 		       		 	key={index}
 						   	strokeColor={Object.keys(polyline)[0] === 'WALKING' ? CommonStyles.grey['400'] : CommonStyles.grey['700']}
