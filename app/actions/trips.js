@@ -2,6 +2,7 @@ import * as types from './types';
 import { googleApi } from '../lib/Secrets';
 import { GeoLocation } from 'react-native';
 import polyline from '@mapbox/polyline';
+import _ from 'lodash';
 
 const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=Copenhagen+';
 const webServiceDirectionsSearch = 'https://maps.googleapis.com/maps/api/directions/json?';
@@ -44,8 +45,14 @@ export function deleteUserItem(ref) {
 export function getUserTrips() {
 	 return (dispatch, getState) => {
 	   	getState().backend.userRef.child('trips').on('value', (snap) => {
-				dispatch(setUserTrips(snap));
-				dispatch(setUserTripsFetching(false))		
+	   		if(typeof getState().trips.userTrips.val === 'function') {
+	   				if(!_.isEqual(snap.val(), getState().trips.userTrips.val())) {
+	   					dispatch(setUserTrips(snap));
+	   				}
+	   			} else {
+	   				dispatch(setUserTrips(snap));
+	   			}
+	   		dispatch(setUserTripsFetching(false));
 		})
   }
 }
@@ -66,6 +73,9 @@ export function setCurrentTripFetching(indicator) {
 export function setCurrentUserTrip(ref) {
 	return (dispatch, getState) => {
 		dispatch(setCurrentTripFetching(true));
+   	ref.child('locations').once('value').then((snap) => {
+   		dispatch(getCurrentLocation(snap.child(snap._childKeys[0]).ref));
+   	})
 		dispatch(getUserTrip(ref));
 	}
 }
@@ -73,8 +83,15 @@ export function setCurrentUserTrip(ref) {
 export function getUserTrip(ref) {
 	 return (dispatch, getState) => {
 	   	  ref.on('value', (snap) => {
-	   		dispatch(setCurrentTrip(snap));
-	   		dispatch(getMarkers(snap));
+	   	  	if(typeof getState().trips.currentTrip.val === 'function') {
+	   				if(!_.isEqual(snap.val(), getState().trips.currentTrip.val())) {
+	   					dispatch(setCurrentTrip(snap));
+	   					dispatch(getMarkers(snap));
+	   				}
+	   			} else {
+	   				dispatch(setCurrentTrip(snap));
+	   				dispatch(getMarkers(snap));
+	   			}
 	   		dispatch(setCurrentTripFetching(false));
 		});
   }
@@ -104,8 +121,15 @@ export function getCurrentLocation(ref) {
 export function getLocation(ref) {
 	 return (dispatch, getState) => {
 	   		ref.on('value', (snap) => {
-	   		dispatch(setCurrentLocation(snap));
-	   		dispatch(setCurrentLocationFetching(false));
+	   			if(typeof getState().trips.currentLocation.val === 'function') {
+	   				if(!_.isEqual(snap.val(), getState().trips.currentLocation.val())) {
+	   					dispatch(setCurrentLocation(snap));
+	   				}
+	   			} else {
+	   				dispatch(setCurrentLocation(snap));
+	   				
+	   			}
+	   		dispatch(setCurrentLocationFetching(false));		
 		});
   }
 }
@@ -244,7 +268,7 @@ export function setDirectionsFetching(indicator) {
 	}
 }
 
-export function getDirections(ref, searchString) {
+export function getDirections(ref, place, searchString) {
 	return (dispatch, getState) => {
 		dispatch(setDirectionsFetching(true));
 		fetch(webServiceDirectionsSearch + searchString + '&key=' + googleApi)
@@ -252,15 +276,13 @@ export function getDirections(ref, searchString) {
 			response.json()
 			.then((results) => {
 				if(results.routes[0].status !== 'ZERO RESULTS') {
-				// 	dispatch(setDirectionsResults(results));
-				// 	dispatch(transformPolyLine(results.routes[0].overview_polyline.points))
 					var polylines = [];
 					results.routes[0].legs[0].steps.forEach((step) => {
 						var polystep = {};
 						polystep[step.travel_mode] = dispatch(transformPolyLine(step.polyline.points));
 						polylines.push(polystep);
 					});
-					dispatch(updateUserItem(ref, {directions: results, polylines: polylines}));
+					dispatch(updateUserItem(ref, {place: place, directions: results, polylines: polylines}));
 				}
 				dispatch(setDirectionsFetching(false))
 			})

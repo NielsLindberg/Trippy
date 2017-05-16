@@ -16,8 +16,9 @@ class TripPicker extends Component{
 	}
 	selectTrip(trip){
 		if(trip !== 'default') {
-			this.props.setCurrentUserTrip(this.props.userTrips.child(trip).ref);
 			this.setState({currentTripKey: trip})
+			this.props.setCurrentUserTrip(this.props.userTrips.child(trip).ref);
+			
 		}
 	}
 	componentWillReceiveProps(){

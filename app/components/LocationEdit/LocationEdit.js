@@ -55,7 +55,7 @@ class LocationEdit extends Component{
 		return (
 			<View style={styles.container}>
 				<LocationHeader/>
-				{!this.props.locationSearchFetching ? 
+				{!this.props.fetchingAll ? 
 				<SectionList
 					style={styles.sectionList}
 					renderItem={({item}) => this.renderRow(item)}
@@ -107,7 +107,8 @@ function mapStateToProps(state) {
 		currentLocationVal: typeof state.trips.currentLocation.val === 'function' ? state.trips.currentLocation.val() : null,
 		currentLocationFetching: state.trips.currentLocationFetching,
 		locationSearchResults: state.trips.locationSearchResults,
-		locationSearchFetching: state.trips.locationSearchFetching
+		locationSearchFetching: state.trips.locationSearchFetching,
+    fetchingAll: state.trips.locationSearchFetching || state.trips.userTripsFetching || state.trips.currentTripFetching || state.trips.currentLocationFetching || state.map.directionsFetching ? true : false
 	}
 }
 

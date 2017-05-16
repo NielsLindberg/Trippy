@@ -17,8 +17,8 @@ class DirectionsPicker extends Component{
 	}
 	selectDirections(location){
 		if(location !== 'default') {
-			this.props.getCurrentLocation(this.props.currentTripLocations.child(location).ref);
 			this.setState({currentLocationKey: location})
+			this.props.getCurrentLocation(this.props.currentTripLocations.child(location).ref);
 		}
 	}
 	componentWillReceiveProps(){

@@ -18,6 +18,8 @@ export function addBackendItemsRef(itemsRef) {
 export function addBackend() {
 	return (dispatch, getState) => {
 		const firebase = RNFirebase.initializeApp({
+			persistence: false,
+			debug: false
 		});
 		const itemsRef = firebase.database().ref();
 		dispatch(addBackendRef(firebase))

@@ -12,11 +12,10 @@ class SearchResult extends Component{
 		this.selectAddress = this.selectAddress.bind(this);
 	}
 	selectAddress(result){
-		this.props.updateUserItem(this.props.currentLocation.ref, {place: result});
 		var latitude = this.props.geoLocation.latitude ? this.props.geoLocation.latitude : 50;
 		var longitude = this.props.geoLocation.longitude ? this.props.geoLocation.longitude : 50;
 		var {lat, lng} = result.geometry.location;
-		this.props.getDirections(this.props.currentLocation.ref, 'mode=transit&origin=' + latitude + ',' + longitude + '&destination=' + lat + ',' + lng);
+		this.props.getDirections(this.props.currentLocation.ref, result, 'mode=transit&origin=' + latitude + ',' + longitude + '&destination=' + lat + ',' + lng);
 	}
 	componentWillMount(){
 		let string = this.props.searchResult.formatted_address;
