@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
+import _ from 'lodash';
 
 class TripEdit extends Component{
 	constructor(props){
@@ -16,10 +17,12 @@ class TripEdit extends Component{
 			title: '',
 			active: false,
 			date: '',
-			locations: []
+			locations: [],
 		};
 		this.renderRow = this.renderRow.bind(this);
 		this.datePicker = this.datePicker.bind(this);
+		this.updateItems = this.updateItems.bind(this);
+		this.updateItem = this.updateItem.bind(this);
 	}
 	renderRow(location) {
 		return(
@@ -29,26 +32,40 @@ class TripEdit extends Component{
 			/>
 		)
 	}
-	componentWillReceiveProps() {
-		if(Object.keys(this.props.currentTrip).length > 0) {
-			var items = [];
-			this.props.currentTrip.child('locations').forEach((child) => {
-				items.push(child);
-			});
+	updateItems(props) {
+		console.log(props.currentTrip);
+		if(props.currentTrip) {
+			var items = _.values(props.currentTrip.locations);
 			this.setState({
 				locations: items,
-				date: this.props.currentTripVal.date
+				date: props.currentTrip.date,
+				title: props.currentTrip.title,
+				dateString: props.pad(props.currentTrip.date.day,2) + '-' + props.pad(props.currentTrip.date.month,2) + '-' + props.pad(props.currentTrip.date.year,4)
 			});
 		}
 	}
+	updateItem(item){
+		if(!_.isEqual(_.pick(this.props.currentTrip, _.keys(item)), item)) {
+			this.props.updateUserItem('trips/' + this.props.currentTripKey, item)
+		}
+	}
+	componentWillReceiveProps(nextProps) {
+		this.updateItems(nextProps);
+	}
+	componentWillMount() {
+		this.updateItems(this.props);
+	}
+
 	datePicker(){
 		DatePickerAndroid.open({
 		    date: new Date()
 		})
 		.then((response) => {
 			if(response.action !== DatePickerAndroid.dismissedAction) {
-				let date = new Date(response.year, response.month, response.day);
-				this.props.updateUserItem(this.props.currentTrip.ref, {'date': date});
+				console.log(response);
+				let date = {year: response.year, month: (response.month +1), day: response.day};
+				console.log(date);
+				this.updateItem({'date': date});
 			}
 		})
 		.catch((error) => {
@@ -67,13 +84,13 @@ class TripEdit extends Component{
 							style={styles.titleInput}
 							placeholder='Add Title'
 							onChangeText= {(title) => this.setState({title})}
-							onEndEditing={() => this.props.updateUserItem(this.props.currentTrip.ref, {'title': this.state.title})}
+							onEndEditing={() => this.updateItem({'title': this.state.title})}
 						/>
 					</View>
 					<View style={styles.datePicker}>
 						<Icon style={styles.icon} name="date-range"/>
 						<TouchableOpacity onPress={() => {this.datePicker()}}>
-							<Text style={styles.datePickerText}>{this.state.date != '' ? moment(this.state.date).format('DD-MM-YYYY') : 'Pick a date'}</Text>
+							<Text style={styles.datePickerText}>{this.state.dateString}</Text>
 						</TouchableOpacity>
 					</View>
 				</View>
@@ -156,9 +173,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		currentTrip: state.trips.currentTrip,
-		currentTripVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val() : null,
-		currentTripIndicator: state.trips.currentTripFetching
+		currentTripKey: state.userTrips.currentTripKey,
+		currentTrip: _.get(state.userTrips.trips, state.userTrips.currentTripKey, null)
 	}
 }
 

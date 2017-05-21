@@ -9,15 +9,15 @@ export default class Trip extends Component{
 		this.editDetails = this.editDetails.bind(this);
 	}
 	editDetails(){
-		this.props.setCurrentUserTrip(this.props.trip.ref);
-		this.props.navigation.navigate('TripDetailScreen', {trip: this.props.trip});
+		this.props.setCurrentTrip(this.props.trip.key);
+		this.props.navigation.navigate('TripDetailScreen');
 	}
 	render(){
 		return(
 			<View style={styles.container}>
 				<View style={styles.row}>
 					<TouchableOpacity style={styles.rowContent} onPress={() => {this.editDetails()}}>
-							<Text style={[styles.title, this.props.trip.val().title == '' ? styles.noTitle: null]}>{this.props.trip.val().title != '' ? this.props.trip.val().title : 'Add Title'}</Text>
+							<Text style={[styles.title, this.props.trip.title == '' ? styles.noTitle: null]}>{this.props.trip.title != '' ? this.props.trip.title : 'Add Title'}</Text>
 							<Icon name="keyboard-arrow-right" style={styles.editDetailsText}/>		
 					</TouchableOpacity>
 				</View>

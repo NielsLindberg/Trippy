@@ -4,33 +4,23 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import CommonStyles from '../../lib/CommonStyles';
+import _ from 'lodash';
 
 class TripPicker extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			trips: [],
-			currentTripKey: 'default'
+			trips: []
 		};
 		this.selectTrip = this.selectTrip.bind(this);
 	}
 	selectTrip(trip){
-		if(trip !== 'default') {
-			this.setState({currentTripKey: trip})
-			this.props.setCurrentUserTrip(this.props.userTrips.child(trip).ref);
-			
-		}
+		this.props.setCurrentTrip(trip);
 	}
-	componentWillReceiveProps(){
-		if(Object.keys(this.props.userTrips).length > 0) {
-			var items = [];
-			this.props.userTrips.forEach((child) => {
-				items.push(child);
-			});
+	componentWillReceiveProps(nextProps){
+		if(nextProps.trips) {
+			var items = _.values(nextProps.trips);
 			this.setState({trips: items});
-			if(this.props.currentTrip) {
-				this.setState({currentTripKey: this.props.currentTrip.key});
-			}
 		}
 	}
 	render(){
@@ -41,12 +31,11 @@ class TripPicker extends Component{
 				<Picker
 					mode='dropdown'
 					color={CommonStyles.lightText.secondary}
-				  selectedValue={this.state.currentTripKey}
+				  selectedValue={this.props.currentTripKey}
 				  onValueChange={(trip) => this.selectTrip(trip)}>
-				  <Picker.Item key='default' label='Trip' value='default'/>
 				  {this.state.trips.map((trip, index) => {
 				    return (
-				      <Picker.Item key={index} label={trip.val().title ? trip.val().title : 'No Title'} value={trip.key} />
+				      <Picker.Item key={index} label={_.get(trip, 'title', 'No title')} value={trip.key} />
 			     )})}
 				</Picker>
 			 }
@@ -69,10 +58,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		userTrips: state.trips.userTrips,
-		userTripsVal: typeof state.trips.userTrips.val === 'function' ? state.trips.userTrips.val() : null,
-		userTripsFetching: state.userTripsFetching,
-		currentTrip: state.trips.currentTrip,
+		trips: state.userTrips.trips,
+		tripsFetching: state.fetching.trips,
+		currentTripKey: state.userTrips.currentTripKey,
 	}
 }
 

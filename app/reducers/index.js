@@ -1,12 +1,18 @@
 import { combineReducers } from 'redux';
-import * as backendReducer from './backend';
-import * as layoutReducer from './layout';
-import * as userReducer from './user';
-import * as tripsReducer from './trips';
+import { backendReducer } from './backend';
+import { layoutReducer } from './layout';
+import { userReducer } from './user';
+import { tripsReducer } from './trips';
+import { mapReducer } from './map';
+import { fetchingReducer } from './fetching';
+import { locationSearchReducer } from './locationSearch';
 
-export default combineReducers(Object.assign(
-	layoutReducer,
-	backendReducer,
-	userReducer,
-	tripsReducer
-));
+export default reducers = combineReducers({
+	backend: backendReducer,
+	user: userReducer,
+	userTrips: tripsReducer,
+	map: mapReducer,
+	layout: layoutReducer,
+	fetching: fetchingReducer,
+	locationSearch: locationSearchReducer
+});

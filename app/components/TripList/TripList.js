@@ -17,34 +17,32 @@ class TripList extends Component{
 			sections: []
 		};
 		this.renderRow = this.renderRow.bind(this);
-		this.renderSection - this.renderSection.bind(this);
+		this.renderSection = this.renderSection.bind(this);
+		this.updateData = this.updateData.bind(this);
+	}
+	updateData(nextProps) {
+		let dataSource = _.values(_.mapValues(nextProps.trips, (value, key) => { value.key = key; return value; }))
+		dataSource = _.groupBy(dataSource, d => moment(d.date).format('MMMM'));
+		dataSource = _.reduce(dataSource, (acc, next, index) => {
+		acc.push({
+			key: index,
+			month: moment().month(index).format("M"),
+			data: next
+		})
+		return acc}, [])
+		dataSource = _.sortBy(dataSource, 'month');
+		this.setState({sections: dataSource});
+	}
+	componentWillReceiveProps(nextProps) {
+		this.updateData(nextProps);
 	}
 	componentWillMount(){
 		this.props.getUserTrips();
 	}
-	componentWillReceiveProps(){
-		if(Object.keys(this.props.userTrips).length > 0) {
-			var items = [];
-			this.props.userTrips.forEach((child) => {
-				items.push(child);
-			});
-			let dataSource = items;
-			dataSource = _.groupBy(dataSource, d => moment(d.val().date).format('MMMM'));
-			dataSource = _.reduce(dataSource, (acc, next, index) => {
-			acc.push({
-				key: index,
-				month: moment().month(index).format("M"),
-				data: next
-			})
-			return acc}, [])
-			dataSource = _.sortBy(dataSource, 'month');
-			this.setState({sections: dataSource});
-		}
-	}
 	renderRow(trip) {
 		return(
 			<Trip
-				setCurrentUserTrip={this.props.setCurrentUserTrip}
+				setCurrentTrip={this.props.setCurrentTrip}
 				trip={trip}
 				navigation={this.props.navigation}
 			/>
@@ -102,8 +100,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		userTrips: state.trips.userTrips,
-		fetching: state.trips.userTripsFetching
+		trips: state.userTrips.trips
 	}
 }
 

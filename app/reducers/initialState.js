@@ -6,6 +6,17 @@ export default initialState = {
 			orientation: 'PORTRAIT'
 		}
 	},
+	fetching: {
+		trips: false,
+		directions: false,
+		login: false,
+		locationSearch: false
+	},
+	userTrips: {
+		trips: {},
+		currentTripKey: '',
+		currentLocationKey: ''
+	},
 	backend: {
 		userRef: {},
 		ref: {},
@@ -16,15 +27,6 @@ export default initialState = {
 		message: ''
 		},
 		loginIndicator: false
-	},
-	trips: {
-		currentTrip: {},
-		currentLocation: {},
-		locationSearchResults: [],
-		userTrips: [],
-		currentTripFetching: false,
-		currentLocationFetching: false,
-		locationSearchFetching: false
 	},
 	map: {
 		coordinates: [],

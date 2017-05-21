@@ -1,14 +1,19 @@
-import createReducer from '../lib/createReducer';
 import * as types from '../actions/types';
 
-export const backend = createReducer({}, {
-	[types.SET_BACKEND](state, action) {
-		return {...state, ref: action.payload};
-	},
-	[types.SET_BACKEND_ITEMSREF](state, action) {
-		return {...state, itemsRef: action.payload};
-	},
-	[types.SET_BACKEND_USERREF](state, action) {
-		return {...state, userRef: action.payload};
+export const backendReducer = (state={}, action) => {
+	switch(action.type) {
+		case types.SET_BACKEND: {
+			state = {...state, ref: action.payload};
+			break;
+		}
+		case types.SET_BACKEND_ITEMSREF: {
+			state = {...state, itemsRef: action.payload};
+			break;
+		}
+		case types.SET_BACKEND_USERREF: {
+			state = {...state, userRef: action.payload};
+			break;
+		}
 	}
-});
+	return state;
+}

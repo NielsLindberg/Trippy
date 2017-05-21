@@ -20,9 +20,9 @@ class LocationEdit extends Component{
 		this.renderRow = this.renderRow.bind(this);
 		this.renderSection = this.renderSection.bind(this);
 	}
-	componentWillReceiveProps() {
-		if(typeof this.props.locationSearchResults === 'object') {
-			let dataSource = this.props.locationSearchResults;
+	componentWillReceiveProps(nextProps) {
+		if(typeof nextProps.locationSearchResults === 'object') {
+			let dataSource = nextProps.locationSearchResults;
 			dataSource = _.groupBy(dataSource, d => d.types[0]);
 			dataSource = _.reduce(dataSource, (acc, next, index) => {
 				acc.push({

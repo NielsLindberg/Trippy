@@ -18,12 +18,13 @@ class TripDetailScreen extends Component{
       end: {hour: 0, minute: 0}
     };
     return {
+
       header: (
         <StackHeader
           navigation={navigation}
           backButton={true}
           itemAdd={itemAdd}
-          itemAddDestination={'locations'}
+          destination='locations'
           headerTitle='Edit Trip'
         />
       )
@@ -38,7 +39,7 @@ class TripDetailScreen extends Component{
             />
             <DeleteButton
               navigation={this.props.navigation}
-              item={this.props.currentTrip}
+              item={'trips/' + this.props.currentTripKey}
               deleteHandler={this.props.deleteUserItem}
               removeCurrentTrip={this.props.setCurrentTrip}
               removeCurrentLocation={this.props.setCurrentLocation}
@@ -61,8 +62,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    currentTrip: state.trips.currentTrip,
-    currentTripIndicator: state.trips.currentTripFetching
+    currentTripKey: state.userTrips.currentTripKey,
+    tripsFetching: state.fetching.trips
   }
 }
 

@@ -18,10 +18,10 @@ class Location extends Component{
 		this.props.getCurrentLocation(this.props.location.ref);
 		this.props.navigation.navigate('LocationScreen', {location: ''});
 	}
-	componentWillReceiveProps() {
-		if(this.props.location.val()) {
-			if(typeof this.props.location.val().place === 'object') {
-				let string = this.props.location.val().place.formatted_address;
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.location.val()) {
+			if(typeof nextProps.location.val().place === 'object') {
+				let string = nextProps.location.val().place.formatted_address;
 				string = string.split(', ');
 				this.setState({address: string});
 			}

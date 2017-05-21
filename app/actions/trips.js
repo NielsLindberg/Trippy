@@ -28,34 +28,29 @@ export function addUserItem(dest, item){
 	}
 }
 
-export function updateUserItem(ref, item) {
+export function updateUserItem(dest, item) {
 	return (dispatch, getState) => {
 		dispatch(setUserTripsFetching(true));
-		ref.update(item);
+		getState().backend.userRef.child(dest).update(item);
 	}
 }
 
-export function deleteUserItem(ref) {
+export function deleteUserItem(dest) {
 		return (dispatch, getState) => {
 			dispatch(setUserTripsFetching(true));
-			ref.remove();
+			getState().backend.userRef.child(dest).remove();
   }
 }
 
 export function getUserTrips() {
 	 return (dispatch, getState) => {
-	   	getState().backend.userRef.child('trips').on('value', (snap) => {
-	   		if(typeof getState().trips.userTrips.val === 'function') {
-	   				if(!_.isEqual(snap.val(), getState().trips.userTrips.val())) {
-	   					dispatch(setUserTrips(snap));
-	   				}
-	   			} else {
-	   				dispatch(setUserTrips(snap));
-	   			}
-	   		dispatch(setUserTripsFetching(false));
-		})
-  }
+	 	getState().backend.userRef.child('trips').on('value', (snap) => {
+	 		dispatch(setUserTrips(snap.val()));
+	 		dispatch(setUserTripsFetching(false));
+	 	});
+	}
 }
+
 export function setCurrentTrip(trip) {
 	return {
 		type: types.SET_CURRENT_TRIP,
@@ -63,75 +58,11 @@ export function setCurrentTrip(trip) {
 	}
 }
 
-export function setCurrentTripFetching(indicator) {
-	return {
-		type: types.SET_CURRENT_TRIP_FETCHING,
-		payload: indicator
-	}
-}
-
-export function setCurrentUserTrip(ref) {
-	return (dispatch, getState) => {
-		dispatch(setCurrentTripFetching(true));
-   	ref.child('locations').once('value').then((snap) => {
-   		dispatch(getCurrentLocation(snap.child(snap._childKeys[0]).ref));
-   	})
-		dispatch(getUserTrip(ref));
-	}
-}
-
-export function getUserTrip(ref) {
-	 return (dispatch, getState) => {
-	   	  ref.on('value', (snap) => {
-	   	  	if(typeof getState().trips.currentTrip.val === 'function') {
-	   				if(!_.isEqual(snap.val(), getState().trips.currentTrip.val())) {
-	   					dispatch(setCurrentTrip(snap));
-	   					dispatch(getMarkers(snap));
-	   				}
-	   			} else {
-	   				dispatch(setCurrentTrip(snap));
-	   				dispatch(getMarkers(snap));
-	   			}
-	   		dispatch(setCurrentTripFetching(false));
-		});
-  }
-}
-
 export function setCurrentLocation(location) {
 	return {
 		type: types.SET_CURRENT_LOCATION,
 		payload: location
 	}
-}
-
-export function setCurrentLocationFetching(indicator) {
-	return {
-		type: types.SET_CURRENT_LOCATION_FETCHING,
-		payload: indicator
-	}
-}
-
-export function getCurrentLocation(ref) {
-	return (dispatch, getState) => {
-		dispatch(setCurrentLocationFetching(true));
-		dispatch(getLocation(ref));
-	}
-}
-
-export function getLocation(ref) {
-	 return (dispatch, getState) => {
-	   		ref.on('value', (snap) => {
-	   			if(typeof getState().trips.currentLocation.val === 'function') {
-	   				if(!_.isEqual(snap.val(), getState().trips.currentLocation.val())) {
-	   					dispatch(setCurrentLocation(snap));
-	   				}
-	   			} else {
-	   				dispatch(setCurrentLocation(snap));
-	   				
-	   			}
-	   		dispatch(setCurrentLocationFetching(false));		
-		});
-  }
 }
 
 export function setLocationSearchResults(results) {

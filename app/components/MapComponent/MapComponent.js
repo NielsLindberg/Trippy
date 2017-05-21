@@ -22,12 +22,12 @@ class MapComponent extends Component{
 		};
 		this.mapRef = null;
 	}
-	componentWillReceiveProps(){
-		if(this.props.coordinates.length > 0) {
+	componentWillReceiveProps(nextProps){
+		if(nextProps.coordinates.length > 0) {
 			this.props.zoomMapToMarkers(this.mapRef);
 		}
-		if(Object.keys(this.props.userCoords).length > 0) {
-			this.setState({userCoords: this.props.userCoords});
+		if(Object.keys(nextProps.userCoords).length > 0) {
+			this.setState({userCoords: nextProps.userCoords});
 		}
 	}
 	render(){
@@ -122,10 +122,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		currentTripVal: typeof state.trips.currentTrip.val === 'function' ? state.trips.currentTrip.val() : null,
-		currentLocationVal: typeof state.trips.currentLocation.val === 'function' ? state.trips.currentLocation.val() : null,
+		currentLocation: _.get(state.userTrips.trips, state.userTrips.currentTripKey + '.locations.' + state.userTrips.currentLocationKey, {}),
 		markers: state.map.markers,
-		polyline: state.map.polyline,
 		coordinates: state.map.coordinates,
 		userCoords: state.map.geoLocation
 	}

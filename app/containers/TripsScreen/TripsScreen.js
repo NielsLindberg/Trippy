@@ -12,10 +12,11 @@ export default class TripsScreen extends Component{
     super(props);
   }
   static navigationOptions = ({navigation}) => {
+    let date = moment();
     const itemAdd = {
       title: '', 
       active: false,
-      date: moment(), 
+      date: {year: parseInt(date.format('YYYY')), month: parseInt(date.format('M')), day: parseInt(date.format('D'))},
       locations: []
     };
     return {
@@ -24,7 +25,7 @@ export default class TripsScreen extends Component{
           navigation={navigation}
           backButton={false}
           itemAdd={itemAdd}
-          itemAddDestination='trips'
+          destination='trips'
           headerTitle='Add New Trips'
         />
       )

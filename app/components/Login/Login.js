@@ -19,8 +19,8 @@ class Login extends Component{
 			token: ''
 		};
   }
-  componentWillReceiveProps(){
-  	if(Object.keys(this.props.userRef).length > 0) {
+  componentWillReceiveProps(nextProps){
+  	if(Object.keys(nextProps.userRef).length > 0) {
   	  this.props.navigation.dispatch(goToTrips);
   	}
   }
@@ -72,7 +72,7 @@ class Login extends Component{
               	</Text>
               </TouchableOpacity>
               <TouchableOpacity
-              	onPress={() => {this.props.loginIndicator ? null : this.props.signUpWithEmail(this.state.email,this.state.password)}}
+              	onPress={() => {this.props.loginFetching ? null : this.props.signUpWithEmail(this.state.email,this.state.password)}}
               	activeOpacity={0.5}
               	style={styles.signUp}
               >
@@ -85,7 +85,7 @@ class Login extends Component{
             	OR
             </Text>
             <TouchableOpacity
-            	onPress={() => {this.props.loginIndicator ? null : this.props.getGoogleSignin()}}
+            	onPress={() => {this.props.loginFetching ? null : this.props.getGoogleSignin()}}
             	activeOpacity={0.5}
             >
             	<View style={styles.loginGoogle}>
@@ -95,7 +95,7 @@ class Login extends Component{
             	</View>
             </TouchableOpacity>
             <View style={styles.response}>
-	            {this.props.loginIndicator ? <ActivityIndicator size={35} color={CommonStyles.darkText.secondary}/> : null}
+	            {this.props.loginFetching ? <ActivityIndicator size={35} color={CommonStyles.darkText.secondary}/> : null}
 	            <Text style={styles.responseText}>{this.props.response}</Text>
             </View>
 	        </View>
@@ -216,7 +216,7 @@ function mapStateToProps(state) {
 	return {
 		userRef: state.backend.userRef,
 		response: state.user.loginResponse.message,
-		loginIndicator: state.user.loginIndicator
+		loginFetching: state.fetching.login
 	}
 }
 

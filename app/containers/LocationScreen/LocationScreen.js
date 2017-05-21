@@ -21,11 +21,6 @@ class LocationScreen extends Component{
       )
     }
   };
-  componentWillUnmount(){
-    this.props.setCurrentLocation({});
-    this.props.setLocationSearchResults({});
-    this.props.navigation.goBack();   
-  }
   render(){
     return(
     		<View style={styles.screen}>
@@ -35,7 +30,7 @@ class LocationScreen extends Component{
             />
             <DeleteButton
               navigation={this.props.navigation}
-              item={this.props.currentLocation}
+              item={'trips/' + this.props.currentTripKey + '/locations/' + this.props.currentLocationKey}
               deleteHandler={this.props.deleteUserItem}
               removeCurrentLocation={this.props.setCurrentLocation}
             />
@@ -57,8 +52,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    currentLocation: state.trips.currentLocation,
-    currentLocationIndicator: state.trips.currentLocationFetching
+    currentLocationKey: state.userTrips.currentLocationKey,
+    currentTripKey: state.userTrips.currentTripKey
   }
 }
 

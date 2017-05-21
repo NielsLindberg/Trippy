@@ -18,21 +18,13 @@ export function addBackendItemsRef(itemsRef) {
 export function addBackend() {
 	return (dispatch, getState) => {
 		const firebase = RNFirebase.initializeApp({
-			persistence: false,
+			persistence: true,
 			debug: false
 		});
 		const itemsRef = firebase.database().ref();
 		dispatch(addBackendRef(firebase))
 		dispatch(addBackendItemsRef(itemsRef))
 	}
-}
-
-export function getUserRef(user) {
-  return (dispatch, getState) => {
-     let userRef = getState().backend.itemsRef.child("users/" + user.uid);
-     dispatch(setUserRef(userRef));
-     dispatch(getUserTrips());
-  }
 }
 
 export function setUserRef(userRef) {

@@ -37,10 +37,10 @@ class LocationHeader extends Component{
 		  console.log('Cannot open time picker', error);
 		})
 	}
-	componentWillReceiveProps() {
-		if(this.props.currentLocationVal) {
-			if(typeof this.props.currentLocationVal.place === 'object') {
-				let string = this.props.currentLocationVal.place.formatted_address;
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.currentLocationVal) {
+			if(typeof nextProps.currentLocationVal.place === 'object') {
+				let string = nextProps.currentLocationVal.place.formatted_address;
 				string = string.split(', ');
 				this.setState({address: string});
 			}

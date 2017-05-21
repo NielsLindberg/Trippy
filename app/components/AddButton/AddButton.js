@@ -12,16 +12,16 @@ class AddButton extends Component {
 		this.addItem = this.addItem.bind(this);
 	}
 	addItem(){
-		let dest = this.props.destination == 'locations' ? 'trips/' + this.props.currentTrip.key + '/locations/' : this.props.destination;
+		let dest = this.props.destination == 'locations' ? 'trips/' + this.props.currentTripKey + '/locations/' : 'trips/';
 		this.props.addUserItem(dest, this.props.item);
 	}
 	render(){
 		return(
 			<View style={styles.buttonStyle}>
-				{!this.props.userTripsFetching && !this.props.currentTripFetching ? 
+				{!this.props.tripsFetching ? 
 					<TouchableOpacity
         	onPress={this.addItem}
-        	activeOpacity={0.8}
+        	activeOpacity={0.2}
         	>
         	<Icon name="add" style={styles.buttonTextStyle}/>
         </TouchableOpacity> : 
@@ -57,9 +57,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		userTripsFetching: state.trips.userTripsFetching,
-		currentTripFetching: state.trips.currentTripFetching,
-		currentTrip: state.trips.currentTrip
+		tripsFetching: state.fetching.trips,
+		currentTripKey: state.userTrips.currentTripKey,
+		currentLocationKey: state.userTrips.currentLocationKey
 	}
 }
 

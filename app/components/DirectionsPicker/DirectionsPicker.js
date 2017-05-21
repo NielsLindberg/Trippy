@@ -11,43 +11,31 @@ class DirectionsPicker extends Component{
 		super(props);
 		this.state = {
 			currentTripLocations: [],
-			currentLocationKey: 'default'
 		};
 		this.selectDirections = this.selectDirections.bind(this);
 	}
 	selectDirections(location){
-		if(location !== 'default') {
-			this.setState({currentLocationKey: location})
-			this.props.getCurrentLocation(this.props.currentTripLocations.child(location).ref);
-		}
+		this.props.setCurrentLocation(location);
 	}
-	componentWillReceiveProps(){
-		if(this.props.currentTripLocations) {
-			var items = [];
-			this.props.currentTripLocations.forEach((child) => {
-				if(typeof child.val().place === 'object') {
-					items.push(child);
-				}
-			});
+	componentWillReceiveProps(nextProps){
+		if(nextProps.currentTripLocations) {
+			var items = _.values(nextProps.currentTripLocations);
 			this.setState({currentTripLocations: items});
-			if(this.props.currentLocation) {
-				this.setState({currentLocationKey: this.props.currentLocation.key});
-			}
 		}
 	}
 	render(){
 		return(
 			<View style={styles.picker}>
-			{this.props.currentTripFetching ?
+			{this.props.tripsFetching ?
 				<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> : 
 				<Picker
 					mode='dropdown'
-					selectedValue={this.state.currentLocationKey}
+					selectedValue={this.props.currentLocationKey}
 				  onValueChange={(location) => this.selectDirections(location)}>
 				  <Picker.Item key='default' label='Location' value='default'/>
 				  {this.state.currentTripLocations.map((location, index) => {
 				    return (
-				      <Picker.Item key={index} label={location.val().place.name ? location.val().place.name : 'No Title'} value={location.key} />
+				      <Picker.Item key={index} label={_.get(location, 'place.name', 'No title')} value={location.key} />
 			     )})}
 				</Picker>
 			 }
@@ -70,11 +58,10 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		geoLocation: state.map.geoLocation,
-		currentLocation: state.trips.currentLocation,
-		currentTripLocations: typeof state.trips.currentTrip.child === 'function' ? state.trips.currentTrip.child('locations') : null,
-		currentTripLocationsVal: typeof state.trips.currentTrip.val === 'function' ? typeof state.trips.currentTrip.val() : null,
-		currentTripFetching: state.trips.currentTripFetching
+		currentLocationKey: state.userTrips.currentLocationKey,
+		currentTripKey: state.userTrips.currentTripKey,
+		currentTripLocations: _.get(state.userTrips, 'trips[' + state.userTrips.currentTripKey + '].locations', {}),
+		tripsFetching: state.fetching.trips
 	}
 }
 

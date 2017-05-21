@@ -1,5 +1,6 @@
 import * as types from './types';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
+import * as tripActions from './trips';
 
 const noEmailPassword = {message: 'Enter an email and password.'};
 const clearErrorMessage = {message: ''};
@@ -73,7 +74,7 @@ export function signUpWithEmail(email, password) {
 	return (dispatch, getState) => {
 		dispatch(setLoginResponse(clearErrorMessage));
 		if(email && password) {
-			dispatch(setLoginIndicator(true));
+			dispatch(setLoginFetching(true));
 			getState().backend.ref.auth().createUserWithEmailAndPassword(email, password)
 			.then(() => {
 				dispatch(setLoginResponse(response))
@@ -81,7 +82,7 @@ export function signUpWithEmail(email, password) {
 			})
 			.catch((err) => {
 				dispatch(setLoginResponse(err))
-				dispatch(setLoginIndicator(false));
+				dispatch(setLoginFetching(false));
 			})
 		} else {
 				dispatch(setLoginResponse(noEmailPassword));
@@ -93,7 +94,7 @@ export function signInWithEmail(email, password) {
 	return (dispatch, getState) => {
 		dispatch(setLoginResponse(clearErrorMessage));
 		if(email && password) {
-			dispatch(setLoginIndicator(true));
+			dispatch(setLoginFetching(true));
 			getState().backend.ref.auth().signInWithEmailAndPassword(email, password)
 			.then((response) => {
 				dispatch(setLoginResponse(response))
@@ -101,7 +102,7 @@ export function signInWithEmail(email, password) {
 			})
 			.catch((err) => {
 				dispatch(setLoginResponse(err));
-				dispatch(setLoginIndicator(false));
+				dispatch(setLoginFetching(false));
 			})
 		} else {
 			dispatch(setLoginResponse(noEmailPassword));
@@ -112,14 +113,14 @@ export function signInWithEmail(email, password) {
 export function signInWithGoogle(idToken){
 	return (dispatch, getState) => {
 		dispatch(setLoginResponse(clearErrorMessage));
-		dispatch(setLoginIndicator(true));
+		dispatch(setLoginFetching(true));
     getState().backend.ref.auth().signInWithCredential({provider: 'google', token: idToken})
     .then(() => {
     dispatch(getCurrentUser());
     })
     .catch((err) => {
 			dispatch(setLoginResponse(err))
-			dispatch(setLoginIndicator(false));
+			dispatch(setLoginFetching(false));
 		})
   }
 }
@@ -131,10 +132,10 @@ export function setLoginResponse(response) {
 	}
 }
 
-export function setLoginIndicator(indicator) {
+export function setLoginFetching(fetching) {
 	return {
-		type: types.SET_LOGIN_INDICATOR,
-		payload: indicator
+		type: types.SET_LOGIN_FETCHING,
+		payload: fetching
 	}
 }
 
@@ -143,13 +144,14 @@ export function getCurrentUser() {
     let user = getState().backend.ref.auth().currentUser
       dispatch(setCurrentUser(user))
       dispatch(getUserRef(user))
-    	dispatch(setLoginIndicator(false));
+    	dispatch(setLoginFetching(false));
   }
 }
 
 export function getUserRef(user) {
   return (dispatch, getState) => {
      let userRef = getState().backend.itemsRef.child("users/" + user.uid);
+     userRef.keepSynced(true);
      dispatch(setUserRef(userRef));
   }
 }
