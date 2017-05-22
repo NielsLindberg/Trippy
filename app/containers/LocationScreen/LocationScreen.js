@@ -8,6 +8,15 @@ import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
+import { NavigationActions } from 'react-navigation';
+
+const resetAction = NavigationActions.reset({
+  index: 2,
+  routes: [
+    {key: 1, routeName: "TripsScreen"},
+    {key: 2, routeName: "TripDetailScreen"},
+  ]
+});
 
 class LocationScreen extends Component{
   static navigationOptions = ({navigation}) => {
@@ -21,6 +30,11 @@ class LocationScreen extends Component{
       )
     }
   };
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.currentTripKey != this.props.currentTripKey) {
+      console.log(nextProps.navigation);
+    }
+  }
   render(){
     return(
     		<View style={styles.screen}>

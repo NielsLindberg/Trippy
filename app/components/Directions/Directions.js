@@ -5,8 +5,6 @@ import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import DirectionsStep from '../DirectionsStep/DirectionsStep';
 import DirectionsHeader from '../DirectionsHeader/DirectionsHeader';
-import DirectionsPicker from '../DirectionsPicker/DirectionsPicker';
-import TripPicker from '../TripPicker/TripPicker';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import _ from 'lodash';

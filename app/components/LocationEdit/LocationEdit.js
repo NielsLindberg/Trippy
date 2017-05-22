@@ -20,9 +20,9 @@ class LocationEdit extends Component{
 		this.renderRow = this.renderRow.bind(this);
 		this.renderSection = this.renderSection.bind(this);
 	}
-	componentWillReceiveProps(nextProps) {
-		if(typeof nextProps.locationSearchResults === 'object') {
-			let dataSource = nextProps.locationSearchResults;
+	updateItems(props) {
+		if(props.locationSearchResults) {
+			let dataSource = props.locationSearchResults;
 			dataSource = _.groupBy(dataSource, d => d.types[0]);
 			dataSource = _.reduce(dataSource, (acc, next, index) => {
 				acc.push({
@@ -33,6 +33,12 @@ class LocationEdit extends Component{
 			dataSource = _.sortBy(dataSource, 'key');
 			this.setState({sections: dataSource});
 		}
+	}
+	componentWillReceiveProps(nextProps) {
+		this.updateItems(this.props);
+	}
+	componentWillMount(){
+		this.updateItems(this.props);
 	}
 	renderSection(item) {
 		let header = item.section.key ? item.section.key : 'No Title';
@@ -55,7 +61,7 @@ class LocationEdit extends Component{
 		return (
 			<View style={styles.container}>
 				<LocationHeader/>
-				{!this.props.fetchingAll ? 
+				{!this.props.searchFetching && !this.props.tripsFetching && !this.props.directionsFetching ? 
 				<SectionList
 					style={styles.sectionList}
 					renderItem={({item}) => this.renderRow(item)}
@@ -103,12 +109,13 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		currentLocation: state.trips.currentLocation,
-		currentLocationVal: typeof state.trips.currentLocation.val === 'function' ? state.trips.currentLocation.val() : null,
-		currentLocationFetching: state.trips.currentLocationFetching,
-		locationSearchResults: state.trips.locationSearchResults,
-		locationSearchFetching: state.trips.locationSearchFetching,
-    fetchingAll: state.trips.locationSearchFetching || state.trips.userTripsFetching || state.trips.currentTripFetching || state.trips.currentLocationFetching || state.map.directionsFetching ? true : false
+		currentLocationKey: state.userTrips.currentLocationKey,
+		currentTripKey: state.userTrips.currentTripKey,
+		tripsFetching: state.fetching.trips,
+		searchFetching: state.fetching.locationSearch,
+		directionsFetching: state.fetching.directions,
+		currentLocation: _.get(state.userTrips.trips, state.userTrips.currentTripKey + '.locations.' + state.userTrips.currentLocationKey, null),
+		locationSearchResults: _.get(state.locationSearch, 'results', null)
 	}
 }
 

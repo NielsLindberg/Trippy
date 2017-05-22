@@ -5,27 +5,41 @@ import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
+import _ from 'lodash';
 
 class Location extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
 			address: [],
+			arrivalString: '',
+			endString: '',
+			name: '',
+			rating: ''
 		};
 		this.editDetails = this.editDetails.bind(this);
+		this.updateItems = this.updateItems.bind(this);
 	}
 	editDetails(){
-		this.props.getCurrentLocation(this.props.location.ref);
-		this.props.navigation.navigate('LocationScreen', {location: ''});
+		this.props.setCurrentLocation(this.props.location.key);
+		this.props.navigation.navigate('LocationScreen');
+	}
+	updateItems(props) {
+		if(props.location) {
+			this.setState({
+				name: _.get(props.location, 'place.name', 'No name'),
+				rating: _.get(props.location, 'place.rating', 'No rating'),
+				address: _.get(props, 'location.place.formatted_address', 'No Address Found').split(', '),
+				arrivalString: props.pad(_.get(props.location, 'arrival.hour'),2) + ':' + props.pad(_.get(props.location, 'arrival.minute'),2),
+				endString: props.pad(_.get(props.location, 'end.hour'),2) + ':' + props.pad(_.get(props.location, 'end.minute'),2)
+			});
+		}
 	}
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.location.val()) {
-			if(typeof nextProps.location.val().place === 'object') {
-				let string = nextProps.location.val().place.formatted_address;
-				string = string.split(', ');
-				this.setState({address: string});
-			}
-		}
+		this.updateItems(nextProps);
+	}
+	componentWillMount(){
+		this.updateItems(this.props);
 	}
 	render(){
 		return(
@@ -35,7 +49,7 @@ class Location extends Component{
 						<View style={styles.row}>
 							<Icon style={styles.icon} name="place"/>
 							<View style={styles.address}>
-								<Text style={styles.text}>{this.props.location.val().place ? this.props.location.val().place.name: ''}</Text>
+								<Text style={styles.text}>{this.state.name}</Text>
 								{this.state.address.map((address, index) => {
 			      			return (
 			        	<Text numberOfLines={1} ellipseMode='head' key={index} style={styles.textSecondary}>{address}</Text>
@@ -47,17 +61,17 @@ class Location extends Component{
 						<View style={styles.row}>
 							<Icon style={styles.icon} name="star"/>
 							<Text style={styles.textSecondary}>Rating: </Text>
-							<Text style={styles.text}>{this.props.location.val().place ? this.props.location.val().place.rating: null}</Text>
+							<Text style={styles.text}>{this.state.rating}</Text>
 						</View>
 						<View style={styles.row}>
 							<Icon style={styles.icon} name="access-time"/>
 							<Text style={styles.textSecondary}>Arrival: </Text>
-							<Text style={styles.text}>{this.props.location.val().arrival ? this.props.location.val().arrival.hour + ':' + this.props.location.val().arrival.minute: 'Select Arrival'}</Text>
+							<Text style={styles.text}>{this.state.arrivalString}</Text>
 						</View>
 						<View style={styles.row}>
 							<Icon style={styles.icon} name="access-time"/>
 							<Text style={styles.textSecondary}>End: </Text>
-							<Text style={styles.text}>{this.props.location.val().end ? this.props.location.val().end.hour + ':' + this.props.location.val().end.minute: 'Select End'}</Text>
+							<Text style={styles.text}>{this.state.endString}</Text>
 						</View>
 					</View>
 					<Icon name="keyboard-arrow-right" style={styles.editDetailsText}/>
@@ -133,7 +147,6 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		currentTrip: state.trips.currentTrip
 	}
 }
 

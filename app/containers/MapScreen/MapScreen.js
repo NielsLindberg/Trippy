@@ -4,7 +4,7 @@ import {AppRegistry, View, StyleSheet} from 'react-native';
 import StatusBarComponent from '../../components/StatusBarComponent/StatusBarComponent';
 import MapComponent from '../../components/MapComponent/MapComponent';
 import TripPicker from '../../components/TripPicker/TripPicker';
-import DirectionsPicker from '../../components/DirectionsPicker/DirectionsPicker';
+import LocationPicker from '../../components/LocationPicker/LocationPicker';
 
 export default class MapScreen extends Component{
   render(){
@@ -13,7 +13,7 @@ export default class MapScreen extends Component{
             <StatusBarComponent/>
             <View style={styles.pickers}>
             <TripPicker/>
-            <DirectionsPicker/>
+            <LocationPicker/>
             </View>
             <MapComponent/>
             

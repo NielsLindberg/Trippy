@@ -52,6 +52,15 @@ export function getUserTrips() {
 }
 
 export function setCurrentTrip(trip) {
+	return (dispatch, getState) => {
+		if(getState().userTrips.currentTripKey != trip) {
+			dispatch(setCurrentLocation(''));
+			dispatch(setTrip(trip));
+		}
+	}
+}
+
+export function setTrip(trip) {
 	return {
 		type: types.SET_CURRENT_TRIP,
 		payload: trip
@@ -199,21 +208,21 @@ export function setDirectionsFetching(indicator) {
 	}
 }
 
-export function getDirections(ref, place, searchString) {
+export function getDirections(dest, place, searchString) {
 	return (dispatch, getState) => {
 		dispatch(setDirectionsFetching(true));
 		fetch(webServiceDirectionsSearch + searchString + '&key=' + googleApi)
 		.then((response) => {
 			response.json()
 			.then((results) => {
-				if(results.routes[0].status !== 'ZERO RESULTS') {
+				if(results.status == 'OK') {
 					var polylines = [];
-					results.routes[0].legs[0].steps.forEach((step) => {
+					_.get(results, 'routes[0].legs[0].steps', []).forEach((step) => {
 						var polystep = {};
 						polystep[step.travel_mode] = dispatch(transformPolyLine(step.polyline.points));
 						polylines.push(polystep);
 					});
-					dispatch(updateUserItem(ref, {place: place, directions: results, polylines: polylines}));
+					dispatch(updateUserItem(dest, {place: place, directions: results, polylines: polylines}));
 				}
 				dispatch(setDirectionsFetching(false))
 			})

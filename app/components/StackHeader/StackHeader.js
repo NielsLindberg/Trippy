@@ -24,7 +24,7 @@ export default class StackHeader extends Component{
             <Text style={styles.headerTitle}>{this.props.headerTitle}</Text>
           </View>
           {this.props.itemAdd ? <AddButton 
-              destination={this.props.itemAddDestination} 
+              destination={this.props.destination} 
               item={this.props.itemAdd}
           /> : null }
         </View>

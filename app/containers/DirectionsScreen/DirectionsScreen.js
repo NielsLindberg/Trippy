@@ -5,7 +5,7 @@ import StatusBarComponent from '../../components/StatusBarComponent/StatusBarCom
 import Directions from '../../components/Directions/Directions';
 import CommonStyles from '../../lib/CommonStyles';
 import TripPicker from '../../components/TripPicker/TripPicker';
-import DirectionsPicker from '../../components/DirectionsPicker/DirectionsPicker';
+import LocationPicker from '../../components/LocationPicker/LocationPicker';
 
 export default class DirectionsScreen extends Component{
   render(){
@@ -14,7 +14,7 @@ export default class DirectionsScreen extends Component{
             <StatusBarComponent/>
             <View style={styles.pickers}>
               <TripPicker/>
-              <DirectionsPicker/>
+              <LocationPicker/>
             </View>
             <Directions/>
         </View>

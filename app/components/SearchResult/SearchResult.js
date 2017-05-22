@@ -15,7 +15,9 @@ class SearchResult extends Component{
 		var latitude = this.props.geoLocation.latitude ? this.props.geoLocation.latitude : 50;
 		var longitude = this.props.geoLocation.longitude ? this.props.geoLocation.longitude : 50;
 		var {lat, lng} = result.geometry.location;
-		this.props.getDirections(this.props.currentLocation.ref, result, 'mode=transit&origin=' + latitude + ',' + longitude + '&destination=' + lat + ',' + lng);
+		var destination = 'trips/' + this.props.currentTripKey + '/locations/' + this.props.currentLocationKey;
+		var search = 'mode=transit&origin=' + latitude + ',' + longitude + '&destination=' + lat + ',' + lng;
+		this.props.getDirections(destination, result, search);
 	}
 	componentWillMount(){
 		let string = this.props.searchResult.formatted_address;
@@ -77,7 +79,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		geoLocation: state.map.geoLocation
+		geoLocation: state.map.geoLocation,
+		currentTripKey: state.userTrips.currentTripKey,
+		currentLocationKey: state.userTrips.currentLocationKey
 	}
 }
 

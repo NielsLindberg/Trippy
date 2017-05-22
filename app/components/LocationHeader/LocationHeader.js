@@ -17,6 +17,7 @@ class LocationHeader extends Component{
 		};
 		this.searchAddress = this.searchAddress.bind(this);
 		this.timePicker = this.timePicker.bind(this);
+		this.updateItems = this.updateItems.bind(this);
 	}
 	searchAddress(){
 		this.props.getLocationSearch(this.state.search);
@@ -37,17 +38,25 @@ class LocationHeader extends Component{
 		  console.log('Cannot open time picker', error);
 		})
 	}
-	componentWillReceiveProps(nextProps) {
-		if(nextProps.currentLocationVal) {
-			if(typeof nextProps.currentLocationVal.place === 'object') {
-				let string = nextProps.currentLocationVal.place.formatted_address;
-				string = string.split(', ');
-				this.setState({address: string});
-			}
+	updateItems(props) {
+		if(props.currentLocation) {
+			this.setState({
+				name: _.get(props.currentLocation, 'place.name', 'No name'),
+				rating: _.get(props.currentLocation, 'place.rating', 'No rating'),
+				address: _.get(props.currentLocation, 'place.formatted_address', 'No Address Found').split(', '),
+				arrivalString: props.pad(_.get(props.currentLocation, 'arrival.hour'),2) + ':' + props.pad(_.get(props.currentLocation, 'arrival.minute'),2),
+				endString: props.pad(_.get(props.currentLocation, 'end.hour'),2) + ':' + props.pad(_.get(props.currentLocation, 'end.minute'),2)
+			});
 		}
 	}
+	componentWillReceiveProps(nextProps) {
+		this.updateItems(nextProps);
+	}
+	componentWillMount(){
+		this.updateItems(this.props);
+	}
 	render() {
-		if(!this.props.currentLocationVal) {
+		if(this.props.tripsFetching) {
 			return(<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>)
 		} else {
 		return (
@@ -57,7 +66,7 @@ class LocationHeader extends Component{
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="place"/>
 							<View style={styles.address}>
-								<Text style={styles.datePickerText}>{this.props.currentLocationVal.place ? this.props.currentLocationVal.place.name: 'Search for a location'}</Text>
+								<Text style={styles.datePickerText}>{this.state.name}</Text>
 								{this.state.address.map((address, index) => {
 			      			return (
 			        	<Text key={index} style={styles.addressText}>{address}</Text>
@@ -69,26 +78,26 @@ class LocationHeader extends Component{
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="star"/>
 							<Text style={styles.subTitle}>Rating: </Text>
-							<Text style={styles.datePickerText}>{this.props.currentLocationVal.place ? this.props.currentLocationVal.place.rating: null}</Text>
+							<Text style={styles.datePickerText}>{this.state.rating}</Text>
 						</View>
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="access-time"/>
 							<Text style={styles.subTitle}>Arrival: </Text>
 							<TouchableOpacity onPress={() => {this.timePicker('arrival')}}>
-								<Text style={styles.datePickerText}>{this.props.currentLocationVal.arrival ? this.props.pad(this.props.currentLocationVal.arrival.hour,2) + ':' + this.props.pad(this.props.currentLocationVal.arrival.minute,2): 'Select Arrival'}</Text>
+								<Text style={styles.datePickerText}>{this.state.arrivalString}</Text>
 							</TouchableOpacity>
 						</View>
 						<View style={styles.datePicker}>
 							<Icon style={styles.icon} name="access-time"/>
 							<Text style={styles.subTitle}>End: </Text>
 							<TouchableOpacity onPress={() => {this.timePicker('end')}}>
-								<Text style={styles.datePickerText}>{this.props.currentLocationVal.end ? this.props.pad(this.props.currentLocationVal.end.hour,2) + ':' + this.props.pad(this.props.currentLocationVal.end.minute,2): 'Select End'}</Text>
+								<Text style={styles.datePickerText}>{this.state.endString}</Text>
 							</TouchableOpacity>
 						</View>
 					</View>
 				</View>
 				<View style={styles.searchContainer}>
-						{!this.props.locationSearchFetching ? 
+						{!this.props.searchFetching ? 
 						<Icon style={styles.searchIcon} name="search"/> : 
 						<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>}
 						<TextInput 
@@ -174,9 +183,11 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		currentLocation: state.trips.currentLocation,
-		currentLocationVal: typeof state.trips.currentLocation.val === 'function' ? state.trips.currentLocation.val() : null,
-		currentLocationFetching: state.trips.currentLocationFetching
+		currentLocationKey: state.userTrips.currentLocationKey,
+		currentTripKey: state.userTrips.currentTripKey,
+		tripsFetching: state.fetching.trips,
+		searchFetching: state.fetching.locationSearch,
+		currentLocation: _.get(state.userTrips.trips, state.userTrips.currentTripKey + '.locations.' + state.userTrips.currentLocationKey, null)
 	}
 }
 

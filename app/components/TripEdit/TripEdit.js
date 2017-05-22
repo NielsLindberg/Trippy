@@ -33,11 +33,9 @@ class TripEdit extends Component{
 		)
 	}
 	updateItems(props) {
-		console.log(props.currentTrip);
 		if(props.currentTrip) {
-			var items = _.values(props.currentTrip.locations);
 			this.setState({
-				locations: items,
+				locations: _.values(_.mapValues(props.currentTrip.locations, (value, key) => { value.key = key; return value; })),
 				date: props.currentTrip.date,
 				title: props.currentTrip.title,
 				dateString: props.pad(props.currentTrip.date.day,2) + '-' + props.pad(props.currentTrip.date.month,2) + '-' + props.pad(props.currentTrip.date.year,4)
@@ -62,9 +60,7 @@ class TripEdit extends Component{
 		})
 		.then((response) => {
 			if(response.action !== DatePickerAndroid.dismissedAction) {
-				console.log(response);
 				let date = {year: response.year, month: (response.month +1), day: response.day};
-				console.log(date);
 				this.updateItem({'date': date});
 			}
 		})

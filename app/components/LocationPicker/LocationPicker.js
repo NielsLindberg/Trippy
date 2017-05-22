@@ -6,29 +6,27 @@ import { bindActionCreators } from 'redux';
 import CommonStyles from '../../lib/CommonStyles';
 import _ from 'lodash';
 
-class TripPicker extends Component{
+class LocationPicker extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			trips: [],
+			currentTripLocations: [],
 			selectedKey: 'default'
 		};
-		this.selectTrip = this.selectTrip.bind(this);
+		this.selectLocation = this.selectLocation.bind(this);
 		this.updateItems = this.updateItems.bind(this);
 	}
-	selectTrip(trip){
-		if(trip != 'default') {
-			this.props.setCurrentTrip(trip);
+	selectLocation(location){
+		if(location != 'default') {
+			this.props.setCurrentLocation(location);
 		}
 	}
 	updateItems(props) {
-		if(props.trips) {
-			var items = _.values(_.mapValues(props.trips, (value, key) => { value.key = key; return value; }));
-			this.setState({
-				trips: items,
-				selectedKey: props.currentTripKey
-			});
-		}
+		var items = _.values(_.mapValues(props.currentTripLocations, (value, key) => { value.key = key; return value; }));
+		this.setState({
+			currentTripLocations: items,
+			selectedKey: props.currentLocationKey
+		});
 	}
 	componentWillReceiveProps(nextProps){
 		this.updateItems(nextProps);
@@ -39,17 +37,17 @@ class TripPicker extends Component{
 	render(){
 		return(
 			<View style={styles.picker}>
-			{this.props.userTripsFetching ?
+			{this.props.tripsFetching ?
 				<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/> :
 				<Picker
 					mode='dropdown'
 					color={CommonStyles.lightText.secondary}
 				  selectedValue={this.state.selectedKey}
-				  onValueChange={(trip) => this.selectTrip(trip)}>
-				  <Picker.Item key={'default'} label={'Trips...'} value={'default'} />
-				  {this.state.trips.map((trip, index) => {
+				  onValueChange={(location) => this.selectLocation(location)}>
+				  <Picker.Item key={'default'} label={'Locations...'} value={'default'} />
+				  {this.state.currentTripLocations.map((location, index) => {
 				    return (
-				      <Picker.Item key={trip.key} label={_.get(trip, 'title', 'No title')} value={trip.key} />
+				      <Picker.Item key={location.key} label={_.get(location, 'place.name', 'No Name')} value={location.key} />
 			     )})}
 				</Picker>
 			 }
@@ -72,10 +70,11 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		trips: state.userTrips.trips,
+		currentTripLocations: _.get(state.userTrips, 'trips.' + state.userTrips.currentTripKey + '.locations', null),
 		tripsFetching: state.fetching.trips,
-		currentTripKey: state.userTrips.currentTripKey,
+		currentLocationKey: state.userTrips.currentLocationKey,
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TripPicker);
+export default connect(mapStateToProps, mapDispatchToProps)(LocationPicker);
+		

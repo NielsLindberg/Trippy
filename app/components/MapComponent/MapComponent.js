@@ -14,21 +14,23 @@ import CommonStyles from '../../lib/CommonStyles';
 class MapComponent extends Component{
 	constructor(props){
 		super(props);
-		this.state = {
-			userCoords: {
-				latitude: 0,
-				longitude: 0
-			}
-		};
 		this.mapRef = null;
+		this.updateItems = this.updateItems.bind(this);
+		this.transformCoordinates = this.transformCoordinates.bind(this);
+	}
+	updateItems(props) {
+		this.setState({
+			locations: _.values(_.mapValues(_.get(props, 'currentTrip.locations', null), (value, key) => { value.key = key; return value; }))
+		})
+	}
+	transformCoordinates(coordinates) {
+		return {latitude: coordinates.lat, longitude: coordinates.lng};
 	}
 	componentWillReceiveProps(nextProps){
-		if(nextProps.coordinates.length > 0) {
-			this.props.zoomMapToMarkers(this.mapRef);
-		}
-		if(Object.keys(nextProps.userCoords).length > 0) {
-			this.setState({userCoords: nextProps.userCoords});
-		}
+		this.updateItems(nextProps);
+	}
+	componentWillMount(){
+		this.updateItems(this.props);
 	}
 	render(){
 		return (
@@ -37,36 +39,39 @@ class MapComponent extends Component{
 		        	ref={(ref) => { this.mapRef = ref }}
 	         		style={styles.map}
 	       		>
-	       		{this.props.markers ? this.props.markers.map((marker) => {
-	       			return(
-					    <MapView.Marker
-					    	key={marker.id}
-					      coordinate={marker.latlng}
-					    >
-					    <View style={styles.markerWrap}>
-					    	<View style={styles.customMarker}>
-					    		<Text style={styles.customMarkerText}>{this.props.pad(marker.arrival.hour,2) + ':' + this.props.pad(marker.arrival.minute,2)}</Text>
-					    	</View>
-					    	<View style={styles.markerPin}>
-					    	</View>
-					    </View>
-					    </MapView.Marker>
-					    )}
-					   ) : null}
+	       		{_.get(this.state, 'locations', []).map((location) => {
+	       			if(_.get(location, 'place.geometry.location', null)) {
+	       				return(
+							    <MapView.Marker
+							    	key={location.key}
+							      coordinate={this.transformCoordinates(_.get(location, 'place.geometry.location', null))}
+							    >
+							    <View style={styles.markerWrap}>
+							    	<View style={styles.customMarker}>
+							    		<Text style={styles.customMarkerText}>{this.props.pad(location.arrival.hour,2) + ':' + this.props.pad(location.arrival.minute,2)}</Text>
+							    	</View>
+							    	<View style={styles.markerPin}>
+							    	</View>
+							    </View>
+							    </MapView.Marker>
+					    	)
+	       			}
+	       		})
+					}
 					 		<MapView.Marker
-					      coordinate={this.state.userCoords}
+					      coordinate={this.props.geoLocation}
 					    >
 					    	<View style={styles.userMarker}>
 					    	</View>
 					    </MapView.Marker>
-					    {this.props.currentLocationVal && this.props.currentLocationVal.polylines ? this.props.currentLocationVal.polylines.map((polyline, index) =>
+					    {_.get(this.props, 'currentLocation.polylines', []).map((polyline, index) =>
 		       		 	<MapView.Polyline
 		       		 	key={index}
 						   	strokeColor={Object.keys(polyline)[0] === 'WALKING' ? CommonStyles.grey['400'] : CommonStyles.grey['700']}
 						   	coordinates={polyline[Object.keys(polyline)[0]]}
 						   	strokeWidth={Object.keys(polyline)[0] === 'WALKING' ? 2 : 3}
 						   	/>
-	       			) : null}
+	       			)}
 	       		</MapView>
 	    </View>
     );
@@ -122,10 +127,11 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
-		currentLocation: _.get(state.userTrips.trips, state.userTrips.currentTripKey + '.locations.' + state.userTrips.currentLocationKey, {}),
+		currentLocation: _.get(state.userTrips.trips, state.userTrips.currentTripKey + '.locations.' + state.userTrips.currentLocationKey, null),
+		currentTrip: _.get(state.userTrips.trips, state.userTrips.currentTripKey, null),
 		markers: state.map.markers,
 		coordinates: state.map.coordinates,
-		userCoords: state.map.geoLocation
+		geoLocation: state.map.geoLocation
 	}
 }
 

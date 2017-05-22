@@ -22,7 +22,7 @@ class TripList extends Component{
 	}
 	updateData(nextProps) {
 		let dataSource = _.values(_.mapValues(nextProps.trips, (value, key) => { value.key = key; return value; }))
-		dataSource = _.groupBy(dataSource, d => moment(d.date).format('MMMM'));
+		dataSource = _.groupBy(dataSource, d => moment(d.date.day + '-' + d.date.month + '-' + d.date.year, 'DD-MM-YYYY').format('MMMM'));
 		dataSource = _.reduce(dataSource, (acc, next, index) => {
 		acc.push({
 			key: index,
