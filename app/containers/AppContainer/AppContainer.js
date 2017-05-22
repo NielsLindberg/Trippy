@@ -20,7 +20,10 @@ class AppContainer extends Component {
  render() {
  	return (
  		<View style={styles.screen}>
-	 		<Root/>
+	 		<Root navigation={addNavigationHelpers({
+        dispatch: this.props.dispatch,
+        state: this.props.navigator
+      })}/>
  		</View>
  	)
  }
@@ -39,6 +42,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
+		navigator: state.navigator
 	}
 }
 

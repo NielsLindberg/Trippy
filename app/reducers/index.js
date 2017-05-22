@@ -6,6 +6,7 @@ import { tripsReducer } from './trips';
 import { mapReducer } from './map';
 import { fetchingReducer } from './fetching';
 import { locationSearchReducer } from './locationSearch';
+import { navigatorReducer } from './navigator';
 
 export default reducers = combineReducers({
 	backend: backendReducer,
@@ -14,5 +15,6 @@ export default reducers = combineReducers({
 	map: mapReducer,
 	layout: layoutReducer,
 	fetching: fetchingReducer,
-	locationSearch: locationSearchReducer
+	locationSearch: locationSearchReducer,
+	navigator: navigatorReducer
 });

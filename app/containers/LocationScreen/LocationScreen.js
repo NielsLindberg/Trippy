@@ -13,8 +13,8 @@ import { NavigationActions } from 'react-navigation';
 const resetAction = NavigationActions.reset({
   index: 2,
   routes: [
-    {key: 1, routeName: "TripsScreen"},
-    {key: 2, routeName: "TripDetailScreen"},
+    {key: 'Init', routeName: "TripsScreen"},
+    {key: '2', routeName: "TripDetailScreen"},
   ]
 });
 
@@ -31,9 +31,8 @@ class LocationScreen extends Component{
     }
   };
   componentWillReceiveProps(nextProps) {
-    if(nextProps.currentTripKey != this.props.currentTripKey) {
-      console.log(nextProps.navigation);
-    }
+  }
+  componentWillMount(){
   }
   render(){
     return(

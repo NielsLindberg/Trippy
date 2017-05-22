@@ -21,7 +21,7 @@ class Login extends Component{
   }
   componentWillReceiveProps(nextProps){
   	if(Object.keys(nextProps.userRef).length > 0) {
-  	  this.props.navigation.dispatch(goToTrips);
+  	  this.props.navigateByType('NAVIGATION_LOGIN');
   	}
   }
 	render(){
