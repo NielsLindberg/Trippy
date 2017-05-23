@@ -4,14 +4,17 @@ import StatusBarComponent from '../../components/StatusBarComponent/StatusBarCom
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CommonStyles from '../../lib/CommonStyles';
 import AddButton from '../../components/AddButton/AddButton';
+import { connect } from 'react-redux';
+import { ActionCreators } from '../../actions';
+import { bindActionCreators } from 'redux';
 
-export default class StackHeader extends Component{
+class StackHeader extends Component{
   constructor(props){
     super(props);
     this.backHandler = this.backHandler.bind(this);
   }
   backHandler(){
-    this.props.navigation.goBack();
+    this.props.navigateByType('Navigation/BACK');
   }
   
   render(){
@@ -58,4 +61,13 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('StackHeader', () => StackHeader);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(ActionCreators, dispatch);
+}
+
+function mapStateToProps(state) {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StackHeader);

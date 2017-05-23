@@ -37,7 +37,7 @@ class TripList extends Component{
 		this.updateData(nextProps);
 	}
 	componentWillMount(){
-		this.props.getUserTrips();
+		
 	}
 	renderRow(trip) {
 		return(

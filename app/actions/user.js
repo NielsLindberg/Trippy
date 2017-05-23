@@ -1,6 +1,7 @@
 import * as types from './types';
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import * as tripActions from './trips';
+import * as navigationActions from './navigator';
 
 const noEmailPassword = {message: 'Enter an email and password.'};
 const clearErrorMessage = {message: ''};
@@ -144,7 +145,6 @@ export function getCurrentUser() {
     let user = getState().backend.ref.auth().currentUser
       dispatch(setCurrentUser(user))
       dispatch(getUserRef(user))
-    	dispatch(setLoginFetching(false));
   }
 }
 
@@ -153,6 +153,9 @@ export function getUserRef(user) {
      let userRef = getState().backend.itemsRef.child("users/" + user.uid);
      userRef.keepSynced(true);
      dispatch(setUserRef(userRef));
+     dispatch(tripActions.getUserTrips());
+     dispatch(navigationActions.navigateByType('NAVIGATION_LOGIN'));
+     dispatch(setLoginFetching(false));
   }
 }
 

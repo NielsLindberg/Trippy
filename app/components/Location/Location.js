@@ -30,8 +30,8 @@ class Location extends Component{
 				name: _.get(props.location, 'place.name', 'No name'),
 				rating: _.get(props.location, 'place.rating', 'No rating'),
 				address: _.get(props, 'location.place.formatted_address', 'No Address Found').split(', '),
-				arrivalString: props.pad(_.get(props.location, 'arrival.hour'),2) + ':' + props.pad(_.get(props.location, 'arrival.minute'),2),
-				endString: props.pad(_.get(props.location, 'end.hour'),2) + ':' + props.pad(_.get(props.location, 'end.minute'),2)
+				arrivalString: _.pad(_.get(props.location, 'arrival.hour'),2, '0') + ':' + _.pad(_.get(props.location, 'arrival.minute'),2, '0'),
+				endString: _.pad(_.get(props.location, 'end.hour'),2, '0') + ':' + _.pad(_.get(props.location, 'end.minute'),2, '0')
 			});
 		}
 	}

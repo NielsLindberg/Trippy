@@ -43,7 +43,7 @@ class LocationEdit extends Component{
 	renderSection(item) {
 		let header = item.section.key ? item.section.key : 'No Title';
 		return(
-			<Text style={styles.sectionHeader}>{_.capitalize(header)}</Text>
+			<Text style={styles.sectionHeader}>{_.startCase(header)}</Text>
 		)
 	}
 	extractKey(item) {

@@ -2,6 +2,7 @@ import * as types from './types';
 import { googleApi } from '../lib/Secrets';
 import { GeoLocation } from 'react-native';
 import polyline from '@mapbox/polyline';
+import * as navigationActions from './navigator';
 import _ from 'lodash';
 
 const webServicePlaceSearch = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=Copenhagen+';
@@ -55,6 +56,7 @@ export function setCurrentTrip(trip) {
 	return (dispatch, getState) => {
 		if(getState().userTrips.currentTripKey != trip) {
 			dispatch(setCurrentLocation(''));
+			dispatch(navigationActions.popLocationScreen());
 			dispatch(setTrip(trip));
 		}
 	}
@@ -108,70 +110,16 @@ export function getLocationSearch(searchString) {
   }
 }
 
-export function getMarkers(trip){
+export function zoomMapToMarkers(mapRef, coordinates) {
 	return (dispatch, getState) => {
-		var items = [];
-		if(typeof trip.val().locations === 'object') {
-			trip.child('locations').forEach((child) => {
-				if(child.val().place) {
-					var marker = {
-						id: child.val().place.id,
-						title: child.val().place.name,
-						description: child.val().place.name,
-						arrival: child.val().arrival,
-						end: child.val().end,
-						latlng: {
-							latitude: child.val().place.geometry.location.lat,
-							longitude: child.val().place.geometry.location.lng
-						}
-					}
-					items.push(marker);
-				}
-			});
-		}
-		dispatch(setMarkers(items));
-		dispatch(getCoordinates(items));
-	}
-}
-
-export function setMarkers(markers) {
-	return {
-		type: types.SET_MAP_MARKERS,
-		payload: markers
-	}
-}
-
-
-export function getCoordinates(markers) {
-	return (dispatch, getState) => {
-		var coordinates = [];
-		markers.map((marker) => {
-			coordinates.push(marker.latlng)
-		})
-		
-		dispatch(setCoordinates(coordinates));
-	}
-}
-
-export function setCoordinates(coordinates) {
-	return {
-		type: types.SET_MAP_COORDINATES,
-		payload: coordinates
-	}
-}
-
-export function zoomMapToMarkers(mapRef) {
-	return (dispatch, getState) => {
-		if(getState().map.coordinates.length > 0) {
-			mapRef.fitToCoordinates(getState().map.coordinates, {
-				edgePadding: {
-					top: 150,
-				  right: 150,
-				  bottom: 50,
-				  left: 150
-				}, animated: false
-			});
-		}
+		mapRef.fitToCoordinates(coordinates, {
+			edgePadding: {
+				top: 150,
+			  right: 150,
+			  bottom: 50,
+			  left: 150
+			}, animated: true
+		});
 	}
 }
 
@@ -252,11 +200,4 @@ export function setPolyline(polyline) {
 		type: types.SET_MAP_POLYLINE,
 		payload: polyline
 	}
-}
-
-export function pad(num, size) {
-	return (dispatch, getState) => {
-		var s = "000000000" + num;
-    return s.substr(s.length-size);
-	}  
 }

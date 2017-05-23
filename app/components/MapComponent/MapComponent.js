@@ -22,6 +22,14 @@ class MapComponent extends Component{
 		this.setState({
 			locations: _.values(_.mapValues(_.get(props, 'currentTrip.locations', null), (value, key) => { value.key = key; return value; }))
 		})
+		var coordinates = [];
+		if (props.geoLocation) coordinates.push(props.geoLocation);
+		_.values(_.mapValues(_.get(props, 'currentTrip.locations', null), (value, key) => { value.key = key; return value; })).map((location) => {
+			if(_.get(location, 'place.geometry.location')) coordinates.push(this.transformCoordinates(location.place.geometry.location))
+		})
+		if(coordinates.length > 0 && this.mapRef) {
+			props.zoomMapToMarkers(this.mapRef, coordinates);
+		}
 	}
 	transformCoordinates(coordinates) {
 		return {latitude: coordinates.lat, longitude: coordinates.lng};
@@ -48,7 +56,7 @@ class MapComponent extends Component{
 							    >
 							    <View style={styles.markerWrap}>
 							    	<View style={styles.customMarker}>
-							    		<Text style={styles.customMarkerText}>{this.props.pad(location.arrival.hour,2) + ':' + this.props.pad(location.arrival.minute,2)}</Text>
+							    		<Text style={styles.customMarkerText}>{_.padStart(location.arrival.hour,2,'0') + ':' + _.padStart(location.arrival.minute,2,'0')}</Text>
 							    	</View>
 							    	<View style={styles.markerPin}>
 							    	</View>

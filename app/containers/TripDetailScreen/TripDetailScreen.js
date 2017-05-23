@@ -13,12 +13,10 @@ import DeleteButton from '../../components/DeleteButton/DeleteButton';
 class TripDetailScreen extends Component{
     static navigationOptions = ({navigation}) => {
     const itemAdd = {
-      place: {},
       arrival: {hour: 0, minute: 0},
       end: {hour: 0, minute: 0}
     };
     return {
-
       header: (
         <StackHeader
           navigation={navigation}

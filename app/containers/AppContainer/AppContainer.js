@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 });
 
 function mapDispatchToProps(dispatch) {
-	return bindActionCreators(ActionCreators, dispatch);
+	return Object.assign({dispatch: dispatch}, bindActionCreators(ActionCreators, dispatch));
 }
 
 function mapStateToProps(state) {

@@ -38,7 +38,7 @@ class TripEdit extends Component{
 				locations: _.values(_.mapValues(props.currentTrip.locations, (value, key) => { value.key = key; return value; })),
 				date: props.currentTrip.date,
 				title: props.currentTrip.title,
-				dateString: props.pad(props.currentTrip.date.day,2) + '-' + props.pad(props.currentTrip.date.month,2) + '-' + props.pad(props.currentTrip.date.year,4)
+				dateString: _.padStart(props.currentTrip.date.day,2,'0') + '-' + _.padStart(props.currentTrip.date.month,2,'0') + '-' + _.padStart(props.currentTrip.date.year,4,'0')
 			});
 		}
 	}

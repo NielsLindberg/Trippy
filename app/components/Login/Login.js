@@ -19,11 +19,6 @@ class Login extends Component{
 			token: ''
 		};
   }
-  componentWillReceiveProps(nextProps){
-  	if(Object.keys(nextProps.userRef).length > 0) {
-  	  this.props.navigateByType('NAVIGATION_LOGIN');
-  	}
-  }
 	render(){
 		return (
 	    <View style={styles.container}>

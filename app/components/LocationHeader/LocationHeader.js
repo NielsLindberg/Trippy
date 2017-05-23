@@ -31,7 +31,7 @@ class LocationHeader extends Component{
 				let newState = {};
 				newState.hour = response.hour;
 				newState.minute = response.minute;
-				this.props.updateUserItem(this.props.currentLocation.ref, {[key]: newState});
+				this.props.updateUserItem('trips/' + this.props.currentTripKey + '/locations/' + this.props.currentLocation.key, {[key]: newState});
 			}
 		})
 		.catch((error) => {
@@ -44,8 +44,8 @@ class LocationHeader extends Component{
 				name: _.get(props.currentLocation, 'place.name', 'No name'),
 				rating: _.get(props.currentLocation, 'place.rating', 'No rating'),
 				address: _.get(props.currentLocation, 'place.formatted_address', 'No Address Found').split(', '),
-				arrivalString: props.pad(_.get(props.currentLocation, 'arrival.hour'),2) + ':' + props.pad(_.get(props.currentLocation, 'arrival.minute'),2),
-				endString: props.pad(_.get(props.currentLocation, 'end.hour'),2) + ':' + props.pad(_.get(props.currentLocation, 'end.minute'),2)
+				arrivalString: _.padStart(_.get(props.currentLocation, 'arrival.hour'),2,'0') + ':' + _.padStart(_.get(props.currentLocation, 'arrival.minute'),2,'0'),
+				endString: _.padStart(_.get(props.currentLocation, 'end.hour'),2,'0') + ':' + _.padStart(_.get(props.currentLocation, 'end.minute'),2,'0')
 			});
 		}
 	}
