@@ -7,7 +7,7 @@ A mobile application for travelling
 # Table of Contents
 
 1. [Introduction](#Introduction)
-	1.[Trippy – A mobile application for travelling](#Trippy-–-A-mobile-application-for-travelling)
+	1. [Trippy – A mobile application for travelling](#Trippy-–-A-mobile-application-for-travelling)
 2. [Objectives](#Objectives)
 	1. [Functional Objectives](#Functional-Objectives)
 		1. [Login](#Login)
