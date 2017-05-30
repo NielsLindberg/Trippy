@@ -6,46 +6,26 @@ A mobile application for travelling
 
 # Table of Contents
 
-Introduction        3
-
-Trippy – A mobile application for travelling.        3
-
-Objectives        4
-
-Functional Objectives        4
-
-Login        4
-
-Trip Creation        4
-
-Map View        4
-
-Directions View        4
-
-Learning Objectives        5
-
-Choice of Technology        6
-
-Ecosystem - React-Native        6
-
-Navigation – React-Navigation        7
-
-State Management – Redux        8
-
-Backend – Firebase        8
-
-Implementation        9
-
-Navigation        9
-
-Components        11
-
-Redux        12
-
-Conclusion        14
-
-References        15
-
+[Introduction](#Introduction)
+[Trippy – A mobile application for travelling](##Trippy – A mobile application for travelling)
+[Objectives](#Objectives)
+[Functional Objectives](##Functional Objectives)
+[Login](###Login)
+[Trip Creation](###Trip Creation)
+[Map View](###Map View)
+[Directions View](###Directions View)
+[Learning Objectives](##Learning Objectives)
+[Choice of Technology](#Choice of Technology)
+[Ecosystem - React-Native](##Ecosystem - React-Native)
+[Navigation – React-Navigation](##Navigation – React-Navigatio)
+[State Management – Redux](##State Management – Redux)
+[Backend – Firebase](##Backend – Firebase)
+[Implementation](#Implementation)
+[Navigation](##Navigation)
+[Components](##Components)
+[Redux](##Redux)
+[Conclusion](#Conclusion)
+[References](#References)
 
 # Introduction
 
@@ -55,7 +35,7 @@ I&#39;ve added a screen or two of all the different key aspects of the code in t
 
 To view the full code (except some non-committed files with API keys), visit [https://github.com/NielsLindberg/Trippy](https://github.com/NielsLindberg/Trippy) most of the non-scaffolding generated code lies within the &#39;app&#39; folder.
 
-## Trippy – A mobile application for travelling.
+## Trippy – A mobile application for travelling
 
 The idea for Trippy was to create a mobile application that made it easier to plan trips. The way to do this is to integrate some of the functionality that travelers use today in form of travel suggestion sites such as Trip Advisor with route planning and mapping sites such as google.
 
