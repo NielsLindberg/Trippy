@@ -6,26 +6,26 @@ A mobile application for travelling
 
 # Table of Contents
 
-1. [Introduction](#Introduction)
-	1. [Trippy – A mobile application for travelling](#Trippy-–-A-mobile-application-for-travelling)
-2. [Objectives](#Objectives)
-	1. [Functional Objectives](#Functional-Objectives)
-		1. [Login](#Login)
-		2. [Trip Creation](#Trip-Creation)
-		3. [Map View](#Map-View)
-		4. [Directions View](#Directions-View)
-	2. [Learning Objectives](#Learning-Objectives)
-3. [Choice of Technology](#Choice-of-Technology)
-	1. [Ecosystem - React-Native](#Ecosystem---React-Native)
-	2. [Navigation – React-Navigation](#Navigation-–-React-Navigatio)
-	3. [State Management – Redux](#State-Management-–-Redux)
-	4. [Backend – Firebase](#Backend-–-Firebase)
-4. [Implementation](#Implementation)
-	1. [Navigation](#Navigation)
-	2. [Components](#Components)
-	3. [Redux](#Redux)
-5. [Conclusion](#Conclusion)
-6. [References](#References)
+1. [Introduction](#introduction)
+	1. [Trippy – A mobile application for travelling](#trippy--a-mobile-application-for-travelling)
+2. [Objectives](#objectives)
+	1. [Functional Objectives](#functional-objectives)
+		1. [Login](#login)
+		2. [Trip Creation](#trip-creation)
+		3. [Map View](#map-view)
+		4. [Directions View](#directions-view)
+	2. [Learning Objectives](#learning-objectives)
+3. [Choice of Technology](#choice-of-technology)
+	1. [Ecosystem - React-Native](#ecosystem---react-native)
+	2. [Navigation – React-Navigation](#navigation--react-navigation)
+	3. [State Management – Redux](#state-management--redux)
+	4. [Backend – Firebase](#backend--firebase)
+4. [Implementation](#implementation)
+	1. [Navigation](#navigation)
+	2. [Components](#components)
+	3. [Redux](#redux)
+5. [Conclusion](#conclusion)
+6. [References](#references)
 
 # Introduction
 
@@ -150,8 +150,8 @@ The structure of the navigation is as follows:
 
 Root StackNavigator
 
-- --LoginScreen
-- --Tab Navigator
+- LoginScreen
+- Tab Navigator
   - Trips StackNavigator
     - TripsScreen
     - TripDetailsScreen
