@@ -6,6 +6,8 @@ test
 
 functions/
 
+android/app/src/main/AndroidManifest.xml
+
 # Xcode
 #
 build/
