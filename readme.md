@@ -101,20 +101,21 @@ One example of this was the decision to keep myself &#39;bleeding-edge&#39; in c
 
 Another example was moving some of my logic to Firebase functions, which was mainly for learning and seeing the performance impact of having some of the application logic running on the device compared to the cloud. The cloud version turned out to be considerably slower so it wasn&#39;t something I kept in production, see figure 1 below for the execution time of a cloud functions.
 
- ![Figure 1 – getDirections Cloud Log](./screenshots/Figure1.PNG)
+![Figure 1 – getDirections Cloud Log](./screenshots/Figure1.png)
+*Figure 1 – getDirections Cloud Log*
 
 
 This log is the result of running the below function seen in figure 2. For comparison running this function on the device finishes in under a second.
 
- ![Figure 2 – getDirections Cloud Function](./screenshots/Figure2.png)
+![Figure 2 – getDirections Cloud Function](./screenshots/Figure2.png)
+*Figure 2 – getDirections Cloud Function*
 
 The desire to learn how to properly handle states in the application, drove me to implement the Redux framework, but contrary to the implementation of Firebase functions, this was not only a solution that was worth keeping, I believe it saved me time overall and increased the quality of the application because of its very helpful debugging information that gives a nice overview of all flows of information and state changes in the application, especially in situations with asynchronous callbacks.
 
 # Choice of Technology
 
 ## Ecosystem - React-Native
-
-[CITATION Rea171 \l 1033]
+[React-Native. (2017)](https://facebook.github.io/react-native/)
 
 The application is developed in the React Native framework developed by Facebook. It runs a JavaScript engine on a thread on the mobile phone that handles the logic of the application and sends information over a bridge to either native Java components for Android or native Object-C components for iPhone.
 
@@ -122,13 +123,12 @@ The reason for choosing this framework is a combination of pre-existing competen
 
 The downside of choosing React-Native compared to developing natively is that you are introducing a dependency, e.g. when Apple or Google develops their ecosystem, you depend on React-Native developers to develop accordingly for you to get access to these new features. For example, now that Google has announced TensorFlow lite and that they will add TensorFlow processing units in future phones there is a risk that the access to such features can be delayed.
 
-A counter argument to this is that developing in React-Native is flexible in the sense that you as a developer can decide how much you want to rely on components being ported to React-Native and how much you want to develop natively yourself. However, the more you start developing natively because of lack of ported components the less of the advantages you get from choosing React-Native to begin with. [CITATION Wix17 \l 1033]
+A counter argument to this is that developing in React-Native is flexible in the sense that you as a developer can decide how much you want to rely on components being ported to React-Native and how much you want to develop natively yourself. However, the more you start developing natively because of lack of ported components the less of the advantages you get from choosing React-Native to begin with. [Wix-Choosing-React-Native. (2016)](https://www.youtube.com/watch?v=abSNo2P9mMM)
 
-React-Native has one of the big internet companies as a foundation in Facebook and several big players as backers such as Air-BnB. For the official list of backers visit the showcase page [CITATION Rea173 \l 1033]. So, while choosing to develop in React-Native, is a framework bet, it is not one that is done blindly or overly optimistic.
+React-Native has one of the big internet companies as a foundation in Facebook and several big players as backers such as Air-BnB. For the official list of backers visit the showcase page [React-Native-Showcase. (2017)](https://facebook.github.io/react-native/showcase.html). So, while choosing to develop in React-Native, is a framework bet, it is not one that is done blindly or overly optimistic.
 
 ## Navigation – React-Navigation
-
-[CITATION Rea17 \l 1033]
+[React-Navigation. (2017)](https://reactnavigation.org/)
 
 One of the biggest complaints about React-Native has been the lack of a leading standard in navigational framework. Many articles and reviews goes over the pros and cons of using various frameworks, however recently developers from a couple of the leading frameworks have decided to group together and develop a framework drawing from all the features of the various proven frameworks.
 
@@ -138,11 +138,8 @@ One of the benefits of React-Navigation is that it behaves very similarly to Red
 
 The downside to using this framework is the current state of the documentation, I&#39;ve found myself spending equal amount of time in the official docs as in the issues page on their GitHub to figure out how stuff works.
 
-
-
 ## State Management – Redux
-
-[CITATION htt17 \l 1033]
+[Redux. (2017)](http://redux.js.org/)
 
 A mobile application developed in React-Native is complex structure of components who behave according to information parsed to them. The default option of handling this information is having it stored inside the components state, or parsed down to a component through its properties from a parent component. Changing the information in the default pattern is done by having the logic defined inside the components. Logic such as logging in to the backend when clicking the login button in a component.
 
@@ -150,15 +147,14 @@ During development as the application became more complex, issues and questions 
 
 While researching what pattern of state management is the most optimal, it became more and more apparent that the most optimal way was to not handle state and logic in the default way at all, but to use a framework called Redux.
 
-While Redux is a rather new framework, the ideas behind it are very much like the Command Design Pattern. [CITATION Red17 \l 1033]
+While Redux is a rather new framework, the ideas behind it are very much like the Command Design Pattern. [Redux-Command-Pattern. (2016)](https://medium.com/front-end-developers/the-command-pattern-c51292e22ea7)
 
 ## Backend – Firebase
-
-[CITATION Fir17 \l 1033]
+[Firebase. (2017)](https://firebase.google.com/)
 
 Since the logic of the mobile application is in JavaScript using Firebase was a good option for a backend as the amount of code needed to transfer data between the components and backend is very minimal. Furthermore, Firebase is very user friendly and as I did not have any experience using any backend for web or mobile application it seemed like a suitable choice.
 
-Firebase comes with both a JavaScript and Java SDK, but to use the JavaScript SDK on mobile it must be within a web-view native component. This would lower our performance significantly, luckily wrappers have been made similarly to how other react-native components uses JavaScript logic and parses information to the native components. When using such a wrapper the API looks almost identical to the JavaScript API but in fact the Java SDK is the one that is handling the calls to the backend. [CITATION Rea172 \l 1033]
+Firebase comes with both a JavaScript and Java SDK, but to use the JavaScript SDK on mobile it must be within a web-view native component. This would lower our performance significantly, luckily wrappers have been made similarly to how other react-native components uses JavaScript logic and parses information to the native components. When using such a wrapper the API looks almost identical to the JavaScript API but in fact the Java SDK is the one that is handling the calls to the backend. [React-Native-Firebase. (2017)](http://invertase.io/react-native-firebase/#/)
 
 The downside to using a wrapper is that we again introduce a dependency, in fact during the development of this app I switched from one wrapper react-native-firestack to react-native-firebase, as the development of the former seemed to have gone a bit stale. Luckily both wrappers had as an objective to emulate the official JavaScript API, so it wasn&#39;t too much hassle to make the change.
 
@@ -183,11 +179,13 @@ Root StackNavigator
 
 The implementation of e.g. the Tab Navigator in the code can be seen in figure 3 below.
 
- ![Figure 3 - Implementing Tab Navigation](./screenshots/Figure3.png)
+![Figure 3 - Implementing Tab Navigation](./screenshots/Figure3.png)
+*Figure 3 - Implementing Tab Navigation*
 
 This configuration of the structure of React-Navigation follows the structure of how the screens of the application are structured. One thing to note is that the React-Navigation framework allows for full integration with redux, which means that instead of calling a navigation object that then switches between screens, you instead call a function called getStateForAction that then instead of switching screens gives you a new navigation state that you can parse to the redux store, which the navigation framework then instead looks at for determining which screen to show and how screens are stacked upon each other. The benefit of doing this, is that you are not limited to the actions provided in the framework as you can modify the navigation state directly via JavaScript. This was a functionality I needed for removing the LocationDetailsScreen from the TripsStack if the current Trip was changed by the user on the MapScreen or DirectionsScreen, see figure 4 below.
 
- ![Figure 4 - Redux Action - popLocationScreen](./screenshots/Figure4.png)
+![Figure 4 - Redux Action - popLocationScreen](./screenshots/Figure4.png)
+*Figure 4 - Redux Action - popLocationScreen*
 
 Furthermore, by having the navigation state on the redux store, all the information needed to create an identical state of the application is available, which means that for future development the redux store could be saved to the mobiles physical storage and retrieve upon opening the app, so that the user gets back to the identical state of the application as it was in when the user last closed it down.
 
@@ -195,11 +193,13 @@ Furthermore, by having the navigation state on the redux store, all the informat
 
 Components are the bread and butter of React-Native, they represent everything that is visible in the application. Components can be everything from a simple button, to a parent component that holds a complex hierarchy of simpler child components. One of the challenges as a React-Native developer is figuring out to which degree you split everything up into smaller components. My approach for this application has been pragmatic in the sense that I&#39;ve mostly moved functionality to its own component if I found myself reusing that functionality. An example could be the AddButton component that is used on both the TripsScreen and TripsDetailsScreen. In the former the button adds a trip and in the latter, it adds a location. This difference is controlled via parsing properties to the component when using it. See figure 5 below for the implementation of the AddButton.
 
- ![Figure 5 - Component - AddButton](./screenshots/Figure5.png)
+![Figure 5 - Component - AddButton](./screenshots/Figure5.png)
+*Figure 5 - Component - AddButton*
 
 An example of a component being a much higher in the hierarchy is the TripList component that uses React-Native&#39;s 0.44 SectionsList component which takes in some data and then creates a list. In my implementation, I render a Trip component for each row in the dataset see figure 6 below.
 
- ![Figure 6 - Component - TripList](./screenshots/Figure6.png)
+![Figure 6 - Component - TripList](./screenshots/Figure6.png)
+*Figure 6 - Component - TripList*
 
 A lot can be said about components, for people familiar with the MVC pattern, components can be understood as the view layer.
 
@@ -207,19 +207,23 @@ A lot can be said about components, for people familiar with the MVC pattern, co
 
 With Redux all information in the application is stored in a single global store, and components are configured to connect to parts of this store and only re-render when these parts change see figure 7 below.
 
- ![Figure 7 - Redux - Connecting to Components](./screenshots/Figure7.png)
+![Figure 7 - Redux - Connecting to Components](./screenshots/Figure7.png)
+*Figure 7 - Redux - Connecting to Components*
 
 To keep performance high, these parts are only checked for a shallow equal comparison. This feature requires the developer to have a good understanding of how to enforce JavaScript immutability (something JavaScript isn&#39;t very good at), as the components only check if an object is not equal to another object without doing a deep comparison of all its nested values.  E.g. when editing the navigation state in the popLocationScreen function I enforce immutability by calling JSON.parse(JSON.stringify()), see figure 4 in the navigation section. In figure 8 below you can see how this looks in the chrome debugging tool, the action creates the payload and the reducers changes the store from one state to the next based on that payload.
 
- ![Figure 8 - Redux - Debugging](./screenshots/Figure8.png)
+![Figure 8 - Redux - Debugging](./screenshots/Figure8.png)
+*Figure 8 - Redux - Debugging*
 
 Most of the logic in the mobile applications are moved to what in the Redux framework are called Actions. These actions then either call different actions or call reducers who then change the global store from one state to the next. The action that creates the payload for SET\_USER\_TRIPS in the above figure 8 is called getUserTrips, see figure 9 below.
 
- ![Figure 9 - Redux - Trip Actions](./screenshots/Figure9.png)
+![Figure 9 - Redux - Trip Actions](./screenshots/Figure9.png)
+*Figure 9 - Redux - Trip Actions*
 
 The function has an &#39;on&#39; method called on the trips &#39;root&#39; for the specific user in firebase, this creates a listener that runs whenever something changes in the root or any of its descendants. Because of this the functions for updating, deleting and adding items, see figure 9 above, do not directly call any actions to send payloads to the reducers (other than the fetching indicator), but instead just modifies firebase which in turn triggers the listener in getUserTrips that then calls the reducer to modify the state of the application. The reducers are rather simple in comparisons to the actions, you can have logic in there that modifies the payloads before changing the state, however I decided to keep most logic in the actions and use the reducers simply as a gate between changing the states, see figure 10 below.
 
- ![Figure 10 – Redux - Trip Reducer](./screenshots/Figure10.png)
+![Figure 10 – Redux - Trip Reducer](./screenshots/Figure10.png)
+*Figure 10 – Redux - Trip Reducer*
 
 # Conclusion
 
