@@ -39,12 +39,13 @@ class TripList extends Component{
 	componentWillMount(){
 		
 	}
-	renderRow(trip) {
+	renderRow(trip, index) {
 		return(
 			<Trip
 				setCurrentTrip={this.props.setCurrentTrip}
 				trip={trip}
 				navigation={this.props.navigation}
+				index={index}
 			/>
 		)
 	}
@@ -61,7 +62,7 @@ class TripList extends Component{
 			<ScrollView style={styles.container}>
 				<SectionList
 					style={styles.sectionList}
-					renderItem={({item}) => this.renderRow(item)}
+					renderItem={({item, index}) => this.renderRow(item, index)}
 					renderSectionHeader={(item) => this.renderSection(item)}
 					sections={this.state.sections}
 				/>

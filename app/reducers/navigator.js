@@ -4,7 +4,7 @@ import { Root } from '../navigator/router';
 import { NavigationActions } from 'react-navigation';
 
 const initialState = Root.router.getStateForAction(Root.router.getActionForPathAndParams('LoginScreen'));
-const LoginAction = NavigationActions.reset(NavigationActions.reset({index: 0,actions: [NavigationActions.navigate({ routeName: 'Tabs'})]}));
+const LoginAction = NavigationActions.reset(NavigationActions.reset({index: 0, key: null, actions: [NavigationActions.navigate({ routeName: 'Tabs'})]}));
 const BackAction = NavigationActions.back();
 export const navigatorReducer = (state = initialState, action) => {
 	let nextState;

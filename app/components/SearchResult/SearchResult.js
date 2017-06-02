@@ -5,6 +5,7 @@ import CommonStyles from '../../lib/CommonStyles';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
+import * as Animatable from 'react-native-animatable';
 
 class SearchResult extends Component{
 	constructor(props){
@@ -26,17 +27,19 @@ class SearchResult extends Component{
 	}
 	render(){
 		return(
-			<TouchableOpacity style={styles.row} onPress={() => {this.selectAddress(this.props.searchResult)}}>
-				<View style={styles.details}>
-					<Text style={styles.detailsText}>{this.props.searchResult.name}</Text>
-					<Text style={styles.detailsText}>{'Rating: ' + this.props.searchResult.rating}</Text>
-				</View>
-				<View style={styles.address}>
-					{this.state.address.map((address, index) => {
-		      	return (
-		        <Text key={index} style={styles.addressText}>{address}</Text>
-	      	)})}
-				</View>
+			<TouchableOpacity onPress={() => {this.selectAddress(this.props.searchResult)}}>
+				<Animatable.View style={styles.row} duration={1000} animation='fadeIn' useNativeDriver>
+					<View style={styles.details}>
+						<Text style={styles.detailsText}>{this.props.searchResult.name}</Text>
+						<Text style={styles.detailsText}>{'Rating: ' + this.props.searchResult.rating}</Text>
+					</View>
+					<View style={styles.address}>
+						{this.state.address.map((address, index) => {
+			      	return (
+			        <Text key={index} style={styles.addressText}>{address}</Text>
+		      	)})}
+					</View>
+				</Animatable.View>
 			</TouchableOpacity>
 		)
 	}

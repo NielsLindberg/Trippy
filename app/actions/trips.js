@@ -90,6 +90,13 @@ export function setLocationSearchFetching(indicator) {
 	}
 }
 
+export function setLocationSearchSection(section) {
+	return {
+		type: types.SET_LOCATION_SEARCH_SECTION,
+		payload: section
+	}
+}
+
 export function getLocationSearch(searchString) {
 	return (dispatch, getState) => {
 		dispatch(setLocationSearchFetching(true));

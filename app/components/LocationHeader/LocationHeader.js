@@ -97,19 +97,22 @@ class LocationHeader extends Component{
 					</View>
 				</View>
 				<View style={styles.searchContainer}>
-						{!this.props.searchFetching ? 
-						<Icon style={styles.searchIcon} name="search"/> : 
-						<ActivityIndicator style={styles.indicator} size={25} color={CommonStyles.colorAccent}/>}
+						<Icon style={styles.searchIcon} name="search"/>
 						<TextInput 
 							style={styles.search}
 							placeholder='Search for a location'
 							onChangeText={(search) => this.setState({search})}
 							onEndEditing={() => {this.searchAddress()}}
 						/>
+						<TouchableOpacity onPress={() => {this.props.setLocationSearchSection('types')}}>
+							<Text style={[styles.filterText, this.props.filter === 'types' ? styles.activeFilter : null]}>Type</Text>
+						</TouchableOpacity>
+						<TouchableOpacity onPress={() => {this.props.setLocationSearchSection('rating')}}>
+							<Text style={[styles.filterText, this.props.filter === 'rating' ? styles.activeFilter: null]}>Rating</Text>
+						</TouchableOpacity>
 					</View>
 			</View>
 		)	
-					
 		}
 	}
 }
@@ -174,6 +177,20 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		margin: 0,
 		color: CommonStyles.darkText.primary
+	},
+	filterText: {
+		width: 60,
+		textAlign: 'center',
+		fontSize: 15,
+		padding: 5,
+		borderColor: CommonStyles.colorAccent,
+		borderWidth: 2,
+		color: CommonStyles.colorAccent,
+		backgroundColor: CommonStyles.white
+	},
+	activeFilter: {
+		backgroundColor: CommonStyles.colorAccent,
+		color: CommonStyles.white
 	}
 });
 
@@ -183,6 +200,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
 	return {
+		filter: state.locationSearch.section,
 		currentLocationKey: state.userTrips.currentLocationKey,
 		currentTripKey: state.userTrips.currentTripKey,
 		tripsFetching: state.fetching.trips,

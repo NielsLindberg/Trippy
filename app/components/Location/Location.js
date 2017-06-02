@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 import { bindActionCreators } from 'redux';
 import _ from 'lodash';
+import * as Animatable from 'react-native-animatable';
 
 class Location extends Component{
 	constructor(props){
@@ -44,7 +45,7 @@ class Location extends Component{
 	render(){
 		return(
 			<TouchableOpacity style={styles.wrapper} onPress={() => {this.editDetails()}}>
-				<View style={styles.container}>
+				<Animatable.View style={styles.container} duration={1500} animation="bounceIn"  useNativeDriver>
 					<View style={styles.column}>
 						<View style={styles.row}>
 							<Icon style={styles.icon} name="place"/>
@@ -75,8 +76,7 @@ class Location extends Component{
 						</View>
 					</View>
 					<Icon name="keyboard-arrow-right" style={styles.editDetailsText}/>
-				</View>
-				
+				</Animatable.View>
 			</TouchableOpacity>
 		)
 	}
@@ -88,7 +88,11 @@ const styles = StyleSheet.create({
 		width: 120
 	},
 	wrapper: {
-		flexDirection: 'column',
+	},
+	container: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		flex: 1,
 		marginLeft: 10,
 		marginRight: 10,
 		marginBottom: 5,
@@ -97,11 +101,6 @@ const styles = StyleSheet.create({
 		elevation: 2,
 		borderRadius: 2,
 		backgroundColor: CommonStyles.white
-	},
-	container: {
-		flexDirection: 'row',
-		justifyContent: 'space-between',
-		flex: 1
 	},
 	column: {
 		flexDirection: 'column',

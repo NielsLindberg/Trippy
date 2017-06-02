@@ -2,6 +2,20 @@ import React, {Component} from 'react';
 import {AppRegistry, Text, View, Alert, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import CommonStyles from '../../lib/CommonStyles';
+import * as Animatable from 'react-native-animatable';
+
+const fadingEntrances = [
+  'fadeIn',
+  'fadeInDown',
+  'fadeInDownBig',
+  'fadeInUp',
+  'fadeInUpBig',
+  'fadeInLeft',
+  'fadeInLeftBig',
+  'fadeInRight',
+  'fadeInRightBig'
+];
+
 
 export default class Trip extends Component{
 	constructor(props){
@@ -14,14 +28,14 @@ export default class Trip extends Component{
 	}
 	render(){
 		return(
-			<View style={styles.container}>
+			<Animatable.View style={styles.container}  animation={fadingEntrances[3]}  useNativeDriver>
 				<View style={styles.row}>
 					<TouchableOpacity style={styles.rowContent} onPress={() => {this.editDetails()}}>
 							<Text style={[styles.title, this.props.trip.title == '' ? styles.noTitle: null]}>{this.props.trip.title != '' ? this.props.trip.title : 'Add Title'}</Text>
 							<Icon name="keyboard-arrow-right" style={styles.editDetailsText}/>		
 					</TouchableOpacity>
 				</View>
-			</View>
+			</Animatable.View>
 		)
 	}
 }

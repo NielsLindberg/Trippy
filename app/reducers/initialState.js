@@ -6,6 +6,9 @@ export default initialState = {
 			orientation: 'PORTRAIT'
 		}
 	},
+	locationSearch: {
+		section: 'types'
+	},
 	fetching: {
 		trips: false,
 		directions: false,

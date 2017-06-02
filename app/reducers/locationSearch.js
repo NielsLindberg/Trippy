@@ -6,6 +6,9 @@ export const locationSearchReducer = (state={}, action) => {
 			state = {...state, results: action.payload};
 			break;
 		}
+		case types.SET_LOCATION_SEARCH_SECTION: {
+			state = {...state, section: action.payload}
+		}
 	}
 	return state;
 }

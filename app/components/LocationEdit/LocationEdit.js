@@ -23,27 +23,54 @@ class LocationEdit extends Component{
 	updateItems(props) {
 		if(props.locationSearchResults) {
 			let dataSource = props.locationSearchResults;
-			dataSource = _.groupBy(dataSource, d => d.types[0]);
+			let section = props.filter;
+			let order = 'asc';
+			switch(section) {
+				case 'types': {
+					dataSource = _.groupBy(dataSource, d => d[section][0]);
+					break;
+				}
+				case 'rating': {
+					dataSource = _.groupBy(dataSource, d => {
+						let floorRating = Math.floor(d[section])
+						if(floorRating == 5) {
+							return floorRating;
+						} else {
+							return floorRating + ' - ' + (floorRating + 1);
+						}
+					});
+					order = 'desc';
+					break;
+				}
+				default: {
+					dataSource = _.groupBy(dataSource, d => d['types'][0]);
+				}
+			}
 			dataSource = _.reduce(dataSource, (acc, next, index) => {
 				acc.push({
 					key: index,
 					data: next
 				})
 				return acc}, [])
-			dataSource = _.sortBy(dataSource, 'key');
+			dataSource = _.orderBy(dataSource, 'key', order);
 			this.setState({sections: dataSource});
 		}
 	}
 	componentWillReceiveProps(nextProps) {
-		this.updateItems(this.props);
+		this.updateItems(nextProps);
 	}
 	componentWillMount(){
 		this.updateItems(this.props);
 	}
 	renderSection(item) {
-		let header = item.section.key ? item.section.key : 'No Title';
+		var header = '';
+		if(this.props.filter === 'types') {
+			header = _.startCase(item.section.key ? item.section.key : 'Unknown Type');
+		} else {
+			header = item.section.key ? item.section.key : 'No Rating';
+		}
 		return(
-			<Text style={styles.sectionHeader}>{_.startCase(header)}</Text>
+			<Text style={styles.sectionHeader}>{header}</Text>
 		)
 	}
 	extractKey(item) {
@@ -110,6 +137,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
 	return {
 		currentLocationKey: state.userTrips.currentLocationKey,
+		filter: state.locationSearch.section,
 		currentTripKey: state.userTrips.currentTripKey,
 		tripsFetching: state.fetching.trips,
 		searchFetching: state.fetching.locationSearch,

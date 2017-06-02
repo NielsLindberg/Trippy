@@ -23,7 +23,7 @@ class TripDetailScreen extends Component{
           backButton={true}
           itemAdd={itemAdd}
           destination='locations'
-          headerTitle='Edit Trip'
+          headerTitle='Add Locations'
         />
       )
     }
